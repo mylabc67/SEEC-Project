@@ -1,0 +1,61 @@
+.login.x-layout-card-item {
+    background-image: url(../images/square.gif);
+}
+
+.login.x-layout-card-item .x-innerhtml {
+    height: 100%;
+}
+
+.lock-screen {
+    height: 100%;
+}
+
+.slide-bottom {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    background: -moz-linear-gradient(left, #4d4d4d, 0.4, #4d4d4d, 0.5, white, 0.6, #4d4d4d, #4d4d4d);
+    background: -webkit-gradient(linear,left top,right top,color-stop(0, #4d4d4d),color-stop(0.4, #4d4d4d),color-stop(0.5, white),color-stop(0.6, #4d4d4d),color-stop(1, #4d4d4d));
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
+    -moz-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: slidetounlock 4s infinite;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    -webkit-text-size-adjust: none;
+}
+
+@-webkit-keyframes slidetounlock {
+    0% {
+        background-position: -720px 0;
+    }
+    100%{
+        background-position: 720px 0;
+    }
+}
+
+
+.lock-screen .time-container {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    text-align: center;
+    color: #000000;
+}
+
+.time-container .time {
+    font: 200 65px/69px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    width: 100%;
+}
+
+.time-container .date {
+    font: 200 17px/17px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    width: 100%;
+    position: relative;
+    top: -3px;
+}
+
+.password {
+    opacity: 0;
+}

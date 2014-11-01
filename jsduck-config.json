@@ -1,0 +1,8 @@
+{
+    "--title": "SEEC Documentation System",
+    "--": [
+        "app",
+        "touch/src"
+    ],
+    "--builtin-classes": true
+}

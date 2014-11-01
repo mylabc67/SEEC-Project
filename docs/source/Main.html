@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='SEEC-view-Main'>/**
+</span> * A main view generate by Sencha Cmd
+ */
+Ext.define('SEEC.view.Main', {
+    extend: 'Ext.tab.Panel',
+    xtype: 'main',
+    requires: [
+        'Ext.TitleBar',
+        'Ext.Video'
+    ],
+    config: {
+<span id='SEEC-view-Main-cfg-tabBarPosition'>        tabBarPosition: 'bottom',
+</span>
+<span id='SEEC-view-Main-cfg-items'>        items: [
+</span>            {
+                title: 'Welcome',
+                iconCls: 'home',
+
+                styleHtmlContent: true,
+                scrollable: true,
+
+                items: {
+                    docked: 'top',
+                    xtype: 'titlebar',
+                    title: 'Welcome to Sencha Touch 2'
+                },
+
+                html: [
+                    &quot;You've just generated a new Sencha Touch 2 project. What you're looking at right now is the &quot;,
+                    &quot;contents of &lt;a target='_blank' href=\&quot;app/view/Main.js\&quot;&gt;app/view/Main.js&lt;/a&gt; - edit that file &quot;,
+                    &quot;and refresh to change what's rendered here.&quot;
+                ].join(&quot;&quot;)
+            },
+            {
+                title: 'Get Started',
+                iconCls: 'action',
+
+                items: [
+                    {
+                        docked: 'top',
+                        xtype: 'titlebar',
+                        title: 'Getting Started'
+                    },
+                    {
+                        xtype: 'video',
+                        url: 'http://av.vimeo.com/64284/137/87347327.mp4?token=1330978144_f9b698fea38cd408d52a2393240c896c',
+                        posterUrl: 'http://b.vimeocdn.com/ts/261/062/261062119_640.jpg'
+                    }
+                ]
+            }
+        ]
+    }
+});
+</pre>
+</body>
+</html>

@@ -18,8 +18,8 @@
   <pre class="prettyprint lang-js"><span id='Ext-dataview-element-Container'>/**
 </span> * @private
  */
-Ext.define('Ext.dataview.element.Container', {
-    extend: 'Ext.Component',
+Ext.define(&#39;Ext.dataview.element.Container&#39;, {
+    extend: &#39;Ext.Component&#39;,
 
 <span id='Ext-dataview-element-Container-event-itemtouchstart'>    /**
 </span>     * @event itemtouchstart
@@ -95,15 +95,15 @@ Ext.define('Ext.dataview.element.Container', {
 
     doInitialize: function() {
         this.element.on({
-            touchstart: 'onItemTouchStart',
-            touchend: 'onItemTouchEnd',
-            tap: 'onItemTap',
-            taphold: 'onItemTapHold',
-            touchmove: 'onItemTouchMove',
-            singletap: 'onItemSingleTap',
-            doubletap: 'onItemDoubleTap',
-            swipe: 'onItemSwipe',
-            delegate: '&gt; div',
+            touchstart: &#39;onItemTouchStart&#39;,
+            touchend: &#39;onItemTouchEnd&#39;,
+            tap: &#39;onItemTap&#39;,
+            taphold: &#39;onItemTapHold&#39;,
+            touchmove: &#39;onItemTouchMove&#39;,
+            singletap: &#39;onItemSingleTap&#39;,
+            doubletap: &#39;onItemDoubleTap&#39;,
+            swipe: &#39;onItemSwipe&#39;,
+            delegate: &#39;&gt; div&#39;,
             scope: this
         });
     },
@@ -117,7 +117,7 @@ Ext.define('Ext.dataview.element.Container', {
 <span id='Ext-dataview-element-Container-method-updateBaseCls'>    updateBaseCls: function(newBaseCls, oldBaseCls) {
 </span>        var me = this;
 
-        me.callParent([newBaseCls + '-container', oldBaseCls]);
+        me.callParent([newBaseCls + &#39;-container&#39;, oldBaseCls]);
     },
 
 <span id='Ext-dataview-element-Container-method-onItemTouchStart'>    onItemTouchStart: function(e) {
@@ -126,12 +126,12 @@ Ext.define('Ext.dataview.element.Container', {
             index = me.getViewItems().indexOf(target);
 
         Ext.get(target).on({
-            touchmove: 'onItemTouchMove',
+            touchmove: &#39;onItemTouchMove&#39;,
             scope   : me,
             single: true
         });
 
-        me.fireEvent('itemtouchstart', me, Ext.get(target), index, e);
+        me.fireEvent(&#39;itemtouchstart&#39;, me, Ext.get(target), index, e);
     },
 
 <span id='Ext-dataview-element-Container-method-onItemTouchEnd'>    onItemTouchEnd: function(e) {
@@ -140,11 +140,11 @@ Ext.define('Ext.dataview.element.Container', {
             index = me.getViewItems().indexOf(target);
 
         Ext.get(target).un({
-            touchmove: 'onItemTouchMove',
+            touchmove: &#39;onItemTouchMove&#39;,
             scope   : me
         });
 
-        me.fireEvent('itemtouchend', me, Ext.get(target), index, e);
+        me.fireEvent(&#39;itemtouchend&#39;, me, Ext.get(target), index, e);
     },
 
 <span id='Ext-dataview-element-Container-method-onItemTouchMove'>    onItemTouchMove: function(e) {
@@ -152,7 +152,7 @@ Ext.define('Ext.dataview.element.Container', {
             target = e.getTarget(),
             index = me.getViewItems().indexOf(target);
 
-        me.fireEvent('itemtouchmove', me, Ext.get(target), index, e);
+        me.fireEvent(&#39;itemtouchmove&#39;, me, Ext.get(target), index, e);
     },
 
 <span id='Ext-dataview-element-Container-method-onItemTap'>    onItemTap: function(e) {
@@ -160,7 +160,7 @@ Ext.define('Ext.dataview.element.Container', {
             target = e.getTarget(),
             index = me.getViewItems().indexOf(target);
 
-        me.fireEvent('itemtap', me, Ext.get(target), index, e);
+        me.fireEvent(&#39;itemtap&#39;, me, Ext.get(target), index, e);
     },
 
 <span id='Ext-dataview-element-Container-method-onItemTapHold'>    onItemTapHold: function(e) {
@@ -168,7 +168,7 @@ Ext.define('Ext.dataview.element.Container', {
             target = e.getTarget(),
             index  = me.getViewItems().indexOf(target);
 
-        me.fireEvent('itemtaphold', me, Ext.get(target), index, e);
+        me.fireEvent(&#39;itemtaphold&#39;, me, Ext.get(target), index, e);
     },
 
 <span id='Ext-dataview-element-Container-method-onItemDoubleTap'>    onItemDoubleTap: function(e) {
@@ -176,7 +176,7 @@ Ext.define('Ext.dataview.element.Container', {
             target = e.getTarget(),
             index = me.getViewItems().indexOf(target);
 
-        me.fireEvent('itemdoubletap', me, Ext.get(target), index, e);
+        me.fireEvent(&#39;itemdoubletap&#39;, me, Ext.get(target), index, e);
     },
 
 <span id='Ext-dataview-element-Container-method-onItemSingleTap'>    onItemSingleTap: function(e) {
@@ -184,7 +184,7 @@ Ext.define('Ext.dataview.element.Container', {
             target = e.getTarget(),
             index = me.getViewItems().indexOf(target);
 
-        me.fireEvent('itemsingletap', me, Ext.get(target), index, e);
+        me.fireEvent(&#39;itemsingletap&#39;, me, Ext.get(target), index, e);
     },
 
 <span id='Ext-dataview-element-Container-method-onItemSwipe'>    onItemSwipe: function(e) {
@@ -192,7 +192,7 @@ Ext.define('Ext.dataview.element.Container', {
             target = e.getTarget(),
             index = me.getViewItems().indexOf(target);
 
-        me.fireEvent('itemswipe', me,  Ext.get(target), index, e);
+        me.fireEvent(&#39;itemswipe&#39;, me,  Ext.get(target), index, e);
     },
 
 <span id='Ext-dataview-element-Container-method-updateListItem'>    updateListItem: function(record, item) {
@@ -203,7 +203,7 @@ Ext.define('Ext.dataview.element.Container', {
             data     = dataview.prepareData(record.getData(true), index, record);
 
         data.xcount = store.getCount();
-        data.xindex = typeof data.xindex === 'number' ? data.xindex : index;
+        data.xindex = typeof data.xindex === &#39;number&#39; ? data.xindex : index;
 
         item.innerHTML = dataview.getItemTpl().apply(data);
     },
@@ -218,8 +218,8 @@ Ext.define('Ext.dataview.element.Container', {
             ln         = childNodes.length,
             wrapElement;
 
-        data.xcount = typeof data.xcount === 'number' ? data.xcount : store.getCount();
-        data.xindex = typeof data.xindex === 'number' ? data.xindex : index;
+        data.xcount = typeof data.xcount === &#39;number&#39; ? data.xcount : store.getCount();
+        data.xindex = typeof data.xindex === &#39;number&#39; ? data.xindex : index;
 
         wrapElement = Ext.Element.create(this.getItemElementConfig(index, data));
 
@@ -233,10 +233,10 @@ Ext.define('Ext.dataview.element.Container', {
 <span id='Ext-dataview-element-Container-method-getItemElementConfig'>    getItemElementConfig: function(index, data) {
 </span>        var dataview = this.dataview,
             itemCls = dataview.getItemCls(),
-            cls = dataview.getBaseCls() + '-item';
+            cls = dataview.getBaseCls() + &#39;-item&#39;;
 
         if (itemCls) {
-            cls += ' ' + itemCls;
+            cls += &#39; &#39; + itemCls;
         }
         return {
             cls: cls,

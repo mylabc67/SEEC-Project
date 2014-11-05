@@ -22,22 +22,22 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.Media', {
+Ext.define(&#39;Ext.device.Media&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.Communicator',
-        'Ext.device.media.Cordova'
+        &#39;Ext.device.Communicator&#39;,
+        &#39;Ext.device.media.Cordova&#39;
     ],
 
 <span id='Ext-device-Media-method-constructor'>    constructor: function() {
 </span>        var browserEnv = Ext.browser.is;
 
         if (browserEnv.WebView &amp;&amp; browserEnv.Cordova) {
-            return Ext.create('Ext.device.media.Cordova');
+            return Ext.create(&#39;Ext.device.media.Cordova&#39;);
         }
 
-        return Ext.create('Ext.device.media.Abstract');
+        return Ext.create(&#39;Ext.device.media.Abstract&#39;);
     }
 });
 </pre>

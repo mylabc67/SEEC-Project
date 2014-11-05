@@ -24,18 +24,18 @@
  * ## Example
  *
  *     @example preview miniphone
- *     var actionSheet = Ext.create('Ext.ActionSheet', {
+ *     var actionSheet = Ext.create(&#39;Ext.ActionSheet&#39;, {
  *         items: [
  *             {
- *                 text: 'Delete draft',
- *                 ui  : 'decline'
+ *                 text: &#39;Delete draft&#39;,
+ *                 ui  : &#39;decline&#39;
  *             },
  *             {
- *                 text: 'Save draft'
+ *                 text: &#39;Save draft&#39;
  *             },
  *             {
- *                 text: 'Cancel',
- *                 ui  : 'confirm'
+ *                 text: &#39;Cancel&#39;,
+ *                 ui  : &#39;confirm&#39;
  *             }
  *         ]
  *     });
@@ -47,17 +47,17 @@
  * because the {@link #defaultType} is set to {@link Ext.Button button}.
  *
  */
-Ext.define('Ext.ActionSheet', {
-    extend: 'Ext.Sheet',
-    alias : 'widget.actionsheet',
-    requires: ['Ext.Button'],
+Ext.define(&#39;Ext.ActionSheet&#39;, {
+    extend: &#39;Ext.Sheet&#39;,
+    alias : &#39;widget.actionsheet&#39;,
+    requires: [&#39;Ext.Button&#39;],
 
     config: {
 <span id='Ext-ActionSheet-cfg-baseCls'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'sheet-action',
+        baseCls: Ext.baseCSSPrefix + &#39;sheet-action&#39;,
 
 <span id='Ext-ActionSheet-cfg-left'>        /**
 </span>         * @cfg
@@ -84,17 +84,17 @@ Ext.define('Ext.ActionSheet', {
 </span>         * @cfg
          * @inheritdoc
          */
-        height: 'auto',
+        height: &#39;auto&#39;,
 
 <span id='Ext-ActionSheet-cfg-defaultType'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        defaultType: 'button'
+        defaultType: &#39;button&#39;
     },
 
 <span id='Ext-ActionSheet-property-platformConfig'>    platformConfig: [{
-</span>        theme: ['Windows'],
+</span>        theme: [&#39;Windows&#39;],
         top: 0,
         bottom: null
     }]

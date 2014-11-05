@@ -16,17 +16,17 @@
 </head>
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js">//&lt;feature logger&gt;
-Ext.define('Ext.log.writer.Remote', {
-    extend: 'Ext.log.writer.Writer',
+Ext.define(&#39;Ext.log.writer.Remote&#39;, {
+    extend: &#39;Ext.log.writer.Writer&#39;,
 
     requires: [
-        'Ext.Ajax'
+        &#39;Ext.Ajax&#39;
     ],
 
     config: {
         batchSendDelay: 100,
         onFailureRetryDelay: 500,
-        url: ''
+        url: &#39;&#39;
     },
 
     isSending: false,
@@ -70,7 +70,7 @@ Ext.define('Ext.log.writer.Remote', {
 
         Ext.Ajax.request({
             url: me.getUrl(),
-            method: 'POST',
+            method: &#39;POST&#39;,
             params: {
                 messages: messages.join(&quot;\n&quot;)
             },

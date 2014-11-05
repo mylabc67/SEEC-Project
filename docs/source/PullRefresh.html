@@ -21,39 +21,39 @@
  * ## Example
  *
  *     @example
- *     var store = Ext.create('Ext.data.Store', {
- *         fields: ['name', 'img', 'text'],
+ *     var store = Ext.create(&#39;Ext.data.Store&#39;, {
+ *         fields: [&#39;name&#39;, &#39;img&#39;, &#39;text&#39;],
  *         data: [
  *             {
- *                 name: 'rdougan',
- *                 img: 'http://a0.twimg.com/profile_images/1261180556/171265_10150129602722922_727937921_7778997_8387690_o_reasonably_small.jpg',
- *                 text: 'JavaScript development'
+ *                 name: &#39;rdougan&#39;,
+ *                 img: &#39;http://a0.twimg.com/profile_images/1261180556/171265_10150129602722922_727937921_7778997_8387690_o_reasonably_small.jpg&#39;,
+ *                 text: &#39;JavaScript development&#39;
  *             }
  *         ]
  *     });
  *
- *     Ext.create('Ext.dataview.List', {
+ *     Ext.create(&#39;Ext.dataview.List&#39;, {
  *         fullscreen: true,
  *
  *         store: store,
  *
  *         plugins: [
  *             {
- *                 xclass: 'Ext.plugin.PullRefresh',
- *                 pullText: 'Pull down for more new Tweets!'
+ *                 xclass: &#39;Ext.plugin.PullRefresh&#39;,
+ *                 pullText: &#39;Pull down for more new Tweets!&#39;
  *             }
  *         ],
  *
  *         itemTpl: [
- *             '&lt;img src=&quot;{img}&quot; alt=&quot;{name} photo&quot; /&gt;',
- *             '&lt;div class=&quot;tweet&quot;&gt;&lt;b&gt;{name}:&lt;/b&gt; {text}&lt;/div&gt;'
+ *             &#39;&lt;img src=&quot;{img}&quot; alt=&quot;{name} photo&quot; /&gt;&#39;,
+ *             &#39;&lt;div class=&quot;tweet&quot;&gt;&lt;b&gt;{name}:&lt;/b&gt; {text}&lt;/div&gt;&#39;
  *         ]
  *     });
  */
-Ext.define('Ext.plugin.PullRefresh', {
-    extend: 'Ext.Component',
-    alias: 'plugin.pullrefresh',
-    requires: ['Ext.DateExtras'],
+Ext.define(&#39;Ext.plugin.PullRefresh&#39;, {
+    extend: &#39;Ext.Component&#39;,
+    alias: &#39;plugin.pullrefresh&#39;,
+    requires: [&#39;Ext.DateExtras&#39;],
 
     config: {
 <span id='Ext-plugin-PullRefresh-cfg-list'>        /**
@@ -68,31 +68,31 @@ Ext.define('Ext.plugin.PullRefresh', {
 </span>         * @cfg {String} pullText The text that will be shown while you are pulling down.
          * @accessor
          */
-        pullText: 'Pull down to refresh...',
+        pullText: &#39;Pull down to refresh...&#39;,
 
 <span id='Ext-plugin-PullRefresh-cfg-releaseText'>        /**
 </span>         * @cfg {String} releaseText The text that will be shown after you have pulled down enough to show the release message.
          * @accessor
          */
-        releaseText: 'Release to refresh...',
+        releaseText: &#39;Release to refresh...&#39;,
 
 <span id='Ext-plugin-PullRefresh-cfg-loadingText'>        /**
 </span>         * @cfg {String} loadingText The text that will be shown while the list is refreshing.
          * @accessor
          */
-        loadingText: 'Loading...',
+        loadingText: &#39;Loading...&#39;,
 
 <span id='Ext-plugin-PullRefresh-cfg-loadedText'>        /**
 </span>         * @cfg {String} loadedText The text that will be when data has been loaded.
          * @accessor
          */
-        loadedText: 'Loaded.',
+        loadedText: &#39;Loaded.&#39;,
 
 <span id='Ext-plugin-PullRefresh-cfg-lastUpdatedText'>        /**
 </span>         * @cfg {String} lastUpdatedText The text to be shown in front of the last updated time.
          * @accessor
          */
-        lastUpdatedText: 'Last Updated:&amp;nbsp;',
+        lastUpdatedText: &#39;Last Updated:&amp;nbsp;&#39;,
 
 <span id='Ext-plugin-PullRefresh-cfg-scrollerAutoRefresh'>        /**
 </span>         * @cfg {Boolean} scrollerAutoRefresh Determines whether the attached scroller should automatically track size changes of its container.
@@ -115,7 +115,7 @@ Ext.define('Ext.plugin.PullRefresh', {
 <span id='Ext-plugin-PullRefresh-cfg-lastUpdatedDateFormat'>        /**
 </span>         * @cfg {String} lastUpdatedDateFormat The format to be used on the last updated date.
          */
-        lastUpdatedDateFormat: 'm/d/Y h:iA',
+        lastUpdatedDateFormat: &#39;m/d/Y h:iA&#39;,
 
 <span id='Ext-plugin-PullRefresh-cfg-overpullSnapBackDuration'>        /**
 </span>         * @cfg {Number} overpullSnapBackDuration The duration for snapping back when pulldown has been lowered further then its height.
@@ -129,18 +129,18 @@ Ext.define('Ext.plugin.PullRefresh', {
          * @accessor
          */
         pullTpl: [
-            '&lt;div class=&quot;x-list-pullrefresh-arrow&quot;&gt;&lt;/div&gt;',
-            '&lt;div class=&quot;x-loading-spinner&quot;&gt;',
-                '&lt;span class=&quot;x-loading-top&quot;&gt;&lt;/span&gt;',
-                '&lt;span class=&quot;x-loading-right&quot;&gt;&lt;/span&gt;',
-                '&lt;span class=&quot;x-loading-bottom&quot;&gt;&lt;/span&gt;',
-                '&lt;span class=&quot;x-loading-left&quot;&gt;&lt;/span&gt;',
-            '&lt;/div&gt;',
-            '&lt;div class=&quot;x-list-pullrefresh-wrap&quot;&gt;',
-                '&lt;h3 class=&quot;x-list-pullrefresh-message&quot;&gt;{message}&lt;/h3&gt;',
-                '&lt;div class=&quot;x-list-pullrefresh-updated&quot;&gt;{updated}&lt;/div&gt;',
-            '&lt;/div&gt;'
-        ].join(''),
+            &#39;&lt;div class=&quot;x-list-pullrefresh-arrow&quot;&gt;&lt;/div&gt;&#39;,
+            &#39;&lt;div class=&quot;x-loading-spinner&quot;&gt;&#39;,
+                &#39;&lt;span class=&quot;x-loading-top&quot;&gt;&lt;/span&gt;&#39;,
+                &#39;&lt;span class=&quot;x-loading-right&quot;&gt;&lt;/span&gt;&#39;,
+                &#39;&lt;span class=&quot;x-loading-bottom&quot;&gt;&lt;/span&gt;&#39;,
+                &#39;&lt;span class=&quot;x-loading-left&quot;&gt;&lt;/span&gt;&#39;,
+            &#39;&lt;/div&gt;&#39;,
+            &#39;&lt;div class=&quot;x-list-pullrefresh-wrap&quot;&gt;&#39;,
+                &#39;&lt;h3 class=&quot;x-list-pullrefresh-message&quot;&gt;{message}&lt;/h3&gt;&#39;,
+                &#39;&lt;div class=&quot;x-list-pullrefresh-updated&quot;&gt;{updated}&lt;/div&gt;&#39;,
+            &#39;&lt;/div&gt;&#39;
+        ].join(&#39;&#39;),
 
 <span id='Ext-plugin-PullRefresh-cfg-translatable'>        translatable: true
 </span>    },
@@ -177,12 +177,12 @@ Ext.define('Ext.plugin.PullRefresh', {
 
 <span id='Ext-plugin-PullRefresh-method-getElementConfig'>    getElementConfig: function() {
 </span>        return {
-            reference: 'element',
-            classList: ['x-unsized'],
+            reference: &#39;element&#39;,
+            classList: [&#39;x-unsized&#39;],
             children: [
                 {
-                    reference: 'innerElement',
-                    className: Ext.baseCSSPrefix + 'list-pullrefresh'
+                    reference: &#39;innerElement&#39;,
+                    className: Ext.baseCSSPrefix + &#39;list-pullrefresh&#39;
                 }
             ]
         };
@@ -229,13 +229,13 @@ Ext.define('Ext.plugin.PullRefresh', {
 
         if (newList &amp;&amp; newList != oldList) {
             newList.on({
-                order: 'after',
+                order: &#39;after&#39;,
                 scrollablechange: me.initScrollable,
                 scope: me
             });
         } else if (oldList) {
             oldList.un({
-                order: 'after',
+                order: &#39;after&#39;,
                 scrollablechange: me.initScrollable,
                 scope: me
             });
@@ -249,19 +249,19 @@ Ext.define('Ext.plugin.PullRefresh', {
 
 <span id='Ext-plugin-PullRefresh-method-fetchLatest'>    /**
 </span>     * @private
-     * Attempts to load the newest posts via the attached List's Store's Proxy
+     * Attempts to load the newest posts via the attached List&#39;s Store&#39;s Proxy
      */
     fetchLatest: function() {
         var store = this.getList().getStore(),
             proxy = store.getProxy(),
             operation;
 
-        operation = Ext.create('Ext.data.Operation', {
+        operation = Ext.create(&#39;Ext.data.Operation&#39;, {
             page: 1,
             start: 0,
             model: store.getModel(),
             limit: store.getPageSize(),
-            action: 'read',
+            action: &#39;read&#39;,
             sorters: store.getSorters(),
             filters: store.getRemoteFilter() ? store.getFilters() : []
         });
@@ -273,7 +273,7 @@ Ext.define('Ext.plugin.PullRefresh', {
 </span>     * @private
      * Called after fetchLatest has finished grabbing data. Matches any returned records against what is already in the
      * Store. If there is an overlap, updates the existing records with the new data and inserts the new items at the
-     * front of the Store. If there is no overlap, insert the new records anyway and record that there's a break in the
+     * front of the Store. If there is no overlap, insert the new records anyway and record that there&#39;s a break in the
      * timeline between the new and the old records.
      */
     onLatestFetched: function(operation) {
@@ -299,7 +299,7 @@ Ext.define('Ext.plugin.PullRefresh', {
 
         store.insert(0, toInsert);
         this.setState(&quot;loaded&quot;);
-        this.fireEvent('latestfetched', this, toInsert);
+        this.fireEvent(&#39;latestfetched&#39;, this, toInsert);
         if (this.getAutoSnapBack()) {
             this.snapBack();
         }
@@ -357,14 +357,14 @@ Ext.define('Ext.plugin.PullRefresh', {
                 if (-y &gt;= pullHeight + 10) {
                     this.setState(&quot;release&quot;);
                     scroller.getContainer().onBefore({
-                        dragend: 'onScrollerDragEnd',
+                        dragend: &#39;onScrollerDragEnd&#39;,
                         single: true,
                         scope: this
                     });
                 } else if ((this.getState() === &quot;release&quot;) &amp;&amp; (-y &lt; pullHeight + 10)) {
                     this.setState(&quot;pull&quot;);
                     scroller.getContainer().unBefore({
-                        dragend: 'onScrollerDragEnd',
+                        dragend: &#39;onScrollerDragEnd&#39;,
                         single: true,
                         scope: this
                     });
@@ -388,7 +388,7 @@ Ext.define('Ext.plugin.PullRefresh', {
             translateable.setEasingY({duration: this.getOverpullSnapBackDuration()});
             scroller.minPosition.y = -this.getPullHeight();
             scroller.on({
-                scrollend: 'fetchLatest',
+                scrollend: &#39;fetchLatest&#39;,
                 single: true,
                 scope: this
             });
@@ -423,7 +423,7 @@ Ext.define('Ext.plugin.PullRefresh', {
      * @param {String} text
      * @deprecated 2.3.0 Please use {@link #setPullText} instead.
      */
-    Ext.deprecateClassMethod(this, 'setPullRefreshText', 'setPullText');
+    Ext.deprecateClassMethod(this, &#39;setPullRefreshText&#39;, &#39;setPullText&#39;);
 
 <span id='Ext-plugin-PullRefresh-method-setReleaseRefreshText'>    /**
 </span>     * Updates the ReleaseRefreshText.
@@ -431,7 +431,7 @@ Ext.define('Ext.plugin.PullRefresh', {
      * @param {String} text
      * @deprecated 2.3.0 Please use {@link #setReleaseText} instead.
      */
-    Ext.deprecateClassMethod(this, 'setReleaseRefreshText', 'setReleaseText');
+    Ext.deprecateClassMethod(this, &#39;setReleaseRefreshText&#39;, &#39;setReleaseText&#39;);
 
     this.override({
         constructor: function(config) {
@@ -441,9 +441,9 @@ Ext.define('Ext.plugin.PullRefresh', {
                  * Optional Text during the Release State.
                  * @deprecated 2.3.0 Please use {@link #releaseText} instead
                  */
-                if (config.hasOwnProperty('pullReleaseText')) {
+                if (config.hasOwnProperty(&#39;pullReleaseText&#39;)) {
                     //&lt;debug warn&gt;
-                    Ext.Logger.deprecate(&quot;'pullReleaseText' config is deprecated, please use 'releaseText' config instead&quot;, this);
+                    Ext.Logger.deprecate(&quot;&#39;pullReleaseText&#39; config is deprecated, please use &#39;releaseText&#39; config instead&quot;, this);
                     //&lt;/debug&gt;
                     config.releaseText = config.pullReleaseText;
                     delete config.pullReleaseText;
@@ -454,9 +454,9 @@ Ext.define('Ext.plugin.PullRefresh', {
                  * Optional Text during the Pull State.
                  * @deprecated 2.3.0 Please use {@link #pullText} instead
                  */
-                if (config.hasOwnProperty('pullRefreshText')) {
+                if (config.hasOwnProperty(&#39;pullRefreshText&#39;)) {
                     //&lt;debug warn&gt;
-                    Ext.Logger.deprecate(&quot;'pullRefreshText' config is deprecated, please use 'pullText' config instead&quot;, this);
+                    Ext.Logger.deprecate(&quot;&#39;pullRefreshText&#39; config is deprecated, please use &#39;pullText&#39; config instead&quot;, this);
                     //&lt;/debug&gt;
                     config.pullText = config.pullRefreshText;
                     delete config.pullRefreshText;

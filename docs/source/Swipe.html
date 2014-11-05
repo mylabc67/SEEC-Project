@@ -21,10 +21,10 @@
  *
  * @private
  */
-Ext.define('Ext.event.recognizer.Swipe', {
-    extend: 'Ext.event.recognizer.SingleTouch',
+Ext.define(&#39;Ext.event.recognizer.Swipe&#39;, {
+    extend: &#39;Ext.event.recognizer.SingleTouch&#39;,
 
-<span id='Ext-event-recognizer-Swipe-property-handledEvents'>    handledEvents: ['swipestart', 'swipe'],
+<span id='Ext-event-recognizer-Swipe-property-handledEvents'>    handledEvents: [&#39;swipestart&#39;, &#39;swipe&#39;],
 </span>
 <span id='Ext-dom-Element-event-swipe'>    /**
 </span>     * @member Ext.dom.Element
@@ -114,11 +114,11 @@ Ext.define('Ext.event.recognizer.Swipe', {
 
         if (!this.isVertical || !this.isHorizontal) {
             if (this.isHorizontal &amp;&amp; absDeltaX &lt; minDistance) {
-                direction = (deltaX &lt; 0) ? 'left' : 'right';
+                direction = (deltaX &lt; 0) ? &#39;left&#39; : &#39;right&#39;;
                 distance = absDeltaX;
             }
             else if (this.isVertical &amp;&amp; absDeltaY &lt; minDistance) {
-                direction = (deltaY &lt; 0) ? 'up' : 'down';
+                direction = (deltaY &lt; 0) ? &#39;up&#39; : &#39;down&#39;;
                 distance = absDeltaY;
             }
         }
@@ -126,7 +126,7 @@ Ext.define('Ext.event.recognizer.Swipe', {
         if (direction &amp;&amp; !this.started) {
             this.started = true;
 
-            this.fire('swipestart', e, [touch], {
+            this.fire(&#39;swipestart&#39;, e, [touch], {
                 touch: touch,
                 direction: direction,
                 distance: distance,
@@ -164,11 +164,11 @@ Ext.define('Ext.event.recognizer.Swipe', {
         }
 
         if (this.isHorizontal) {
-            direction = (deltaX &lt; 0) ? 'left' : 'right';
+            direction = (deltaX &lt; 0) ? &#39;left&#39; : &#39;right&#39;;
             distance = absDeltaX;
         }
         else if (this.isVertical) {
-            direction = (deltaY &lt; 0) ? 'up' : 'down';
+            direction = (deltaY &lt; 0) ? &#39;up&#39; : &#39;down&#39;;
             distance = absDeltaY;
         }
         else {
@@ -177,7 +177,7 @@ Ext.define('Ext.event.recognizer.Swipe', {
 
         this.started = false;
 
-        this.fire('swipe', e, [touch], {
+        this.fire(&#39;swipe&#39;, e, [touch], {
             touch: touch,
             direction: direction,
             distance: distance,

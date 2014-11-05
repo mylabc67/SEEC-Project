@@ -30,9 +30,9 @@
  * Using {@link Ext.util.DelayedTask} is very simple:
  *
  *     //create the delayed task instance with our callback
- *     var task = Ext.create('Ext.util.DelayedTask', {
+ *     var task = Ext.create(&#39;Ext.util.DelayedTask&#39;, {
  *          fn: function() {
- *             console.log('callback!');
+ *             console.log(&#39;callback!&#39;);
  *          }
  *     });
  *
@@ -44,29 +44,29 @@
  *
  *     @example
  *     //create a textfield where we can listen to text
- *     var field = Ext.create('Ext.field.Text', {
- *         xtype: 'textfield',
- *         label: 'Length: 0'
+ *     var field = Ext.create(&#39;Ext.field.Text&#39;, {
+ *         xtype: &#39;textfield&#39;,
+ *         label: &#39;Length: 0&#39;
  *     });
  *
  *     //add the textfield into a fieldset
  *     Ext.Viewport.add({
- *         xtype: 'formpanel',
+ *         xtype: &#39;formpanel&#39;,
  *         items: [{
- *             xtype: 'fieldset',
+ *             xtype: &#39;fieldset&#39;,
  *             items: [field],
- *             instructions: 'Type into the field and watch the count go up after 500ms.'
+ *             instructions: &#39;Type into the field and watch the count go up after 500ms.&#39;
  *         }]
  *     });
  *
  *     //create our delayed task with a function that returns the fields length as the fields label
- *     var task = Ext.create('Ext.util.DelayedTask', function() {
- *         field.setLabel('Length: ' + field.getValue().length);
+ *     var task = Ext.create(&#39;Ext.util.DelayedTask&#39;, function() {
+ *         field.setLabel(&#39;Length: &#39; + field.getValue().length);
  *     });
  *
  *     // Wait 500ms before calling our function. If the user presses another key
- *     // during that 500ms, it will be canceled and we'll wait another 500ms.
- *     field.on('keyup', function() {
+ *     // during that 500ms, it will be canceled and we&#39;ll wait another 500ms.
+ *     field.on(&#39;keyup&#39;, function() {
  *         task.delay(500);
  *     });
  *
@@ -77,7 +77,7 @@
  * not specified, `this` will refer to the browser window.
  * @param {Array} args The default Array of arguments.
  */
-Ext.define('Ext.util.DelayedTask', {
+Ext.define(&#39;Ext.util.DelayedTask&#39;, {
     config: {
 <span id='Ext-util-DelayedTask-cfg-interval'>        interval: null,
 </span><span id='Ext-util-DelayedTask-cfg-delay'>        delay: null,
@@ -156,7 +156,7 @@ Ext.define('Ext.util.DelayedTask', {
 
 <span id='Ext-util-DelayedTask-method-applyArgs'>    /**
 </span>     * @private
-     * Changes the value into an array if it isn't one.
+     * Changes the value into an array if it isn&#39;t one.
      */
     applyArgs: function(config) {
         if (!Ext.isArray(config)) {

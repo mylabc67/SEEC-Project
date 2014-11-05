@@ -18,15 +18,15 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-tunnel-Abstract'>/**
 </span> * Example for a sender:
  *
- *      Ext.require('Ext.device.Tunnel', function(Tunnel) {
- *          var broadcast = Tunnel.broadcast('time'),
+ *      Ext.require(&#39;Ext.device.Tunnel&#39;, function(Tunnel) {
+ *          var broadcast = Tunnel.broadcast(&#39;time&#39;),
  *              connectToFirstReceiver = broadcast.then(function(receivers){
  *                  return Tunnel.connect(receivers[0].id);
  *              }),
  *              send = connectToFirstReceiver.then(function(connection) {
- *                  // 'true' as second argument to bring the receiver app to the foreground
+ *                  // &#39;true&#39; as second argument to bring the receiver app to the foreground
  *                  // otherwise, it will simply run in the background
- *                  return connection.send('You are summoned!', true);
+ *                  return connection.send(&#39;You are summoned!&#39;, true);
  *              });
  *
  *          send.then(function(reply){
@@ -36,18 +36,18 @@
  *
  * Example for a receiver:
  *
- *      Ext.require('Ext.device.Tunnel', function(Tunnel) {
+ *      Ext.require(&#39;Ext.device.Tunnel&#39;, function(Tunnel) {
  *          Tunnel.onConnect(function(appId) {
- *              console.log('Got connection from ' + appId);
+ *              console.log(&#39;Got connection from &#39; + appId);
  *
  *              // Accept all
  *              return true;
  *          });
  *
  *          Tunnel.onMessage(function(appId, message) {
- *              console.log('Got message from ' + appId + ' ' + message);
+ *              console.log(&#39;Got message from &#39; + appId + &#39; &#39; + message);
  *
- *              return 'Yeah I got it';
+ *              return &#39;Yeah I got it&#39;;
  *          });
  *      });
  *
@@ -56,18 +56,18 @@
  *       Tunnel.onMessage(function(appId, message) {
  *          var promise = new Ext.Promise();
  *
- *          console.log('Got message from ' + appId + ' ' + message);
+ *          console.log(&#39;Got message from &#39; + appId + &#39; &#39; + message);
  *
  *          // Do whatever needed asynchronously before return the result (fulfilling the promise)
  *          setTimeout(function(){
- *             promise.fulfill('Yeah I got it');
+ *             promise.fulfill(&#39;Yeah I got it&#39;);
  *          }, 3000);
  *
  *          return promise;
  *      });
  */
-Ext.define('Ext.device.tunnel.Abstract', {
-    requires: ['Ext.Promise'],
+Ext.define(&#39;Ext.device.tunnel.Abstract&#39;, {
+    requires: [&#39;Ext.Promise&#39;],
 
 <span id='Ext-device-tunnel-Abstract-property-messageId'>    messageId: 0,
 </span>
@@ -83,7 +83,7 @@ Ext.define('Ext.device.tunnel.Abstract', {
      * @param {String} message
      *
      * @returns {Ext.Promise} A promise which provides an array of objects upon fulfilled. Each object contains information about
-     * a receiver, with 'id', 'name' and 'icon' keys.
+     * a receiver, with &#39;id&#39;, &#39;name&#39; and &#39;icon&#39; keys.
      */
     broadcast: function(message) {
         return Ext.Promise.from([]);
@@ -102,7 +102,7 @@ Ext.define('Ext.device.tunnel.Abstract', {
             return Ext.Promise.from(connection);
         }
         else {
-            return this.send(receiverId, '__CONNECT__').then(function() {
+            return this.send(receiverId, &#39;__CONNECT__&#39;).then(function() {
                 connections[receiverId] = connection = new Ext.device.tunnel.Connection(receiverId);
                 return connection;
             });
@@ -192,7 +192,7 @@ Ext.define('Ext.device.tunnel.Abstract', {
             response = connection.receive(message);
         }
 
-        if (typeof response == 'undefined') {
+        if (typeof response == &#39;undefined&#39;) {
             response = this.messageCallback.apply(this, arguments);
         }
 
@@ -227,7 +227,7 @@ Ext.define('Ext.device.tunnel.Abstract', {
         // A request
         else {
             try {
-                if (message === '__CONNECT__') {
+                if (message === &#39;__CONNECT__&#39;) {
                     if (!connectCallback) {
                         this.connectQueue.push(arguments);
                         return;

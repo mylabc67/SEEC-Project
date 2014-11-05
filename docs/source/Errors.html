@@ -32,13 +32,13 @@
  *     errors.isValid(); // false
  *
  *     errors.length; // 2
- *     errors.getByField('name');  // [{field: 'name',  message: 'must be present'}]
- *     errors.getByField('title'); // [{field: 'title', message: 'is too short'}]
+ *     errors.getByField(&#39;name&#39;);  // [{field: &#39;name&#39;,  message: &#39;must be present&#39;}]
+ *     errors.getByField(&#39;title&#39;); // [{field: &#39;title&#39;, message: &#39;is too short&#39;}]
  */
-Ext.define('Ext.data.Errors', {
-    extend: 'Ext.util.Collection',
+Ext.define(&#39;Ext.data.Errors&#39;, {
+    extend: &#39;Ext.util.Collection&#39;,
 
-    requires: 'Ext.data.Error',
+    requires: &#39;Ext.data.Error&#39;,
 
 <span id='Ext-data-Errors-method-isValid'>    /**
 </span>     * Returns `true` if there are no errors in the collection.
@@ -72,7 +72,7 @@ Ext.define('Ext.data.Errors', {
 </span>        var obj = arguments.length == 1 ? arguments[0] : arguments[1];
         
         if (!(obj instanceof Ext.data.Error)) {
-            obj = Ext.create('Ext.data.Error', {
+            obj = Ext.create(&#39;Ext.data.Error&#39;, {
                 field: obj.field || obj.name,
                 message: obj.error || obj.message
             });

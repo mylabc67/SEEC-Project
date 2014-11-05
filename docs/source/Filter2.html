@@ -24,15 +24,15 @@
  *     // Set up a fictional MixedCollection containing a few people to filter on
  *     var allNames = new Ext.util.MixedCollection();
  *     allNames.addAll([
- *         { id: 1, name: 'Ed',    age: 25 },
- *         { id: 2, name: 'Jamie', age: 37 },
- *         { id: 3, name: 'Abe',   age: 32 },
- *         { id: 4, name: 'Aaron', age: 26 },
- *         { id: 5, name: 'David', age: 32 }
+ *         { id: 1, name: &#39;Ed&#39;,    age: 25 },
+ *         { id: 2, name: &#39;Jamie&#39;, age: 37 },
+ *         { id: 3, name: &#39;Abe&#39;,   age: 32 },
+ *         { id: 4, name: &#39;Aaron&#39;, age: 26 },
+ *         { id: 5, name: &#39;David&#39;, age: 32 }
  *     ]);
  *
  *     var ageFilter = new Ext.util.Filter({
- *         property: 'age',
+ *         property: &#39;age&#39;,
  *         value   : 32
  *     });
  *
@@ -48,7 +48,7 @@
  *     // a new MixedCollection with the 2 people of age 32:
  *     var youngFolk = allNames.filter(ageFilter);
  */
-Ext.define('Ext.util.Filter', {
+Ext.define(&#39;Ext.util.Filter&#39;, {
 <span id='Ext-util-Filter-property-isFilter'>    isFilter: true,
 </span>
     config: {
@@ -86,13 +86,13 @@ Ext.define('Ext.util.Filter', {
 
 <span id='Ext-util-Filter-cfg-caseSensitive'>        /**
 </span>         * @cfg {Boolean} [caseSensitive=false]
-         * True to make the regex case sensitive (adds 'i' switch to regex).
+         * True to make the regex case sensitive (adds &#39;i&#39; switch to regex).
          */
         caseSensitive: false,
 
 <span id='Ext-util-Filter-cfg-root'>        /**
 </span>         * @cfg {String} [root=null]
-         * Optional root property. This is mostly useful when filtering a Store, in which case we set the root to 'data'
+         * Optional root property. This is mostly useful when filtering a Store, in which case we set the root to &#39;data&#39;
          * to make the filter pull the {@link #property} out of the data object of each item
          */
         root: null,
@@ -115,10 +115,10 @@ Ext.define('Ext.util.Filter', {
 <span id='Ext-util-Filter-method-applyId'>    applyId: function(id) {
 </span>        if (!id) {
             if (this.getProperty()) {
-                id = this.getProperty() + '-' + String(this.getValue());
+                id = this.getProperty() + &#39;-&#39; + String(this.getValue());
             }
             if (!id) {
-                id = Ext.id(null, 'ext-filter-');
+                id = Ext.id(null, &#39;ext-filter-&#39;);
             }
         }
 
@@ -135,7 +135,7 @@ Ext.define('Ext.util.Filter', {
 
 <span id='Ext-util-Filter-method-applyFilterFn'>    applyFilterFn: function(filterFn) {
 </span>        if (filterFn === Ext.emptyFn) {
-            filterFn = this.getInitialConfig('filter');
+            filterFn = this.getInitialConfig(&#39;filter&#39;);
             if (filterFn) {
                 return filterFn;
             }
@@ -143,7 +143,7 @@ Ext.define('Ext.util.Filter', {
             var value = this.getValue();
             if (!this.getProperty() &amp;&amp; !value &amp;&amp; value !== 0) {
                 // &lt;debug&gt;
-                Ext.Logger.error('A Filter requires either a property and value, or a filterFn to be set');
+                Ext.Logger.error(&#39;A Filter requires either a property and value, or a filterFn to be set&#39;);
                 // &lt;/debug&gt;
                 return Ext.emptyFn;
             }
@@ -192,12 +192,12 @@ Ext.define('Ext.util.Filter', {
             if (anyMatch === true) {
                 value = escapeRe(value);
             } else {
-                value = '^' + escapeRe(value);
+                value = &#39;^&#39; + escapeRe(value);
                 if (exactMatch === true) {
-                    value += '$';
+                    value += &#39;$&#39;;
                 }
             }
-            value = new RegExp(value, caseSensitive ? '' : 'i');
+            value = new RegExp(value, caseSensitive ? &#39;&#39; : &#39;i&#39;);
          }
 
          return value;

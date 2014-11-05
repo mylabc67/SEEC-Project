@@ -21,11 +21,11 @@
  * Please refer to the {@link Ext.Viewport} documentation about using the global instance.
  * @private
  */
-Ext.define('Ext.viewport.Viewport', {
+Ext.define(&#39;Ext.viewport.Viewport&#39;, {
     requires: [
-        'Ext.viewport.Ios',
-        'Ext.viewport.Android',
-        'Ext.viewport.WindowsPhone'
+        &#39;Ext.viewport.Ios&#39;,
+        &#39;Ext.viewport.Android&#39;,
+        &#39;Ext.viewport.WindowsPhone&#39;
     ],
 
 <span id='Ext-viewport-Viewport-method-constructor'>    constructor: function(config) {
@@ -33,28 +33,28 @@ Ext.define('Ext.viewport.Viewport', {
             viewportName, viewport;
 
         switch (osName) {
-            case 'Android':
-                viewportName = (Ext.browser.name == 'ChromeMobile') ? 'Default' : 'Android';
+            case &#39;Android&#39;:
+                viewportName = (Ext.browser.name == &#39;ChromeMobile&#39;) ? &#39;Default&#39; : &#39;Android&#39;;
                 break;
 
-            case 'iOS':
-                viewportName = 'Ios';
+            case &#39;iOS&#39;:
+                viewportName = &#39;Ios&#39;;
                 break;
 
-            case 'Windows':
-                viewportName = (Ext.browser.name == 'IE') ? 'WindowsPhone' : 'Default';
+            case &#39;Windows&#39;:
+                viewportName = (Ext.browser.name == &#39;IE&#39;) ? &#39;WindowsPhone&#39; : &#39;Default&#39;;
                 break;
 
-            case 'WindowsPhone':
-                viewportName = 'WindowsPhone';
+            case &#39;WindowsPhone&#39;:
+                viewportName = &#39;WindowsPhone&#39;;
                 break;
 
             default:
-                viewportName = 'Default';
+                viewportName = &#39;Default&#39;;
                 break;
         }
 
-        viewport = Ext.create('Ext.viewport.' + viewportName, config);
+        viewport = Ext.create(&#39;Ext.viewport.&#39; + viewportName, config);
 
         return viewport;
     }
@@ -76,8 +76,8 @@ Ext.define('Ext.viewport.Viewport', {
  *     Ext.setup({
  *         onReady: function() {
  *             Ext.Viewport.add({
- *                 xtype: 'container',
- *                 html: 'My new container!'
+ *                 xtype: &#39;container&#39;,
+ *                 html: &#39;My new container!&#39;
  *             });
  *         }
  *     });
@@ -88,7 +88,7 @@ Ext.define('Ext.viewport.Viewport', {
  *     @example raw
  *     Ext.setup({
  *         viewport: {
- *             layout: 'vbox'
+ *             layout: &#39;vbox&#39;
  *         },
  *         onReady: function() {
  *             //do something

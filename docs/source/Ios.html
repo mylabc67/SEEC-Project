@@ -19,8 +19,8 @@
 </span> * @private
  * iOS version of viewport.
  */
-Ext.define('Ext.viewport.Ios', {
-    extend: 'Ext.viewport.Default',
+Ext.define(&#39;Ext.viewport.Ios&#39;, {
+    extend: &#39;Ext.viewport.Default&#39;,
 
 <span id='Ext-viewport-Ios-method-isFullscreen'>    isFullscreen: function() {
 </span>        return this.isHomeScreen();
@@ -34,7 +34,7 @@ Ext.define('Ext.viewport.Ios', {
 </span>        this.callParent(arguments);
 
         if (this.getAutoMaximize() &amp;&amp; !this.isFullscreen()) {
-            this.addWindowListener('touchstart', Ext.Function.bind(this.onTouchStart, this));
+            this.addWindowListener(&#39;touchstart&#39;, Ext.Function.bind(this.onTouchStart, this));
         }
     },
 
@@ -87,7 +87,7 @@ Ext.define('Ext.viewport.Ios', {
     },
 
 <span id='Ext-viewport-Ios-method-getScreenHeight'>    getScreenHeight: function() {
-</span>        return window.screen[this.orientation === this.PORTRAIT ? 'height' : 'width'];
+</span>        return window.screen[this.orientation === this.PORTRAIT ? &#39;height&#39; : &#39;width&#39;];
     },
 
 <span id='Ext-viewport-Ios-method-onElementFocus'>    onElementFocus: function() {
@@ -121,7 +121,7 @@ Ext.define('Ext.viewport.Ios', {
         return;
     }
 
-    if (Ext.os.version.lt('3.2')) {
+    if (Ext.os.version.lt(&#39;3.2&#39;)) {
         this.override({
             constructor: function() {
                 var stretchHeights = this.stretchHeights = {};
@@ -134,9 +134,9 @@ Ext.define('Ext.viewport.Ios', {
         });
     }
 
-    if (Ext.os.version.lt('5')) {
+    if (Ext.os.version.lt(&#39;5&#39;)) {
         this.override({
-            fieldMaskClsTest: '-field-mask',
+            fieldMaskClsTest: &#39;-field-mask&#39;,
 
             doPreventZooming: function(e) {
                 var target = e.target;
@@ -157,9 +157,9 @@ Ext.define('Ext.viewport.Ios', {
         });
     }
 
-    if (Ext.os.version.gtEq('7')) {
+    if (Ext.os.version.gtEq(&#39;7&#39;)) {
         // iPad or Homescreen or UIWebView
-        if (Ext.os.deviceType === 'Tablet' || !Ext.browser.is.Safari || window.navigator.standalone) {
+        if (Ext.os.deviceType === &#39;Tablet&#39; || !Ext.browser.is.Safari || window.navigator.standalone) {
             this.override({
                 constructor: function() {
                     var stretchHeights = {},
@@ -182,8 +182,8 @@ Ext.define('Ext.viewport.Ios', {
 
                     this.callOverridden(arguments);
 
-                    this.on('ready', this.setViewportSizeToAbsolute, this);
-                    this.on('orientationchange', this.setViewportSizeToAbsolute, this);
+                    this.on(&#39;ready&#39;, this.setViewportSizeToAbsolute, this);
+                    this.on(&#39;orientationchange&#39;, this.setViewportSizeToAbsolute, this);
                 },
 
                 getWindowHeight: function() {
@@ -202,12 +202,12 @@ Ext.define('Ext.viewport.Ios', {
         }
 
         // iPad Only
-        if (Ext.os.deviceType === 'Tablet') {
+        if (Ext.os.deviceType === &#39;Tablet&#39;) {
             this.override({
                 constructor: function() {
                     this.callOverridden(arguments);
 
-                    window.addEventListener('scroll', function() {
+                    window.addEventListener(&#39;scroll&#39;, function() {
                         if (window.scrollX !== 0) {
                             window.scrollTo(0, window.scrollY);
                         }

@@ -19,7 +19,7 @@
 </span> * @class Ext.scroll.Scroller
  * @author Jacky Nguyen &lt;jacky@sencha.com&gt;
  *
- * Momentum scrolling is one of the most important part of the framework's UI layer. In Sencha Touch there are
+ * Momentum scrolling is one of the most important part of the framework&#39;s UI layer. In Sencha Touch there are
  * several scroller implementations so we can have the best performance on all mobile devices and browsers.
  *
  * Scroller settings can be changed using the {@link Ext.Container#scrollable scrollable} configuration in
@@ -40,11 +40,11 @@
  * that extends it).
  *
  *     @example
- *     var container = Ext.create('Ext.Container', {
+ *     var container = Ext.create(&#39;Ext.Container&#39;, {
  *         fullscreen: true,
- *         html: 'This container is scrollable!',
+ *         html: &#39;This container is scrollable!&#39;,
  *         scrollable: {
- *             direction: 'vertical'
+ *             direction: &#39;vertical&#39;
  *         }
  *     });
  *
@@ -55,14 +55,14 @@
  *
  * Go ahead and try it in the live code editor above!
  */
-Ext.define('Ext.scroll.Scroller', {
+Ext.define(&#39;Ext.scroll.Scroller&#39;, {
 
-    extend: 'Ext.Evented',
+    extend: &#39;Ext.Evented&#39;,
 
     requires: [
-        'Ext.fx.easing.BoundMomentum',
-        'Ext.fx.easing.EaseOut',
-        'Ext.util.Translatable'
+        &#39;Ext.fx.easing.BoundMomentum&#39;,
+        &#39;Ext.fx.easing.EaseOut&#39;,
+        &#39;Ext.util.Translatable&#39;
     ],
 
 <span id='Ext-scroll-Scroller-event-maxpositionchange'>    /**
@@ -111,16 +111,16 @@ Ext.define('Ext.scroll.Scroller', {
 
 <span id='Ext-scroll-Scroller-cfg-direction'>        /**
 </span>         * @cfg {String} direction
-         * Possible values: 'auto', 'vertical', 'horizontal', or 'both'.
+         * Possible values: &#39;auto&#39;, &#39;vertical&#39;, &#39;horizontal&#39;, or &#39;both&#39;.
          * @accessor
          */
-        direction: 'auto',
+        direction: &#39;auto&#39;,
 
 <span id='Ext-scroll-Scroller-cfg-fps'>        /**
 </span>         * @cfg fps
          * @private
          */
-        fps: 'auto',
+        fps: &#39;auto&#39;,
 
 <span id='Ext-scroll-Scroller-cfg-disabled'>        /**
 </span>         * @cfg {Boolean} disabled
@@ -207,13 +207,13 @@ Ext.define('Ext.scroll.Scroller', {
 </span>         * @cfg containerSize
          * @private
          */
-        containerSize: 'auto',
+        containerSize: &#39;auto&#39;,
 
 <span id='Ext-scroll-Scroller-cfg-size'>        /**
 </span>         * @cfg size
          * @private
          */
-        size: 'auto',
+        size: &#39;auto&#39;,
 
 <span id='Ext-scroll-Scroller-cfg-autoRefresh'>        /**
 </span>         * @cfg autoRefresh
@@ -233,7 +233,7 @@ Ext.define('Ext.scroll.Scroller', {
 
 <span id='Ext-scroll-Scroller-cfg-slotSnapSize'>        /**
 </span>         * @cfg {Number/Object} slotSnapSize
-         * The size of each slot to snap to in 'px', can be either an object with `x` and `y` values, i.e:
+         * The size of each slot to snap to in &#39;px&#39;, can be either an object with `x` and `y` values, i.e:
          *
          *      {
          *          x: 50,
@@ -268,14 +268,14 @@ Ext.define('Ext.scroll.Scroller', {
         },
 
 <span id='Ext-scroll-Scroller-cfg-translatable'>        translatable: {
-</span>            translationMethod: 'auto',
+</span>            translationMethod: &#39;auto&#39;,
             useWrapper: false
         }
     },
 
-<span id='Ext-scroll-Scroller-property-cls'>    cls: Ext.baseCSSPrefix + 'scroll-scroller',
+<span id='Ext-scroll-Scroller-property-cls'>    cls: Ext.baseCSSPrefix + &#39;scroll-scroller&#39;,
 </span>
-<span id='Ext-scroll-Scroller-property-containerCls'>    containerCls: Ext.baseCSSPrefix + 'scroll-container',
+<span id='Ext-scroll-Scroller-property-containerCls'>    containerCls: Ext.baseCSSPrefix + &#39;scroll-container&#39;,
 </span>
 <span id='Ext-scroll-Scroller-property-dragStartTime'>    dragStartTime: 0,
 </span>
@@ -295,11 +295,11 @@ Ext.define('Ext.scroll.Scroller', {
 
         this.listeners = {
             scope: this,
-            touchstart: 'onTouchStart',
-            touchend: 'onTouchEnd',
-            dragstart: 'onDragStart',
-            drag: 'onDrag',
-            dragend: 'onDragEnd'
+            touchstart: &#39;onTouchStart&#39;,
+            touchend: &#39;onTouchEnd&#39;,
+            dragstart: &#39;onDragStart&#39;,
+            drag: &#39;onDrag&#39;,
+            dragend: &#39;onDragEnd&#39;
         };
 
         this.minPosition = { x: 0, y: 0 };
@@ -355,10 +355,10 @@ Ext.define('Ext.scroll.Scroller', {
             this.attachListeneners();
         }
 
-        this.onConfigUpdate(['containerSize', 'size'], 'refreshMaxPosition');
+        this.onConfigUpdate([&#39;containerSize&#39;, &#39;size&#39;], &#39;refreshMaxPosition&#39;);
 
-        this.on('maxpositionchange', 'snapToBoundary');
-        this.on('minpositionchange', 'snapToBoundary');
+        this.on(&#39;maxpositionchange&#39;, &#39;snapToBoundary&#39;);
+        this.on(&#39;minpositionchange&#39;, &#39;snapToBoundary&#39;);
 
         return this;
     },
@@ -371,15 +371,15 @@ Ext.define('Ext.scroll.Scroller', {
 </span>        translatable.setConfig({
             element: this.getElement(),
             listeners: {
-                animationframe: 'onAnimationFrame',
-                animationend: 'onAnimationEnd',
+                animationframe: &#39;onAnimationFrame&#39;,
+                animationend: &#39;onAnimationEnd&#39;,
                 scope: this
             }
         });
     },
 
 <span id='Ext-scroll-Scroller-method-updateFps'>    updateFps: function(fps) {
-</span>        if (fps !== 'auto') {
+</span>        if (fps !== &#39;auto&#39;) {
             this.getTranslatable().setFps(fps);
         }
     },
@@ -411,7 +411,7 @@ Ext.define('Ext.scroll.Scroller', {
     },
 
 <span id='Ext-scroll-Scroller-method-updateInitialOffset'>    updateInitialOffset: function(initialOffset) {
-</span>        if (typeof initialOffset == 'number') {
+</span>        if (typeof initialOffset == &#39;number&#39;) {
             initialOffset = {
                 x: initialOffset,
                 y: initialOffset
@@ -438,18 +438,18 @@ Ext.define('Ext.scroll.Scroller', {
 
         this.givenDirection = direction;
 
-        if (direction === 'auto') {
+        if (direction === &#39;auto&#39;) {
             isHorizontal = maxPosition.x &gt; minPosition.x;
             isVertical = maxPosition.y &gt; minPosition.y;
 
             if (isHorizontal &amp;&amp; isVertical) {
-                direction = 'both';
+                direction = &#39;both&#39;;
             }
             else if (isHorizontal) {
-                direction = 'horizontal';
+                direction = &#39;horizontal&#39;;
             }
             else {
-                direction = 'vertical';
+                direction = &#39;vertical&#39;;
             }
         }
 
@@ -461,25 +461,25 @@ Ext.define('Ext.scroll.Scroller', {
      */
     updateDirection: function(direction, oldDirection) {
         var isAxisEnabledFlags = this.isAxisEnabledFlags,
-            verticalCls = this.cls + '-vertical',
-            horizontalCls = this.cls + '-horizontal',
+            verticalCls = this.cls + &#39;-vertical&#39;,
+            horizontalCls = this.cls + &#39;-horizontal&#39;,
             element = this.getElement();
 
-        if (oldDirection === 'both' || oldDirection === 'horizontal') {
+        if (oldDirection === &#39;both&#39; || oldDirection === &#39;horizontal&#39;) {
             element.removeCls(horizontalCls);
         }
 
-        if (oldDirection === 'both' || oldDirection === 'vertical') {
+        if (oldDirection === &#39;both&#39; || oldDirection === &#39;vertical&#39;) {
             element.removeCls(verticalCls);
         }
 
         isAxisEnabledFlags.x = isAxisEnabledFlags.y = false;
-        if (direction === 'both' || direction === 'horizontal') {
+        if (direction === &#39;both&#39; || direction === &#39;horizontal&#39;) {
             isAxisEnabledFlags.x = true;
             element.addCls(horizontalCls);
         }
 
-        if (direction === 'both' || direction === 'vertical') {
+        if (direction === &#39;both&#39; || direction === &#39;vertical&#39;) {
             isAxisEnabledFlags.y = true;
             element.addCls(verticalCls);
         }
@@ -552,7 +552,7 @@ Ext.define('Ext.scroll.Scroller', {
                 y: 0
             };
 
-            this.fireEvent('minpositionchange', this, minPosition);
+            this.fireEvent(&#39;minpositionchange&#39;, this, minPosition);
         }
 
         return minPosition;
@@ -575,7 +575,7 @@ Ext.define('Ext.scroll.Scroller', {
                 y: Math.max(0, size.y - containerSize.y)
             };
 
-            this.fireEvent('maxpositionchange', this, maxPosition);
+            this.fireEvent(&#39;maxpositionchange&#39;, this, maxPosition);
         }
 
         return maxPosition;
@@ -603,7 +603,7 @@ Ext.define('Ext.scroll.Scroller', {
 
         this.givenContainerSize = size;
 
-        if (size === 'auto') {
+        if (size === &#39;auto&#39;) {
             x = containerDom.offsetWidth;
             y = containerDom.offsetHeight;
         }
@@ -633,11 +633,11 @@ Ext.define('Ext.scroll.Scroller', {
 
         this.givenSize = size;
 
-        if (size === 'auto') {
+        if (size === &#39;auto&#39;) {
             x = dom.offsetWidth;
             y = dom.offsetHeight;
         }
-        else if (typeof size == 'number') {
+        else if (typeof size == &#39;number&#39;) {
             x = size;
             y = size;
         }
@@ -656,12 +656,12 @@ Ext.define('Ext.scroll.Scroller', {
 </span>     * @private
      */
     updateAutoRefresh: function(autoRefresh) {
-        this.getElement().toggleListener(autoRefresh, 'resize', 'onElementResize', this);
-        this.getContainer().toggleListener(autoRefresh, 'resize', 'onContainerResize', this);
+        this.getElement().toggleListener(autoRefresh, &#39;resize&#39;, &#39;onElementResize&#39;, this);
+        this.getContainer().toggleListener(autoRefresh, &#39;resize&#39;, &#39;onContainerResize&#39;, this);
     },
 
 <span id='Ext-scroll-Scroller-method-applySlotSnapSize'>    applySlotSnapSize: function(snapSize) {
-</span>        if (typeof snapSize == 'number') {
+</span>        if (typeof snapSize == &#39;number&#39;) {
             return {
                 x: snapSize,
                 y: snapSize
@@ -672,7 +672,7 @@ Ext.define('Ext.scroll.Scroller', {
     },
 
 <span id='Ext-scroll-Scroller-method-applySlotSnapOffset'>    applySlotSnapOffset: function(snapOffset) {
-</span>        if (typeof snapOffset == 'number') {
+</span>        if (typeof snapOffset == &#39;number&#39;) {
             return {
                 x: snapOffset,
                 y: snapOffset
@@ -695,7 +695,7 @@ Ext.define('Ext.scroll.Scroller', {
             this.container = container = this.FixedHBoxStretching ? element.getParent() : element;
             //&lt;debug error&gt;
             if (!container) {
-                Ext.Logger.error(&quot;Making an element scrollable that doesn't have any container&quot;);
+                Ext.Logger.error(&quot;Making an element scrollable that doesn&#39;t have any container&quot;);
             }
             //&lt;/debug&gt;
             container.addCls(this.containerCls);
@@ -717,7 +717,7 @@ Ext.define('Ext.scroll.Scroller', {
         this.setContainerSize(this.givenContainerSize);
         this.setDirection(this.givenDirection);
 
-        this.fireEvent('refresh', this);
+        this.fireEvent(&#39;refresh&#39;, this);
 
         return this;
     },
@@ -756,7 +756,7 @@ Ext.define('Ext.scroll.Scroller', {
         }
 
         //&lt;deprecated product=touch since=2.0&gt;
-        if (typeof x != 'number' &amp;&amp; arguments.length === 1) {
+        if (typeof x != &#39;number&#39; &amp;&amp; arguments.length === 1) {
             //&lt;debug warn&gt;
             Ext.Logger.deprecate(&quot;Calling scrollTo() with an object argument is deprecated, &quot; +
                 &quot;please pass x and y arguments instead&quot;, this);
@@ -772,8 +772,8 @@ Ext.define('Ext.scroll.Scroller', {
             positionChanged = false,
             translationX, translationY;
 
-        if (this.isAxisEnabled('x')) {
-            if (isNaN(x) || typeof x != 'number') {
+        if (this.isAxisEnabled(&#39;x&#39;)) {
+            if (isNaN(x) || typeof x != &#39;number&#39;) {
                 x = position.x;
             }
             else {
@@ -786,8 +786,8 @@ Ext.define('Ext.scroll.Scroller', {
             translationX = -x;
         }
 
-        if (this.isAxisEnabled('y')) {
-            if (isNaN(y) || typeof y != 'number') {
+        if (this.isAxisEnabled(&#39;y&#39;)) {
+            if (isNaN(y) || typeof y != &#39;number&#39;) {
                 y = position.y;
             }
             else {
@@ -805,7 +805,7 @@ Ext.define('Ext.scroll.Scroller', {
                 translatable.translateAnimated(translationX, translationY, animation);
             }
             else {
-                this.fireEvent('scroll', this, position.x, position.y);
+                this.fireEvent(&#39;scroll&#39;, this, position.x, position.y);
                 translatable.translate(translationX, translationY);
             }
         }
@@ -847,8 +847,8 @@ Ext.define('Ext.scroll.Scroller', {
     scrollBy: function(x, y, animation) {
         var position = this.position;
 
-        x = (typeof x == 'number') ? x + position.x : null;
-        y = (typeof y == 'number') ? y + position.y : null;
+        x = (typeof x == &#39;number&#39;) ? x + position.x : null;
+        y = (typeof y == &#39;number&#39;) ? y + position.y : null;
 
         return this.scrollTo(x, y, animation);
     },
@@ -870,7 +870,7 @@ Ext.define('Ext.scroll.Scroller', {
         this.isTouching = false;
 
         if (!this.isDragging &amp;&amp; this.snapToSlot()) {
-            this.fireEvent('scrollstart', this, position.x, position.y);
+            this.fireEvent(&#39;scrollstart&#39;, this, position.x, position.y);
         }
     },
 
@@ -894,9 +894,9 @@ Ext.define('Ext.scroll.Scroller', {
 
         this.isDragging = true;
 
-        if (directionLock &amp;&amp; direction !== 'both') {
-            if ((direction === 'horizontal' &amp;&amp; absDeltaX &gt; absDeltaY)
-                    || (direction === 'vertical' &amp;&amp; absDeltaY &gt; absDeltaX)) {
+        if (directionLock &amp;&amp; direction !== &#39;both&#39;) {
+            if ((direction === &#39;horizontal&#39; &amp;&amp; absDeltaX &gt; absDeltaY)
+                    || (direction === &#39;vertical&#39; &amp;&amp; absDeltaY &gt; absDeltaX)) {
                 e.stopPropagation();
             }
             else {
@@ -924,7 +924,7 @@ Ext.define('Ext.scroll.Scroller', {
 
         this.isDragging = true;
 
-        this.fireEvent('scrollstart', this, x, y);
+        this.fireEvent(&#39;scrollstart&#39;, this, x, y);
     },
 
 <span id='Ext-scroll-Scroller-method-onAxisDrag'>    /**
@@ -985,8 +985,8 @@ Ext.define('Ext.scroll.Scroller', {
 
         var lastDragPosition = this.lastDragPosition;
 
-        this.onAxisDrag('x', e.deltaX);
-        this.onAxisDrag('y', e.deltaY);
+        this.onAxisDrag(&#39;x&#39;, e.deltaX);
+        this.onAxisDrag(&#39;y&#39;, e.deltaY);
 
         this.scrollTo(lastDragPosition.x, lastDragPosition.y);
     },
@@ -1007,8 +1007,8 @@ Ext.define('Ext.scroll.Scroller', {
 
         this.isDragging = false;
 
-        easingX = this.getAnimationEasing('x', e);
-        easingY = this.getAnimationEasing('y', e);
+        easingX = this.getAnimationEasing(&#39;x&#39;, e);
+        easingY = this.getAnimationEasing(&#39;y&#39;, e);
 
         if (easingX || easingY) {
             this.getTranslatable().animate(easingX, easingY);
@@ -1090,7 +1090,7 @@ Ext.define('Ext.scroll.Scroller', {
         position.x = -x;
         position.y = -y;
 
-        this.fireEvent('scroll', this, position.x, position.y);
+        this.fireEvent(&#39;scroll&#39;, this, position.x, position.y);
     },
 
 <span id='Ext-scroll-Scroller-method-onAnimationEnd'>    /**
@@ -1116,7 +1116,7 @@ Ext.define('Ext.scroll.Scroller', {
         var position = this.position;
 
         if (this.isTouching || !this.snapToSlot()) {
-            this.fireEvent('scrollend', this, position.x, position.y);
+            this.fireEvent(&#39;scrollend&#39;, this, position.x, position.y);
         }
     },
 
@@ -1125,8 +1125,8 @@ Ext.define('Ext.scroll.Scroller', {
      * @return {Boolean}
      */
     snapToSlot: function() {
-        var snapX = this.getSnapPosition('x'),
-            snapY = this.getSnapPosition('y'),
+        var snapX = this.getSnapPosition(&#39;x&#39;),
+            snapY = this.getSnapPosition(&#39;y&#39;),
             easing = this.getSlotSnapEasing();
 
         if (snapX !== null || snapY !== null) {
@@ -1239,7 +1239,7 @@ Ext.define('Ext.scroll.Scroller', {
                 config = {};
             }
 
-            if (typeof config == 'string') {
+            if (typeof config == &#39;string&#39;) {
                 config = {
                     direction: config
                 };
@@ -1248,7 +1248,7 @@ Ext.define('Ext.scroll.Scroller', {
             if (arguments.length == 2) {
                 //&lt;debug warn&gt;
                 Ext.Logger.deprecate(&quot;Passing element as the first argument is deprecated, pass it as the &quot; +
-                    &quot;'element' property of the config object instead&quot;);
+                    &quot;&#39;element&#39; property of the config object instead&quot;);
                 //&lt;/debug&gt;
                 element = config;
                 config = arguments[1];
@@ -1264,11 +1264,11 @@ Ext.define('Ext.scroll.Scroller', {
 </span>             * @cfg {Number} acceleration A higher acceleration gives the scroller more initial velocity.
              * @deprecated 2.0.0 Please use {@link #momentumEasing}.momentum.acceleration and {@link #momentumEasing}.bounce.acceleration instead.
              */
-            if (config.hasOwnProperty('acceleration')) {
+            if (config.hasOwnProperty(&#39;acceleration&#39;)) {
                 acceleration = config.acceleration;
                 delete config.acceleration;
                 //&lt;debug warn&gt;
-                Ext.Logger.deprecate(&quot;'acceleration' config is deprecated, set momentumEasing.momentum.acceleration and momentumEasing.bounce.acceleration configs instead&quot;);
+                Ext.Logger.deprecate(&quot;&#39;acceleration&#39; config is deprecated, set momentumEasing.momentum.acceleration and momentumEasing.bounce.acceleration configs instead&quot;);
                 //&lt;/debug&gt;
 
                 Ext.merge(config, {
@@ -1279,10 +1279,10 @@ Ext.define('Ext.scroll.Scroller', {
                 });
             }
 
-            if (config.hasOwnProperty('snap')) {
+            if (config.hasOwnProperty(&#39;snap&#39;)) {
                 config.slotSnapOffset = config.snap;
                 //&lt;debug warn&gt;
-                Ext.Logger.deprecate(&quot;'snap' config is deprecated, please use the 'slotSnapOffset' config instead&quot;);
+                Ext.Logger.deprecate(&quot;&#39;snap&#39; config is deprecated, please use the &#39;slotSnapOffset&#39; config instead&quot;);
                 //&lt;/debug&gt;
             }
 
@@ -1291,11 +1291,11 @@ Ext.define('Ext.scroll.Scroller', {
              * becomes shorter. This value is best kept between 0 and 1.
              * @deprecated 2.0.0 Please set the {@link #momentumEasing}.momentum.friction configuration instead
              */
-            if (config.hasOwnProperty('friction')) {
+            if (config.hasOwnProperty(&#39;friction&#39;)) {
                 friction = config.friction;
                 delete config.friction;
                 //&lt;debug warn&gt;
-                Ext.Logger.deprecate(&quot;'friction' config is deprecated, set momentumEasing.momentum.friction config instead&quot;);
+                Ext.Logger.deprecate(&quot;&#39;friction&#39; config is deprecated, set momentumEasing.momentum.friction config instead&quot;);
                 //&lt;/debug&gt;
 
                 Ext.merge(config, {
@@ -1305,11 +1305,11 @@ Ext.define('Ext.scroll.Scroller', {
                 });
             }
 
-            if (config.hasOwnProperty('springTension')) {
+            if (config.hasOwnProperty(&#39;springTension&#39;)) {
                 springTension = config.springTension;
                 delete config.springTension;
                 //&lt;debug warn&gt;
-                Ext.Logger.deprecate(&quot;'springTension' config is deprecated, set momentumEasing.momentum.springTension config instead&quot;);
+                Ext.Logger.deprecate(&quot;&#39;springTension&#39; config is deprecated, set momentumEasing.momentum.springTension config instead&quot;);
                 //&lt;/debug&gt;
 
                 Ext.merge(config, {
@@ -1319,11 +1319,11 @@ Ext.define('Ext.scroll.Scroller', {
                 });
             }
 
-            if (config.hasOwnProperty('minVelocityForAnimation')) {
+            if (config.hasOwnProperty(&#39;minVelocityForAnimation&#39;)) {
                 minVelocity = config.minVelocityForAnimation;
                 delete config.minVelocityForAnimation;
                 //&lt;debug warn&gt;
-                Ext.Logger.deprecate(&quot;'minVelocityForAnimation' config is deprecated, set momentumEasing.minVelocity config instead&quot;);
+                Ext.Logger.deprecate(&quot;&#39;minVelocityForAnimation&#39; config is deprecated, set momentumEasing.minVelocity config instead&quot;);
                 //&lt;/debug&gt;
 
                 Ext.merge(config, {
@@ -1338,7 +1338,7 @@ Ext.define('Ext.scroll.Scroller', {
 
         scrollToAnimated: function(x, y, animation) {
             //&lt;debug warn&gt;
-            Ext.Logger.deprecate(&quot;scrollToAnimated() is deprecated, please use `scrollTo()` and pass 'animation' as &quot; +
+            Ext.Logger.deprecate(&quot;scrollToAnimated() is deprecated, please use `scrollTo()` and pass &#39;animation&#39; as &quot; +
                 &quot;the third argument instead&quot;);
             //&lt;/debug&gt;
 
@@ -1379,7 +1379,7 @@ Ext.define('Ext.scroll.Scroller', {
      * @removed 2.0.0 Please use {@link #method-refresh} instead.
      * @chainable
      */
-//    Ext.deprecateClassMethod('updateBoundary', 'refresh');
+//    Ext.deprecateClassMethod(&#39;updateBoundary&#39;, &#39;refresh&#39;);
     //&lt;/deprecated&gt;
 });
 </pre>

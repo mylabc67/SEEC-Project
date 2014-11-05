@@ -24,8 +24,8 @@
  *
  *     @example miniphone
  *     // Create our container
- *     var container = Ext.create('Ext.Container', {
- *         html: 'My container!'
+ *     var container = Ext.create(&#39;Ext.Container&#39;, {
+ *         html: &#39;My container!&#39;
  *     });
  *
  *     // Add the container to the Viewport
@@ -34,17 +34,17 @@
  *     // Mask the container
  *     container.setMasked(true);
  */
-Ext.define('Ext.Mask', {
-    extend: 'Ext.Component',
-    xtype: 'mask',
-    requires: ['Ext.util.InputBlocker'],
+Ext.define(&#39;Ext.Mask&#39;, {
+    extend: &#39;Ext.Component&#39;,
+    xtype: &#39;mask&#39;,
+    requires: [&#39;Ext.util.InputBlocker&#39;],
 
     config: {
 <span id='Ext-Mask-cfg-baseCls'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'mask',
+        baseCls: Ext.baseCSSPrefix + &#39;mask&#39;,
 
 <span id='Ext-Mask-cfg-transparent'>        /**
 </span>         * @cfg {Boolean} transparent True to make this mask transparent.
@@ -85,10 +85,10 @@ Ext.define('Ext.Mask', {
     initialize: function() {
         this.callSuper();
 
-        this.element.on('*', 'onEvent', this);
+        this.element.on(&#39;*&#39;, &#39;onEvent&#39;, this);
 
         this.on({
-            hide: 'onHide'
+            hide: &#39;onHide&#39;
         });
     },
 
@@ -107,8 +107,8 @@ Ext.define('Ext.Mask', {
 <span id='Ext-Mask-method-onEvent'>    onEvent: function(e) {
 </span>        var controller = arguments[arguments.length - 1];
 
-        if (controller.info.eventName === 'tap') {
-            this.fireEvent('tap', this, e);
+        if (controller.info.eventName === &#39;tap&#39;) {
+            this.fireEvent(&#39;tap&#39;, this, e);
             return false;
         }
 
@@ -120,7 +120,7 @@ Ext.define('Ext.Mask', {
     },
 
 <span id='Ext-Mask-method-updateTransparent'>    updateTransparent: function(newTransparent) {
-</span>        this[newTransparent ? 'addCls' : 'removeCls'](this.getBaseCls() + '-transparent');
+</span>        this[newTransparent ? &#39;addCls&#39; : &#39;removeCls&#39;](this.getBaseCls() + &#39;-transparent&#39;);
     }
 });
 </pre>

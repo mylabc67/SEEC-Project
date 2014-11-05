@@ -18,29 +18,29 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-browser-Window'>/**
 </span> * @private
  */
-Ext.define('Ext.device.browser.Window', {
-    extend: 'Ext.Evented',
+Ext.define(&#39;Ext.device.browser.Window&#39;, {
+    extend: &#39;Ext.Evented&#39;,
 
 <span id='Ext-device-browser-Window-method-open'>    open: function(config) {
 </span>        var me = this;
 
-        this._window = window.open(config.url, config.showToolbar ? '_blank' : '_self', config.options || null);
+        this._window = window.open(config.url, config.showToolbar ? &#39;_blank&#39; : &#39;_self&#39;, config.options || null);
 
         // Add events
-        this._window.addEventListener('loadstart', function() {
-            me.fireEvent('loadstart', me);
+        this._window.addEventListener(&#39;loadstart&#39;, function() {
+            me.fireEvent(&#39;loadstart&#39;, me);
         });
 
-        this._window.addEventListener('loadstop', function() {
-            me.fireEvent('loadstop', me);
+        this._window.addEventListener(&#39;loadstop&#39;, function() {
+            me.fireEvent(&#39;loadstop&#39;, me);
         });
 
-        this._window.addEventListener('loaderror', function() {
-            me.fireEvent('loaderror', me);
+        this._window.addEventListener(&#39;loaderror&#39;, function() {
+            me.fireEvent(&#39;loaderror&#39;, me);
         });
 
-        this._window.addEventListener('exit', function() {
-            me.fireEvent('close', me);
+        this._window.addEventListener(&#39;exit&#39;, function() {
+            me.fireEvent(&#39;close&#39;, me);
         });
     },
 

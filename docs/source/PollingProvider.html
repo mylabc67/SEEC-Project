@@ -26,31 +26,31 @@
  * API portion of the Ext.Direct stack.
  *
  * An instance of PollingProvider may be created directly via the new keyword or by simply
- * specifying `type = 'polling'`.  For example:
+ * specifying `type = &#39;polling&#39;`.  For example:
  *
- *     var pollA = Ext.create('Ext.direct.PollingProvider', {
- *         type:'polling',
- *         url: 'php/pollA.php'
+ *     var pollA = Ext.create(&#39;Ext.direct.PollingProvider&#39;, {
+ *         type:&#39;polling&#39;,
+ *         url: &#39;php/pollA.php&#39;
  *     });
  *
  *     Ext.direct.Manager.addProvider(pollA);
  *     pollA.disconnect();
  *
  *     Ext.direct.Manager.addProvider({
- *         type:'polling',
- *         url: 'php/pollB.php',
- *         id: 'pollB-provider'
+ *         type:&#39;polling&#39;,
+ *         url: &#39;php/pollB.php&#39;,
+ *         id: &#39;pollB-provider&#39;
  *     });
  *
- *     var pollB = Ext.direct.Manager.getProvider('pollB-provider');
+ *     var pollB = Ext.direct.Manager.getProvider(&#39;pollB-provider&#39;);
  */
-Ext.define('Ext.direct.PollingProvider', {
-    extend: 'Ext.direct.JsonProvider',
-    alias: 'direct.pollingprovider',
+Ext.define(&#39;Ext.direct.PollingProvider&#39;, {
+    extend: &#39;Ext.direct.JsonProvider&#39;,
+    alias: &#39;direct.pollingprovider&#39;,
 
-    uses: ['Ext.direct.ExceptionEvent'],
+    uses: [&#39;Ext.direct.ExceptionEvent&#39;],
 
-    requires: ['Ext.Ajax', 'Ext.util.DelayedTask'],
+    requires: [&#39;Ext.Ajax&#39;, &#39;Ext.util.DelayedTask&#39;],
 
     config: {
 <span id='Ext-direct-PollingProvider-cfg-interval'>        /**
@@ -104,7 +104,7 @@ Ext.define('Ext.direct.PollingProvider', {
 
         if (url &amp;&amp; !me.pollTask) {
             me.pollTask = setInterval(function() {
-                if (me.fireEvent('beforepoll', me) !== false) {
+                if (me.fireEvent(&#39;beforepoll&#39;, me) !== false) {
                     if (Ext.isFunction(url)) {
                         url(baseParams);
                     } else {
@@ -117,10 +117,10 @@ Ext.define('Ext.direct.PollingProvider', {
                     }
                 }
             }, me.getInterval());
-            me.fireEvent('connect', me);
+            me.fireEvent(&#39;connect&#39;, me);
         } else if (!url) {
             //&lt;debug&gt;
-            Ext.Error.raise('Error initializing PollingProvider, no url configured.');
+            Ext.Error.raise(&#39;Error initializing PollingProvider, no url configured.&#39;);
             //&lt;/debug&gt;
         }
     },
@@ -135,7 +135,7 @@ Ext.define('Ext.direct.PollingProvider', {
         if (me.pollTask) {
             clearInterval(me.pollTask);
             delete me.pollTask;
-            me.fireEvent('disconnect', me);
+            me.fireEvent(&#39;disconnect&#39;, me);
         }
     },
 
@@ -149,13 +149,13 @@ Ext.define('Ext.direct.PollingProvider', {
         if (success) {
             events = me.createEvents(response);
             for (len = events.length; i &lt; len; ++i) {
-                me.fireEvent('data', me, events[i]);
+                me.fireEvent(&#39;data&#39;, me, events[i]);
             }
         } else {
-            me.fireEvent('data', me, Ext.create('Ext.direct.ExceptionEvent', {
+            me.fireEvent(&#39;data&#39;, me, Ext.create(&#39;Ext.direct.ExceptionEvent&#39;, {
                 data: null,
                 code: Ext.direct.Manager.exceptions.TRANSPORT,
-                message: 'Unable to connect to the server.',
+                message: &#39;Unable to connect to the server.&#39;,
                 xhr: response
             }));
         }

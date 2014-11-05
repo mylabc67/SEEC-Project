@@ -19,9 +19,9 @@
 </span> * @author Jacky Nguyen &lt;jacky@sencha.com&gt;
  * @private
  */
-Ext.define('Ext.fx.runner.CssTransition', {
-    extend: 'Ext.fx.runner.Css',
-    requires: ['Ext.AnimationQueue'],
+Ext.define(&#39;Ext.fx.runner.CssTransition&#39;, {
+    extend: &#39;Ext.fx.runner.Css&#39;,
+    requires: [&#39;Ext.AnimationQueue&#39;],
 
 <span id='Ext-fx-runner-CssTransition-property-listenersAttached'>    listenersAttached: false,
 </span>
@@ -33,7 +33,7 @@ Ext.define('Ext.fx.runner.CssTransition', {
 
 <span id='Ext-fx-runner-CssTransition-method-attachListeners'>    attachListeners: function() {
 </span>        this.listenersAttached = true;
-        this.getEventDispatcher().addListener('element', '*', 'transitionend', 'onTransitionEnd', this);
+        this.getEventDispatcher().addListener(&#39;element&#39;, &#39;*&#39;, &#39;transitionend&#39;, &#39;onTransitionEnd&#39;, this);
     },
 
 <span id='Ext-fx-runner-CssTransition-method-onTransitionEnd'>    onTransitionEnd: function(e) {
@@ -52,7 +52,7 @@ Ext.define('Ext.fx.runner.CssTransition', {
             endData = {},
             runningNameMap, toPropertyNames, i, ln, name;
 
-        animation.un('stop', 'onAnimationStop', this);
+        animation.un(&#39;stop&#39;, &#39;onAnimationStop&#39;, this);
 
         if (runningData) {
             runningNameMap = runningData.nameMap;
@@ -64,8 +64,8 @@ Ext.define('Ext.fx.runner.CssTransition', {
             data.onBeforeEnd.call(data.scope || this, element, isInterrupted);
         }
 
-        animation.fireEvent('animationbeforeend', animation, element, isInterrupted);
-        this.fireEvent('animationbeforeend', this, animation, element, isInterrupted);
+        animation.fireEvent(&#39;animationbeforeend&#39;, animation, element, isInterrupted);
+        this.fireEvent(&#39;animationbeforeend&#39;, this, animation, element, isInterrupted);
 
         if (isReplaced || (!isInterrupted &amp;&amp; !data.preserveEndState)) {
             toPropertyNames = data.toPropertyNames;
@@ -89,8 +89,8 @@ Ext.define('Ext.fx.runner.CssTransition', {
             data.onEnd.call(data.scope || this, element, isInterrupted);
         }
 
-        animation.fireEvent('animationend', animation, element, isInterrupted);
-        this.fireEvent('animationend', this, animation, element, isInterrupted);
+        animation.fireEvent(&#39;animationend&#39;, animation, element, isInterrupted);
+        this.fireEvent(&#39;animationend&#39;, this, animation, element, isInterrupted);
         Ext.AnimationQueue.stop(Ext.emptyFn, animation);
     },
 
@@ -101,14 +101,14 @@ Ext.define('Ext.fx.runner.CssTransition', {
         delete this.runningAnimationsData[id];
 
         endRules[id] = {
-            'transition-property': null,
-            'transition-duration': null,
-            'transition-timing-function': null,
-            'transition-delay': null
+            &#39;transition-property&#39;: null,
+            &#39;transition-duration&#39;: null,
+            &#39;transition-timing-function&#39;: null,
+            &#39;transition-delay&#39;: null
         };
 
         this.applyStyles(endRules);
-        this.fireEvent('animationallend', this, element);
+        this.fireEvent(&#39;animationallend&#39;, this, element);
     },
 
 <span id='Ext-fx-runner-CssTransition-method-hasRunningAnimations'>    hasRunningAnimations: function(element) {
@@ -213,24 +213,24 @@ Ext.define('Ext.fx.runner.CssTransition', {
             iframe, iframeDocument, iframeStyle;
 
         if (!testElement) {
-            iframe = document.createElement('iframe');
+            iframe = document.createElement(&#39;iframe&#39;);
             iframeStyle = iframe.style;
-            iframeStyle.setProperty('visibility', 'hidden', 'important');
-            iframeStyle.setProperty('width', '0px', 'important');
-            iframeStyle.setProperty('height', '0px', 'important');
-            iframeStyle.setProperty('position', 'absolute', 'important');
-            iframeStyle.setProperty('border', '0px', 'important');
-            iframeStyle.setProperty('zIndex', '-1000', 'important');
+            iframeStyle.setProperty(&#39;visibility&#39;, &#39;hidden&#39;, &#39;important&#39;);
+            iframeStyle.setProperty(&#39;width&#39;, &#39;0px&#39;, &#39;important&#39;);
+            iframeStyle.setProperty(&#39;height&#39;, &#39;0px&#39;, &#39;important&#39;);
+            iframeStyle.setProperty(&#39;position&#39;, &#39;absolute&#39;, &#39;important&#39;);
+            iframeStyle.setProperty(&#39;border&#39;, &#39;0px&#39;, &#39;important&#39;);
+            iframeStyle.setProperty(&#39;zIndex&#39;, &#39;-1000&#39;, &#39;important&#39;);
 
             document.body.appendChild(iframe);
             iframeDocument = iframe.contentDocument;
 
             iframeDocument.open();
-            iframeDocument.writeln('&lt;/body&gt;');
+            iframeDocument.writeln(&#39;&lt;/body&gt;&#39;);
             iframeDocument.close();
 
-            this.testElement = testElement = iframeDocument.createElement('div');
-            testElement.style.setProperty('position', 'absolute', 'important');
+            this.testElement = testElement = iframeDocument.createElement(&#39;div&#39;);
+            testElement.style.setProperty(&#39;position&#39;, &#39;absolute&#39;, &#39;important&#39;);
             iframeDocument.body.appendChild(testElement);
             this.testElementComputedStyle = window.getComputedStyle(testElement);
         }
@@ -294,8 +294,8 @@ Ext.define('Ext.fx.runner.CssTransition', {
             if (animation.onBeforeStart) {
                 animation.onBeforeStart.call(animation.scope || this, element);
             }
-            animation.fireEvent('animationstart', animation);
-            this.fireEvent('animationstart', this, animation);
+            animation.fireEvent(&#39;animationstart&#39;, animation);
+            this.fireEvent(&#39;animationstart&#39;, this, animation);
 
             data[elementId] = data;
 
@@ -381,7 +381,7 @@ Ext.define('Ext.fx.runner.CssTransition', {
             };
             runningSessions.push(runningSession);
 
-            animation.on('stop', 'onAnimationStop', this);
+            animation.on(&#39;stop&#39;, &#39;onAnimationStop&#39;, this);
 
             elementData = Ext.apply({}, before);
             Ext.apply(elementData, from);
@@ -389,16 +389,16 @@ Ext.define('Ext.fx.runner.CssTransition', {
             if (runningNameList.length &gt; 0) {
                 fromPropertyNames = Ext.Array.difference(runningNameList, fromPropertyNames);
                 toPropertyNames = Ext.Array.merge(fromPropertyNames, toPropertyNames);
-                elementData['transition-property'] = fromPropertyNames;
+                elementData[&#39;transition-property&#39;] = fromPropertyNames;
             }
 
             fromData[elementId] = elementData;
             toData[elementId] = Ext.apply({}, to);
 
-            toData[elementId]['transition-property'] = toPropertyNames;
-            toData[elementId]['transition-duration'] = data.duration;
-            toData[elementId]['transition-timing-function'] = data.easing;
-            toData[elementId]['transition-delay'] = data.delay;
+            toData[elementId][&#39;transition-property&#39;] = toPropertyNames;
+            toData[elementId][&#39;transition-duration&#39;] = data.duration;
+            toData[elementId][&#39;transition-timing-function&#39;] = data.easing;
+            toData[elementId][&#39;transition-delay&#39;] = data.delay;
 
             animation.startTime = Date.now();
         }
@@ -409,19 +409,19 @@ Ext.define('Ext.fx.runner.CssTransition', {
 
         doApplyTo = function(e) {
             if (e.data === message &amp;&amp; e.source === window) {
-                window.removeEventListener('message', doApplyTo, false);
+                window.removeEventListener(&#39;message&#39;, doApplyTo, false);
                 me.applyStyles(toData);
             }
         };
 
         if(Ext.browser.is.IE) {
             window.requestAnimationFrame(function() {
-                window.addEventListener('message', doApplyTo, false);
-                window.postMessage(message, '*');
+                window.addEventListener(&#39;message&#39;, doApplyTo, false);
+                window.postMessage(message, &#39;*&#39;);
             });
         }else{
-            window.addEventListener('message', doApplyTo, false);
-            window.postMessage(message, '*');
+            window.addEventListener(&#39;message&#39;, doApplyTo, false);
+            window.postMessage(message, &#39;*&#39;);
         }
     },
 

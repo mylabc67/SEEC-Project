@@ -20,20 +20,20 @@
  *
  * @private
  */
-Ext.define('Ext.ux.MenuButton', {
-    extend: 'Ext.Button',
-    requires: ['Ext.ux.ContextMenu'],
+Ext.define(&#39;Ext.ux.MenuButton&#39;, {
+    extend: &#39;Ext.Button&#39;,
+    requires: [&#39;Ext.ux.ContextMenu&#39;],
 
     config: {
 <span id='Ext-ux-MenuButton-cfg-ui'>        /**
 </span>         * @hide
          */
-        ui: 'tab',
+        ui: &#39;tab&#39;,
 
 <span id='Ext-ux-MenuButton-cfg-cls'>        /**
 </span>         * @hide
          */
-        cls: 'menu',
+        cls: &#39;menu&#39;,
 
 <span id='Ext-ux-MenuButton-cfg-menuConfig'>        menuConfig: {},
 </span>
@@ -42,7 +42,7 @@ Ext.define('Ext.ux.MenuButton', {
 <span id='Ext-ux-MenuButton-cfg-menuSide'>        /**
 </span>         * @hide
          */
-        menuSide: 'right',
+        menuSide: &#39;right&#39;,
 
 <span id='Ext-ux-MenuButton-cfg-menuCover'>        /**
 </span>         * @hide
@@ -58,7 +58,7 @@ Ext.define('Ext.ux.MenuButton', {
 </span>         * @hide
          */
         listeners: {
-            tap: 'onTap'
+            tap: &#39;onTap&#39;
         }
     },
 
@@ -71,16 +71,16 @@ Ext.define('Ext.ux.MenuButton', {
             this.$menu.destroy();
         }
 
-        this.element.addCls('x-open');
+        this.element.addCls(&#39;x-open&#39;);
 
-        this.$menu = Ext.create('Ext.ux.ContextMenu', Ext.apply({}, this.getMenuConfig(), {
+        this.$menu = Ext.create(&#39;Ext.ux.ContextMenu&#39;, Ext.apply({}, this.getMenuConfig(), {
             cls: this.getMenuCls(),
             items: this.getMenuItems(),
             listeners: {
                 scope: this,
                 hide: function() {
                     if (this.$menu) {
-                        this.element.removeCls('x-open');
+                        this.element.removeCls(&#39;x-open&#39;);
                         Ext.Viewport.removeMenu(this.getMenuSide());
                         this.$menu.destroy();
                     }
@@ -91,7 +91,7 @@ Ext.define('Ext.ux.MenuButton', {
         this.$menu.on({
             scope: this,
             tap: this.onMenuButtonTap,
-            delegate: 'button'
+            delegate: &#39;button&#39;
         });
 
         Ext.Viewport.setMenu(this.$menu, {

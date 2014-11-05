@@ -18,18 +18,18 @@
   <pre class="prettyprint lang-js"><span id='Ext-layout-wrapper-Dock'>/**
 </span> *
  */
-Ext.define('Ext.layout.wrapper.Dock', {
+Ext.define(&#39;Ext.layout.wrapper.Dock&#39;, {
     requires: [
-        'Ext.util.Wrapper'
+        &#39;Ext.util.Wrapper&#39;
     ],
 
     config: {
-<span id='Ext-layout-wrapper-Dock-cfg-direction'>        direction: 'horizontal',
+<span id='Ext-layout-wrapper-Dock-cfg-direction'>        direction: &#39;horizontal&#39;,
 </span><span id='Ext-layout-wrapper-Dock-cfg-element'>        element: {
-</span>            className: 'x-dock'
+</span>            className: &#39;x-dock&#39;
         },
 <span id='Ext-layout-wrapper-Dock-cfg-bodyElement'>        bodyElement: {
-</span>            className: 'x-dock-body'
+</span>            className: &#39;x-dock-body&#39;
         },
 <span id='Ext-layout-wrapper-Dock-cfg-innerWrapper'>        innerWrapper: null,
 </span><span id='Ext-layout-wrapper-Dock-cfg-sizeState'>        sizeState: false,
@@ -37,10 +37,10 @@ Ext.define('Ext.layout.wrapper.Dock', {
 </span>    },
 
 <span id='Ext-layout-wrapper-Dock-property-positionMap'>    positionMap: {
-</span>        top: 'start',
-        left: 'start',
-        bottom: 'end',
-        right: 'end'
+</span>        top: &#39;start&#39;,
+        left: &#39;start&#39;,
+        bottom: &#39;end&#39;,
+        right: &#39;end&#39;
     },
 
 <span id='Ext-layout-wrapper-Dock-method-constructor'>    constructor: function(config) {
@@ -78,10 +78,10 @@ Ext.define('Ext.layout.wrapper.Dock', {
         }
 
         item.$dockWrapper = this;
-        itemWrapper = item.link('$dockItemWrapper', new Ext.util.Wrapper({
-            className: 'x-dock-item'
+        itemWrapper = item.link(&#39;$dockItemWrapper&#39;, new Ext.util.Wrapper({
+            className: &#39;x-dock-item&#39;
         }));
-        item.addCls('x-docked-' + docked);
+        item.addCls(&#39;x-docked-&#39; + docked);
         element = itemWrapper.element;
 
         for (i = 0, ln = sideItems.length; i &lt; ln; i++) {
@@ -102,7 +102,7 @@ Ext.define('Ext.layout.wrapper.Dock', {
 
         this.itemsCount++;
 
-        if (position === 'start') {
+        if (position === &#39;start&#39;) {
             element.insertBefore(referenceElement);
         }
         else {
@@ -110,16 +110,16 @@ Ext.define('Ext.layout.wrapper.Dock', {
         }
 
         itemWrapper.wrap(item.element);
-        itemWrapper.bindSize(this.getDirection() === 'horizontal' ? 'width' : 'height');
+        itemWrapper.bindSize(this.getDirection() === &#39;horizontal&#39; ? &#39;width&#39; : &#39;height&#39;);
     },
 
 <span id='Ext-layout-wrapper-Dock-method-removeItem'>    removeItem: function(item) {
 </span>        var position = item.getDocked(),
             items = this.items[this.positionMap[position]];
 
-        item.removeCls('x-docked-' + position);
+        item.removeCls(&#39;x-docked-&#39; + position);
         Ext.Array.remove(items, item);
-        item.unlink('$dockItemWrapper');
+        item.unlink(&#39;$dockItemWrapper&#39;);
         item.element.detach();
         delete item.$dockWrapper;
 
@@ -156,7 +156,7 @@ Ext.define('Ext.layout.wrapper.Dock', {
     },
 
 <span id='Ext-layout-wrapper-Dock-method-updateElement'>    updateElement: function(element) {
-</span>        element.addCls('x-dock-' + this.getDirection());
+</span>        element.addCls(&#39;x-dock-&#39; + this.getDirection());
     },
 
 <span id='Ext-layout-wrapper-Dock-method-applyBodyElement'>    applyBodyElement: function(bodyElement) {
@@ -210,7 +210,7 @@ Ext.define('Ext.layout.wrapper.Dock', {
 
         this.setInnerWrapper(null);
 
-        this.unlink('_bodyElement', '_element');
+        this.unlink(&#39;_bodyElement&#39;, &#39;_element&#39;);
 
         this.callSuper();
     }

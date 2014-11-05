@@ -18,17 +18,17 @@
   <pre class="prettyprint lang-js"><span id='Ext-event-publisher-ComponentPaint'>/**
 </span> * @private
  */
-Ext.define('Ext.event.publisher.ComponentPaint', {
+Ext.define(&#39;Ext.event.publisher.ComponentPaint&#39;, {
 
-    extend: 'Ext.event.publisher.Publisher',
+    extend: &#39;Ext.event.publisher.Publisher&#39;,
 
-<span id='Ext-event-publisher-ComponentPaint-property-targetType'>    targetType: 'component',
+<span id='Ext-event-publisher-ComponentPaint-property-targetType'>    targetType: &#39;component&#39;,
 </span>
-<span id='Ext-event-publisher-ComponentPaint-property-handledEvents'>    handledEvents: ['erased'],
+<span id='Ext-event-publisher-ComponentPaint-property-handledEvents'>    handledEvents: [&#39;erased&#39;],
 </span>
 <span id='Ext-event-publisher-ComponentPaint-property-eventNames'>    eventNames: {
-</span>        painted: 'painted',
-        erased: 'erased'
+</span>        painted: &#39;painted&#39;,
+        erased: &#39;erased&#39;
     },
 
 <span id='Ext-event-publisher-ComponentPaint-method-constructor'>    constructor: function() {
@@ -57,10 +57,10 @@ Ext.define('Ext.event.publisher.ComponentPaint', {
 <span id='Ext-event-publisher-ComponentPaint-method-setDispatcher'>    setDispatcher: function(dispatcher) {
 </span>        var targetType = this.targetType;
 
-        dispatcher.doAddListener(targetType, '*', 'renderedchange', 'onBeforeComponentRenderedChange', this, null, 'before');
-        dispatcher.doAddListener(targetType, '*', 'hiddenchange', 'onBeforeComponentHiddenChange', this, null, 'before');
-        dispatcher.doAddListener(targetType, '*', 'renderedchange', 'onComponentRenderedChange', this, null, 'after');
-        dispatcher.doAddListener(targetType, '*', 'hiddenchange', 'onComponentHiddenChange', this, null, 'after');
+        dispatcher.doAddListener(targetType, &#39;*&#39;, &#39;renderedchange&#39;, &#39;onBeforeComponentRenderedChange&#39;, this, null, &#39;before&#39;);
+        dispatcher.doAddListener(targetType, &#39;*&#39;, &#39;hiddenchange&#39;, &#39;onBeforeComponentHiddenChange&#39;, this, null, &#39;before&#39;);
+        dispatcher.doAddListener(targetType, &#39;*&#39;, &#39;renderedchange&#39;, &#39;onComponentRenderedChange&#39;, this, null, &#39;after&#39;);
+        dispatcher.doAddListener(targetType, &#39;*&#39;, &#39;hiddenchange&#39;, &#39;onComponentHiddenChange&#39;, this, null, &#39;after&#39;);
 
         return this.callParent(arguments);
     },
@@ -189,7 +189,7 @@ Ext.define('Ext.event.publisher.ComponentPaint', {
                 isPainted = component.isPainted();
 
                 if ((eventName === eventNames.painted &amp;&amp; isPainted) || eventName === eventNames.erased &amp;&amp; !isPainted) {
-                    dispatcher.doDispatchEvent(targetType, '#' + item.id, eventName, [component]);
+                    dispatcher.doDispatchEvent(targetType, &#39;#&#39; + item.id, eventName, [component]);
                 }
             }
             queue.length = 0;

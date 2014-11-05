@@ -19,9 +19,9 @@
 </span> * Represents a rectangular region and provides a number of utility methods
  * to compare regions.
  */
-Ext.define('Ext.util.Region', {
+Ext.define(&#39;Ext.util.Region&#39;, {
 
-    requires: ['Ext.util.Offset'],
+    requires: [&#39;Ext.util.Offset&#39;],
 
     statics: {
 <span id='Ext-util-Region-static-method-getRegion'>        /**
@@ -161,7 +161,7 @@ Ext.define('Ext.util.Region', {
      */
     getOutOfBoundOffset: function(axis, p) {
         if (!Ext.isObject(axis)) {
-            if (axis == 'x') {
+            if (axis == &#39;x&#39;) {
                 return this.getOutOfBoundOffsetX(p);
             } else {
                 return this.getOutOfBoundOffsetY(p);
@@ -213,7 +213,7 @@ Ext.define('Ext.util.Region', {
      */
     isOutOfBound: function(axis, p) {
         if (!Ext.isObject(axis)) {
-            if (axis == 'x') {
+            if (axis == &#39;x&#39;) {
                 return this.isOutOfBoundX(p);
             } else {
                 return this.isOutOfBoundY(p);
@@ -271,7 +271,7 @@ Ext.define('Ext.util.Region', {
             newP.y = this.restrictY(p.y, factor);
             return newP;
         } else {
-            if (axis == 'x') {
+            if (axis == &#39;x&#39;) {
                 return this.restrictX(p, factor);
             } else {
                 return this.restrictY(p, factor);

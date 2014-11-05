@@ -20,11 +20,11 @@
  * touching the device. The interval between firings may be specified in the config but
  * defaults to 20 milliseconds.
  */
-Ext.define('Ext.util.TapRepeater', {
-    requires: ['Ext.DateExtras'],
+Ext.define(&#39;Ext.util.TapRepeater&#39;, {
+    requires: [&#39;Ext.DateExtras&#39;],
 
     mixins: {
-        observable: 'Ext.mixin.Observable'
+        observable: &#39;Ext.mixin.Observable&#39;
     },
 
 <span id='Ext-util-TapRepeater-event-touchstart'>    /**
@@ -69,7 +69,7 @@ Ext.define('Ext.util.TapRepeater', {
         for (var configName in config) {
             if (me.self.prototype.config &amp;&amp; !(configName in me.self.prototype.config)) {
                 me[configName] = config[configName];
-                Ext.Logger.warn('Applied config as instance property: &quot;' + configName + '&quot;', me);
+                Ext.Logger.warn(&#39;Applied config as instance property: &quot;&#39; + configName + &#39;&quot;&#39;, me);
             }
         }
         //&lt;/debug&gt;
@@ -78,9 +78,9 @@ Ext.define('Ext.util.TapRepeater', {
 
 <span id='Ext-util-TapRepeater-method-updateEl'>    updateEl: function(newEl, oldEl) {
 </span>        var eventCfg = {
-                touchstart: 'onTouchStart',
-                touchend: 'onTouchEnd',
-                tap: 'eventOptions',
+                touchstart: &#39;onTouchStart&#39;,
+                touchend: &#39;onTouchEnd&#39;,
+                tap: &#39;eventOptions&#39;,
                 scope: this
             };
         if (oldEl) {
@@ -115,8 +115,8 @@ Ext.define('Ext.util.TapRepeater', {
         }
         me.tapStartTime = new Date();
 
-        me.fireEvent('touchstart', me, e);
-        me.fireEvent('tap', me, e);
+        me.fireEvent(&#39;touchstart&#39;, me, e);
+        me.fireEvent(&#39;tap&#39;, me, e);
 
         // Do not honor delay or interval if acceleration wanted.
         if (me.getAccelerate()) {
@@ -128,7 +128,7 @@ Ext.define('Ext.util.TapRepeater', {
 <span id='Ext-util-TapRepeater-method-tap'>    // @private
 </span>    tap: function(e) {
         var me = this;
-        me.fireEvent('tap', me, e);
+        me.fireEvent(&#39;tap&#39;, me, e);
         me.setTimer(Ext.defer(me.tap, me.getAccelerate() ? me.easeOutExpo(Ext.Date.getElapsed(me.tapStartTime),
             400,
             -390,
@@ -146,7 +146,7 @@ Ext.define('Ext.util.TapRepeater', {
         var me = this;
         clearTimeout(me.getTimer());
         me.getEl().removeCls(me.getPressCls());
-        me.fireEvent('touchend', me, e);
+        me.fireEvent(&#39;touchend&#39;, me, e);
     }
 });
 </pre>

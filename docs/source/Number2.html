@@ -28,7 +28,7 @@
 
 (function() {
 
-var isToFixedBroken = (0.9).toFixed() !== '1';
+var isToFixedBroken = (0.9).toFixed() !== &#39;1&#39;;
 
 Ext.Number = {
 <span id='Ext-Number-method-constrain'>    /**
@@ -98,8 +98,8 @@ Ext.Number = {
 </span>     * Validate that a value is numeric and convert it to a number if necessary. Returns the specified default value if
      * it is not.
 
-Ext.Number.from('1.23', 1); // returns 1.23
-Ext.Number.from('abc', 1); // returns 1
+Ext.Number.from(&#39;1.23&#39;, 1); // returns 1.23
+Ext.Number.from(&#39;abc&#39;, 1); // returns 1
 
      * @param {Object} value
      * @param {Number} defaultValue The value to return if the original value is non-numeric

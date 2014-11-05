@@ -36,7 +36,7 @@
  *
  * Checking the type of connection the device has:
  *
- *     alert('Your connection type is: ' + Ext.device.Connection.getType());
+ *     alert(&#39;Your connection type is: &#39; + Ext.device.Connection.getType());
  *
  * The available connection types are:
  *
@@ -52,14 +52,14 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.Connection', {
+Ext.define(&#39;Ext.device.Connection&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.Communicator',
-        'Ext.device.connection.Sencha',
-        'Ext.device.connection.Cordova',
-        'Ext.device.connection.Simulator'
+        &#39;Ext.device.Communicator&#39;,
+        &#39;Ext.device.connection.Sencha&#39;,
+        &#39;Ext.device.connection.Cordova&#39;,
+        &#39;Ext.device.connection.Simulator&#39;
     ],
 
 <span id='Ext-device-Connection-event-onlinechange'>    /**
@@ -72,12 +72,12 @@ Ext.define('Ext.device.Connection', {
 
         if (browserEnv.WebView) {
             if (browserEnv.Cordova) {
-                return Ext.create('Ext.device.connection.Cordova');
+                return Ext.create(&#39;Ext.device.connection.Cordova&#39;);
             } else if (browserEnv.Sencha) {
-                return Ext.create('Ext.device.connection.Sencha');
+                return Ext.create(&#39;Ext.device.connection.Sencha&#39;);
             }
         }
-        return Ext.create('Ext.device.connection.Simulator');
+        return Ext.create(&#39;Ext.device.connection.Simulator&#39;);
     }
 });
 </pre>

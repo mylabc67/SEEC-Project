@@ -18,18 +18,18 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-contacts-Cordova'>/**
 </span> * @private
  */
-Ext.define('Ext.device.contacts.Cordova', {
-    alternateClassName: 'Ext.device.contacts.PhoneGap',
-    extend: 'Ext.device.contacts.Abstract',
+Ext.define(&#39;Ext.device.contacts.Cordova&#39;, {
+    alternateClassName: &#39;Ext.device.contacts.PhoneGap&#39;,
+    extend: &#39;Ext.device.contacts.Abstract&#39;,
 
 <span id='Ext-device-contacts-Cordova-method-getContacts'>    getContacts: function (config) {
 </span>        if (!config) {
-            Ext.Logger.warn('Ext.device.Contacts#getContacts: You must specify a `config` object.');
+            Ext.Logger.warn(&#39;Ext.device.Contacts#getContacts: You must specify a `config` object.&#39;);
             return false;
         }
 
         if (!config.success) {
-            Ext.Logger.warn('Ext.device.Contacts#getContacts: You must specify a `success` method.');
+            Ext.Logger.warn(&#39;Ext.device.Contacts#getContacts: You must specify a `success` method.&#39;);
             return false;
         }
 

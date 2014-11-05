@@ -40,7 +40,7 @@ var ExtObject = Ext.Object = {
 </span>     * Returns a new object with the given object as the prototype chain.
      * @param {Object} object The prototype chain for the new object.
      */
-    chain: ('create' in Object) ? function(object){
+    chain: (&#39;create&#39; in Object) ? function(object){
         return Object.create(object);
     } : function (object) {
         TemplateClass.prototype = object;
@@ -55,18 +55,18 @@ var ExtObject = Ext.Object = {
      *
      * Non-recursive:
      *
-     *     var objects = Ext.Object.toQueryObjects('hobbies', ['reading', 'cooking', 'swimming']);
+     *     var objects = Ext.Object.toQueryObjects(&#39;hobbies&#39;, [&#39;reading&#39;, &#39;cooking&#39;, &#39;swimming&#39;]);
      *
      *     // objects then equals:
      *     [
-     *         { name: 'hobbies', value: 'reading' },
-     *         { name: 'hobbies', value: 'cooking' },
-     *         { name: 'hobbies', value: 'swimming' }
+     *         { name: &#39;hobbies&#39;, value: &#39;reading&#39; },
+     *         { name: &#39;hobbies&#39;, value: &#39;cooking&#39; },
+     *         { name: &#39;hobbies&#39;, value: &#39;swimming&#39; }
      *     ]
      *
      * Recursive:
      *
-     *     var objects = Ext.Object.toQueryObjects('dateOfBirth', {
+     *     var objects = Ext.Object.toQueryObjects(&#39;dateOfBirth&#39;, {
      *         day: 3,
      *         month: 8,
      *         year: 1987,
@@ -78,11 +78,11 @@ var ExtObject = Ext.Object = {
      *
      *     // objects then equals:
      *     [
-     *         { name: 'dateOfBirth[day]', value: 3 },
-     *         { name: 'dateOfBirth[month]', value: 8 },
-     *         { name: 'dateOfBirth[year]', value: 1987 },
-     *         { name: 'dateOfBirth[extra][hour]', value: 4 },
-     *         { name: 'dateOfBirth[extra][minute]', value: 30 }
+     *         { name: &#39;dateOfBirth[day]&#39;, value: 3 },
+     *         { name: &#39;dateOfBirth[month]&#39;, value: 8 },
+     *         { name: &#39;dateOfBirth[year]&#39;, value: 1987 },
+     *         { name: &#39;dateOfBirth[extra][hour]&#39;, value: 4 },
+     *         { name: &#39;dateOfBirth[extra][minute]&#39;, value: 30 }
      *     ]
      *
      * @param {String} name
@@ -98,7 +98,7 @@ var ExtObject = Ext.Object = {
         if (Ext.isArray(value)) {
             for (i = 0, ln = value.length; i &lt; ln; i++) {
                 if (recursive) {
-                    objects = objects.concat(self(name + '[' + i + ']', value[i], true));
+                    objects = objects.concat(self(name + &#39;[&#39; + i + &#39;]&#39;, value[i], true));
                 }
                 else {
                     objects.push({
@@ -112,7 +112,7 @@ var ExtObject = Ext.Object = {
             for (i in value) {
                 if (value.hasOwnProperty(i)) {
                     if (recursive) {
-                        objects = objects.concat(self(name + '[' + i + ']', value[i], true));
+                        objects = objects.concat(self(name + &#39;[&#39; + i + &#39;]&#39;, value[i], true));
                     }
                     else {
                         objects.push({
@@ -140,20 +140,20 @@ var ExtObject = Ext.Object = {
      *
      *     Ext.Object.toQueryString({foo: 1, bar: 2}); // returns &quot;foo=1&amp;bar=2&quot;
      *     Ext.Object.toQueryString({foo: null, bar: 2}); // returns &quot;foo=&amp;bar=2&quot;
-     *     Ext.Object.toQueryString({'some price': '$300'}); // returns &quot;some%20price=%24300&quot;
+     *     Ext.Object.toQueryString({&#39;some price&#39;: &#39;$300&#39;}); // returns &quot;some%20price=%24300&quot;
      *     Ext.Object.toQueryString({date: new Date(2011, 0, 1)}); // returns &quot;date=%222011-01-01T00%3A00%3A00%22&quot;
-     *     Ext.Object.toQueryString({colors: ['red', 'green', 'blue']}); // returns &quot;colors=red&amp;colors=green&amp;colors=blue&quot;
+     *     Ext.Object.toQueryString({colors: [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;]}); // returns &quot;colors=red&amp;colors=green&amp;colors=blue&quot;
      *
      * Recursive:
      *
      *     Ext.Object.toQueryString({
-     *         username: 'Jacky',
+     *         username: &#39;Jacky&#39;,
      *         dateOfBirth: {
      *             day: 1,
      *             month: 2,
      *             year: 1911
      *         },
-     *         hobbies: ['coding', 'eating', 'sleeping', ['nested', 'stuff']]
+     *         hobbies: [&#39;coding&#39;, &#39;eating&#39;, &#39;sleeping&#39;, [&#39;nested&#39;, &#39;stuff&#39;]]
      *     }, true);
      *
      *     // returns the following string (broken down and url-decoded for ease of reading purpose):
@@ -182,16 +182,16 @@ var ExtObject = Ext.Object = {
             value = paramObject.value;
 
             if (Ext.isEmpty(value)) {
-                value = '';
+                value = &#39;&#39;;
             }
             else if (Ext.isDate(value)) {
                 value = Ext.Date.toString(value);
             }
 
-            params.push(encodeURIComponent(paramObject.name) + '=' + encodeURIComponent(String(value)));
+            params.push(encodeURIComponent(paramObject.name) + &#39;=&#39; + encodeURIComponent(String(value)));
         }
 
-        return params.join('&amp;');
+        return params.join(&#39;&amp;&#39;);
     },
 
 <span id='Ext-Object-method-fromQueryString'>    /**
@@ -201,8 +201,8 @@ var ExtObject = Ext.Object = {
      *
      *     Ext.Object.fromQueryString(&quot;foo=1&amp;bar=2&quot;); // returns {foo: 1, bar: 2}
      *     Ext.Object.fromQueryString(&quot;foo=&amp;bar=2&quot;); // returns {foo: null, bar: 2}
-     *     Ext.Object.fromQueryString(&quot;some%20price=%24300&quot;); // returns {'some price': '$300'}
-     *     Ext.Object.fromQueryString(&quot;colors=red&amp;colors=green&amp;colors=blue&quot;); // returns {colors: ['red', 'green', 'blue']}
+     *     Ext.Object.fromQueryString(&quot;some%20price=%24300&quot;); // returns {&#39;some price&#39;: &#39;$300&#39;}
+     *     Ext.Object.fromQueryString(&quot;colors=red&amp;colors=green&amp;colors=blue&quot;); // returns {colors: [&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;]}
      *
      * Recursive:
      *
@@ -210,13 +210,13 @@ var ExtObject = Ext.Object = {
      *
      *     // returns
      *     {
-     *         username: 'Jacky',
+     *         username: &#39;Jacky&#39;,
      *         dateOfBirth: {
-     *             day: '1',
-     *             month: '2',
-     *             year: '1911'
+     *             day: &#39;1&#39;,
+     *             month: &#39;2&#39;,
+     *             year: &#39;1911&#39;
      *         },
-     *         hobbies: ['coding', 'eating', 'sleeping', ['nested', 'stuff']]
+     *         hobbies: [&#39;coding&#39;, &#39;eating&#39;, &#39;sleeping&#39;, [&#39;nested&#39;, &#39;stuff&#39;]]
      *     }
      *
      * @param {String} queryString The query string to decode.
@@ -225,7 +225,7 @@ var ExtObject = Ext.Object = {
      * @return {Object}
      */
     fromQueryString: function(queryString, recursive) {
-        var parts = queryString.replace(/^\?/, '').split('&amp;'),
+        var parts = queryString.replace(/^\?/, &#39;&#39;).split(&#39;&amp;&#39;),
             object = {},
             temp, components, name, value, i, ln,
             part, j, subLn, matchedKeys, matchedName,
@@ -235,9 +235,9 @@ var ExtObject = Ext.Object = {
             part = parts[i];
 
             if (part.length &gt; 0) {
-                components = part.split('=');
+                components = part.split(&#39;=&#39;);
                 name = decodeURIComponent(components[0]);
-                value = (components[1] !== undefined) ? decodeURIComponent(components[1]) : '';
+                value = (components[1] !== undefined) ? decodeURIComponent(components[1]) : &#39;&#39;;
 
                 if (!recursive) {
                     if (object.hasOwnProperty(name)) {
@@ -257,7 +257,7 @@ var ExtObject = Ext.Object = {
 
                     //&lt;debug error&gt;
                     if (!matchedName) {
-                        throw new Error('[Ext.Object.fromQueryString] Malformed query string given, failed parsing name from &quot;' + part + '&quot;');
+                        throw new Error(&#39;[Ext.Object.fromQueryString] Malformed query string given, failed parsing name from &quot;&#39; + part + &#39;&quot;&#39;);
                     }
                     //&lt;/debug&gt;
 
@@ -271,7 +271,7 @@ var ExtObject = Ext.Object = {
 
                     for (j = 0, subLn = matchedKeys.length; j &lt; subLn; j++) {
                         key = matchedKeys[j];
-                        key = (key.length === 2) ? '' : key.substring(1, key.length - 1);
+                        key = (key.length === 2) ? &#39;&#39; : key.substring(1, key.length - 1);
                         keys.push(key);
                     }
 
@@ -283,7 +283,7 @@ var ExtObject = Ext.Object = {
                         key = keys[j];
 
                         if (j === subLn - 1) {
-                            if (Ext.isArray(temp) &amp;&amp; key === '') {
+                            if (Ext.isArray(temp) &amp;&amp; key === &#39;&#39;) {
                                 temp.push(value);
                             }
                             else {
@@ -291,10 +291,10 @@ var ExtObject = Ext.Object = {
                             }
                         }
                         else {
-                            if (temp[key] === undefined || typeof temp[key] === 'string') {
+                            if (temp[key] === undefined || typeof temp[key] === &#39;string&#39;) {
                                 nextKey = keys[j+1];
 
-                                temp[key] = (Ext.isNumeric(nextKey) || nextKey === '') ? [] : {};
+                                temp[key] = (Ext.isNumeric(nextKey) || nextKey === &#39;&#39;) ? [] : {};
                             }
 
                             temp = temp[key];
@@ -315,15 +315,15 @@ var ExtObject = Ext.Object = {
      * For example:
      *
      *     var person = {
-     *         name: 'Jacky',
-     *         hairColor: 'black',
-     *         loves: ['food', 'sleeping', 'wife']
+     *         name: &#39;Jacky&#39;,
+     *         hairColor: &#39;black&#39;,
+     *         loves: [&#39;food&#39;, &#39;sleeping&#39;, &#39;wife&#39;]
      *     };
      *
      *     Ext.Object.each(person, function(key, value, myself) {
      *         console.log(key + &quot;:&quot; + value);
      *
-     *         if (key === 'hairColor') {
+     *         if (key === &#39;hairColor&#39;) {
      *             return false; // stop the iteration
      *         }
      *     });
@@ -349,22 +349,22 @@ var ExtObject = Ext.Object = {
 </span>     * Merges any number of objects recursively without referencing them or their children.
      *
      *     var extjs = {
-     *         companyName: 'Ext JS',
-     *         products: ['Ext JS', 'Ext GWT', 'Ext Designer'],
+     *         companyName: &#39;Ext JS&#39;,
+     *         products: [&#39;Ext JS&#39;, &#39;Ext GWT&#39;, &#39;Ext Designer&#39;],
      *         isSuperCool: true,
      *         office: {
      *             size: 2000,
-     *             location: 'Palo Alto',
+     *             location: &#39;Palo Alto&#39;,
      *             isFun: true
      *         }
      *     };
      *
      *     var newStuff = {
-     *         companyName: 'Sencha Inc.',
-     *         products: ['Ext JS', 'Ext GWT', 'Ext Designer', 'Sencha Touch', 'Sencha Animator'],
+     *         companyName: &#39;Sencha Inc.&#39;,
+     *         products: [&#39;Ext JS&#39;, &#39;Ext GWT&#39;, &#39;Ext Designer&#39;, &#39;Sencha Touch&#39;, &#39;Sencha Animator&#39;],
      *         office: {
      *             size: 40000,
-     *             location: 'Redwood City'
+     *             location: &#39;Redwood City&#39;
      *         }
      *     };
      *
@@ -372,12 +372,12 @@ var ExtObject = Ext.Object = {
      *
      *     // sencha then equals to
      *     {
-     *         companyName: 'Sencha Inc.',
-     *         products: ['Ext JS', 'Ext GWT', 'Ext Designer', 'Sencha Touch', 'Sencha Animator'],
+     *         companyName: &#39;Sencha Inc.&#39;,
+     *         products: [&#39;Ext JS&#39;, &#39;Ext GWT&#39;, &#39;Ext Designer&#39;, &#39;Sencha Touch&#39;, &#39;Sencha Animator&#39;],
      *         isSuperCool: true
      *         office: {
      *             size: 40000,
-     *             location: 'Redwood City'
+     *             location: &#39;Redwood City&#39;
      *             isFun: true
      *         }
      *     }
@@ -450,11 +450,11 @@ var ExtObject = Ext.Object = {
      * If no matching value is found, `null` is returned.
      *
      *     var person = {
-     *         name: 'Jacky',
-     *         loves: 'food'
+     *         name: &#39;Jacky&#39;,
+     *         loves: &#39;food&#39;
      *     };
      *
-     *     alert(Ext.Object.getKey(sencha, 'food')); // alerts 'loves'
+     *     alert(Ext.Object.getKey(sencha, &#39;food&#39;)); // alerts &#39;loves&#39;
      *
      * @param {Object} object
      * @param {Object} value The value to find
@@ -473,9 +473,9 @@ var ExtObject = Ext.Object = {
 </span>     * Gets all values of the given object as an array.
      *
      *     var values = Ext.Object.getValues({
-     *         name: 'Jacky',
-     *         loves: 'food'
-     *     }); // ['Jacky', 'food']
+     *         name: &#39;Jacky&#39;,
+     *         loves: &#39;food&#39;
+     *     }); // [&#39;Jacky&#39;, &#39;food&#39;]
      *
      * @param {Object} object
      * @return {Array} An array of values from the object.
@@ -497,15 +497,15 @@ var ExtObject = Ext.Object = {
 </span>     * Gets all keys of the given object as an array.
      *
      *     var values = Ext.Object.getKeys({
-     *         name: 'Jacky',
-     *         loves: 'food'
-     *     }); // ['name', 'loves']
+     *         name: &#39;Jacky&#39;,
+     *         loves: &#39;food&#39;
+     *     }); // [&#39;name&#39;, &#39;loves&#39;]
      *
      * @param {Object} object
      * @return {String[]} An array of keys from the object.
      * @method
      */
-    getKeys: ('keys' in Object) ? Object.keys : function(object) {
+    getKeys: (&#39;keys&#39; in Object) ? Object.keys : function(object) {
         var keys = [],
             property;
 
@@ -519,11 +519,11 @@ var ExtObject = Ext.Object = {
     },
 
 <span id='Ext-Object-method-getSize'>    /**
-</span>     * Gets the total number of this object's own properties.
+</span>     * Gets the total number of this object&#39;s own properties.
      *
      *     var size = Ext.Object.getSize({
-     *         name: 'Jacky',
-     *         loves: 'food'
+     *         name: &#39;Jacky&#39;,
+     *         loves: &#39;food&#39;
      *     }); // size equals 2
      *
      * @param {Object} object
@@ -597,7 +597,7 @@ var ExtObject = Ext.Object = {
             key;
 
         if (targetType === targetType) {
-            if (originType === 'object') {
+            if (originType === &#39;object&#39;) {
                 for (key in origin) {
                     if (!(key in target)) {
                         return false;
@@ -624,7 +624,7 @@ var ExtObject = Ext.Object = {
         return false;
     },
 
-    defineProperty: ('defineProperty' in Object) ? Object.defineProperty : function(object, name, descriptor) {
+    defineProperty: (&#39;defineProperty&#39; in Object) ? Object.defineProperty : function(object, name, descriptor) {
         if (descriptor.get) {
             object.__defineGetter__(name, descriptor.get);
         }
@@ -657,11 +657,11 @@ Ext.mergeIf = Ext.Object.mergeIf;
  */
 Ext.urlEncode = function() {
     var args = Ext.Array.from(arguments),
-        prefix = '';
+        prefix = &#39;&#39;;
 
     // Support for the old `pre` argument
-    if ((typeof args[1] === 'string')) {
-        prefix = args[1] + '&amp;';
+    if ((typeof args[1] === &#39;string&#39;)) {
+        prefix = args[1] + &#39;&amp;&#39;;
         args[1] = false;
     }
 

@@ -30,16 +30,16 @@
  * are available on the client-side. This configuration will typically be
  * outputted by the server-side Ext.Direct stack when the API description is built.
  */
-Ext.define('Ext.direct.RemotingProvider', {
-    alias: 'direct.remotingprovider',
+Ext.define(&#39;Ext.direct.RemotingProvider&#39;, {
+    alias: &#39;direct.remotingprovider&#39;,
 
-    extend: 'Ext.direct.JsonProvider',
+    extend: &#39;Ext.direct.JsonProvider&#39;,
 
     requires: [
-        'Ext.util.MixedCollection',
-        'Ext.util.DelayedTask',
-        'Ext.direct.Transaction',
-        'Ext.direct.RemotingMethod'
+        &#39;Ext.util.MixedCollection&#39;,
+        &#39;Ext.util.DelayedTask&#39;,
+        &#39;Ext.direct.Transaction&#39;,
+        &#39;Ext.direct.RemotingMethod&#39;
     ],
 
     config: {
@@ -93,7 +93,7 @@ Ext.define('Ext.direct.RemotingProvider', {
          * Object literal defining the server side actions and methods. For example, if
          * the Provider is configured with:
          *
-         *     actions: { // each property within the 'actions' object represents a server side Class
+         *     actions: { // each property within the &#39;actions&#39; object represents a server side Class
          *         // array of methods within each server side Class to be stubbed out on client
          *         TestAction: [{
          *             name: &quot;doEcho&quot;,
@@ -162,7 +162,7 @@ Ext.define('Ext.direct.RemotingProvider', {
 
         me.callParent(arguments);
 
-        me.transactions = Ext.create('Ext.util.Collection', function(item) {
+        me.transactions = Ext.create(&#39;Ext.util.Collection&#39;, function(item) {
             return item.getId();
         });
         me.callBuffer = [];
@@ -194,7 +194,7 @@ Ext.define('Ext.direct.RemotingProvider', {
                 methods = actions[action];
 
                 for (i = 0, ln = methods.length; i &lt; ln; ++i) {
-                    method = Ext.create('Ext.direct.RemotingMethod', methods[i]);
+                    method = Ext.create(&#39;Ext.direct.RemotingMethod&#39;, methods[i]);
                     cls[method.getName()] = this.createHandler(action, method);
                 }
             }
@@ -240,10 +240,10 @@ Ext.define('Ext.direct.RemotingProvider', {
         if (me.getUrl()) {
             me.initAPI();
             me.connected = true;
-            me.fireEvent('connect', me);
+            me.fireEvent(&#39;connect&#39;, me);
         } else {
             //&lt;debug&gt;
-            Ext.Error.raise('Error initializing RemotingProvider, no url configured.');
+            Ext.Error.raise(&#39;Error initializing RemotingProvider, no url configured.&#39;);
             //&lt;/debug&gt;
         }
     },
@@ -254,7 +254,7 @@ Ext.define('Ext.direct.RemotingProvider', {
 
         if (me.connected) {
             me.connected = false;
-            me.fireEvent('disconnect', me);
+            me.fireEvent(&#39;disconnect&#39;, me);
         }
     },
 
@@ -266,7 +266,7 @@ Ext.define('Ext.direct.RemotingProvider', {
      */
     runCallback: function(transaction, event) {
         var success = !!event.getStatus(),
-            functionName = success ? 'success' : 'failure',
+            functionName = success ? &#39;success&#39; : &#39;failure&#39;,
             callback = transaction &amp;&amp; transaction.getCallback(),
             result;
 
@@ -298,7 +298,7 @@ Ext.define('Ext.direct.RemotingProvider', {
             for (ln = events.length; i &lt; ln; ++i) {
                 event = events[i];
                 transaction = me.getTransaction(event);
-                me.fireEvent('data', me, event);
+                me.fireEvent(&#39;data&#39;, me, event);
                 if (transaction) {
                     me.runCallback(transaction, event, true);
                     Ext.direct.Manager.removeTransaction(transaction);
@@ -311,15 +311,15 @@ Ext.define('Ext.direct.RemotingProvider', {
                 if (transaction &amp;&amp; transaction.getRetryCount() &lt; me.getMaxRetries()) {
                     transaction.retry();
                 } else {
-                    event = Ext.create('Ext.direct.ExceptionEvent', {
+                    event = Ext.create(&#39;Ext.direct.ExceptionEvent&#39;, {
                         data: null,
                         transaction: transaction,
                         code: Ext.direct.Manager.exceptions.TRANSPORT,
-                        message: 'Unable to connect to the server.',
+                        message: &#39;Unable to connect to the server.&#39;,
                         xhr: response
                     });
 
-                    me.fireEvent('data', me, event);
+                    me.fireEvent(&#39;data&#39;, me, event);
                     if (transaction) {
                         me.runCallback(transaction, event, false);
                         Ext.direct.Manager.removeTransaction(transaction);
@@ -354,7 +354,7 @@ Ext.define('Ext.direct.RemotingProvider', {
             scope = callData.scope,
             transaction;
 
-        transaction = Ext.create('Ext.direct.Transaction', {
+        transaction = Ext.create(&#39;Ext.direct.Transaction&#39;, {
             provider: me,
             args: args,
             action: action,
@@ -363,10 +363,10 @@ Ext.define('Ext.direct.RemotingProvider', {
             callback: scope &amp;&amp; Ext.isFunction(callback) ? Ext.Function.bind(callback, scope) : callback
         });
 
-        if (me.fireEvent('beforecall', me, transaction, method) !== false) {
+        if (me.fireEvent(&#39;beforecall&#39;, me, transaction, method) !== false) {
             Ext.direct.Manager.addTransaction(transaction);
             me.queueTransaction(transaction);
-            me.fireEvent('call', me, transaction, method);
+            me.fireEvent(&#39;call&#39;, me, transaction, method);
         }
     },
 
@@ -381,7 +381,7 @@ Ext.define('Ext.direct.RemotingProvider', {
             action: transaction.getAction(),
             method: transaction.getMethod(),
             data: transaction.getData(),
-            type: 'rpc',
+            type: &#39;rpc&#39;,
             tid: transaction.getId()
         };
     },
@@ -416,7 +416,7 @@ Ext.define('Ext.direct.RemotingProvider', {
 
         if (enableUrlEncode) {
             params = {};
-            params[Ext.isString(enableUrlEncode) ? enableUrlEncode : 'data'] = Ext.encode(callData);
+            params[Ext.isString(enableUrlEncode) ? enableUrlEncode : &#39;data&#39;] = Ext.encode(callData);
             request.params = params;
         } else {
             request.jsonData = callData;
@@ -441,7 +441,7 @@ Ext.define('Ext.direct.RemotingProvider', {
         me.callBuffer.push(transaction);
         if (enableBuffer) {
             if (!me.callTask) {
-                me.callTask = Ext.create('Ext.util.DelayedTask', me.combineAndSend, me);
+                me.callTask = Ext.create(&#39;Ext.util.DelayedTask&#39;, me.combineAndSend, me);
             }
             me.callTask.delay(Ext.isNumber(enableBuffer) ? enableBuffer : 10);
         } else {
@@ -487,15 +487,15 @@ Ext.define('Ext.direct.RemotingProvider', {
             isForm: true
         });
 
-        if (me.fireEvent('beforecall', me, transaction, method) !== false) {
+        if (me.fireEvent(&#39;beforecall&#39;, me, transaction, method) !== false) {
             Ext.direct.Manager.addTransaction(transaction);
-            isUpload = String(form.getAttribute('enctype')).toLowerCase() == 'multipart/form-data';
+            isUpload = String(form.getAttribute(&#39;enctype&#39;)).toLowerCase() == &#39;multipart/form-data&#39;;
 
             params = {
                 extTID: transaction.id,
                 extAction: action,
                 extMethod: method.getName(),
-                extType: 'rpc',
+                extType: &#39;rpc&#39;,
                 extUpload: String(isUpload)
             };
 
@@ -507,7 +507,7 @@ Ext.define('Ext.direct.RemotingProvider', {
                 params: callback &amp;&amp; Ext.isObject(callback.params) ? Ext.apply(params, callback.params) : params
             });
 
-            me.fireEvent('call', me, transaction, method);
+            me.fireEvent(&#39;call&#39;, me, transaction, method);
             me.sendFormRequest(transaction);
         }
     },

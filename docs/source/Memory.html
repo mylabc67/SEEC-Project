@@ -22,19 +22,19 @@
  * In-memory proxy. This proxy simply uses a local variable for data storage/retrieval, so its contents are lost on
  * every page refresh.
  *
- * Usually this Proxy isn't used directly, serving instead as a helper to a {@link Ext.data.Store Store} where a reader
+ * Usually this Proxy isn&#39;t used directly, serving instead as a helper to a {@link Ext.data.Store Store} where a reader
  * is required to load data. For example, say we have a Store for a User model and have some inline data we want to
- * load, but this data isn't in quite the right format: we can use a MemoryProxy with a JsonReader to read it into our
+ * load, but this data isn&#39;t in quite the right format: we can use a MemoryProxy with a JsonReader to read it into our
  * Store:
  *
  *     //this is the model we will be using in the store
- *     Ext.define('User', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;User&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
  *             fields: [
- *                 {name: 'id',    type: 'int'},
- *                 {name: 'name',  type: 'string'},
- *                 {name: 'phone', type: 'string', mapping: 'phoneNumber'}
+ *                 {name: &#39;id&#39;,    type: &#39;int&#39;},
+ *                 {name: &#39;name&#39;,  type: &#39;string&#39;},
+ *                 {name: &#39;phone&#39;, type: &#39;string&#39;, mapping: &#39;phoneNumber&#39;}
  *             ]
  *         }
  *     });
@@ -44,35 +44,35 @@
  *         users: [
  *             {
  *                 id: 1,
- *                 name: 'Ed Spencer',
- *                 phoneNumber: '555 1234'
+ *                 name: &#39;Ed Spencer&#39;,
+ *                 phoneNumber: &#39;555 1234&#39;
  *             },
  *             {
  *                 id: 2,
- *                 name: 'Abe Elias',
- *                 phoneNumber: '666 1234'
+ *                 name: &#39;Abe Elias&#39;,
+ *                 phoneNumber: &#39;666 1234&#39;
  *             }
  *         ]
  *     };
  *
- *     //note how we set the 'root' in the reader to match the data structure above
- *     var store = Ext.create('Ext.data.Store', {
+ *     //note how we set the &#39;root&#39; in the reader to match the data structure above
+ *     var store = Ext.create(&#39;Ext.data.Store&#39;, {
  *         autoLoad: true,
- *         model: 'User',
+ *         model: &#39;User&#39;,
  *         data : data,
  *         proxy: {
- *             type: 'memory',
+ *             type: &#39;memory&#39;,
  *             reader: {
- *                 type: 'json',
- *                 rootProperty: 'users'
+ *                 type: &#39;json&#39;,
+ *                 rootProperty: &#39;users&#39;
  *             }
  *         }
  *     });
  */
-Ext.define('Ext.data.proxy.Memory', {
-    extend: 'Ext.data.proxy.Client',
-    alias: 'proxy.memory',
-    alternateClassName: 'Ext.data.MemoryProxy',
+Ext.define(&#39;Ext.data.proxy.Memory&#39;, {
+    extend: &#39;Ext.data.proxy.Client&#39;,
+    alias: &#39;proxy.memory&#39;,
+    alternateClassName: &#39;Ext.data.MemoryProxy&#39;,
 
 <span id='Ext-data-proxy-Memory-property-isMemoryProxy'>    isMemoryProxy: true,
 </span>
@@ -111,7 +111,7 @@ Ext.define('Ext.data.proxy.Memory', {
 <span id='Ext-data-proxy-Memory-method-create'>    /**
 </span>     * Currently this is a hard-coded method that simply commits any records and sets the operation to successful,
      * then calls the callback function, if provided. It is essentially mocking a server call in memory, but since
-     * there is no real back end in this case there's not much else to do. This method can be easily overridden to
+     * there is no real back end in this case there&#39;s not much else to do. This method can be easily overridden to
      * implement more complex logic if needed.
      * @param {Ext.data.Operation} operation The Operation to perform
      * @param {Function} callback Callback function to be called when the Operation has completed (whether
@@ -126,7 +126,7 @@ Ext.define('Ext.data.proxy.Memory', {
 <span id='Ext-data-proxy-Memory-method-update'>    /**
 </span>     * Currently this is a hard-coded method that simply commits any records and sets the operation to successful,
      * then calls the callback function, if provided. It is essentially mocking a server call in memory, but since
-     * there is no real back end in this case there's not much else to do. This method can be easily overridden to
+     * there is no real back end in this case there&#39;s not much else to do. This method can be easily overridden to
      * implement more complex logic if needed.
      * @param {Ext.data.Operation} operation The Operation to perform
      * @param {Function} callback Callback function to be called when the Operation has completed (whether
@@ -141,7 +141,7 @@ Ext.define('Ext.data.proxy.Memory', {
 <span id='Ext-data-proxy-Memory-method-destroy'>    /**
 </span>     * Currently this is a hard-coded method that simply commits any records and sets the operation to successful,
      * then calls the callback function, if provided. It is essentially mocking a server call in memory, but since
-     * there is no real back end in this case there's not much else to do. This method can be easily overridden to
+     * there is no real back end in this case there&#39;s not much else to do. This method can be easily overridden to
      * implement more complex logic if needed.
      * @param {Ext.data.Operation} operation The Operation to perform
      * @param {Function} callback Callback function to be called when the Operation has completed (whether
@@ -154,7 +154,7 @@ Ext.define('Ext.data.proxy.Memory', {
     },
 
 <span id='Ext-data-proxy-Memory-method-read'>    /**
-</span>     * Reads data from the configured {@link #data} object. Uses the Proxy's {@link #reader}, if present.
+</span>     * Reads data from the configured {@link #data} object. Uses the Proxy&#39;s {@link #reader}, if present.
      * @param {Ext.data.Operation} operation The read Operation
      * @param {Function} callback The callback to call when reading has completed
      * @param {Object} scope The scope to call the callback function in
@@ -163,8 +163,8 @@ Ext.define('Ext.data.proxy.Memory', {
         var me     = this,
             reader = me.getReader();
 
-        if (operation.process('read', reader.process(me.getData())) === false) {
-            this.fireEvent('exception', this, null, operation);
+        if (operation.process(&#39;read&#39;, reader.process(me.getData())) === false) {
+            this.fireEvent(&#39;exception&#39;, this, null, operation);
         }
 
         Ext.callback(callback, scope || me, [operation]);

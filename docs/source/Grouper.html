@@ -18,11 +18,11 @@
   <pre class="prettyprint lang-js"><span id='Ext-util-Grouper'>/**
 </span> * @private
  */
-Ext.define('Ext.util.Grouper', {
+Ext.define(&#39;Ext.util.Grouper&#39;, {
 
     /* Begin Definitions */
 
-    extend: 'Ext.util.Sorter',
+    extend: &#39;Ext.util.Sorter&#39;,
 
 <span id='Ext-util-Grouper-property-isGrouper'>    isGrouper: true,
 </span>
@@ -110,7 +110,7 @@ Ext.define('Ext.util.Grouper', {
 
 <span id='Ext-util-Grouper-method-getGroupString'>    getGroupString: function(item) {
 </span>        var group = this.getGroupFn().call(this, item);
-        return (group !== null &amp;&amp; typeof group != 'undefined') ? group.toString() : '';
+        return (group !== null &amp;&amp; typeof group != &#39;undefined&#39;) ? group.toString() : &#39;&#39;;
     }
 });</pre>
 </body>

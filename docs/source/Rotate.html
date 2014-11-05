@@ -20,12 +20,12 @@
  *
  * @private
  */
-Ext.define('Ext.event.recognizer.Rotate', {
-    extend: 'Ext.event.recognizer.MultiTouch',
+Ext.define(&#39;Ext.event.recognizer.Rotate&#39;, {
+    extend: &#39;Ext.event.recognizer.MultiTouch&#39;,
 
 <span id='Ext-event-recognizer-Rotate-property-requiredTouchesCount'>    requiredTouchesCount: 2,
 </span>
-<span id='Ext-event-recognizer-Rotate-property-handledEvents'>    handledEvents: ['rotatestart', 'rotate', 'rotateend'],
+<span id='Ext-event-recognizer-Rotate-property-handledEvents'>    handledEvents: [&#39;rotatestart&#39;, &#39;rotate&#39;, &#39;rotateend&#39;],
 </span>
 <span id='Ext-dom-Element-event-rotatestart'>    /**
 </span>     * @member Ext.dom.Element
@@ -112,14 +112,14 @@ Ext.define('Ext.event.recognizer.Rotate', {
 
             this.startAngle = angle;
 
-            this.fire('rotatestart', e, touches, {
+            this.fire(&#39;rotatestart&#39;, e, touches, {
                 touches: touches,
                 angle: angle,
                 rotation: 0
             });
         }
         else {
-            this.fire('rotate', e, touches, {
+            this.fire(&#39;rotate&#39;, e, touches, {
                 touches: touches,
                 angle: angle,
                 rotation: angle - this.startAngle
@@ -131,7 +131,7 @@ Ext.define('Ext.event.recognizer.Rotate', {
 
 <span id='Ext-event-recognizer-Rotate-method-fireEnd'>    fireEnd: function(e) {
 </span>        this.lastAngle = null;
-        this.fire('rotateend', e, this.lastTouches);
+        this.fire(&#39;rotateend&#39;, e, this.lastTouches);
     }
 });
 </pre>

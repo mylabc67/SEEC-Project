@@ -24,27 +24,27 @@
  * available.
  *
  * For example, an email client might have a list of messages pinned to the left, taking say one third of the available
- * width, and a message viewing panel in the rest of the screen. We can achieve this with hbox layout's *flex* config:
+ * width, and a message viewing panel in the rest of the screen. We can achieve this with hbox layout&#39;s *flex* config:
  *
  *     @example
- *     Ext.create('Ext.Container', {
+ *     Ext.create(&#39;Ext.Container&#39;, {
  *         fullscreen: true,
- *         layout: 'hbox',
+ *         layout: &#39;hbox&#39;,
  *         items: [
  *             {
- *                 html: 'message list',
- *                 style: 'background-color: #5E99CC;',
+ *                 html: &#39;message list&#39;,
+ *                 style: &#39;background-color: #5E99CC;&#39;,
  *                 flex: 1
  *             },
  *             {
- *                 html: 'message preview',
- *                 style: 'background-color: #759E60;',
+ *                 html: &#39;message preview&#39;,
+ *                 style: &#39;background-color: #759E60;&#39;,
  *                 flex: 2
  *             }
  *         ]
  *     });
  *
- * This will give us two boxes - one that's one third of the available width, the other being two thirds of the
+ * This will give us two boxes - one that&#39;s one third of the available width, the other being two thirds of the
  * available width:
  *
  * {@img ../guides/layouts/hbox.jpg}
@@ -53,22 +53,22 @@
  * - one on each side with flex: 1, and one in the center with a fixed width of 100px:
  *
  *     @example
- *     Ext.create('Ext.Container', {
+ *     Ext.create(&#39;Ext.Container&#39;, {
  *         fullscreen: true,
- *         layout: 'hbox',
+ *         layout: &#39;hbox&#39;,
  *         items: [
  *             {
- *                 html: 'Left item',
- *                 style: 'background-color: #759E60;',
+ *                 html: &#39;Left item&#39;,
+ *                 style: &#39;background-color: #759E60;&#39;,
  *                 flex: 1
  *             },
  *             {
- *                 html: 'Center item',
+ *                 html: &#39;Center item&#39;,
  *                 width: 100
  *             },
  *             {
- *                 html: 'Right item',
- *                 style: 'background-color: #5E99CC;',
+ *                 html: &#39;Right item&#39;,
+ *                 style: &#39;background-color: #5E99CC;&#39;,
  *                 flex: 1
  *             }
  *         ]
@@ -81,10 +81,10 @@
  * For a more detailed overview of what layouts are and the types of layouts shipped with Sencha Touch 2, check out the
  * [Layout Guide](#!/guide/layouts).
  */
-Ext.define('Ext.layout.HBox', {
-    extend: 'Ext.layout.FlexBox',
+Ext.define(&#39;Ext.layout.HBox&#39;, {
+    extend: &#39;Ext.layout.FlexBox&#39;,
 
-    alias: 'layout.hbox'
+    alias: &#39;layout.hbox&#39;
 });
 </pre>
 </body>

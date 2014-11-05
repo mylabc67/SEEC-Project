@@ -18,35 +18,35 @@
   <pre class="prettyprint lang-js"><span id='Ext-dataview-element-List'>/**
 </span> * @private
 */
-Ext.define('Ext.dataview.element.List', {
-    extend: 'Ext.dataview.element.Container',
+Ext.define(&#39;Ext.dataview.element.List&#39;, {
+    extend: &#39;Ext.dataview.element.Container&#39;,
 
 <span id='Ext-dataview-element-List-method-updateBaseCls'>    updateBaseCls: function(newBaseCls) {
 </span>        var me = this;
 
-        me.itemClsShortCache = newBaseCls + '-item';
+        me.itemClsShortCache = newBaseCls + &#39;-item&#39;;
 
-        me.headerClsShortCache = newBaseCls + '-header';
-        me.headerClsCache = '.' + me.headerClsShortCache;
+        me.headerClsShortCache = newBaseCls + &#39;-header&#39;;
+        me.headerClsCache = &#39;.&#39; + me.headerClsShortCache;
 
-        me.headerItemClsShortCache = newBaseCls + '-header-item';
+        me.headerItemClsShortCache = newBaseCls + &#39;-header-item&#39;;
 
-        me.footerClsShortCache = newBaseCls + '-footer-item';
-        me.footerClsCache = '.' + me.footerClsShortCache;
+        me.footerClsShortCache = newBaseCls + &#39;-footer-item&#39;;
+        me.footerClsCache = &#39;.&#39; + me.footerClsShortCache;
 
-        me.labelClsShortCache = newBaseCls + '-item-label';
-        me.labelClsCache = '.' + me.labelClsShortCache;
+        me.labelClsShortCache = newBaseCls + &#39;-item-label&#39;;
+        me.labelClsCache = &#39;.&#39; + me.labelClsShortCache;
 
-        me.disclosureClsShortCache = newBaseCls + '-disclosure';
-        me.disclosureClsCache = '.' + me.disclosureClsShortCache;
+        me.disclosureClsShortCache = newBaseCls + &#39;-disclosure&#39;;
+        me.disclosureClsCache = &#39;.&#39; + me.disclosureClsShortCache;
 
-        me.iconClsShortCache = newBaseCls + '-icon';
-        me.iconClsCache = '.' + me.iconClsShortCache;
+        me.iconClsShortCache = newBaseCls + &#39;-icon&#39;;
+        me.iconClsCache = &#39;.&#39; + me.iconClsShortCache;
 
         this.callParent(arguments);
     },
 
-<span id='Ext-dataview-element-List-property-hiddenDisplayCache'>    hiddenDisplayCache: Ext.baseCSSPrefix + 'hidden-display',
+<span id='Ext-dataview-element-List-property-hiddenDisplayCache'>    hiddenDisplayCache: Ext.baseCSSPrefix + &#39;hidden-display&#39;,
 </span>
 <span id='Ext-dataview-element-List-method-getItemElementConfig'>    getItemElementConfig: function(index, data) {
 </span>        var me = this,
@@ -56,7 +56,7 @@ Ext.define('Ext.dataview.element.List', {
             config, iconSrc;
 
         if (itemCls) {
-            cls += ' ' + itemCls;
+            cls += &#39; &#39; + itemCls;
         }
 
         config = {
@@ -71,13 +71,13 @@ Ext.define('Ext.dataview.element.List', {
             iconSrc = data.iconSrc;
             config.children.push({
                 cls: me.iconClsShortCache,
-                style: 'background-image: ' + iconSrc ? 'url(&quot;' + newSrc + '&quot;)' : ''
+                style: &#39;background-image: &#39; + iconSrc ? &#39;url(&quot;&#39; + newSrc + &#39;&quot;)&#39; : &#39;&#39;
             });
         }
 
         if (dataview.getOnItemDisclosure()) {
             config.children.push({
-                cls: me.disclosureClsShortCache + ' ' + ((data[dataview.getDisclosureProperty()] === false) ? me.hiddenDisplayCache : '')
+                cls: me.disclosureClsShortCache + &#39; &#39; + ((data[dataview.getDisclosureProperty()] === false) ? me.hiddenDisplayCache : &#39;&#39;)
             });
         }
         return config;
@@ -91,19 +91,19 @@ Ext.define('Ext.dataview.element.List', {
             data = dataview.prepareData(record.getData(true), dataview.getStore().indexOf(record), record),
             disclosureProperty = dataview.getDisclosureProperty(),
             hasDisclosureProperty = data &amp;&amp; data.hasOwnProperty(disclosureProperty),
-            iconSrc = data &amp;&amp; data.hasOwnProperty('iconSrc'),
+            iconSrc = data &amp;&amp; data.hasOwnProperty(&#39;iconSrc&#39;),
             disclosureEl, iconEl;
 
         innerItem.innerHTML = dataview.getItemTpl().apply(data);
 
         if (hasDisclosureProperty) {
             disclosureEl = extItem.down(me.disclosureClsCache);
-            disclosureEl[data[disclosureProperty] === false ? 'addCls' : 'removeCls'](me.hiddenDisplayCache);
+            disclosureEl[data[disclosureProperty] === false ? &#39;addCls&#39; : &#39;removeCls&#39;](me.hiddenDisplayCache);
         }
 
         if (dataview.getIcon()) {
             iconEl = extItem.down(me.iconClsCache, true);
-            iconEl.style.backgroundImage = iconSrc ? 'url(&quot;' + iconSrc + '&quot;)' : '';
+            iconEl.style.backgroundImage = iconSrc ? &#39;url(&quot;&#39; + iconSrc + &#39;&quot;)&#39; : &#39;&#39;;
         }
     },
 

@@ -18,14 +18,14 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-geolocation-Sencha'>/**
 </span> * @private
  */
-Ext.define('Ext.device.geolocation.Sencha', {
-    extend: 'Ext.device.geolocation.Abstract',
+Ext.define(&#39;Ext.device.geolocation.Sencha&#39;, {
+    extend: &#39;Ext.device.geolocation.Abstract&#39;,
 
 <span id='Ext-device-geolocation-Sencha-method-getCurrentPosition'>    getCurrentPosition: function(config) {
 </span>        config = this.callParent([config]);
 
         Ext.apply(config, {
-            command: 'Geolocation#getCurrentPosition',
+            command: &#39;Geolocation#getCurrentPosition&#39;,
             callbacks: {
                 success: config.success,
                 failure: config.failure
@@ -48,7 +48,7 @@ Ext.define('Ext.device.geolocation.Sencha', {
 </span>        config = this.callParent([config]);
 
         Ext.apply(config, {
-            command: 'Geolocation#watchPosition',
+            command: &#39;Geolocation#watchPosition&#39;,
             callbacks: {
                 success: config.callback,
                 failure: config.failure
@@ -69,7 +69,7 @@ Ext.define('Ext.device.geolocation.Sencha', {
 
 <span id='Ext-device-geolocation-Sencha-method-clearWatch'>    clearWatch: function() {
 </span>        Ext.device.Communicator.send({
-            command: 'Geolocation#clearWatch'
+            command: &#39;Geolocation#clearWatch&#39;
         });
     }
 });

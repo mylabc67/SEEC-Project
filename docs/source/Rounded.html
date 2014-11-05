@@ -18,16 +18,16 @@
   <pre class="prettyprint lang-js"><span id='Ext-scroll-indicator-Rounded'>/**
 </span> * @private
  */
-Ext.define('Ext.scroll.indicator.Rounded', {
-    extend: 'Ext.scroll.indicator.Abstract',
+Ext.define(&#39;Ext.scroll.indicator.Rounded&#39;, {
+    extend: &#39;Ext.scroll.indicator.Abstract&#39;,
 
     config: {
-<span id='Ext-scroll-indicator-Rounded-cfg-cls'>        cls: 'rounded'
+<span id='Ext-scroll-indicator-Rounded-cfg-cls'>        cls: &#39;rounded&#39;
 </span>    },
 
 <span id='Ext-scroll-indicator-Rounded-method-constructor'>    constructor: function() {
 </span>        this.callParent(arguments);
-        this.transformPropertyName = Ext.browser.getVendorProperyName('transform');
+        this.transformPropertyName = Ext.browser.getVendorProperyName(&#39;transform&#39;);
     },
 
 <span id='Ext-scroll-indicator-Rounded-method-getElementConfig'>    getElementConfig: function() {
@@ -35,13 +35,13 @@ Ext.define('Ext.scroll.indicator.Rounded', {
 
         config.children[0].children = [
             {
-                reference: 'startElement'
+                reference: &#39;startElement&#39;
             },
             {
-                reference: 'middleElement'
+                reference: &#39;middleElement&#39;
             },
             {
-                reference: 'endElement'
+                reference: &#39;endElement&#39;
             }
         ];
 
@@ -55,7 +55,7 @@ Ext.define('Ext.scroll.indicator.Rounded', {
             middleElement = this.middleElement,
             startElementLength, endElementLength;
 
-        if (axis === 'x') {
+        if (axis === &#39;x&#39;) {
             startElementLength = startElementDom.offsetWidth;
             endElementLength = endElementDom.offsetWidth;
             middleElement.setLeft(startElementLength);
@@ -82,13 +82,13 @@ Ext.define('Ext.scroll.indicator.Rounded', {
                 middleElementLength = endElementOffset - this.startElementLength,
                 transformPropertyName = this.transformPropertyName;
 
-            if (axis === 'x') {
+            if (axis === &#39;x&#39;) {
                 endElement.translate(endElementOffset, 0);
-                middleElementStyle[transformPropertyName] = 'translate3d(0, 0, 0) scaleX(' + middleElementLength + ')';
+                middleElementStyle[transformPropertyName] = &#39;translate3d(0, 0, 0) scaleX(&#39; + middleElementLength + &#39;)&#39;;
             }
             else {
                 endElement.translate(0, endElementOffset);
-                middleElementStyle[transformPropertyName] = 'translate3d(0, 0, 0) scaleY(' + middleElementLength + ')';
+                middleElementStyle[transformPropertyName] = &#39;translate3d(0, 0, 0) scaleY(&#39; + middleElementLength + &#39;)&#39;;
             }
         }
     }

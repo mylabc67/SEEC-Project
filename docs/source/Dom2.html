@@ -18,26 +18,26 @@
   <pre class="prettyprint lang-js"><span id='Ext-event-publisher-Dom'>/**
 </span> * @private
  */
-Ext.define('Ext.event.publisher.Dom', {
-    extend: 'Ext.event.publisher.Publisher',
+Ext.define(&#39;Ext.event.publisher.Dom&#39;, {
+    extend: &#39;Ext.event.publisher.Publisher&#39;,
 
     requires: [
-        'Ext.env.Browser',
-        'Ext.Element',
-        'Ext.event.Dom'
+        &#39;Ext.env.Browser&#39;,
+        &#39;Ext.Element&#39;,
+        &#39;Ext.event.Dom&#39;
     ],
 
-<span id='Ext-event-publisher-Dom-property-targetType'>    targetType: 'element',
+<span id='Ext-event-publisher-Dom-property-targetType'>    targetType: &#39;element&#39;,
 </span>
 <span id='Ext-event-publisher-Dom-property-idOrClassSelectorRegex'>    idOrClassSelectorRegex: /^([#|\.])([\w\-]+)$/,
 </span>
-<span id='Ext-event-publisher-Dom-property-handledEvents'>    handledEvents: ['focus', 'blur', 'paste', 'input', 'change',
-</span>                    'keyup', 'keydown', 'keypress', 'submit',
-                    'transitionend', 'animationstart', 'animationend'],
+<span id='Ext-event-publisher-Dom-property-handledEvents'>    handledEvents: [&#39;focus&#39;, &#39;blur&#39;, &#39;paste&#39;, &#39;input&#39;, &#39;change&#39;,
+</span>                    &#39;keyup&#39;, &#39;keydown&#39;, &#39;keypress&#39;, &#39;submit&#39;,
+                    &#39;transitionend&#39;, &#39;animationstart&#39;, &#39;animationend&#39;],
 
 <span id='Ext-event-publisher-Dom-property-classNameSplitRegex'>    classNameSplitRegex: /\s+/,
 </span>
-<span id='Ext-event-publisher-Dom-property-SELECTOR_ALL'>    SELECTOR_ALL: '*',
+<span id='Ext-event-publisher-Dom-property-SELECTOR_ALL'>    SELECTOR_ALL: &#39;*&#39;,
 </span>
 <span id='Ext-event-publisher-Dom-method-constructor'>    constructor: function() {
 </span>        var eventNames = this.getHandledEvents(),
@@ -45,14 +45,14 @@ Ext.define('Ext.event.publisher.Dom', {
             i, ln, eventName, vendorEventName;
 
         this.doBubbleEventsMap = {
-            'click': true,
-            'submit': true,
-            'mousedown': true,
-            'mousemove': true,
-            'mouseup': true,
-            'mouseover': true,
-            'mouseout': true,
-            'transitionend': true
+            &#39;click&#39;: true,
+            &#39;submit&#39;: true,
+            &#39;mousedown&#39;: true,
+            &#39;mousemove&#39;: true,
+            &#39;mouseup&#39;: true,
+            &#39;mouseover&#39;: true,
+            &#39;mouseout&#39;: true,
+            &#39;transitionend&#39;: true
         };
 
         this.onEvent = Ext.Function.bind(this.onEvent, this);
@@ -93,14 +93,14 @@ Ext.define('Ext.event.publisher.Dom', {
 
 <span id='Ext-event-publisher-Dom-method-getVendorEventName'>    getVendorEventName: function(eventName) {
 </span>        if (Ext.browser.is.WebKit) {
-            if (eventName === 'transitionend') {
-                eventName = Ext.browser.getVendorProperyName('transitionEnd');
+            if (eventName === &#39;transitionend&#39;) {
+                eventName = Ext.browser.getVendorProperyName(&#39;transitionEnd&#39;);
             }
-            else if (eventName === 'animationstart') {
-                eventName = Ext.browser.getVendorProperyName('animationStart');
+            else if (eventName === &#39;animationstart&#39;) {
+                eventName = Ext.browser.getVendorProperyName(&#39;animationStart&#39;);
             }
-            else if (eventName === 'animationend') {
-                eventName = Ext.browser.getVendorProperyName('animationEnd');
+            else if (eventName === &#39;animationend&#39;) {
+                eventName = Ext.browser.getVendorProperyName(&#39;animationEnd&#39;);
             }
         }
 
@@ -186,7 +186,7 @@ Ext.define('Ext.event.publisher.Dom', {
             type = idOrClassSelectorMatch[1];
             value = idOrClassSelectorMatch[2];
 
-            if (type === '#') {
+            if (type === &#39;#&#39;) {
                 if (idSubscribers.hasOwnProperty(value)) {
                     idSubscribers[value]++;
                     return true;
@@ -243,7 +243,7 @@ Ext.define('Ext.event.publisher.Dom', {
             type = idOrClassSelectorMatch[1];
             value = idOrClassSelectorMatch[2];
 
-            if (type === '#') {
+            if (type === &#39;#&#39;) {
                 if (!idSubscribers.hasOwnProperty(value) || (!all &amp;&amp; --idSubscribers[value] &gt; 0)) {
                     return true;
                 }
@@ -322,7 +322,7 @@ Ext.define('Ext.event.publisher.Dom', {
             wildcardSubscribers;
 
         if (subscribers.$length === 0 || !this.doPublish(subscribers, eventName, targets, event)) {
-            wildcardSubscribers = this.getSubscribers('*');
+            wildcardSubscribers = this.getSubscribers(&#39;*&#39;);
 
             if (wildcardSubscribers.$length &gt; 0) {
                 this.doPublish(wildcardSubscribers, eventName, targets, event);
@@ -362,7 +362,7 @@ Ext.define('Ext.event.publisher.Dom', {
                 if (id) {
                     if (idSubscribers.hasOwnProperty(id)) {
                         hasDispatched = true;
-                        this.dispatch('#' + id, eventName, args);
+                        this.dispatch(&#39;#&#39; + id, eventName, args);
                     }
                 }
             }
@@ -381,7 +381,7 @@ Ext.define('Ext.event.publisher.Dom', {
 
                             if (classNameSubscribers.hasOwnProperty(className)) {
                                 hasDispatched = true;
-                                this.dispatch('.' + className, eventName, args);
+                                this.dispatch(&#39;.&#39; + className, eventName, args);
                             }
                         }
                     }
@@ -429,8 +429,8 @@ Ext.define('Ext.event.publisher.Dom', {
 <span id='Ext-event-publisher-Dom-property-matchesSelector'>    matchesSelector: function() {
 </span>        var test = Element.prototype,
             matchesSelector =
-                ('webkitMatchesSelector' in test) ? 'webkitMatchesSelector' :
-                (('msMatchesSelector' in test) ? 'msMatchesSelector' : ('mozMatchesSelector' in test ? 'mozMatchesSelector' : null));
+                (&#39;webkitMatchesSelector&#39; in test) ? &#39;webkitMatchesSelector&#39; :
+                ((&#39;msMatchesSelector&#39; in test) ? &#39;msMatchesSelector&#39; : (&#39;mozMatchesSelector&#39; in test ? &#39;mozMatchesSelector&#39; : null));
 
         if (matchesSelector) {
             return function(element, selector) {
@@ -483,7 +483,7 @@ Ext.define('Ext.event.publisher.Dom', {
             type = match[1];
             value = match[2];
 
-            if (type === '#') {
+            if (type === &#39;#&#39;) {
                 return subscribers.id.hasOwnProperty(value);
             }
             else {
@@ -503,7 +503,7 @@ Ext.define('Ext.event.publisher.Dom', {
             return 0;
         }
 
-        return this.getSubscribers(eventName).$length + this.getSubscribers('*').$length;
+        return this.getSubscribers(eventName).$length + this.getSubscribers(&#39;*&#39;).$length;
     }
 
 });</pre>

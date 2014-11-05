@@ -30,7 +30,7 @@
  * - [Using Controllers](#!/guide/controllers)
  *
  */
-Ext.define('Ext.app.Route', {
+Ext.define(&#39;Ext.app.Route&#39;, {
 
     config: {
 <span id='Ext-app-Route-cfg-conditions'>        /**
@@ -40,7 +40,7 @@ Ext.define('Ext.app.Route', {
          * these conditions to allow the :fileName token to accept strings containing a period (&quot;.&quot;):
          *
          *     conditions: {
-         *         ':fileName': &quot;[0-9a-zA-Z\.]+&quot;
+         *         &#39;:fileName&#39;: &quot;[0-9a-zA-Z\.]+&quot;
          *     }
          *
          */
@@ -65,7 +65,7 @@ Ext.define('Ext.app.Route', {
 
 <span id='Ext-app-Route-cfg-initialized'>        /**
 </span>         * @private
-         * @cfg {Boolean} initialized Indicates whether or not this Route has been initialized. We don't initialize
+         * @cfg {Boolean} initialized Indicates whether or not this Route has been initialized. We don&#39;t initialize
          * straight away so as to save unnecessary processing.
          */
         initialized: false
@@ -111,13 +111,13 @@ Ext.define('Ext.app.Route', {
         /*
          * The regular expression we use to match a segment of a route mapping
          * this will recognize segments starting with a colon,
-         * e.g. on 'namespace/:controller/:action', :controller and :action will be recognized
+         * e.g. on &#39;namespace/:controller/:action&#39;, :controller and :action will be recognized
          */
         this.paramMatchingRegex = new RegExp(/:([0-9A-Za-z\_]*)/g);
 
         /*
          * Converts a route string into an array of symbols starting with a colon. e.g.
-         * &quot;:controller/:action/:id&quot; =&gt; [':controller', ':action', ':id']
+         * &quot;:controller/:action/:id&quot; =&gt; [&#39;:controller&#39;, &#39;:action&#39;, &#39;:id&#39;]
          */
         this.paramsInMatchString = this.getUrl().match(this.paramMatchingRegex) || [];
 
@@ -176,7 +176,7 @@ Ext.define('Ext.app.Route', {
         values.shift();
 
         for (i = 0; i &lt; length; i++) {
-            args.push(keys[i].replace(':', &quot;&quot;));
+            args.push(keys[i].replace(&#39;:&#39;, &quot;&quot;));
             params[keys[i].replace(&quot;:&quot;, &quot;&quot;)] = values[i];
         }
 
@@ -185,7 +185,7 @@ Ext.define('Ext.app.Route', {
 
 <span id='Ext-app-Route-method-urlFor'>    /**
 </span>     * @private
-     * Constructs a url for the given config object by replacing wildcard placeholders in the Route's url
+     * Constructs a url for the given config object by replacing wildcard placeholders in the Route&#39;s url
      * @param {Object} config The config object
      * @return {String} The constructed url
      */
@@ -209,7 +209,7 @@ Ext.define('Ext.app.Route', {
     createMatcherRegex: function(url) {
 <span id='Ext-app-Route-property-paramsInMatchString'>        /**
 </span>         * Converts a route string into an array of symbols starting with a colon. e.g.
-         * &quot;:controller/:action/:id&quot; =&gt; [':controller', ':action', ':id']
+         * &quot;:controller/:action/:id&quot; =&gt; [&#39;:controller&#39;, &#39;:action&#39;, &#39;:id&#39;]
          */
         var paramsInMatchString = this.paramsInMatchString,
             length = paramsInMatchString.length,

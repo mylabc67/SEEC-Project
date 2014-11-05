@@ -61,7 +61,7 @@
      * @return {Ext.Base} The newly created class
      */
     Ext.Class = ExtClass = function(Class, data, onCreated) {
-        if (typeof Class != 'function') {
+        if (typeof Class != &#39;function&#39;) {
             onCreated = data;
             data = Class;
             Class = null;
@@ -176,7 +176,7 @@
          *
          * @private
          * @static
-         * @param {String} name The pre-processor's name.
+         * @param {String} name The pre-processor&#39;s name.
          * @param {Function} fn The callback function to be executed. Typical format:
          *
          *     function(cls, data, fn) {
@@ -201,7 +201,7 @@
          */
         registerPreprocessor: function(name, fn, properties, position, relativeTo) {
             if (!position) {
-                position = 'last';
+                position = &#39;last&#39;;
             }
 
             if (!properties) {
@@ -273,20 +273,20 @@
 </span>         * Insert this pre-processor at a specific position in the stack, optionally relative to
          * any existing pre-processor. For example:
          *
-         *     Ext.Class.registerPreprocessor('debug', function(cls, data, fn) {
+         *     Ext.Class.registerPreprocessor(&#39;debug&#39;, function(cls, data, fn) {
          *         // Your code here
          *
          *         if (fn) {
          *             fn.call(this, cls, data);
          *         }
-         *     }).insertDefaultPreprocessor('debug', 'last');
+         *     }).insertDefaultPreprocessor(&#39;debug&#39;, &#39;last&#39;);
          *
          * @private
          * @static
          * @param {String} name The pre-processor name. Note that it needs to be registered with
          * {@link Ext.Class#registerPreprocessor registerPreprocessor} before this.
          * @param {String} offset The insertion position. Four possible values are:
-         * 'first', 'last', or: 'before', 'after' (relative to the name provided in the third argument).
+         * &#39;first&#39;, &#39;last&#39;, or: &#39;before&#39;, &#39;after&#39; (relative to the name provided in the third argument).
          * @param {String} relativeName
          * @return {Ext.Class} this
          */
@@ -294,19 +294,19 @@
             var defaultPreprocessors = this.defaultPreprocessors,
                 index;
 
-            if (typeof offset == 'string') {
-                if (offset === 'first') {
+            if (typeof offset == &#39;string&#39;) {
+                if (offset === &#39;first&#39;) {
                     defaultPreprocessors.unshift(name);
 
                     return this;
                 }
-                else if (offset === 'last') {
+                else if (offset === &#39;last&#39;) {
                     defaultPreprocessors.push(name);
 
                     return this;
                 }
 
-                offset = (offset === 'after') ? 1 : -1;
+                offset = (offset === &#39;after&#39;) ? 1 : -1;
             }
 
             index = Ext.Array.indexOf(defaultPreprocessors, relativeName);
@@ -338,15 +338,15 @@
 
                 map = cache[name] = {
                     name: name,
-                    internal: '_' + name,
-                    initializing: 'is' + capitalizedName + 'Initializing',
-                    apply: 'apply' + capitalizedName,
-                    update: 'update' + capitalizedName,
-                    set: 'set' + capitalizedName,
-                    get: 'get' + capitalizedName,
-                    initGet: 'initGet' + capitalizedName,
-                    doSet : 'doSet' + capitalizedName,
-                    changeEvent: name.toLowerCase() + 'change'
+                    internal: &#39;_&#39; + name,
+                    initializing: &#39;is&#39; + capitalizedName + &#39;Initializing&#39;,
+                    apply: &#39;apply&#39; + capitalizedName,
+                    update: &#39;update&#39; + capitalizedName,
+                    set: &#39;set&#39; + capitalizedName,
+                    get: &#39;get&#39; + capitalizedName,
+                    initGet: &#39;initGet&#39; + capitalizedName,
+                    doSet : &#39;doSet&#39; + capitalizedName,
+                    changeEvent: name.toLowerCase() + &#39;change&#39;
                 }
             }
 
@@ -373,7 +373,7 @@
 
                 if (applier) {
                     value = applier.call(this, value, oldValue);
-                    if (typeof value == 'undefined') {
+                    if (typeof value == &#39;undefined&#39;) {
                         return this;
                     }
                 }
@@ -431,14 +431,14 @@
      * The parent class that this class extends. For example:
      *
      *     @example
-     *     Ext.define('Person', {
+     *     Ext.define(&#39;Person&#39;, {
      *         say: function(text) {
      *             alert(text);
      *         }
      *     });
      *
-     *     Ext.define('Developer', {
-     *         extend: 'Person',
+     *     Ext.define(&#39;Developer&#39;, {
+     *         extend: &#39;Person&#39;,
      *         say: function(text) {
      *             this.callParent([&quot;print &quot; + text]);
      *         }
@@ -450,7 +450,7 @@
      *     var developer1 = Ext.create(&quot;Developer&quot;);
      *     developer1.say(&quot;Ted&quot;);
      */
-    ExtClass.registerPreprocessor('extend', function(Class, data) {
+    ExtClass.registerPreprocessor(&#39;extend&#39;, function(Class, data) {
         var Base = Ext.Base,
             extend = data.extend,
             Parent;
@@ -480,10 +480,10 @@
 </span>     * @cfg {Object} statics
      * List of static methods for this class. For example:
      *
-     *     Ext.define('Computer', {
+     *     Ext.define(&#39;Computer&#39;, {
      *          statics: {
      *              factory: function(brand) {
-     *                  // 'this' in static methods refer to the class itself
+     *                  // &#39;this&#39; in static methods refer to the class itself
      *                  return new this(brand);
      *              }
      *          },
@@ -493,9 +493,9 @@
      *          }
      *     });
      *
-     *     var dellComputer = Computer.factory('Dell');
+     *     var dellComputer = Computer.factory(&#39;Dell&#39;);
      */
-    ExtClass.registerPreprocessor('statics', function(Class, data) {
+    ExtClass.registerPreprocessor(&#39;statics&#39;, function(Class, data) {
         Class.addStatics(data.statics);
 
         delete data.statics;
@@ -508,7 +508,7 @@
      * List of inheritable static methods for this class.
      * Otherwise just like {@link #statics} but subclasses inherit these methods.
      */
-    ExtClass.registerPreprocessor('inheritableStatics', function(Class, data) {
+    ExtClass.registerPreprocessor(&#39;inheritableStatics&#39;, function(Class, data) {
         Class.addInheritableStatics(data.inheritableStatics);
 
         delete data.inheritableStatics;
@@ -520,20 +520,20 @@
 </span>     * @cfg {Object} platformConfig
      * Allows for setting default config values on specific platforms or themes
      *
-     *     Ext.define('MyComponent', {
+     *     Ext.define(&#39;MyComponent&#39;, {
      *          config: {
      *              top: 0
      *          },
      *
      *          platformConfig: [{
-     *              platform: ['ie10'],
-     *              theme: ['Windows'],
+     *              platform: [&#39;ie10&#39;],
+     *              theme: [&#39;Windows&#39;],
      *              top: null,
      *              bottom: 0
      *          }]
      *     });
      */
-    ExtClass.registerPreprocessor('platformConfig', function(Class, data, hooks) {
+    ExtClass.registerPreprocessor(&#39;platformConfig&#39;, function(Class, data, hooks) {
         var platformConfigs = data.platformConfig,
             config = data.config || {},
             platform, theme, platformConfig, i, ln, j, ln2, exclude;
@@ -585,40 +585,40 @@
 
                 for (j = 0, jln = platform.length; j &lt; jln; j++) {
                     switch (platform[j]) {
-                        case 'phone':
+                        case &#39;phone&#39;:
                             profileMatch = isPhone(ua);
                             break;
-                        case 'tablet':
+                        case &#39;tablet&#39;:
                             profileMatch = isTablet(ua);
                             break;
-                        case 'desktop':
+                        case &#39;desktop&#39;:
                             profileMatch = !isPhone(ua) &amp;&amp; !isTablet(ua);
                             break;
-                        case 'ios':
+                        case &#39;ios&#39;:
                             profileMatch = /(iPad|iPhone|iPod)/.test(ua);
                             break;
-                        case 'android':
+                        case &#39;android&#39;:
                             profileMatch = /(Android|Silk)/.test(ua);
                             break;
-                        case 'blackberry':
+                        case &#39;blackberry&#39;:
                             profileMatch = /(BlackBerry|BB)/.test(ua);
                             break;
-                        case 'safari':
+                        case &#39;safari&#39;:
                             profileMatch = /Safari/.test(ua) &amp;&amp; !(/(BlackBerry|BB)/.test(ua));
                             break;
-                        case 'chrome':
+                        case &#39;chrome&#39;:
                             profileMatch = /Chrome/.test(ua);
                             break;
-                        case 'ie10':
+                        case &#39;ie10&#39;:
                             profileMatch = /MSIE 10/.test(ua);
                             break;
-                        case 'windows':
+                        case &#39;windows&#39;:
                             profileMatch = /MSIE 10/.test(ua) || /Trident/.test(ua);
                             break;
-                        case 'tizen':
+                        case &#39;tizen&#39;:
                             profileMatch = /Tizen/.test(ua);
                             break;
-                        case 'firefox':
+                        case &#39;firefox&#39;:
                             profileMatch = /Firefox/.test(ua);
                     }
                     if (profileMatch) {
@@ -668,14 +668,14 @@
      * Each config item will have its own setter and getter method automatically generated inside the class prototype
      * during class creation time, if the class does not have those methods explicitly defined.
      *
-     * As an example, let's convert the name property of a Person class to be a config item, then add extra age and
+     * As an example, let&#39;s convert the name property of a Person class to be a config item, then add extra age and
      * gender items.
      *
-     *     Ext.define('My.sample.Person', {
+     *     Ext.define(&#39;My.sample.Person&#39;, {
      *         config: {
-     *             name: 'Mr. Unknown',
+     *             name: &#39;Mr. Unknown&#39;,
      *             age: 0,
-     *             gender: 'Male'
+     *             gender: &#39;Male&#39;
      *         },
      *
      *         constructor: function(config) {
@@ -687,7 +687,7 @@
      *         // ...
      *     });
      *
-     * Within the class, this.name still has the default value of &quot;Mr. Unknown&quot;. However, it's now publicly accessible
+     * Within the class, this.name still has the default value of &quot;Mr. Unknown&quot;. However, it&#39;s now publicly accessible
      * without sacrificing encapsulation, via setter and getter methods.
      *
      *     var jacky = new Person({
@@ -713,16 +713,16 @@
      *
      * Beside storing the given values, throughout the frameworks, setters generally have two key responsibilities:
      *
-     *  - Filtering / validation / transformation of the given value before it's actually stored within the instance.
+     *  - Filtering / validation / transformation of the given value before it&#39;s actually stored within the instance.
      *  - Notification (such as firing events) / post-processing after the value has been set, or changed from a
      *    previous value.
      *
      * By standardize this common pattern, the default generated setters provide two extra template methods that you
      * can put your own custom logics into, i.e: an &quot;applyFoo&quot; and &quot;updateFoo&quot; method for a &quot;foo&quot; config item, which are
-     * executed before and after the value is actually set, respectively. Back to the example class, let's validate that
-     * age must be a valid positive number, and fire an 'agechange' if the value is modified.
+     * executed before and after the value is actually set, respectively. Back to the example class, let&#39;s validate that
+     * age must be a valid positive number, and fire an &#39;agechange&#39; if the value is modified.
      *
-     *     Ext.define('My.sample.Person', {
+     *     Ext.define(&#39;My.sample.Person&#39;, {
      *         config: {
      *             // ...
      *         },
@@ -732,7 +732,7 @@
      *         },
      *
      *         applyAge: function(age) {
-     *             if (typeof age !== 'number' || age &lt; 0) {
+     *             if (typeof age !== &#39;number&#39; || age &lt; 0) {
      *                 console.warn(&quot;Invalid age, must be a positive number&quot;);
      *                 return;
      *             }
@@ -742,7 +742,7 @@
      *
      *         updateAge: function(newAge, oldAge) {
      *             // age has changed from &quot;oldAge&quot; to &quot;newAge&quot;
-     *             this.fireEvent('agechange', this, newAge, oldAge);
+     *             this.fireEvent(&#39;agechange&#39;, this, newAge, oldAge);
      *         }
      *
      *         // ...
@@ -750,7 +750,7 @@
      *
      *     var jacky = new Person({
      *         name: &quot;Jacky&quot;,
-     *         age: 'invalid'
+     *         age: &#39;invalid&#39;
      *     });
      *
      *     alert(jacky.getAge());      // alerts 0
@@ -766,9 +766,9 @@
      * consistent throughout and only contain the minimal logic that you actually care about.
      *
      * When it comes to inheritance, the default config of the parent class is automatically, recursively merged with
-     * the child's default config. The same applies for mixins.
+     * the child&#39;s default config. The same applies for mixins.
      */
-    ExtClass.registerPreprocessor('config', function(Class, data) {
+    ExtClass.registerPreprocessor(&#39;config&#39;, function(Class, data) {
         var config = data.config,
             prototype = Class.prototype,
             defaultConfig = prototype.config,
@@ -811,27 +811,27 @@
 </span>     * @cfg {Object} mixins
      * List of classes to mix into this class. For example:
      *
-     *     Ext.define('CanSing', {
+     *     Ext.define(&#39;CanSing&#39;, {
      *          sing: function() {
-     *              alert(&quot;I'm on the highway to hell...&quot;);
+     *              alert(&quot;I&#39;m on the highway to hell...&quot;);
      *          }
      *     });
      *
-     *     Ext.define('Musician', {
-     *          extend: 'Person',
+     *     Ext.define(&#39;Musician&#39;, {
+     *          extend: &#39;Person&#39;,
      *
      *          mixins: {
-     *              canSing: 'CanSing'
+     *              canSing: &#39;CanSing&#39;
      *          }
      *     });
      */
-    ExtClass.registerPreprocessor('mixins', function(Class, data, hooks) {
+    ExtClass.registerPreprocessor(&#39;mixins&#39;, function(Class, data, hooks) {
         var mixins = data.mixins,
             name, mixin, i, ln;
 
         delete data.mixins;
 
-        Ext.Function.interceptBefore(hooks, 'onCreated', function() {
+        Ext.Function.interceptBefore(hooks, &#39;onCreated&#39;, function() {
             if (mixins instanceof Array) {
                 for (i = 0,ln = mixins.length; i &lt; ln; i++) {
                     mixin = mixins[i];
@@ -868,26 +868,26 @@
 
         members.extend = Parent;
         members.preprocessors = [
-            'extend'
+            &#39;extend&#39;
 
             //&lt;feature classSystem.statics&gt;
-            ,'statics'
+            ,&#39;statics&#39;
             //&lt;/feature&gt;
 
             //&lt;feature classSystem.inheritableStatics&gt;
-            ,'inheritableStatics'
+            ,&#39;inheritableStatics&#39;
             //&lt;/feature&gt;
 
             //&lt;feature classSystem.mixins&gt;
-            ,'mixins'
+            ,&#39;mixins&#39;
             //&lt;/feature&gt;
 
             //&lt;feature classSystem.platformConfig&gt;
-            ,'platformConfig'
+            ,&#39;platformConfig&#39;
             //&lt;/feature&gt;
 
             //&lt;feature classSystem.config&gt;
-            ,'config'
+            ,&#39;config&#39;
             //&lt;/feature&gt;
         ];
 

@@ -29,7 +29,7 @@
  * Ext.Loader is the heart of the new dynamic dependency loading capability in Ext JS 4+. It is most commonly used
  * via the {@link Ext#require} shorthand. Ext.Loader supports both asynchronous and synchronous loading
  * approaches, and leverage their advantages for the best development flow.
- * We'll discuss about the pros and cons of each approach.
+ * We&#39;ll discuss about the pros and cons of each approach.
  *
  * __Note:__ The Loader is only enabled by default in development versions of the library (eg sencha-touch-debug.js). To
  * explicitly enable the loader, use `Ext.Loader.setConfig({ enabled: true });` before the start of your script.
@@ -51,51 +51,51 @@
  *     // Ext.require({String/Array} expressions);
  *
  *     // Example: Single alias
- *     Ext.require('widget.window');
+ *     Ext.require(&#39;widget.window&#39;);
  *
  *     // Example: Single class name
- *     Ext.require('Ext.window.Window');
+ *     Ext.require(&#39;Ext.window.Window&#39;);
  *
  *     // Example: Multiple aliases / class names mix
- *     Ext.require(['widget.window', 'layout.border', 'Ext.data.Connection']);
+ *     Ext.require([&#39;widget.window&#39;, &#39;layout.border&#39;, &#39;Ext.data.Connection&#39;]);
  *
  *     // Wildcards
- *     Ext.require(['widget.*', 'layout.*', 'Ext.data.*']);
+ *     Ext.require([&#39;widget.*&#39;, &#39;layout.*&#39;, &#39;Ext.data.*&#39;]);
  *
- * ### Method 2: Explicitly exclude what you don't need: ###
+ * ### Method 2: Explicitly exclude what you don&#39;t need: ###
  *
  *     // Syntax: Note that it must be in this chaining format.
  *     // Ext.exclude({String/Array} expressions)
  *     //    .require({String/Array} expressions);
  *
  *     // Include everything except Ext.data.*
- *     Ext.exclude('Ext.data.*').require('*');
+ *     Ext.exclude(&#39;Ext.data.*&#39;).require(&#39;*&#39;);
  *
  *     // Include all widgets except widget.checkbox*,
  *     // which will match widget.checkbox, widget.checkboxfield, widget.checkboxgroup, etc.
- *     Ext.exclude('widget.checkbox*').require('widget.*');
+ *     Ext.exclude(&#39;widget.checkbox*&#39;).require(&#39;widget.*&#39;);
  *
  * # Synchronous Loading on Demand #
  *
  * - *Advantages:*
- * 	+ There's no need to specify dependencies before-hand, which is always the convenience of including ext-all.js
+ * 	+ There&#39;s no need to specify dependencies before-hand, which is always the convenience of including ext-all.js
  *  before
  *
  * - *Disadvantages:*
- * 	+ Not as good debugging experience since file name won't be shown (except in Firebug at the moment)
+ * 	+ Not as good debugging experience since file name won&#39;t be shown (except in Firebug at the moment)
  * 	+ Must be from the same domain due to XHR restriction
  * 	+ Need a web server, same reason as above
  *
- * There's one simple rule to follow: Instantiate everything with Ext.create instead of the `new` keyword
+ * There&#39;s one simple rule to follow: Instantiate everything with Ext.create instead of the `new` keyword
  *
- *     Ext.create('widget.window', {}); // Instead of new Ext.window.Window({...});
+ *     Ext.create(&#39;widget.window&#39;, {}); // Instead of new Ext.window.Window({...});
  *
- *     Ext.create('Ext.window.Window', {}); // Same as above, using full class name instead of alias
+ *     Ext.create(&#39;Ext.window.Window&#39;, {}); // Same as above, using full class name instead of alias
  *
- *     Ext.widget('window', {}); // Same as above, all you need is the traditional `xtype`
+ *     Ext.widget(&#39;window&#39;, {}); // Same as above, all you need is the traditional `xtype`
  *
  * Behind the scene, {@link Ext.ClassManager} will automatically check whether the given class name / alias has already
- *  existed on the page. If it's not, Ext.Loader will immediately switch itself to synchronous mode and automatic load the given
+ *  existed on the page. If it&#39;s not, Ext.Loader will immediately switch itself to synchronous mode and automatic load the given
  *  class and all its dependencies.
  *
  * # Hybrid Loading - The Best of Both Worlds #
@@ -103,28 +103,28 @@
  * It has all the advantages combined from asynchronous and synchronous loading. The development flow is simple:
  *
  * ### Step 1: Start writing your application using synchronous approach. ###
- * Ext.Loader will automatically fetch all dependencies on demand as they're
+ * Ext.Loader will automatically fetch all dependencies on demand as they&#39;re
  * needed during run-time. For example:
  *
  *     Ext.onReady(function(){
- *         var window = Ext.createWidget('window', {
+ *         var window = Ext.createWidget(&#39;window&#39;, {
  *             width: 500,
  *             height: 300,
  *             layout: {
- *                 type: 'border',
+ *                 type: &#39;border&#39;,
  *                 padding: 5
  *             },
- *             title: 'Hello Dialog',
+ *             title: &#39;Hello Dialog&#39;,
  *             items: [{
- *                 title: 'Navigation',
+ *                 title: &#39;Navigation&#39;,
  *                 collapsible: true,
- *                 region: 'west',
+ *                 region: &#39;west&#39;,
  *                 width: 200,
- *                 html: 'Hello',
+ *                 html: &#39;Hello&#39;,
  *                 split: true
  *             }, {
- *                 title: 'TabPanel',
- *                 region: 'center'
+ *                 title: &#39;TabPanel&#39;,
+ *                 region: &#39;center&#39;
  *             }]
  *         });
  *
@@ -133,14 +133,14 @@
  *
  * ### Step 2: Along the way, when you need better debugging ability, watch the console for warnings like these: ###
  *
- *     [Ext.Loader] Synchronously loading 'Ext.window.Window'; consider adding Ext.require('Ext.window.Window') before your application's code
+ *     [Ext.Loader] Synchronously loading &#39;Ext.window.Window&#39;; consider adding Ext.require(&#39;Ext.window.Window&#39;) before your application&#39;s code
  *     ClassManager.js:432
- *     [Ext.Loader] Synchronously loading 'Ext.layout.container.Border'; consider adding Ext.require('Ext.layout.container.Border') before your application's code
+ *     [Ext.Loader] Synchronously loading &#39;Ext.layout.container.Border&#39;; consider adding Ext.require(&#39;Ext.layout.container.Border&#39;) before your application&#39;s code
  *
  * Simply copy and paste the suggested code above `Ext.onReady`, i.e:
  *
- *     Ext.require('Ext.window.Window');
- *     Ext.require('Ext.layout.container.Border');
+ *     Ext.require(&#39;Ext.window.Window&#39;);
+ *     Ext.require(&#39;Ext.layout.container.Border&#39;);
  *
  *     Ext.onReady(function () {
  *         // ...
@@ -150,11 +150,11 @@
  *
  * # Deployment #
  *
- * It's important to note that dynamic loading should only be used during development on your local machines.
+ * It&#39;s important to note that dynamic loading should only be used during development on your local machines.
  * During production, all dependencies should be combined into one single JavaScript file. Ext.Loader makes
  * the whole process of transitioning from / to between development / maintenance and production as easy as
  * possible. Internally {@link Ext.Loader#history Ext.Loader.history} maintains the list of all dependencies your application
- * needs in the exact loading sequence. It's as simple as concatenating all files in this array into one,
+ * needs in the exact loading sequence. It&#39;s as simple as concatenating all files in this array into one,
  * then include it on top of your application.
  *
  * This process will be automated with Sencha Command, to be released and documented towards Ext JS 4 Final.
@@ -165,11 +165,11 @@
 
     var
         //&lt;if nonBrowser&gt;
-        isNonBrowser = typeof window == 'undefined',
-        isNodeJS = isNonBrowser &amp;&amp; (typeof require == 'function'),
-        isJsdb = isNonBrowser &amp;&amp; typeof system != 'undefined' &amp;&amp; system.program.search(/jsdb/) !== -1,
+        isNonBrowser = typeof window == &#39;undefined&#39;,
+        isNodeJS = isNonBrowser &amp;&amp; (typeof require == &#39;function&#39;),
+        isJsdb = isNonBrowser &amp;&amp; typeof system != &#39;undefined&#39; &amp;&amp; system.program.search(/jsdb/) !== -1,
         //&lt;/if&gt;
-        dependencyProperties = ['extend', 'mixins', 'requires'],
+        dependencyProperties = [&#39;extend&#39;, &#39;mixins&#39;, &#39;requires&#39;],
         Loader,
         setPathCount = 0;;
 
@@ -209,19 +209,19 @@
 
 <span id='Ext-Loader-cfg-disableCachingParam'>            /**
 </span>             * @cfg {String} disableCachingParam
-             * The get parameter name for the cache buster's timestamp.
+             * The get parameter name for the cache buster&#39;s timestamp.
              */
-            disableCachingParam: '_dc',
+            disableCachingParam: &#39;_dc&#39;,
 
 <span id='Ext-Loader-cfg-paths'>            /**
 </span>             * @cfg {Object} paths
              * The mapping from namespaces to file paths.
              *
              *     {
-             *         'Ext': '.', // This is set by default, Ext.layout.container.Container will be
+             *         &#39;Ext&#39;: &#39;.&#39;, // This is set by default, Ext.layout.container.Container will be
              *                     // loaded from ./layout/Container.js
              *
-             *         'My': './src/my_own_folder' // My.layout.Container will be loaded from
+             *         &#39;My&#39;: &#39;./src/my_own_folder&#39; // My.layout.Container will be loaded from
              *                                     // ./src/my_own_folder/layout/Container.js
              *     }
              *
@@ -230,7 +230,7 @@
              * will simply be loaded from `./Other/awesome/Class.js`.
              */
             paths: {
-                'Ext': '.'
+                &#39;Ext&#39;: &#39;.&#39;
             }
         },
 
@@ -243,7 +243,7 @@
          *         Ext.Loader.setConfig({
          *           enabled: true,
          *           paths: {
-         *               'My': 'my_own_path'
+         *               &#39;My&#39;: &#39;my_own_path&#39;
          *           }
          *         });
          *     &lt;script&gt;
@@ -290,7 +290,7 @@
 </span>         * Sets the path of a namespace.
          * For example:
          *
-         *     Ext.Loader.setPath('Ext', '.');
+         *     Ext.Loader.setPath(&#39;Ext&#39;, &#39;.&#39;);
          *
          * @param {String/Object} name See {@link Ext.Function#flexSetter flexSetter}
          * @param {String} [path] See {@link Ext.Function#flexSetter flexSetter}
@@ -325,33 +325,33 @@
 
 <span id='Ext-Loader-method-getPath'>        /**
 </span>         * Translates a className to a file path by adding the
-         * the proper prefix and converting the .'s to /'s. For example:
+         * the proper prefix and converting the .&#39;s to /&#39;s. For example:
          *
-         *     Ext.Loader.setPath('My', '/path/to/My');
+         *     Ext.Loader.setPath(&#39;My&#39;, &#39;/path/to/My&#39;);
          *
-         *     alert(Ext.Loader.getPath('My.awesome.Class')); // alerts '/path/to/My/awesome/Class.js'
+         *     alert(Ext.Loader.getPath(&#39;My.awesome.Class&#39;)); // alerts &#39;/path/to/My/awesome/Class.js&#39;
          *
          * Note that the deeper namespace levels, if explicitly set, are always resolved first. For example:
          *
          *     Ext.Loader.setPath({
-         *         'My': '/path/to/lib',
-         *         'My.awesome': '/other/path/for/awesome/stuff',
-         *         'My.awesome.more': '/more/awesome/path'
+         *         &#39;My&#39;: &#39;/path/to/lib&#39;,
+         *         &#39;My.awesome&#39;: &#39;/other/path/for/awesome/stuff&#39;,
+         *         &#39;My.awesome.more&#39;: &#39;/more/awesome/path&#39;
          *     });
          *
-         *     alert(Ext.Loader.getPath('My.awesome.Class')); // alerts '/other/path/for/awesome/stuff/Class.js'
+         *     alert(Ext.Loader.getPath(&#39;My.awesome.Class&#39;)); // alerts &#39;/other/path/for/awesome/stuff/Class.js&#39;
          *
-         *     alert(Ext.Loader.getPath('My.awesome.more.Class')); // alerts '/more/awesome/path/Class.js'
+         *     alert(Ext.Loader.getPath(&#39;My.awesome.more.Class&#39;)); // alerts &#39;/more/awesome/path/Class.js&#39;
          *
-         *     alert(Ext.Loader.getPath('My.cool.Class')); // alerts '/path/to/lib/cool/Class.js'
+         *     alert(Ext.Loader.getPath(&#39;My.cool.Class&#39;)); // alerts &#39;/path/to/lib/cool/Class.js&#39;
          *
-         *     alert(Ext.Loader.getPath('Unknown.strange.Stuff')); // alerts 'Unknown/strange/Stuff.js'
+         *     alert(Ext.Loader.getPath(&#39;Unknown.strange.Stuff&#39;)); // alerts &#39;Unknown/strange/Stuff.js&#39;
          *
          * @param {String} className
          * @return {String} path
          */
         getPath: function(className) {
-            var path = '',
+            var path = &#39;&#39;,
                 paths = this.config.paths,
                 prefix = this.getPrefix(className);
 
@@ -365,10 +365,10 @@
             }
 
             if (path.length &gt; 0) {
-                path += '/';
+                path += &#39;/&#39;;
             }
 
-            return path.replace(/\/\.\//g, '/') + className.replace(/\./g, &quot;/&quot;) + '.js';
+            return path.replace(/\/\.\//g, &#39;/&#39;) + className.replace(/\./g, &quot;/&quot;) + &#39;.js&#39;;
         },
 
 <span id='Ext-Loader-method-getPrefix'>        /**
@@ -377,14 +377,14 @@
          */
         getPrefix: function(className) {
             var paths = this.config.paths,
-                prefix, deepestPrefix = '';
+                prefix, deepestPrefix = &#39;&#39;;
 
             if (paths.hasOwnProperty(className)) {
                 return className;
             }
 
             for (prefix in paths) {
-                if (paths.hasOwnProperty(prefix) &amp;&amp; prefix + '.' === className.substring(0, prefix.length + 1)) {
+                if (paths.hasOwnProperty(prefix) &amp;&amp; prefix + &#39;.&#39; === className.substring(0, prefix.length + 1)) {
                     if (prefix.length &gt; deepestPrefix.length) {
                         deepestPrefix = prefix;
                     }
@@ -421,9 +421,9 @@
 </span>         * Explicitly exclude files from being loaded. Useful when used in conjunction with a broad include expression.
          * Can be chained with more `require` and `exclude` methods, eg:
          *
-         *     Ext.exclude('Ext.data.*').require('*');
+         *     Ext.exclude(&#39;Ext.data.*&#39;).require(&#39;*&#39;);
          *
-         *     Ext.exclude('widget.button*').require('widget.*');
+         *     Ext.exclude(&#39;widget.button*&#39;).require(&#39;widget.*&#39;);
          *
          * @param {Array} excludes
          * @return {Object} object contains `require` method for chaining.
@@ -469,7 +469,7 @@
 <span id='Ext-Loader-property-documentHead'>        /**
 </span>         * @private
          */
-        documentHead: typeof document != 'undefined' &amp;&amp; (document.head || document.getElementsByTagName('head')[0]),
+        documentHead: typeof document != &#39;undefined&#39; &amp;&amp; (document.head || document.getElementsByTagName(&#39;head&#39;)[0]),
 
 <span id='Ext-Loader-property-isLoading'>        /**
 </span>         * Flag indicating whether there are still files being loaded
@@ -565,7 +565,7 @@
                     requires = item.requires;
                     references = item.references;
 
-                    // Don't bother checking when the number of files loaded
+                    // Don&#39;t bother checking when the number of files loaded
                     // is still less than the array length
                     if (requires.length &gt; this.numLoadedFiles) {
                         continue;
@@ -596,11 +596,11 @@
         },
 
 <span id='Ext-Loader-method-injectScriptElement'>        /**
-</span>         * Inject a script element to document's head, call onLoad and onError accordingly
+</span>         * Inject a script element to document&#39;s head, call onLoad and onError accordingly
          * @private
          */
         injectScriptElement: function(url, onLoad, onError, scope, charset) {
-            var script = document.createElement('script'),
+            var script = document.createElement(&#39;script&#39;),
                 me = this,
                 onLoadFn = function() {
                     me.cleanupScriptElement(script);
@@ -611,12 +611,12 @@
                     onError.call(scope);
                 };
 
-            script.type = 'text/javascript';
+            script.type = &#39;text/javascript&#39;;
             script.src = url;
             script.onload = onLoadFn;
             script.onerror = onErrorFn;
             script.onreadystatechange = function() {
-                if (this.readyState === 'loaded' || this.readyState === 'complete') {
+                if (this.readyState === &#39;loaded&#39; || this.readyState === &#39;complete&#39;) {
                     onLoadFn();
                 }
             };
@@ -664,7 +664,7 @@
             var me = this,
                 isFileLoaded = this.isFileLoaded,
                 scriptElements = this.scriptElements,
-                noCacheUrl = url + (this.getConfig('disableCaching') ? ('?' + this.getConfig('disableCachingParam') + '=' + Ext.Date.now()) : ''),
+                noCacheUrl = url + (this.getConfig(&#39;disableCaching&#39;) ? (&#39;?&#39; + this.getConfig(&#39;disableCachingParam&#39;) + &#39;=&#39; + Ext.Date.now()) : &#39;&#39;),
                 xhr, status, content, onScriptError;
 
             if (isFileLoaded[url]) {
@@ -678,7 +678,7 @@
             if (!synchronous) {
                 onScriptError = function() {
                     //&lt;debug error&gt;
-                    onError.call(scope, &quot;Failed loading '&quot; + url + &quot;', please verify that the file exists&quot;, synchronous);
+                    onError.call(scope, &quot;Failed loading &#39;&quot; + url + &quot;&#39;, please verify that the file exists&quot;, synchronous);
                     //&lt;/debug&gt;
                 };
 
@@ -694,19 +694,19 @@
                 }
             }
             else {
-                if (typeof XMLHttpRequest != 'undefined') {
+                if (typeof XMLHttpRequest != &#39;undefined&#39;) {
                     xhr = new XMLHttpRequest();
                 } else {
-                    xhr = new ActiveXObject('Microsoft.XMLHTTP');
+                    xhr = new ActiveXObject(&#39;Microsoft.XMLHTTP&#39;);
                 }
 
                 try {
-                    xhr.open('GET', noCacheUrl, false);
+                    xhr.open(&#39;GET&#39;, noCacheUrl, false);
                     xhr.send(null);
                 }
                 catch (e) {
                     //&lt;debug error&gt;
-                    onError.call(this, &quot;Failed loading synchronously via XHR: '&quot; + url + &quot;'; It's likely that the file is either &quot; +
+                    onError.call(this, &quot;Failed loading synchronously via XHR: &#39;&quot; + url + &quot;&#39;; It&#39;s likely that the file is either &quot; +
                                        &quot;being loaded from a different domain or from the local file system whereby cross origin &quot; +
                                        &quot;requests are not allowed due to security reasons. Use asynchronous loading with &quot; +
                                        &quot;Ext.require instead.&quot;, synchronous);
@@ -717,14 +717,14 @@
                 content = xhr.responseText;
 
                 if ((status &gt;= 200 &amp;&amp; status &lt; 300) || status == 304 || (status == 0 &amp;&amp; content.length &gt; 0)) {
-                    // Debugger friendly, file names are still shown even though they're eval'ed code
-                    // Breakpoints work on both Firebug and Chrome's Web Inspector
+                    // Debugger friendly, file names are still shown even though they&#39;re eval&#39;ed code
+                    // Breakpoints work on both Firebug and Chrome&#39;s Web Inspector
                     Ext.globalEval(content + &quot;\n//@ sourceURL=&quot; + url);
                     onLoad.call(scope);
                 }
                 else {
                     //&lt;debug&gt;
-                    onError.call(this, &quot;Failed loading synchronously via XHR: '&quot; + url + &quot;'; please &quot; +
+                    onError.call(this, &quot;Failed loading synchronously via XHR: &#39;&quot; + url + &quot;&#39;; please &quot; +
                                        &quot;verify that the file exists. &quot; +
                                        &quot;XHR status code: &quot; + status, synchronous);
                     //&lt;/debug&gt;
@@ -774,7 +774,7 @@
                 for (i = 0,ln = excludes.length; i &lt; ln; i++) {
                     exclude = excludes[i];
 
-                    if (typeof exclude == 'string' &amp;&amp; exclude.length &gt; 0) {
+                    if (typeof exclude == &#39;string&#39; &amp;&amp; exclude.length &gt; 0) {
                         excludedClassNames = Manager.getNamesByExpression(exclude);
 
                         for (j = 0,subLn = excludedClassNames.length; j &lt; subLn; j++) {
@@ -813,7 +813,7 @@
             for (i = 0,ln = expressions.length; i &lt; ln; i++) {
                 expression = expressions[i];
 
-                if (typeof expression == 'string' &amp;&amp; expression.length &gt; 0) {
+                if (typeof expression == &#39;string&#39; &amp;&amp; expression.length &gt; 0) {
                     possibleClassNames = Manager.getNamesByExpression(expression);
                     subLn = possibleClassNames.length;
 
@@ -837,7 +837,7 @@
             if (classNames.length &gt; 0) {
                 if (!this.config.enabled) {
                     throw new Error(&quot;Ext.Loader is not enabled, so dependencies cannot be resolved dynamically. &quot; +
-                             &quot;Missing required class&quot; + ((classNames.length &gt; 1) ? &quot;es&quot; : &quot;&quot;) + &quot;: &quot; + classNames.join(', '));
+                             &quot;Missing required class&quot; + ((classNames.length &gt; 1) ? &quot;es&quot; : &quot;&quot;) + &quot;: &quot; + classNames.join(&#39;, &#39;));
                 }
             }
             else {
@@ -948,8 +948,8 @@
                 }
 
                 throw new Error(&quot;The following classes are not declared even if their files have been &quot; +
-                            &quot;loaded: '&quot; + missingClasses.join(&quot;', '&quot;) + &quot;'. Please check the source code of their &quot; +
-                            &quot;corresponding files for possible typos: '&quot; + missingPaths.join(&quot;', '&quot;));
+                            &quot;loaded: &#39;&quot; + missingClasses.join(&quot;&#39;, &#39;&quot;) + &quot;&#39;. Please check the source code of their &quot; +
+                            &quot;corresponding files for possible typos: &#39;&quot; + missingPaths.join(&quot;&#39;, &#39;&quot;));
             }
             //&lt;/debug&gt;
         },
@@ -1064,7 +1064,7 @@
             Ext.apply(Loader, {
                 syncModeEnabled: true,
                 setPath: flexSetter(function(name, path) {
-                    path = require('fs').realpathSync(path);
+                    path = require(&#39;fs&#39;).realpathSync(path);
                     this.config.paths[name] = path;
 
                     return this;
@@ -1096,7 +1096,7 @@
      * @method require
      * @inheritdoc Ext.Loader#require
      */
-    Ext.require = alias(Loader, 'require');
+    Ext.require = alias(Loader, &#39;require&#39;);
 
 <span id='Ext-method-syncRequire'>    /**
 </span>     * Synchronous version of {@link Ext#require}, convenient alias of {@link Ext.Loader#syncRequire}.
@@ -1104,7 +1104,7 @@
      * @method syncRequire
      * @inheritdoc Ext.Loader#syncRequire
      */
-    Ext.syncRequire = alias(Loader, 'syncRequire');
+    Ext.syncRequire = alias(Loader, &#39;syncRequire&#39;);
 
 <span id='Ext-method-exclude'>    /**
 </span>     * Convenient shortcut to {@link Ext.Loader#exclude}.
@@ -1112,7 +1112,7 @@
      * @method exclude
      * @inheritdoc Ext.Loader#exclude
      */
-    Ext.exclude = alias(Loader, 'exclude');
+    Ext.exclude = alias(Loader, &#39;exclude&#39;);
 
 <span id='Ext-method-onReady'>    /**
 </span>     * Adds a listener to be notified when the document is ready and all dependencies are loaded.
@@ -1128,7 +1128,7 @@
         Loader.onReady(fn, scope, true, options);
     };
 
-    Class.registerPreprocessor('loader', function(cls, data, hooks, continueFn) {
+    Class.registerPreprocessor(&#39;loader&#39;, function(cls, data, hooks, continueFn) {
         var me = this,
             dependencies = [],
             className = Manager.getName(cls),
@@ -1136,12 +1136,12 @@
 
         /*
         Loop through the dependencyProperties, look for string class names and push
-        them into a stack, regardless of whether the property's value is a string, array or object. For example:
+        them into a stack, regardless of whether the property&#39;s value is a string, array or object. For example:
         {
-              extend: 'Ext.MyClass',
-              requires: ['Ext.some.OtherClass'],
+              extend: &#39;Ext.MyClass&#39;,
+              requires: [&#39;Ext.some.OtherClass&#39;],
               mixins: {
-                  observable: 'Ext.mixin.Observable';
+                  observable: &#39;Ext.mixin.Observable&#39;;
               }
         }
         which will later be transformed into:
@@ -1160,24 +1160,24 @@
             if (data.hasOwnProperty(propertyName)) {
                 propertyValue = data[propertyName];
 
-                if (typeof propertyValue == 'string') {
+                if (typeof propertyValue == &#39;string&#39;) {
                     dependencies.push(propertyValue);
                 }
                 else if (propertyValue instanceof Array) {
                     for (j = 0, subLn = propertyValue.length; j &lt; subLn; j++) {
                         value = propertyValue[j];
 
-                        if (typeof value == 'string') {
+                        if (typeof value == &#39;string&#39;) {
                             dependencies.push(value);
                         }
                     }
                 }
-                else if (typeof propertyValue != 'function') {
+                else if (typeof propertyValue != &#39;function&#39;) {
                     for (j in propertyValue) {
                         if (propertyValue.hasOwnProperty(j)) {
                             value = propertyValue[j];
 
-                            if (typeof value == 'string') {
+                            if (typeof value == &#39;string&#39;) {
                                 dependencies.push(value);
                             }
                         }
@@ -1221,9 +1221,9 @@
 
                 if (requiresMap[cls]) {
                     if (Ext.Array.contains(requiresMap[cls], className)) {
-                        throw new Error(&quot;Deadlock detected while loading dependencies! '&quot; + className + &quot;' and '&quot; +
-                                deadlockPath[1] + &quot;' &quot; + &quot;mutually require each other. Path: &quot; +
-                                deadlockPath.join(' -&gt; ') + &quot; -&gt; &quot; + deadlockPath[0]);
+                        throw new Error(&quot;Deadlock detected while loading dependencies! &#39;&quot; + className + &quot;&#39; and &#39;&quot; +
+                                deadlockPath[1] + &quot;&#39; &quot; + &quot;mutually require each other. Path: &quot; +
+                                deadlockPath.join(&#39; -&gt; &#39;) + &quot; -&gt; &quot; + deadlockPath[0]);
                     }
 
                     for (i = 0,ln = requiresMap[cls].length; i &lt; ln; i++) {
@@ -1245,24 +1245,24 @@
                 if (data.hasOwnProperty(propertyName)) {
                     propertyValue = data[propertyName];
 
-                    if (typeof propertyValue == 'string') {
+                    if (typeof propertyValue == &#39;string&#39;) {
                         data[propertyName] = Manager.get(propertyValue);
                     }
                     else if (propertyValue instanceof Array) {
                         for (j = 0, subLn = propertyValue.length; j &lt; subLn; j++) {
                             value = propertyValue[j];
 
-                            if (typeof value == 'string') {
+                            if (typeof value == &#39;string&#39;) {
                                 data[propertyName][j] = Manager.get(value);
                             }
                         }
                     }
-                    else if (typeof propertyValue != 'function') {
+                    else if (typeof propertyValue != &#39;function&#39;) {
                         for (var k in propertyValue) {
                             if (propertyValue.hasOwnProperty(k)) {
                                 value = propertyValue[k];
 
-                                if (typeof value == 'string') {
+                                if (typeof value == &#39;string&#39;) {
                                     data[propertyName][k] = Manager.get(value);
                                 }
                             }
@@ -1275,17 +1275,17 @@
         });
 
         return false;
-    }, true, 'after', 'className');
+    }, true, &#39;after&#39;, &#39;className&#39;);
 
     //&lt;feature classSystem.loader&gt;
 <span id='Ext-Class-cfg-uses'>    /**
 </span>     * @cfg {String[]} uses
      * @member Ext.Class
-     * List of optional classes to load together with this class. These aren't necessarily loaded before
+     * List of optional classes to load together with this class. These aren&#39;t necessarily loaded before
      * this class is created, but are guaranteed to be available before Ext.onReady listeners are
      * invoked
      */
-    Manager.registerPostprocessor('uses', function(name, cls, data) {
+    Manager.registerPostprocessor(&#39;uses&#39;, function(name, cls, data) {
         var uses = arrayFrom(data.uses),
             items = [],
             i, ln, item;
@@ -1293,7 +1293,7 @@
         for (i = 0,ln = uses.length; i &lt; ln; i++) {
             item = uses[i];
 
-            if (typeof item == 'string') {
+            if (typeof item == &#39;string&#39;) {
                 items.push(item);
             }
         }
@@ -1314,16 +1314,16 @@
 // with alias / alternates removed, as those are handled separately by
 // compiler-generated metadata
 (function() {
-    var scripts = document.getElementsByTagName('script'),
+    var scripts = document.getElementsByTagName(&#39;script&#39;),
         currentScript = scripts[scripts.length - 1],
         src = currentScript.src,
-        path = src.substring(0, src.lastIndexOf('/') + 1),
+        path = src.substring(0, src.lastIndexOf(&#39;/&#39;) + 1),
         Loader = Ext.Loader;
 
     //&lt;debug&gt;
-    // if we're running in dev mode out of the repo src tree, then this
+    // if we&#39;re running in dev mode out of the repo src tree, then this
     // file will potentially be loaded from the touch/src/core/class folder
-    // so we'll need to adjust for that
+    // so we&#39;ll need to adjust for that
     if(src.indexOf(&quot;src/core/class/&quot;) != -1) {
         path = path + &quot;../../../&quot;;
     }
@@ -1334,7 +1334,7 @@
         enabled: true,
         disableCaching: !/[?&amp;](cache|breakpoint)/i.test(location.search),
         paths: {
-            'Ext' : path + 'src'
+            &#39;Ext&#39; : path + &#39;src&#39;
         }
     });
 

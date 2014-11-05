@@ -21,12 +21,12 @@
  * @private
  * @author Robert Dougan &lt;rob@sencha.com&gt;
  */
-Ext.define('Ext.navigation.Bar', {
-    extend: 'Ext.TitleBar',
+Ext.define(&#39;Ext.navigation.Bar&#39;, {
+    extend: &#39;Ext.TitleBar&#39;,
 
     requires: [
-        'Ext.Button',
-        'Ext.Spacer'
+        &#39;Ext.Button&#39;,
+        &#39;Ext.Spacer&#39;
     ],
 
 <span id='Ext-navigation-Bar-property-isToolbar'>    // @private
@@ -37,20 +37,20 @@ Ext.define('Ext.navigation.Bar', {
 </span>         * @cfg
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'toolbar',
+        baseCls: Ext.baseCSSPrefix + &#39;toolbar&#39;,
 
 <span id='Ext-navigation-Bar-cfg-cls'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        cls: Ext.baseCSSPrefix + 'navigation-bar',
+        cls: Ext.baseCSSPrefix + &#39;navigation-bar&#39;,
 
 <span id='Ext-navigation-Bar-cfg-ui'>        /**
 </span>         * @cfg {String} ui
-         * Style options for Toolbar. Either 'light' or 'dark'.
+         * Style options for Toolbar. Either &#39;light&#39; or &#39;dark&#39;.
          * @accessor
          */
-        ui: 'dark',
+        ui: &#39;dark&#39;,
 
 <span id='Ext-navigation-Bar-cfg-title'>        /**
 </span>         * @cfg {String} title
@@ -66,7 +66,7 @@ Ext.define('Ext.navigation.Bar', {
          * @hide
          * @accessor
          */
-        defaultType: 'button',
+        defaultType: &#39;button&#39;,
 
 <span id='global-cfg-layout'>        /**
 </span>         * @cfg
@@ -74,7 +74,7 @@ Ext.define('Ext.navigation.Bar', {
          * @accessor
          */
         layout: {
-            type: 'hbox'
+            type: &#39;hbox&#39;
         },
 
 <span id='Ext-navigation-Bar-cfg-items'>        /**
@@ -96,7 +96,7 @@ Ext.define('Ext.navigation.Bar', {
          * @private
          * @accessor
          */
-        defaultBackButtonText: 'Back',
+        defaultBackButtonText: &#39;Back&#39;,
 
 <span id='Ext-navigation-Bar-cfg-animation'>        /**
 </span>         * @cfg {Object} animation
@@ -137,14 +137,14 @@ Ext.define('Ext.navigation.Bar', {
          * @accessor
          */
         backButton: {
-            align: 'left',
-            ui: 'back',
+            align: &#39;left&#39;,
+            ui: &#39;back&#39;,
             hidden: true
         }
     },
 
 <span id='Ext-navigation-Bar-property-platformConfig'>    platformConfig: [{
-</span>        theme: ['Blackberry'],
+</span>        theme: [&#39;Blackberry&#39;],
         animation: false
     }],
 
@@ -193,7 +193,7 @@ Ext.define('Ext.navigation.Bar', {
     },
 
 <span id='Ext-navigation-Bar-method-onBackButtonTap'>    onBackButtonTap: function() {
-</span>        this.fireEvent('back', this);
+</span>        this.fireEvent(&#39;back&#39;, this);
     },
 
 <span id='Ext-navigation-Bar-method-updateView'>    /**
@@ -213,13 +213,13 @@ Ext.define('Ext.navigation.Bar', {
                 item = innerItems[i];
                 title = (item.getTitle) ? item.getTitle() : item.config.title;
 
-                me.backButtonStack.push(title || '&amp;nbsp;');
+                me.backButtonStack.push(title || &#39;&amp;nbsp;&#39;);
             }
 
             titleText = me.getTitleText();
 
             if (titleText === undefined) {
-                titleText = '';
+                titleText = &#39;&#39;;
             }
 
             me.setTitle(titleText);
@@ -244,7 +244,7 @@ Ext.define('Ext.navigation.Bar', {
 
         title = (item.getTitle) ? item.getTitle() : item.config.title;
 
-        backButtonStack.push(title || '&amp;nbsp;');
+        backButtonStack.push(title || &#39;&amp;nbsp;&#39;);
         hasPrevious = backButtonStack.length &gt; 1;
 
         me.doChangeView(view, hasPrevious, false);
@@ -283,12 +283,12 @@ Ext.define('Ext.navigation.Bar', {
 
         if (animated) {
             leftGhost = me.createProxy(leftBox.element);
-            leftBoxElement.setStyle('opacity', '0');
+            leftBoxElement.setStyle(&#39;opacity&#39;, &#39;0&#39;);
             backButton.setText(backButtonText);
-            backButton[hasPrevious ? 'show' : 'hide']();
+            backButton[hasPrevious ? &#39;show&#39; : &#39;hide&#39;]();
 
             titleGhost = me.createProxy(titleComponent.element.getParent());
-            titleElement.setStyle('opacity', '0');
+            titleElement.setStyle(&#39;opacity&#39;, &#39;0&#39;);
             me.setTitle(titleText);
 
             properties = me.measureView(leftGhost, titleGhost, reverse);
@@ -498,13 +498,13 @@ Ext.define('Ext.navigation.Bar', {
 
         config = Ext.apply(config, {
             element: element,
-            easing: 'ease-in-out',
+            easing: &#39;ease-in-out&#39;,
             duration: me.getAnimation().duration || 250,
             preserveEndState: true
         });
 
         animation = new Ext.fx.Animation(config);
-        animation.on('animationend', function() {
+        animation.on(&#39;animationend&#39;, function() {
             if (callback) {
                 callback.call(me);
             }
@@ -576,7 +576,7 @@ Ext.define('Ext.navigation.Bar', {
     },
 
 <span id='Ext-navigation-Bar-method-doSetHidden'>    /**
-</span>     * We override the hidden method because we don't want to remove it from the view using display:none. Instead we just position it off
+</span>     * We override the hidden method because we don&#39;t want to remove it from the view using display:none. Instead we just position it off
      * the screen, much like the navigation bar proxy. This means that all animations, pushing, popping etc. all still work when if you hide/show
      * this bar at any time.
      * @private
@@ -584,17 +584,17 @@ Ext.define('Ext.navigation.Bar', {
     doSetHidden: function(hidden) {
         if (!hidden) {
             this.element.setStyle({
-                position: 'relative',
-                top: 'auto',
-                left: 'auto',
-                width: 'auto'
+                position: &#39;relative&#39;,
+                top: &#39;auto&#39;,
+                left: &#39;auto&#39;,
+                width: &#39;auto&#39;
             });
         } else {
             this.element.setStyle({
-                position: 'absolute',
-                top: '-1000px',
-                left: '-1000px',
-                width: this.element.getWidth() + 'px'
+                position: &#39;absolute&#39;,
+                top: &#39;-1000px&#39;,
+                left: &#39;-1000px&#39;,
+                width: this.element.getWidth() + &#39;px&#39;
             });
         }
     },
@@ -608,7 +608,7 @@ Ext.define('Ext.navigation.Bar', {
         var ghost, x, y, left, width;
 
         ghost = element.dom.cloneNode(true);
-        ghost.id = element.id + '-proxy';
+        ghost.id = element.id + &#39;-proxy&#39;;
 
         //insert it into the toolbar
         element.getParent().dom.appendChild(ghost);
@@ -619,7 +619,7 @@ Ext.define('Ext.navigation.Bar', {
         y = element.getY();
         left = element.getLeft();
         width = element.getWidth();
-        ghost.setStyle('position', 'absolute');
+        ghost.setStyle(&#39;position&#39;, &#39;absolute&#39;);
         ghost.setX(x);
         ghost.setY(y);
         ghost.setHeight(element.getHeight());

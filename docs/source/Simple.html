@@ -22,27 +22,27 @@
  *
  * An example of a configured simple generator would be:
  *
- *     Ext.define('MyApp.data.MyModel', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;MyApp.data.MyModel&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
  *             identifier: {
- *                 type: 'simple',
- *                 prefix: 'ID_'
+ *                 type: &#39;simple&#39;,
+ *                 prefix: &#39;ID_&#39;
  *             }
  *         }
  *     });
- *     // assign id's of ID_1, ID_2, ID_3, etc.
+ *     // assign id&#39;s of ID_1, ID_2, ID_3, etc.
  *
  */
-Ext.define('Ext.data.identifier.Simple', {
-    alias: 'data.identifier.simple',
+Ext.define(&#39;Ext.data.identifier.Simple&#39;, {
+    alias: &#39;data.identifier.simple&#39;,
     
     statics: {
 <span id='Ext-data-identifier-Simple-static-property-AUTO_ID'>        AUTO_ID: 1
 </span>    },
 
     config: {
-<span id='Ext-data-identifier-Simple-cfg-prefix'>        prefix: 'ext-record-'
+<span id='Ext-data-identifier-Simple-cfg-prefix'>        prefix: &#39;ext-record-&#39;
 </span>    },
 
 <span id='Ext-data-identifier-Simple-method-constructor'>    constructor: function(config) {

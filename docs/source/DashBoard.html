@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">//Created by Yilei Mou on 10/29/14
+<span id='SEEC-view-dashboard-DashBoard'>/**
+</span> * A sample dashboard
+ */
+Ext.define(&#39;SEEC.view.dashboard.DashBoard&#39;, {
+    extend: &#39;Ext.form.Panel&#39;,
+    xtype: &#39;dashboard&#39;,
+    requires: [
+        &#39;Ext.form.FieldSet&#39;,
+        &#39;Ext.field.Number&#39;,
+        &#39;Ext.field.Spinner&#39;,
+        &#39;Ext.field.Password&#39;,
+        &#39;Ext.field.Email&#39;,
+        &#39;Ext.field.Url&#39;,
+        &#39;Ext.field.DatePicker&#39;,
+        &#39;Ext.field.Select&#39;,
+        &#39;Ext.field.Hidden&#39;,
+        &#39;Ext.field.Radio&#39;
+    ],
+<span id='SEEC-view-dashboard-DashBoard-cfg-id'>    id: &#39;basicform&#39;,
+</span>    config: {
+<span id='SEEC-view-dashboard-DashBoard-cfg-items'>        items: [
+</span>            {
+                xtype: &#39;fieldset&#39;,
+                id: &#39;fieldset1&#39;,
+                title: &#39;Personal Info&#39;,
+                instructions: &#39;Please enter the information above.&#39;,
+                defaults: {
+                    labelWidth: &#39;35%&#39;
+                },
+                items: [
+                    {
+                        xtype         : &#39;textfield&#39;,
+                        name          : &#39;name&#39;,
+                        label         : &#39;Name&#39;,
+                        placeHolder   : &#39;Yilei Mou&#39;,
+                        autoCapitalize: true,
+                        required      : true,
+                        clearIcon     : true
+                    },
+                    {
+                        xtype: &#39;passwordfield&#39;,
+                        name : &#39;password&#39;,
+                        label: &#39;Password&#39;,
+                        clearIcon  : !Ext.theme.is.Blackberry
+                    },
+                    {
+                        xtype      : &#39;emailfield&#39;,
+                        name       : &#39;email&#39;,
+                        label      : &#39;Email&#39;,
+                        placeHolder: &#39;ymou.tech@gmail.com&#39;,
+                        clearIcon  : true
+                    },
+                    {
+                        xtype      : &#39;urlfield&#39;,
+                        name       : &#39;url&#39;,
+                        label      : &#39;Url&#39;,
+                        placeHolder: &#39;https://github.com/mylabc67&#39;,
+                        clearIcon  : true
+                    },
+                    {
+                        xtype      : &#39;spinnerfield&#39;,
+                        name       : &#39;spinner&#39;,
+                        label      : &#39;Spinner&#39;,
+                        minValue   : 0,
+                        maxValue   : 10,
+                        stepValue  : 1,
+                        cycle      : true
+                    },
+                    {
+                        xtype: &#39;checkboxfield&#39;,
+                        name : &#39;cool&#39;,
+                        label: &#39;Cool&#39;
+                    },
+                    {
+                        xtype: &#39;datepickerfield&#39;,
+                        destroyPickerOnHide: true,
+                        name : &#39;date&#39;,
+                        label: &#39;Start Date&#39;,
+                        value: new Date(),
+                        picker: {
+                            yearFrom: 1990
+                        }
+                    },
+                    {
+                        xtype: &#39;selectfield&#39;,
+                        name : &#39;rank&#39;,
+                        label: &#39;Rank&#39;,
+                        options: [
+                            {
+                                text : &#39;Master&#39;,
+                                value: &#39;master&#39;
+                            },
+                            {
+                                text : &#39;Journeyman&#39;,
+                                value: &#39;journeyman&#39;
+                            },
+                            {
+                                text : &#39;Apprentice&#39;,
+                                value: &#39;apprentice&#39;
+                            }
+                        ]
+                    },
+                    {
+                        xtype: &#39;textareafield&#39;,
+                        name : &#39;bio&#39;,
+                        label: &#39;Bio&#39;
+                    }
+                ]
+            },
+            {
+                xtype: &#39;fieldset&#39;,
+                id: &#39;fieldset2&#39;,
+                title: &#39;Favorite color&#39;,
+                defaults: {
+                    xtype     : &#39;radiofield&#39;,
+                    labelWidth: &#39;35%&#39;
+                },
+                items: [
+                    {
+                        name : &#39;color&#39;,
+                        value: &#39;red&#39;,
+                        label: &#39;Red&#39;
+                    },
+                    {
+                        name : &#39;color&#39;,
+                        label: &#39;Blue&#39;,
+                        value: &#39;blue&#39;
+                    },
+                    {
+                        name : &#39;color&#39;,
+                        label: &#39;Green&#39;,
+                        value: &#39;green&#39;
+                    },
+                    {
+                        name : &#39;color&#39;,
+                        label: &#39;Purple&#39;,
+                        value: &#39;purple&#39;
+                    }
+                ]
+            },
+            {
+                xtype: &#39;container&#39;,
+                defaults: {
+                    xtype: &#39;button&#39;,
+                    style: &#39;margin: .5em&#39;,
+                    flex : 1
+                },
+                layout: {
+                    type: &#39;hbox&#39;
+                },
+                items: [
+                    {
+                        text: &#39;Disable fields&#39;,
+                        scope: this,
+                        hasDisabled: false,
+                        handler: function(btn){
+                            var fieldset1 = Ext.getCmp(&#39;fieldset1&#39;),
+                                fieldset2 = Ext.getCmp(&#39;fieldset2&#39;);
+
+                            if (btn.hasDisabled) {
+                                fieldset1.enable();
+                                fieldset2.enable();
+                                btn.hasDisabled = false;
+                                btn.setText(&#39;Disable fields&#39;);
+                            } else {
+                                fieldset1.disable();
+                                fieldset2.disable();
+                                btn.hasDisabled = true;
+                                btn.setText(&#39;Enable fields&#39;);
+                            }
+                        }
+                    },
+                    {
+                        text: &#39;Reset&#39;,
+                        handler: function(){
+                            Ext.getCmp(&#39;basicform&#39;).reset();
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+});</pre>
+</body>
+</html>

@@ -52,23 +52,23 @@
  * ## Example
  *
  * This is an example, where an unordered list with 3 children items is appended to an existing element with id
- * 'my-div':
+ * &#39;my-div&#39;:
  *
  *     var dh = Ext.DomHelper; // create shorthand alias
  *     // specification object
  *     var spec = {
- *         id: 'my-ul',
- *         tag: 'ul',
- *         cls: 'my-list',
+ *         id: &#39;my-ul&#39;,
+ *         tag: &#39;ul&#39;,
+ *         cls: &#39;my-list&#39;,
  *         // append children after creating
- *         children: [     // may also specify 'cn' instead of 'children'
- *             {tag: 'li', id: 'item0', html: 'List Item 0'},
- *             {tag: 'li', id: 'item1', html: 'List Item 1'},
- *             {tag: 'li', id: 'item2', html: 'List Item 2'}
+ *         children: [     // may also specify &#39;cn&#39; instead of &#39;children&#39;
+ *             {tag: &#39;li&#39;, id: &#39;item0&#39;, html: &#39;List Item 0&#39;},
+ *             {tag: &#39;li&#39;, id: &#39;item1&#39;, html: &#39;List Item 1&#39;},
+ *             {tag: &#39;li&#39;, id: &#39;item2&#39;, html: &#39;List Item 2&#39;}
  *         ]
  *     };
  *     var list = dh.append(
- *         'my-div', // the context element 'my-div' can either be the id or the actual node
+ *         &#39;my-div&#39;, // the context element &#39;my-div&#39; can either be the id or the actual node
  *         spec      // the specification object
  *     );
  *
@@ -76,9 +76,9 @@
  * This can be used to insert multiple sibling nodes into an existing container very efficiently. For example, to add
  * more list items to the example above:
  *
- *     dh.append('my-ul', [
- *         {tag: 'li', id: 'item3', html: 'List Item 3'},
- *         {tag: 'li', id: 'item4', html: 'List Item 4'}
+ *     dh.append(&#39;my-ul&#39;, [
+ *         {tag: &#39;li&#39;, id: &#39;item3&#39;, html: &#39;List Item 3&#39;},
+ *         {tag: &#39;li&#39;, id: &#39;item4&#39;, html: &#39;List Item 4&#39;}
  *     ]);
  *
  * ## Templating
@@ -88,9 +88,9 @@
  * utilize templating this time:
  *
  *     // create the node
- *     var list = dh.append('my-div', {tag: 'ul', cls: 'my-list'});
+ *     var list = dh.append(&#39;my-div&#39;, {tag: &#39;ul&#39;, cls: &#39;my-list&#39;});
  *     // get template
- *     var tpl = dh.createTemplate({tag: 'li', id: 'item{0}', html: 'List Item {0}'});
+ *     var tpl = dh.createTemplate({tag: &#39;li&#39;, id: &#39;item{0}&#39;, html: &#39;List Item {0}&#39;});
  *
  *     for(var i = 0; i &lt; 5; i++){
  *         tpl.append(list, i); // use template to append to the actual node
@@ -98,26 +98,26 @@
  *
  * An example using a template:
  *
- *     var html = '&quot;{0}&quot; href=&quot;{1}&quot; class=&quot;nav&quot;&gt;{2}';
+ *     var html = &#39;&quot;{0}&quot; href=&quot;{1}&quot; class=&quot;nav&quot;&gt;{2}&#39;;
  *
  *     var tpl = new Ext.DomHelper.createTemplate(html);
- *     tpl.append('blog-roll', ['link1', 'http://www.tommymaintz.com/', &quot;Tommy's Site&quot;]);
- *     tpl.append('blog-roll', ['link2', 'http://www.avins.org/', &quot;Jamie's Site&quot;]);
+ *     tpl.append(&#39;blog-roll&#39;, [&#39;link1&#39;, &#39;http://www.tommymaintz.com/&#39;, &quot;Tommy&#39;s Site&quot;]);
+ *     tpl.append(&#39;blog-roll&#39;, [&#39;link2&#39;, &#39;http://www.avins.org/&#39;, &quot;Jamie&#39;s Site&quot;]);
  *
  * The same example using named parameters:
  *
- *     var html = '&quot;{id}&quot; href=&quot;{url}&quot; class=&quot;nav&quot;&gt;{text}';
+ *     var html = &#39;&quot;{id}&quot; href=&quot;{url}&quot; class=&quot;nav&quot;&gt;{text}&#39;;
  *
  *     var tpl = new Ext.DomHelper.createTemplate(html);
- *     tpl.append('blog-roll', {
- *         id: 'link1',
- *         url: 'http://www.tommymaintz.com/',
- *         text: &quot;Tommy's Site&quot;
+ *     tpl.append(&#39;blog-roll&#39;, {
+ *         id: &#39;link1&#39;,
+ *         url: &#39;http://www.tommymaintz.com/&#39;,
+ *         text: &quot;Tommy&#39;s Site&quot;
  *     });
- *     tpl.append('blog-roll', {
- *         id: 'link2',
- *         url: 'http://www.avins.org/',
- *         text: &quot;Jamie's Site&quot;
+ *     tpl.append(&#39;blog-roll&#39;, {
+ *         id: &#39;link2&#39;,
+ *         url: &#39;http://www.avins.org/&#39;,
+ *         text: &quot;Jamie&#39;s Site&quot;
  *     });
  *
  * ## Compiling Templates
@@ -125,10 +125,10 @@
  * Templates are applied using regular expressions. The performance is great, but if you are adding a bunch of DOM
  * elements using the same template, you can increase performance even further by &quot;compiling&quot; the template. The way
  * &quot;compile()&quot; works is the template is parsed and broken up at the different variable points and a dynamic function is
- * created and eval'ed. The generated function performs string concatenation of these parts and the passed variables
+ * created and eval&#39;ed. The generated function performs string concatenation of these parts and the passed variables
  * instead of using regular expressions.
  *
- *     var html = '&quot;{id}&quot; href=&quot;{url}&quot; class=&quot;nav&quot;&gt;{text}';
+ *     var html = &#39;&quot;{id}&quot; href=&quot;{url}&quot; class=&quot;nav&quot;&gt;{text}&#39;;
  *
  *     var tpl = new Ext.DomHelper.createTemplate(html);
  *     tpl.compile();
@@ -146,12 +146,12 @@
  *     Ext.DomHelper.useDom = true; // force it to use DOM; reduces performance
  *
  */
-Ext.define('Ext.dom.Helper', {
+Ext.define(&#39;Ext.dom.Helper&#39;, {
 <span id='Ext-DomHelper-property-emptyTags'>    emptyTags : /^(?:br|frame|hr|img|input|link|meta|range|spacer|wbr|area|param|col)$/i,
 </span><span id='Ext-DomHelper-property-confRe'>    confRe : /tag|children|cn|html|tpl|tplData$/i,
 </span><span id='Ext-DomHelper-property-endRe'>    endRe : /end/i,
 </span>
-<span id='Ext-DomHelper-property-attribXlat'>    attribXlat: { cls : 'class', htmlFor : 'for' },
+<span id='Ext-DomHelper-property-attribXlat'>    attribXlat: { cls : &#39;class&#39;, htmlFor : &#39;for&#39; },
 </span>
 <span id='Ext-DomHelper-property-closeTags'>    closeTags: {},
 </span>
@@ -160,7 +160,7 @@ Ext.define('Ext.dom.Helper', {
             cache = {};
 
         function decamel (match, p1, p2) {
-            return p1 + '-' + p2.toLowerCase();
+            return p1 + &#39;-&#39; + p2.toLowerCase();
         }
 
         return function (s) {
@@ -181,18 +181,18 @@ Ext.define('Ext.dom.Helper', {
                 }
             }
         } else {
-            tag = spec.tag || 'div';
-            buffer.push('&lt;', tag);
+            tag = spec.tag || &#39;div&#39;;
+            buffer.push(&#39;&lt;&#39;, tag);
 
             for (attr in spec) {
                 if (spec.hasOwnProperty(attr)) {
                     val = spec[attr];
                     if (!me.confRe.test(attr)) {
                         if (typeof val == &quot;object&quot;) {
-                            buffer.push(' ', attr, '=&quot;');
-                            me.generateStyles(val, buffer).push('&quot;');
+                            buffer.push(&#39; &#39;, attr, &#39;=&quot;&#39;);
+                            me.generateStyles(val, buffer).push(&#39;&quot;&#39;);
                         } else {
-                            buffer.push(' ', me.attribXlat[attr] || attr, '=&quot;', val, '&quot;');
+                            buffer.push(&#39; &#39;, me.attribXlat[attr] || attr, &#39;=&quot;&#39;, val, &#39;&quot;&#39;);
                         }
                     }
                 }
@@ -200,9 +200,9 @@ Ext.define('Ext.dom.Helper', {
 
             // Now either just close the tag or try to add children and close the tag.
             if (me.emptyTags.test(tag)) {
-                buffer.push('/&gt;');
+                buffer.push(&#39;/&gt;&#39;);
             } else {
-                buffer.push('&gt;');
+                buffer.push(&#39;&gt;&#39;);
 
                 // Apply the tpl html, and cn specifications
                 if ((val = spec.tpl)) {
@@ -217,7 +217,7 @@ Ext.define('Ext.dom.Helper', {
 
                 // we generate a lot of close tags, so cache them rather than push 3 parts
                 closeTags = me.closeTags;
-                buffer.push(closeTags[tag] || (closeTags[tag] = '&lt;/' + tag + '&gt;'));
+                buffer.push(closeTags[tag] || (closeTags[tag] = &#39;&lt;/&#39; + tag + &#39;&gt;&#39;));
             }
         }
 
@@ -231,10 +231,10 @@ Ext.define('Ext.dom.Helper', {
      * The basic form of this method returns a string:
      *
      *      var s = Ext.DomHelper.generateStyles({
-     *          backgroundColor: 'red'
+     *          backgroundColor: &#39;red&#39;
      *      });
      *
-     *      // s = 'background-color:red;'
+     *      // s = &#39;background-color:red;&#39;
      *
      * Alternatively, this method can append to an output array.
      *
@@ -243,7 +243,7 @@ Ext.define('Ext.dom.Helper', {
      *      // ...
      *
      *      Ext.DomHelper.generateStyles({
-     *          backgroundColor: 'red'
+     *          backgroundColor: &#39;red&#39;
      *      }, buf);
      *
      * In this case, the style text is pushed on to the array and the array is returned.
@@ -259,11 +259,11 @@ Ext.define('Ext.dom.Helper', {
 
         for (name in styles) {
             if (styles.hasOwnProperty(name)) {
-                a.push(this.decamelizeName(name), ':', styles[name], ';');
+                a.push(this.decamelizeName(name), &#39;:&#39;, styles[name], &#39;;&#39;);
             }
         }
 
-        return buffer || a.join('');
+        return buffer || a.join(&#39;&#39;);
     },
 
 <span id='Ext-DomHelper-method-markup'>    /**
@@ -277,13 +277,13 @@ Ext.define('Ext.dom.Helper', {
         }
 
         var buf = this.generateMarkup(spec, []);
-        return buf.join('');
+        return buf.join(&#39;&#39;);
     },
 
 <span id='Ext-DomHelper-method-applyStyles'>    /**
 </span>     * Applies a style specification to an element.
      * @param {String/HTMLElement} el The element to apply styles to
-     * @param {String/Object/Function} styles A style specification string e.g. 'width:100px', or object in the form {width:'100px'}, or
+     * @param {String/Object/Function} styles A style specification string e.g. &#39;width:100px&#39;, or object in the form {width:&#39;100px&#39;}, or
      * a function which returns such a specification.
      */
     applyStyles: function(el, styles) {
@@ -334,21 +334,21 @@ Ext.define('Ext.dom.Helper', {
         where = where.toLowerCase();
 
         if (Ext.isTextNode(el)) {
-            if (where == 'afterbegin' ) {
-                where = 'beforebegin';
+            if (where == &#39;afterbegin&#39; ) {
+                where = &#39;beforebegin&#39;;
             }
-            else if (where == 'beforeend') {
-                where = 'afterend';
+            else if (where == &#39;beforeend&#39;) {
+                where = &#39;afterend&#39;;
             }
         }
 
-        isBeforeBegin = where == 'beforebegin';
-        isAfterBegin = where == 'afterbegin';
+        isBeforeBegin = where == &#39;beforebegin&#39;;
+        isAfterBegin = where == &#39;afterbegin&#39;;
 
         range = Ext.feature.has.CreateContextualFragment ? el.ownerDocument.createRange() : undefined;
-        setStart = 'setStart' + (this.endRe.test(where) ? 'After' : 'Before');
+        setStart = &#39;setStart&#39; + (this.endRe.test(where) ? &#39;After&#39; : &#39;Before&#39;);
 
-        if (isBeforeBegin || where == 'afterend') {
+        if (isBeforeBegin || where == &#39;afterend&#39;) {
             if (range) {
                 range[setStart](el);
                 frag = range.createContextualFragment(html);
@@ -357,14 +357,14 @@ Ext.define('Ext.dom.Helper', {
                 frag = this.createContextualFragment(html);
             }
             el.parentNode.insertBefore(frag, isBeforeBegin ? el : el.nextSibling);
-            return el[(isBeforeBegin ? 'previous' : 'next') + 'Sibling'];
+            return el[(isBeforeBegin ? &#39;previous&#39; : &#39;next&#39;) + &#39;Sibling&#39;];
         }
         else {
-            rangeEl = (isAfterBegin ? 'first' : 'last') + 'Child';
+            rangeEl = (isAfterBegin ? &#39;first&#39; : &#39;last&#39;) + &#39;Child&#39;;
             if (el.firstChild) {
                 if (range) {
                     // Creating ranges on a hidden element throws an error, checking for the element being painted is
-                    // VERY expensive, so we'll catch the error and fall back to using the full fragment
+                    // VERY expensive, so we&#39;ll catch the error and fall back to using the full fragment
                     try {
                         range[setStart](el[rangeEl]);
                         frag = range.createContextualFragment(html);
@@ -396,7 +396,7 @@ Ext.define('Ext.dom.Helper', {
      * @return {HTMLElement/Ext.Element} The new node
      */
     insertBefore: function(el, o, returnElement) {
-        return this.doInsert(el, o, returnElement, 'beforebegin');
+        return this.doInsert(el, o, returnElement, &#39;beforebegin&#39;);
     },
 
 <span id='Ext-DomHelper-method-insertAfter'>    /**
@@ -407,7 +407,7 @@ Ext.define('Ext.dom.Helper', {
      * @return {HTMLElement/Ext.Element} The new node
      */
     insertAfter: function(el, o, returnElement) {
-        return this.doInsert(el, o, returnElement, 'afterend');
+        return this.doInsert(el, o, returnElement, &#39;afterend&#39;);
     },
 
 <span id='Ext-DomHelper-method-insertFirst'>    /**
@@ -418,7 +418,7 @@ Ext.define('Ext.dom.Helper', {
      * @return {HTMLElement/Ext.Element} The new node
      */
     insertFirst: function(el, o, returnElement) {
-        return this.doInsert(el, o, returnElement, 'afterbegin');
+        return this.doInsert(el, o, returnElement, &#39;afterbegin&#39;);
     },
 
 <span id='Ext-DomHelper-method-append'>    /**
@@ -429,7 +429,7 @@ Ext.define('Ext.dom.Helper', {
      * @return {HTMLElement/Ext.Element} The new node
      */
     append: function(el, o, returnElement) {
-        return this.doInsert(el, o, returnElement, 'beforeend');
+        return this.doInsert(el, o, returnElement, &#39;beforeend&#39;);
     },
 
 <span id='Ext-DomHelper-method-overwrite'>    /**
@@ -460,7 +460,7 @@ Ext.define('Ext.dom.Helper', {
         return new Ext.Template(html);
     }
 }, function() {
-    Ext.ns('Ext.core');
+    Ext.ns(&#39;Ext.core&#39;);
     Ext.core.DomHelper = Ext.DomHelper = new this;
 });
 </pre>

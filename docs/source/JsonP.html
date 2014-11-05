@@ -26,8 +26,8 @@
  *
  *     @example preview
  *     Ext.Viewport.add({
- *         xtype: 'button',
- *         text: 'Make JsonP Request',
+ *         xtype: &#39;button&#39;,
+ *         text: &#39;Make JsonP Request&#39;,
  *         centered: true,
  *         handler: function(button) {
  *             // Mask the viewport
@@ -38,12 +38,12 @@
  *
  *             // Make the JsonP request
  *             Ext.data.JsonP.request({
- *                 url: 'http://free.worldweatheronline.com/feed/weather.ashx',
- *                 callbackKey: 'callback',
+ *                 url: &#39;http://free.worldweatheronline.com/feed/weather.ashx&#39;,
+ *                 callbackKey: &#39;callback&#39;,
  *                 params: {
- *                     key: '23f6a0ab24185952101705',
- *                     q: '94301', // Palo Alto
- *                     format: 'json',
+ *                     key: &#39;23f6a0ab24185952101705&#39;,
+ *                     q: &#39;94301&#39;, // Palo Alto
+ *                     format: &#39;json&#39;,
  *                     num_of_days: 5
  *                 },
  *                 success: function(result, request) {
@@ -55,7 +55,7 @@
  *                     if (weather) {
  *                         // Style the viewport html, and set the html of the max temperature
  *                         Ext.Viewport.setStyleHtmlContent(true);
- *                         Ext.Viewport.setHtml('The temperature in Palo Alto is &lt;b&gt;' + weather[0].tempMaxF + '° F&lt;/b&gt;');
+ *                         Ext.Viewport.setHtml(&#39;The temperature in Palo Alto is &lt;b&gt;&#39; + weather[0].tempMaxF + &#39;° F&lt;/b&gt;&#39;);
  *                     }
  *                 }
  *             });
@@ -64,8 +64,8 @@
  *
  * See the {@link #request} method for more details on making a JsonP request.
  */
-Ext.define('Ext.data.JsonP', {
-    alternateClassName: 'Ext.util.JSONP',
+Ext.define(&#39;Ext.data.JsonP&#39;, {
+    alternateClassName: &#39;Ext.util.JSONP&#39;,
 
     /* Begin Definitions */
 
@@ -103,7 +103,7 @@ Ext.define('Ext.data.JsonP', {
 </span>     * @property {String} disableCachingParam
      * Change the parameter which is sent went disabling caching through a cache buster.
      */
-    disableCachingParam: '_dc',
+    disableCachingParam: &#39;_dc&#39;,
 
 <span id='Ext-data-JsonP-property-callbackKey'>    /**
 </span>     * @property {String} callbackKey
@@ -111,7 +111,7 @@ Ext.define('Ext.data.JsonP', {
      * request completes. Thus, a common request will be in the form of:
      * `url?callback=Ext.data.JsonP.callback1`
      */
-    callbackKey: 'callback',
+    callbackKey: &#39;callback&#39;,
 
 <span id='Ext-data-JsonP-method-request'>    /**
 </span>     * Makes a JSONP request.
@@ -142,7 +142,7 @@ Ext.define('Ext.data.JsonP', {
 
         //&lt;debug&gt;
         if (!options.url) {
-            Ext.Logger.error('A url must be specified for a JSONP request.');
+            Ext.Logger.error(&#39;A url must be specified for a JSONP request.&#39;);
         }
         //&lt;/debug&gt;
 
@@ -150,16 +150,16 @@ Ext.define('Ext.data.JsonP', {
             disableCaching = Ext.isDefined(options.disableCaching) ? options.disableCaching : me.disableCaching,
             cacheParam = options.disableCachingParam || me.disableCachingParam,
             id = ++me.requestCount,
-            callbackName = options.callbackName || 'callback' + id,
+            callbackName = options.callbackName || &#39;callback&#39; + id,
             callbackKey = options.callbackKey || me.callbackKey,
             timeout = Ext.isDefined(options.timeout) ? options.timeout : me.timeout,
             params = Ext.apply({}, options.params),
             url = options.url,
-            name = Ext.isSandboxed ? Ext.getUniqueGlobalNamespace() : 'Ext',
+            name = Ext.isSandboxed ? Ext.getUniqueGlobalNamespace() : &#39;Ext&#39;,
             request,
             script;
 
-        params[callbackKey] = name + '.data.JsonP.' + callbackName;
+        params[callbackKey] = name + &#39;.data.JsonP.&#39; + callbackName;
         if (disableCaching) {
             params[cacheParam] = new Date().getTime();
         }
@@ -226,7 +226,7 @@ Ext.define('Ext.data.JsonP', {
      * @param {Object} request The request.
      */
     handleAbort: function(request){
-        request.errorType = 'abort';
+        request.errorType = &#39;abort&#39;;
         this.handleResponse(null, request);
     },
 
@@ -236,7 +236,7 @@ Ext.define('Ext.data.JsonP', {
      * @param {Object} request The request.
      */
     handleError: function(request){
-        request.errorType = 'error';
+        request.errorType = &#39;error&#39;;
         this.handleResponse(null, request);
     },
 
@@ -255,7 +255,7 @@ Ext.define('Ext.data.JsonP', {
      * @param {Object} request The request.
      */
     handleTimeout: function(request){
-        request.errorType = 'timeout';
+        request.errorType = &#39;timeout&#39;;
         this.handleResponse(null, request);
     },
 
@@ -296,7 +296,7 @@ Ext.define('Ext.data.JsonP', {
      * @param {Object} options The object passed to {@link #request}.
      */
     createScript: function(url, params, options) {
-        var script = document.createElement('script');
+        var script = document.createElement(&#39;script&#39;);
         script.setAttribute(&quot;src&quot;, Ext.urlAppend(url, Ext.Object.toQueryString(params)));
         script.setAttribute(&quot;async&quot;, true);
         script.setAttribute(&quot;type&quot;, &quot;text/javascript&quot;);

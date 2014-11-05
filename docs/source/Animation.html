@@ -21,16 +21,16 @@
  *
  * This class is a factory class that will create and return an animation class based on the {@link #type} configuration.
  */
-Ext.define('Ext.fx.Animation', {
+Ext.define(&#39;Ext.fx.Animation&#39;, {
 
     requires: [
-        'Ext.fx.animation.Slide',
-        'Ext.fx.animation.SlideOut',
-        'Ext.fx.animation.Fade',
-        'Ext.fx.animation.FadeOut',
-        'Ext.fx.animation.Flip',
-        'Ext.fx.animation.Pop',
-        'Ext.fx.animation.PopOut'
+        &#39;Ext.fx.animation.Slide&#39;,
+        &#39;Ext.fx.animation.SlideOut&#39;,
+        &#39;Ext.fx.animation.Fade&#39;,
+        &#39;Ext.fx.animation.FadeOut&#39;,
+        &#39;Ext.fx.animation.Flip&#39;,
+        &#39;Ext.fx.animation.Pop&#39;,
+        &#39;Ext.fx.animation.PopOut&#39;
     ],
 
 <span id='Ext-fx-Animation-cfg-type'>    /**
@@ -49,7 +49,7 @@ Ext.define('Ext.fx.Animation', {
         var defaultClass = Ext.fx.animation.Abstract,
             type;
 
-        if (typeof config == 'string') {
+        if (typeof config == &#39;string&#39;) {
             type = config;
             config = {};
         }
@@ -59,21 +59,21 @@ Ext.define('Ext.fx.Animation', {
 
         if (type) {
             if (Ext.browser.is.AndroidStock2) {
-                if (type == 'pop') {
-                    type = 'fade';
+                if (type == &#39;pop&#39;) {
+                    type = &#39;fade&#39;;
                 }
-                if (type == 'popIn') {
-                    type = 'fadeIn';
+                if (type == &#39;popIn&#39;) {
+                    type = &#39;fadeIn&#39;;
                 }
-                if (type == 'popOut') {
-                    type = 'fadeOut';
+                if (type == &#39;popOut&#39;) {
+                    type = &#39;fadeOut&#39;;
                 }
             }
-            defaultClass = Ext.ClassManager.getByAlias('animation.' + type);
+            defaultClass = Ext.ClassManager.getByAlias(&#39;animation.&#39; + type);
 
             //&lt;debug error&gt;
             if (!defaultClass) {
-                Ext.Logger.error(&quot;Invalid animation type of: '&quot; + type + &quot;'&quot;);
+                Ext.Logger.error(&quot;Invalid animation type of: &#39;&quot; + type + &quot;&#39;&quot;);
             }
             //&lt;/debug&gt;
         }

@@ -18,7 +18,7 @@
   <pre class="prettyprint lang-js">
 Ext.data.DatabaseDefinition = Ext.extend(Ext.data.Config, {
 
-	key: undefined, // the developer's api key
+	key: undefined, // the developer&#39;s api key
 	database_name: undefined,
 	generation: undefined, // of the database
 	system_name: undefined, // this system
@@ -32,10 +32,10 @@ Ext.data.DatabaseDefinition = Ext.extend(Ext.data.Config, {
 	
 	constructor: function(config,callback,scope) {
 		//
-		Ext.data.utilities.check('DatabaseDefinition', 'constructor', 'config', config, ['key','database_name','generation','system_name','replica_number']);
+		Ext.data.utilities.check(&#39;DatabaseDefinition&#39;, &#39;constructor&#39;, &#39;config&#39;, config, [&#39;key&#39;,&#39;database_name&#39;,&#39;generation&#39;,&#39;system_name&#39;,&#39;replica_number&#39;]);
 		//
 		this.set(config);
-		config.config_id= 'definition';
+		config.config_id= &#39;definition&#39;;
 		Ext.data.DatabaseDefinition.superclass.constructor.call(this, config);
 	},
 
@@ -56,16 +56,16 @@ Ext.data.DatabaseDefinition = Ext.extend(Ext.data.Config, {
 
 	set: function(config,callback,scope) {
 		var changed= Ext.data.utilities.copy(config,this,[
-			'key',
-			'database_name',
-			'generation',
-			'system_name',
-			'system_names',
-			'replica_number',
-			'idProperty',
-			'idPropertyDefaultValue',
-			'version',
-			'_id']);
+			&#39;key&#39;,
+			&#39;database_name&#39;,
+			&#39;generation&#39;,
+			&#39;system_name&#39;,
+			&#39;system_names&#39;,
+			&#39;replica_number&#39;,
+			&#39;idProperty&#39;,
+			&#39;idPropertyDefaultValue&#39;,
+			&#39;version&#39;,
+			&#39;_id&#39;]);
 		this.writeAndCallback(changed,callback,scope);
 	},
 
@@ -81,7 +81,7 @@ Ext.data.DatabaseDefinition = Ext.extend(Ext.data.Config, {
 			idPropertyDefaultValue: this.idPropertyDefaultValue,
 			version: this.version
 		};
-		data[Ext.data.SyncModel.MODEL]= 'Ext.data.DatabaseDefinition';
+		data[Ext.data.SyncModel.MODEL]= &#39;Ext.data.DatabaseDefinition&#39;;
 		return Ext.data.DatabaseDefinition.superclass.as_data.call(this, data);
 	},
 

@@ -26,29 +26,29 @@
  * Since configurations are deeply merged with the standard configuration, you can override certain proxy and
  * reader configurations like this:
  *
- *     Ext.create('Ext.data.DirectStore', {
+ *     Ext.create(&#39;Ext.data.DirectStore&#39;, {
  *         proxy: {
  *             paramsAsHash: true,
  *             directFn: someDirectFn,
  *             simpleSortMode: true,
  *             reader: {
- *                 rootProperty: 'results',
- *                 idProperty: '_id'
+ *                 rootProperty: &#39;results&#39;,
+ *                 idProperty: &#39;_id&#39;
  *             }
  *         }
  *     });
  *
  */
-Ext.define('Ext.data.DirectStore', {
-    extend: 'Ext.data.Store',
-    alias: 'store.direct',
-    requires: ['Ext.data.proxy.Direct'],
+Ext.define(&#39;Ext.data.DirectStore&#39;, {
+    extend: &#39;Ext.data.Store&#39;,
+    alias: &#39;store.direct&#39;,
+    requires: [&#39;Ext.data.proxy.Direct&#39;],
 
     config: {
 <span id='Ext-data-DirectStore-cfg-proxy'>        proxy: {
-</span>            type: 'direct',
+</span>            type: &#39;direct&#39;,
             reader: {
-                type: 'json'
+                type: &#39;json&#39;
             }
         }
     }

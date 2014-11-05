@@ -28,10 +28,10 @@
  *
  *     Ext.device.Compass.getCurrentHeading({
  *         success: function(heading) {
- *                      alert('Heading: ' + heading.magneticHeading);
+ *                      alert(&#39;Heading: &#39; + heading.magneticHeading);
  *          },
  *         failure: function() {
- *             console.log('something went wrong!');
+ *             console.log(&#39;something went wrong!&#39;);
  *         }
  *     });
  *
@@ -40,10 +40,10 @@
  *     Ext.device.Compass.watchHeading({
  *         frequency: 500, // Update every 1/2 second
  *         callback: function(heading) {
- *                      console.log('Heading: ' + heading.magneticHeading);
+ *                      console.log(&#39;Heading: &#39; + heading.magneticHeading);
  *          },
  *         failure: function() {
- *             console.log('something went wrong!');
+ *             console.log(&#39;something went wrong!&#39;);
  *         }
  *     });
  *
@@ -51,21 +51,21 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.Compass', {
+Ext.define(&#39;Ext.device.Compass&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.compass.Cordova',
-        'Ext.device.compass.Simulator'
+        &#39;Ext.device.compass.Cordova&#39;,
+        &#39;Ext.device.compass.Simulator&#39;
     ],
 
 <span id='Ext-device-Compass-method-constructor'>    constructor: function() {
 </span>        var browserEnv = Ext.browser.is;
         if (browserEnv.WebView &amp;&amp; browserEnv.Cordova) {
-            return Ext.create('Ext.device.compass.Cordova');
+            return Ext.create(&#39;Ext.device.compass.Cordova&#39;);
         }
 
-        return Ext.create('Ext.device.compass.Simulator');
+        return Ext.create(&#39;Ext.device.compass.Simulator&#39;);
     }
 });
 </pre>

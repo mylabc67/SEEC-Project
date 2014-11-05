@@ -23,7 +23,7 @@ Ext.data.CSV = Ext.extend(Ext.data.Config, {
 	constructor: function(config,callback,scope) {
 		var changed= false;
 		if (config) {
-			config.config_id= 'csv';
+			config.config_id= &#39;csv&#39;;
 			Ext.data.CSV.superclass.constructor.call(this, config);
 			if (config.v) {
 				this.v= [];
@@ -62,7 +62,7 @@ Ext.data.CSV = Ext.extend(Ext.data.Config, {
 		this.writeAndCallback(changed,callback,scope);
 	},
 
-	do_add: function(x) { // CSV, CS, '1-2-3', [x]
+	do_add: function(x) { // CSV, CS, &#39;1-2-3&#39;, [x]
 		var changed= false;
 		if (x instanceof Ext.data.CSV) {
 			var t= Ext.data.array.collect(x.v,this.do_add,this);
@@ -74,7 +74,7 @@ Ext.data.CSV = Ext.extend(Ext.data.Config, {
 			  this.v[r]= new Ext.data.CS({r:x.r,t:x.t,s:x.s});
 				changed= true;
 			}
-		} else if (typeof x == 'string' || x instanceof String) {
+		} else if (typeof x == &#39;string&#39; || x instanceof String) {
 			changed= this.do_add(new Ext.data.CS(x));
 		} else if (x instanceof Array) {
 			var t= Ext.data.array.collect(x,this.do_add,this);
@@ -171,7 +171,7 @@ Ext.data.CSV = Ext.extend(Ext.data.Config, {
 		var data= {
 			v: Ext.data.array.collect(this.v,function(){return this.to_s();})
 		};
-		data[Ext.data.SyncModel.MODEL]= 'Ext.data.CSV';
+		data[Ext.data.SyncModel.MODEL]= &#39;Ext.data.CSV&#39;;
 		return Ext.data.CSV.superclass.as_data.call(this, data);
 	}
 

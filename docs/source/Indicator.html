@@ -19,19 +19,19 @@
 </span> * A private utility class used by Ext.Carousel to create indicators.
  * @private
  */
-Ext.define('Ext.carousel.Indicator', {
-    extend: 'Ext.Component',
-    xtype : 'carouselindicator',
-    alternateClassName: 'Ext.Carousel.Indicator',
+Ext.define(&#39;Ext.carousel.Indicator&#39;, {
+    extend: &#39;Ext.Component&#39;,
+    xtype : &#39;carouselindicator&#39;,
+    alternateClassName: &#39;Ext.Carousel.Indicator&#39;,
 
     config: {
 <span id='Ext-carousel-Indicator-cfg-baseCls'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'carousel-indicator',
+        baseCls: Ext.baseCSSPrefix + &#39;carousel-indicator&#39;,
 
-<span id='Ext-carousel-Indicator-cfg-direction'>        direction: 'horizontal'
+<span id='Ext-carousel-Indicator-cfg-direction'>        direction: &#39;horizontal&#39;
 </span>    },
 
 <span id='Ext-carousel-Indicator-event-previous'>    /**
@@ -52,7 +52,7 @@ Ext.define('Ext.carousel.Indicator', {
         this.indicators = [];
 
         this.element.on({
-            tap: 'onTap',
+            tap: &#39;onTap&#39;,
             scope: this
         });
     },
@@ -62,7 +62,7 @@ Ext.define('Ext.carousel.Indicator', {
 
         this.element.replaceCls(oldDirection, newDirection, baseCls);
 
-        if (newDirection === 'horizontal') {
+        if (newDirection === &#39;horizontal&#39;) {
             this.setBottom(0);
             this.setRight(null);
         }
@@ -74,7 +74,7 @@ Ext.define('Ext.carousel.Indicator', {
 
 <span id='Ext-carousel-Indicator-method-addIndicator'>    addIndicator: function() {
 </span>        this.indicators.push(this.element.createChild({
-            tag: 'span'
+            tag: &#39;span&#39;
         }));
     },
 
@@ -94,11 +94,11 @@ Ext.define('Ext.carousel.Indicator', {
             baseCls = this.getBaseCls();
 
         if (currentActiveItem) {
-            currentActiveItem.removeCls(baseCls, null, 'active');
+            currentActiveItem.removeCls(baseCls, null, &#39;active&#39;);
         }
 
         if (activeItem) {
-            activeItem.addCls(baseCls, null, 'active');
+            activeItem.addCls(baseCls, null, &#39;active&#39;);
         }
 
         this.activeIndex = index;
@@ -114,11 +114,11 @@ Ext.define('Ext.carousel.Indicator', {
             centerY = box.top + (box.height / 2),
             direction = this.getDirection();
 
-        if ((direction === 'horizontal' &amp;&amp; touch.pageX &gt;= centerX) || (direction === 'vertical' &amp;&amp; touch.pageY &gt;= centerY)) {
-            this.fireEvent('next', this);
+        if ((direction === &#39;horizontal&#39; &amp;&amp; touch.pageX &gt;= centerX) || (direction === &#39;vertical&#39; &amp;&amp; touch.pageY &gt;= centerY)) {
+            this.fireEvent(&#39;next&#39;, this);
         }
         else {
-            this.fireEvent('previous', this);
+            this.fireEvent(&#39;previous&#39;, this);
         }
     },
 

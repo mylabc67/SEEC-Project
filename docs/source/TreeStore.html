@@ -34,11 +34,11 @@
  *
  * For the tree to read nested data, the {@link Ext.data.reader.Reader} must be configured with a root property,
  * so the reader can find nested data for each node. If a root is not specified, it will default to
- * 'children'.
+ * &#39;children&#39;.
  */
-Ext.define('Ext.data.TreeStore', {
-    extend: 'Ext.data.NodeStore',
-    alias: 'store.tree',
+Ext.define(&#39;Ext.data.TreeStore&#39;, {
+    extend: &#39;Ext.data.NodeStore&#39;,
+    alias: &#39;store.tree&#39;,
 
     config: {
 <span id='Ext-data-TreeStore-cfg-root'>        /**
@@ -71,24 +71,24 @@ Ext.define('Ext.data.TreeStore', {
 <span id='Ext-data-TreeStore-cfg-nodeParam'>        /**
 </span>         * @cfg {String} nodeParam
          * The name of the parameter sent to the server which contains the identifier of the node.
-         * Defaults to 'node'.
+         * Defaults to &#39;node&#39;.
          * @accessor
          */
-        nodeParam: 'node',
+        nodeParam: &#39;node&#39;,
 
 <span id='Ext-data-TreeStore-cfg-defaultRootId'>        /**
 </span>         * @cfg {String} defaultRootId
-         * The default root id. Defaults to 'root'
+         * The default root id. Defaults to &#39;root&#39;
          * @accessor
          */
-        defaultRootId: 'root',
+        defaultRootId: &#39;root&#39;,
 
 <span id='Ext-data-TreeStore-cfg-defaultRootProperty'>        /**
 </span>         * @cfg {String} defaultRootProperty
          * The root property to specify on the reader if one is not explicitly defined.
          * @accessor
          */
-        defaultRootProperty: 'children',
+        defaultRootProperty: &#39;children&#39;,
 
 <span id='Ext-data-TreeStore-cfg-recursive'>        /**
 </span>         * @cfg {Boolean} recursive
@@ -115,8 +115,8 @@ Ext.define('Ext.data.TreeStore', {
 
         if (!root.isModel) {
             Ext.applyIf(root, {
-                id: me.getStoreId() + '-' + me.getDefaultRootId(),
-                text: 'Root',
+                id: me.getStoreId() + &#39;-&#39; + me.getDefaultRootId(),
+                text: &#39;Root&#39;,
                 allowDrag: false
             });
 
@@ -150,14 +150,14 @@ Ext.define('Ext.data.TreeStore', {
 <span id='Ext-data-TreeStore-method-updateRoot'>    updateRoot: function(root, oldRoot) {
 </span>        if (oldRoot) {
             oldRoot.unBefore({
-                expand: 'onNodeBeforeExpand',
+                expand: &#39;onNodeBeforeExpand&#39;,
                 scope: this
             });
             oldRoot.unjoin(this);
         }
 
         root.onBefore({
-            expand: 'onNodeBeforeExpand',
+            expand: &#39;onNodeBeforeExpand&#39;,
             scope: this
         });
 
@@ -177,7 +177,7 @@ Ext.define('Ext.data.TreeStore', {
          * @param {Ext.data.Model} newRoot The new root node
          * @param {Ext.data.Model} oldRoot The old root node
          */
-        this.fireEvent('rootchange', this, root, oldRoot);
+        this.fireEvent(&#39;rootchange&#39;, this, root, oldRoot);
     },
 
 <span id='Ext-data-TreeStore-method-getNodeById'>    /**
@@ -195,7 +195,7 @@ Ext.define('Ext.data.TreeStore', {
 <span id='Ext-data-TreeStore-method-onNodeBeforeExpand'>    onNodeBeforeExpand: function(node, options, e) {
 </span>        if (node.isLoading()) {
             e.pause();
-            this.on('load', function() {
+            this.on(&#39;load&#39;, function() {
                 e.resume();
             }, this, {single: true});
         }
@@ -231,12 +231,12 @@ Ext.define('Ext.data.TreeStore', {
                 if (records.length) {
                     this.fillNode(node, records);
                 } else {
-                    node.set('loaded', true);
+                    node.set(&#39;loaded&#39;, true);
                 }
                 // If the child record is not a leaf, and it has a data root (e.g. items: [])
                 // and there are items in this data root, then we call fillNode to automatically
                 // add these items. fillNode sets the loaded property on the node, meaning that
-                // the next time you expand that node, it's not going to the server to request the
+                // the next time you expand that node, it&#39;s not going to the server to request the
                 // children. If however you pass back an empty array as items, we have to set the
                 // loaded property to true here as well to prevent the items from being be loaded
                 // from the server the next time you expand it.
@@ -259,7 +259,7 @@ Ext.define('Ext.data.TreeStore', {
 <span id='Ext-data-TreeStore-method-load'>    /**
 </span>     * Loads the Store using its configured {@link #proxy}.
      * @param {Object} options (Optional) config object. This is passed into the {@link Ext.data.Operation Operation}
-     * object that is created and then sent to the proxy's {@link Ext.data.proxy.Proxy#read} function.
+     * object that is created and then sent to the proxy&#39;s {@link Ext.data.proxy.Proxy#read} function.
      * The options can also contain a node, which indicates which node is to be loaded. If not specified, it will
      * default to the root node.
      * @return {Object}
@@ -276,7 +276,7 @@ Ext.define('Ext.data.TreeStore', {
         if (me.getClearOnLoad()) {
             node.removeAll(true);
         }
-        node.set('loading', true);
+        node.set(&#39;loading&#39;, true);
 
         return me.callParent([options]);
     },
@@ -309,7 +309,7 @@ Ext.define('Ext.data.TreeStore', {
             node = operation.getNode();
 
         node.beginEdit();
-        node.set('loading', false);
+        node.set(&#39;loading&#39;, false);
         if (successful) {
             records = me.fillNode(node, records);
         }
@@ -318,10 +318,10 @@ Ext.define('Ext.data.TreeStore', {
         me.loading = false;
         me.loaded = true;
 
-        node.fireEvent('load', node, records, successful);
-        me.fireEvent('load', this, records, successful, operation);
+        node.fireEvent(&#39;load&#39;, node, records, successful);
+        me.fireEvent(&#39;load&#39;, this, records, successful, operation);
 
-        //this is a callback that would have been passed to the 'read' function and is optional
+        //this is a callback that would have been passed to the &#39;read&#39; function and is optional
         Ext.callback(operation.getCallback(), operation.getScope() || me, [records, operation, successful]);
     },
 
@@ -340,7 +340,7 @@ Ext.define('Ext.data.TreeStore', {
             child = node.appendChild(records[i], true, true);
             this.onNodeAppend(node, child);
         }
-        node.set('loaded', true);
+        node.set(&#39;loaded&#39;, true);
 
         return records;
     }
@@ -356,7 +356,7 @@ Ext.define('Ext.data.TreeStore', {
          */
         setRootNode: function(node) {
             // &lt;debug&gt;
-            Ext.Logger.warn('setRootNode has been deprecated. Please use setRoot instead.');
+            Ext.Logger.warn(&#39;setRootNode has been deprecated. Please use setRoot instead.&#39;);
             // &lt;/debug&gt;
             return this.setRoot(node);
         },
@@ -368,7 +368,7 @@ Ext.define('Ext.data.TreeStore', {
          */
         getRootNode: function(node) {
             // &lt;debug&gt;
-            Ext.Logger.warn('getRootNode has been deprecated. Please use getRoot instead.');
+            Ext.Logger.warn(&#39;getRootNode has been deprecated. Please use getRoot instead.&#39;);
             // &lt;/debug&gt;
             return this.getRoot();
         }

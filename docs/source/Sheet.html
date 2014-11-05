@@ -21,19 +21,19 @@
  *
  * In most cases, you should use {@link Ext.ActionSheet}, {@link Ext.MessageBox}, {@link Ext.picker.Picker}, or {@link Ext.picker.Date}.
  */
-Ext.define('Ext.Sheet', {
-    extend: 'Ext.Panel',
+Ext.define(&#39;Ext.Sheet&#39;, {
+    extend: &#39;Ext.Panel&#39;,
 
-    xtype: 'sheet',
+    xtype: &#39;sheet&#39;,
 
-    requires: ['Ext.Button', 'Ext.fx.Animation'],
+    requires: [&#39;Ext.Button&#39;, &#39;Ext.fx.Animation&#39;],
 
     config: {
 <span id='Ext-Sheet-cfg-baseCls'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'sheet',
+        baseCls: Ext.baseCSSPrefix + &#39;sheet&#39;,
 
 <span id='Ext-Sheet-cfg-modal'>        /**
 </span>         * @cfg
@@ -61,26 +61,26 @@ Ext.define('Ext.Sheet', {
 
 <span id='Ext-Sheet-cfg-enter'>        /**
 </span>         * @cfg {String} enter
-         * The viewport side used as the enter point when shown. Valid values are 'top', 'bottom', 'left', and 'right'.
+         * The viewport side used as the enter point when shown. Valid values are &#39;top&#39;, &#39;bottom&#39;, &#39;left&#39;, and &#39;right&#39;.
          * Applies to sliding animation effects only.
          */
-        enter: 'bottom',
+        enter: &#39;bottom&#39;,
 
 <span id='Ext-Sheet-cfg-exit'>        /**
 </span>         * @cfg {String} exit
-         * The viewport side used as the exit point when hidden. Valid values are 'top', 'bottom', 'left', and 'right'.
+         * The viewport side used as the exit point when hidden. Valid values are &#39;top&#39;, &#39;bottom&#39;, &#39;left&#39;, and &#39;right&#39;.
          * Applies to sliding animation effects only.
          */
-        exit: 'bottom',
+        exit: &#39;bottom&#39;,
 
 <span id='Ext-Sheet-cfg-showAnimation'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
         showAnimation: !Ext.browser.is.AndroidStock2 ? {
-            type: 'slideIn',
+            type: &#39;slideIn&#39;,
             duration: 250,
-            easing: 'ease-out'
+            easing: &#39;ease-out&#39;
         } : null,
 
 <span id='Ext-Sheet-cfg-hideAnimation'>        /**
@@ -88,9 +88,9 @@ Ext.define('Ext.Sheet', {
          * @inheritdoc
          */
         hideAnimation: !Ext.browser.is.AndroidStock2 ? {
-            type: 'slideOut',
+            type: &#39;slideOut&#39;,
             duration: 250,
-            easing: 'ease-in'
+            easing: &#39;ease-in&#39;
         } : null
     },
 
@@ -100,7 +100,7 @@ Ext.define('Ext.Sheet', {
 </span>        var me = this;
         // Temporary fix for a mysterious bug on iOS where double tapping on a sheet
         // being animated from the bottom shift the whole body up
-        Ext.os.is.iOS &amp;&amp; this.element.dom.addEventListener('touchstart', function(e) {
+        Ext.os.is.iOS &amp;&amp; this.element.dom.addEventListener(&#39;touchstart&#39;, function(e) {
             if (!me.isInputRegex.test(e.target.tagName)) {
                 e.preventDefault();
             }
@@ -108,9 +108,9 @@ Ext.define('Ext.Sheet', {
     },
 
 <span id='Ext-Sheet-property-platformConfig'>    platformConfig: [{
-</span>        theme: ['Windows'],
-        enter: 'top',
-        exit: 'top'
+</span>        theme: [&#39;Windows&#39;],
+        enter: &#39;top&#39;,
+        exit: &#39;top&#39;
     }],
 
 <span id='Ext-Sheet-method-applyHideAnimation'>    applyHideAnimation: function(config) {
@@ -123,7 +123,7 @@ Ext.define('Ext.Sheet', {
 
         if (config === true) {
             config = {
-                type: 'slideOut'
+                type: &#39;slideOut&#39;
             };
         }
         if (Ext.isString(config)) {
@@ -134,11 +134,11 @@ Ext.define('Ext.Sheet', {
         var anim = Ext.factory(config, Ext.fx.Animation);
 
         if (anim) {
-            if (exit == 'bottom') {
-                direction = 'down';
+            if (exit == &#39;bottom&#39;) {
+                direction = &#39;down&#39;;
             }
-            if (exit == 'top') {
-                direction = 'up';
+            if (exit == &#39;top&#39;) {
+                direction = &#39;up&#39;;
             }
             anim.setDirection(direction);
         }
@@ -155,7 +155,7 @@ Ext.define('Ext.Sheet', {
 
         if (config === true) {
             config = {
-                type: 'slideIn'
+                type: &#39;slideIn&#39;
             };
         }
         if (Ext.isString(config)) {
@@ -166,11 +166,11 @@ Ext.define('Ext.Sheet', {
         var anim = Ext.factory(config, Ext.fx.Animation);
 
         if (anim) {
-            if (enter == 'bottom') {
-                direction = 'down';
+            if (enter == &#39;bottom&#39;) {
+                direction = &#39;down&#39;;
             }
-            if (enter == 'top') {
-                direction = 'up';
+            if (enter == &#39;top&#39;) {
+                direction = &#39;up&#39;;
             }
             anim.setBefore({
                 display: null

@@ -22,11 +22,11 @@
  * would not usually be used directly.
  * @private
  */
-Ext.define('Ext.data.proxy.Server', {
-    extend: 'Ext.data.proxy.Proxy',
-    alias : 'proxy.server',
-    alternateClassName: 'Ext.data.ServerProxy',
-    requires  : ['Ext.data.Request'],
+Ext.define(&#39;Ext.data.proxy.Server&#39;, {
+    extend: &#39;Ext.data.proxy.Proxy&#39;,
+    alias : &#39;proxy.server&#39;,
+    alternateClassName: &#39;Ext.data.ServerProxy&#39;,
+    requires  : [&#39;Ext.data.Request&#39;],
 
     config: {
 <span id='Ext-data-proxy-Server-cfg-url'>        /**
@@ -37,45 +37,45 @@ Ext.define('Ext.data.proxy.Server', {
 
 <span id='Ext-data-proxy-Server-cfg-pageParam'>        /**
 </span>         * @cfg {String} pageParam
-         * The name of the `page` parameter to send in a request. Set this to `false` if you don't
+         * The name of the `page` parameter to send in a request. Set this to `false` if you don&#39;t
          * want to send a page parameter.
          */
-        pageParam: 'page',
+        pageParam: &#39;page&#39;,
 
 <span id='Ext-data-proxy-Server-cfg-startParam'>        /**
 </span>         * @cfg {String} startParam
-         * The name of the `start` parameter to send in a request. Set this to `false` if you don't
+         * The name of the `start` parameter to send in a request. Set this to `false` if you don&#39;t
          * want to send a start parameter.
          */
-        startParam: 'start',
+        startParam: &#39;start&#39;,
 
 <span id='Ext-data-proxy-Server-cfg-limitParam'>        /**
 </span>         * @cfg {String} limitParam
-         * The name of the `limit` parameter to send in a request. Set this to `false` if you don't
+         * The name of the `limit` parameter to send in a request. Set this to `false` if you don&#39;t
          * want to send a limit parameter.
          */
-        limitParam: 'limit',
+        limitParam: &#39;limit&#39;,
 
 <span id='Ext-data-proxy-Server-cfg-groupParam'>        /**
 </span>         * @cfg {String} groupParam
-         * The name of the `group` parameter to send in a request. Set this to `false` if you don't
+         * The name of the `group` parameter to send in a request. Set this to `false` if you don&#39;t
          * want to send a group parameter.
          */
-        groupParam: 'group',
+        groupParam: &#39;group&#39;,
 
 <span id='Ext-data-proxy-Server-cfg-sortParam'>        /**
 </span>         * @cfg {String} sortParam
-         * The name of the `sort` parameter to send in a request. Set this to `undefined` if you don't
+         * The name of the `sort` parameter to send in a request. Set this to `undefined` if you don&#39;t
          * want to send a sort parameter.
          */
-        sortParam: 'sort',
+        sortParam: &#39;sort&#39;,
 
 <span id='Ext-data-proxy-Server-cfg-filterParam'>        /**
 </span>         * @cfg {String} filterParam
-         * The name of the 'filter' parameter to send in a request. Set this to `undefined` if you don't
+         * The name of the &#39;filter&#39; parameter to send in a request. Set this to `undefined` if you don&#39;t
          * want to send a filter parameter.
          */
-        filterParam: 'filter',
+        filterParam: &#39;filter&#39;,
 
 <span id='Ext-data-proxy-Server-cfg-directionParam'>        /**
 </span>         * @cfg {String} directionParam
@@ -83,7 +83,7 @@ Ext.define('Ext.data.proxy.Server', {
          *
          * __Note:__ This is only used when `simpleSortMode` is set to `true`.
          */
-        directionParam: 'dir',
+        directionParam: &#39;dir&#39;,
 
 <span id='Ext-data-proxy-Server-cfg-enablePagingParams'>        /**
 </span>         * @cfg {Boolean} enablePagingParams This can be set to `false` if you want to prevent the paging params to be
@@ -94,8 +94,8 @@ Ext.define('Ext.data.proxy.Server', {
 <span id='Ext-data-proxy-Server-cfg-simpleSortMode'>        /**
 </span>         * @cfg {Boolean} simpleSortMode
          * Enabling `simpleSortMode` in conjunction with `remoteSort` will only send one sort property and a direction when a
-         * remote sort is requested. The `directionParam` and `sortParam` will be sent with the property name and either 'ASC'
-         * or 'DESC'.
+         * remote sort is requested. The `directionParam` and `sortParam` will be sent with the property name and either &#39;ASC&#39;
+         * or &#39;DESC&#39;.
          */
         simpleSortMode: false,
 
@@ -135,10 +135,10 @@ Ext.define('Ext.data.proxy.Server', {
          * For example:
          *
          *     api: {
-         *         create  : '/controller/new',
-         *         read    : '/controller/load',
-         *         update  : '/controller/update',
-         *         destroy : '/controller/destroy_action'
+         *         create  : &#39;/controller/new&#39;,
+         *         read    : &#39;/controller/load&#39;,
+         *         update  : &#39;/controller/update&#39;,
+         *         destroy : &#39;/controller/destroy_action&#39;
          *     }
          *
          * If the specific URL for a given CRUD action is undefined, the CRUD action request will be directed to the
@@ -164,7 +164,7 @@ Ext.define('Ext.data.proxy.Server', {
         if (config.nocache !== undefined) {
             config.noCache = config.nocache;
             // &lt;debug&gt;
-            Ext.Logger.warn('nocache configuration on Ext.data.proxy.Server has been deprecated. Please use noCache.');
+            Ext.Logger.warn(&#39;nocache configuration on Ext.data.proxy.Server has been deprecated. Please use noCache.&#39;);
             // &lt;/debug&gt;
         }
         this.callParent([config]);
@@ -210,7 +210,7 @@ Ext.define('Ext.data.proxy.Server', {
         //copy any sorters, filters etc into the params so they can be sent over the wire
         params = Ext.applyIf(params, me.getParams(operation));
 
-        request = Ext.create('Ext.data.Request', {
+        request = Ext.create(&#39;Ext.data.Request&#39;, {
             params   : params,
             action   : operation.getAction(),
             records  : operation.getRecords(),
@@ -249,7 +249,7 @@ Ext.define('Ext.data.proxy.Server', {
             } catch(e) {
                 operation.setException(e.message);
 
-                me.fireEvent('exception', me, response, operation);
+                me.fireEvent(&#39;exception&#39;, me, response, operation);
                 return;
             }
 
@@ -260,7 +260,7 @@ Ext.define('Ext.data.proxy.Server', {
 
             if (operation.process(action, resultSet, request, response) === false) {
                 me.setException(operation, response);
-                me.fireEvent('exception', me, response, operation);
+                me.fireEvent(&#39;exception&#39;, me, response, operation);
             }
         } else {
             me.setException(operation, response);
@@ -271,11 +271,11 @@ Ext.define('Ext.data.proxy.Server', {
              * @param {Object} response The response from the AJAX request
              * @param {Ext.data.Operation} operation The operation that triggered request
              */
-            me.fireEvent('exception', this, response, operation);
+            me.fireEvent(&#39;exception&#39;, this, response, operation);
         }
 
-        //this callback is the one that was passed to the 'read' or 'write' function above
-        if (typeof callback == 'function') {
+        //this callback is the one that was passed to the &#39;read&#39; or &#39;write&#39; function above
+        if (typeof callback == &#39;function&#39;) {
             callback.call(scope || me, operation);
         }
 
@@ -415,7 +415,7 @@ Ext.define('Ext.data.proxy.Server', {
     },
 
 <span id='Ext-data-proxy-Server-method-buildUrl'>    /**
-</span>     * Generates a url based on a given Ext.data.Request object. By default, ServerProxy's buildUrl will add the
+</span>     * Generates a url based on a given Ext.data.Request object. By default, ServerProxy&#39;s buildUrl will add the
      * cache-buster param to the end of the url. Subclasses may need to perform additional modifications to the url.
      * @param {Ext.data.Request} request The request object
      * @return {String} The url

@@ -33,7 +33,7 @@
  *             console.log(position.coords);
  *         },
  *         failure: function() {
- *             console.log('something went wrong!');
+ *             console.log(&#39;something went wrong!&#39;);
  *         }
  *     });
  *
@@ -42,10 +42,10 @@
  *     Ext.device.Geolocation.watchPosition({
  *         frequency: 3000, // Update every 3 seconds
  *         callback: function(position) {
- *             console.log('Position updated!', position.coords);
+ *             console.log(&#39;Position updated!&#39;, position.coords);
  *         },
  *         failure: function() {
- *             console.log('something went wrong!');
+ *             console.log(&#39;something went wrong!&#39;);
  *         }
  *     });
  *
@@ -53,27 +53,27 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.Geolocation', {
+Ext.define(&#39;Ext.device.Geolocation&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.Communicator',
-        'Ext.device.geolocation.Cordova',
-        'Ext.device.geolocation.Sencha',
-        'Ext.device.geolocation.Simulator'
+        &#39;Ext.device.Communicator&#39;,
+        &#39;Ext.device.geolocation.Cordova&#39;,
+        &#39;Ext.device.geolocation.Sencha&#39;,
+        &#39;Ext.device.geolocation.Simulator&#39;
     ],
 
 <span id='Ext-device-Geolocation-method-constructor'>    constructor: function() {
 </span>        var browserEnv = Ext.browser.is;
         if (browserEnv.WebView) {
             if (browserEnv.Cordova) {
-                return Ext.create('Ext.device.geolocation.Cordova');
+                return Ext.create(&#39;Ext.device.geolocation.Cordova&#39;);
             } else if (browserEnv.Sencha) {
-                return Ext.create('Ext.device.geolocation.Sencha');
+                return Ext.create(&#39;Ext.device.geolocation.Sencha&#39;);
             }
         }
 
-        return Ext.create('Ext.device.geolocation.Simulator');
+        return Ext.create(&#39;Ext.device.geolocation.Simulator&#39;);
     }
 });
 </pre>

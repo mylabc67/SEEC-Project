@@ -18,12 +18,12 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-browser-Cordova'>/**
 </span> * @private
  */
-Ext.define('Ext.device.browser.Cordova', {
-    extend: 'Ext.device.browser.Abstract',
+Ext.define(&#39;Ext.device.browser.Cordova&#39;, {
+    extend: &#39;Ext.device.browser.Abstract&#39;,
     
 <span id='Ext-device-browser-Cordova-method-open'>    open: function(config) {
 </span>        if (!this._window) {
-            this._window = Ext.create('Ext.device.browser.Window');
+            this._window = Ext.create(&#39;Ext.device.browser.Window&#39;);
         }
 
         this._window.open(config);

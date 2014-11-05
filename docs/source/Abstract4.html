@@ -18,8 +18,8 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-capture-Abstract'>/**
 </span> * @private
  */
-Ext.define('Ext.device.capture.Abstract', {
-    alternateClassName: 'Ext.device.capture.Simulator',
+Ext.define(&#39;Ext.device.capture.Abstract&#39;, {
+    alternateClassName: &#39;Ext.device.capture.Simulator&#39;,
 
 <span id='Ext-device-capture-Abstract-method-captureAudio'>    /**
 </span>     * Start the audio recorder application and return information about captured audio clip file(s).
@@ -30,11 +30,11 @@ Ext.define('Ext.device.capture.Abstract', {
      *         maximumDuration: 10, // limit to 10 seconds per recording
      *         success: function(files) {
      *             for (var i = 0; i &lt; files.length; i++) {
-     *                 console.log('Captured audio path: ', files[i].fullPath);
+     *                 console.log(&#39;Captured audio path: &#39;, files[i].fullPath);
      *             };
      *         },
      *         failure: function() {
-     *             console.log('Something went wrong!');
+     *             console.log(&#39;Something went wrong!&#39;);
      *         }
      *     });
      *
@@ -62,11 +62,11 @@ Ext.define('Ext.device.capture.Abstract', {
      *         maximumDuration: 10, // limit to 10 seconds per recording
      *         success: function(files) {
      *             for (var i = 0; i &lt; files.length; i++) {
-     *                 console.log('Captured video path: ', files[i].fullPath);
+     *                 console.log(&#39;Captured video path: &#39;, files[i].fullPath);
      *             };
      *         },
      *         failure: function() {
-     *             console.log('Something went wrong!');
+     *             console.log(&#39;Something went wrong!&#39;);
      *         }
      *     });
      *

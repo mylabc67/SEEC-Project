@@ -18,17 +18,17 @@
   <pre class="prettyprint lang-js"><span id='Ext-util-Droppable'>/**
 </span> *
  */
-Ext.define('Ext.util.Droppable', {
+Ext.define(&#39;Ext.util.Droppable&#39;, {
     mixins: {
-        observable: 'Ext.mixin.Observable'
+        observable: &#39;Ext.mixin.Observable&#39;
     },
 
     config: {
 <span id='Ext-util-Droppable-cfg-baseCls'>        /**
-</span>         * The base CSS class to apply to this component's element.
+</span>         * The base CSS class to apply to this component&#39;s element.
          * This will also be prepended to other elements within this component.
          */
-        baseCls: Ext.baseCSSPrefix + 'droppable'
+        baseCls: Ext.baseCSSPrefix + &#39;droppable&#39;
     },
 
 <span id='Ext-util-Droppable-cfg-activeCls'>    /**
@@ -36,28 +36,28 @@ Ext.define('Ext.util.Droppable', {
      * The CSS added to a Droppable when a Draggable in the same group is being
      * dragged.
      */
-    activeCls: Ext.baseCSSPrefix + 'drop-active',
+    activeCls: Ext.baseCSSPrefix + &#39;drop-active&#39;,
 
 <span id='Ext-util-Droppable-cfg-invalidCls'>    /**
 </span>     * @cfg {String} invalidCls
      * The CSS class to add to the droppable when dragging a draggable that is
      * not in the same group.
      */
-    invalidCls: Ext.baseCSSPrefix + 'drop-invalid',
+    invalidCls: Ext.baseCSSPrefix + &#39;drop-invalid&#39;,
 
 <span id='Ext-util-Droppable-cfg-hoverCls'>    /**
 </span>     * @cfg {String} hoverCls
      * The CSS class to add to the droppable when hovering over a valid drop.
      */
-    hoverCls: Ext.baseCSSPrefix + 'drop-hover',
+    hoverCls: Ext.baseCSSPrefix + &#39;drop-hover&#39;,
 
 <span id='Ext-util-Droppable-cfg-validDropMode'>    /**
 </span>     * @cfg {String} validDropMode
-     * Determines when a drop is considered 'valid' whether it simply need to
+     * Determines when a drop is considered &#39;valid&#39; whether it simply need to
      * intersect the region or if it needs to be contained within the region.
-     * Valid values are: 'intersects' or 'contains'
+     * Valid values are: &#39;intersects&#39; or &#39;contains&#39;
      */
-    validDropMode: 'intersect',
+    validDropMode: &#39;intersect&#39;,
 
 <span id='Ext-util-Droppable-cfg-disabled'>    /**
 </span>     * @cfg {Boolean} disabled
@@ -69,7 +69,7 @@ Ext.define('Ext.util.Droppable', {
      * Draggable and Droppable objects can participate in a group which are
      * capable of interacting.
      */
-    group: 'base',
+    group: &#39;base&#39;,
 
 <span id='Ext-util-Droppable-property-tolerance'>    // not yet implemented
 </span>    tolerance: null,
@@ -154,7 +154,7 @@ Ext.define('Ext.util.Droppable', {
                 this.setCanDrop(true, draggable, e);
             }
 
-            this.fireEvent('dropactivate', this, draggable, e);
+            this.fireEvent(&#39;dropactivate&#39;, this, draggable, e);
         }
         else {
             draggable.on({
@@ -183,12 +183,12 @@ Ext.define('Ext.util.Droppable', {
         if (canDrop &amp;&amp; !this.canDrop) {
             this.canDrop = true;
             this.el.addCls(this.hoverCls);
-            this.fireEvent('dropenter', this, draggable, e);
+            this.fireEvent(&#39;dropenter&#39;, this, draggable, e);
         }
         else if (!canDrop &amp;&amp; this.canDrop) {
             this.canDrop = false;
             this.el.removeCls(this.hoverCls);
-            this.fireEvent('dropleave', this, draggable, e);
+            this.fireEvent(&#39;dropleave&#39;, this, draggable, e);
         }
     },
 
@@ -213,10 +213,10 @@ Ext.define('Ext.util.Droppable', {
         if (this.canDrop) {
             this.canDrop = false;
             this.el.removeCls(this.hoverCls);
-            this.fireEvent('drop', this, draggable, e);
+            this.fireEvent(&#39;drop&#39;, this, draggable, e);
         }
 
-        this.fireEvent('dropdeactivate', this, draggable, e);
+        this.fireEvent(&#39;dropdeactivate&#39;, this, draggable, e);
     },
 
 <span id='Ext-util-Droppable-method-enable'>    /**

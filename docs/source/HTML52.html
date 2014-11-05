@@ -19,14 +19,14 @@
 </span> * Provides the HTML5 implementation for the orientation API.
  * @private
  */
-Ext.define('Ext.device.orientation.HTML5', {
-    extend: 'Ext.device.orientation.Abstract',
+Ext.define(&#39;Ext.device.orientation.HTML5&#39;, {
+    extend: &#39;Ext.device.orientation.Abstract&#39;,
 
 <span id='Ext-device-orientation-HTML5-method-constructor'>    constructor: function() {
 </span>        this.callSuper(arguments);
 
         this.onDeviceOrientation = Ext.Function.bind(this.onDeviceOrientation, this);
-        window.addEventListener('deviceorientation', this.onDeviceOrientation, true);
+        window.addEventListener(&#39;deviceorientation&#39;, this.onDeviceOrientation, true);
     }
 });
 </pre>

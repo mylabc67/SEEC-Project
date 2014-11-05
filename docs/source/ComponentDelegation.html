@@ -18,19 +18,19 @@
   <pre class="prettyprint lang-js"><span id='Ext-event-publisher-ComponentDelegation'>/**
 </span> * @private
  */
-Ext.define('Ext.event.publisher.ComponentDelegation', {
-    extend: 'Ext.event.publisher.Publisher',
+Ext.define(&#39;Ext.event.publisher.ComponentDelegation&#39;, {
+    extend: &#39;Ext.event.publisher.Publisher&#39;,
 
     requires: [
-        'Ext.Component',
-        'Ext.ComponentQuery'
+        &#39;Ext.Component&#39;,
+        &#39;Ext.ComponentQuery&#39;
     ],
 
-<span id='Ext-event-publisher-ComponentDelegation-property-targetType'>    targetType: 'component',
+<span id='Ext-event-publisher-ComponentDelegation-property-targetType'>    targetType: &#39;component&#39;,
 </span>
 <span id='Ext-event-publisher-ComponentDelegation-property-optimizedSelectorRegex'>    optimizedSelectorRegex: /^#([\w\-]+)((?:[\s]*)&gt;(?:[\s]*)|(?:\s*))([\w\-]+)$/i,
 </span>
-<span id='Ext-event-publisher-ComponentDelegation-property-handledEvents'>    handledEvents: ['*'],
+<span id='Ext-event-publisher-ComponentDelegation-property-handledEvents'>    handledEvents: [&#39;*&#39;],
 </span>
 <span id='Ext-event-publisher-ComponentDelegation-method-getSubscribers'>    getSubscribers: function(eventName, createIfNotExist) {
 </span>        var subscribers = this.subscribers,
@@ -63,7 +63,7 @@ Ext.define('Ext.event.publisher.ComponentDelegation', {
 
         if (optimizedSelector !== null) {
             id = optimizedSelector[1];
-            isDescendant = optimizedSelector[2].indexOf('&gt;') === -1;
+            isDescendant = optimizedSelector[2].indexOf(&#39;&gt;&#39;) === -1;
             type = optimizedSelector[3];
 
             map = typeSubscribers[type];
@@ -123,7 +123,7 @@ Ext.define('Ext.event.publisher.ComponentDelegation', {
 
         if (match !== null) {
             id = match[1];
-            isDescendant = match[2].indexOf('&gt;') === -1;
+            isDescendant = match[2].indexOf(&#39;&gt;&#39;) === -1;
             type = match[3];
 
             map = typeSubscribers[type];
@@ -171,9 +171,9 @@ Ext.define('Ext.event.publisher.ComponentDelegation', {
         component = Ext.ComponentManager.get(id);
 
         if (component) {
-            this.dispatcher.doAddListener(this.targetType, target, eventName, 'publish', this, {
+            this.dispatcher.doAddListener(this.targetType, target, eventName, &#39;publish&#39;, this, {
                 args: [eventName, component]
-            }, 'before');
+            }, &#39;before&#39;);
         }
     },
 
@@ -219,7 +219,7 @@ Ext.define('Ext.event.publisher.ComponentDelegation', {
                         ancestorId = ancestorIds[j];
 
                         if (descendentsSubscribers.hasOwnProperty(ancestorId)) {
-                            this.dispatch('#' + ancestorId + ' ' + type, eventName, args, eventController);
+                            this.dispatch(&#39;#&#39; + ancestorId + &#39; &#39; + type, eventName, args, eventController);
                         }
 
                     }
@@ -242,7 +242,7 @@ Ext.define('Ext.event.publisher.ComponentDelegation', {
 
                     if (parentId) {
                         if (childrenSubscribers.hasOwnProperty(parentId)) {
-                            this.dispatch('#' + parentId + ' &gt; ' + type, eventName, args, eventController);
+                            this.dispatch(&#39;#&#39; + parentId + &#39; &gt; &#39; + type, eventName, args, eventController);
                         }
                     }
                 }

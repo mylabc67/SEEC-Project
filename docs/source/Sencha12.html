@@ -15,10 +15,10 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js">Ext.define('Ext.device.tunnel.Sencha', {
-    extend: 'Ext.device.tunnel.Abstract',
+  <pre class="prettyprint lang-js">Ext.define(&#39;Ext.device.tunnel.Sencha&#39;, {
+    extend: &#39;Ext.device.tunnel.Abstract&#39;,
 
-    requires: ['Ext.device.tunnel.Connection'],
+    requires: [&#39;Ext.device.tunnel.Connection&#39;],
 
     constructor: function() {
         var me = this,
@@ -58,7 +58,7 @@
         var promise = new Ext.Promise;
 
         Ext.device.Communicator.send({
-            command: 'Tunnel#connect',
+            command: &#39;Tunnel#connect&#39;,
             callbacks: {
                 success: function(result) {
                     if (!result || result.length === 0) {
@@ -85,7 +85,7 @@
         var promise = new Ext.Promise;
 
         Ext.device.Communicator.send({
-            command: 'Tunnel#send',
+            command: &#39;Tunnel#send&#39;,
             callbacks: {
                 success: function(result) {
                     promise.fulfill(result);

@@ -18,7 +18,7 @@
   <pre class="prettyprint lang-js"><span id='Ext-util-Collection'>/**
 </span> * @private
  */
-Ext.define('Ext.util.Collection', {
+Ext.define(&#39;Ext.util.Collection&#39;, {
 <span id='Ext-util-Collection-cfg-filters'>    /**
 </span>     * @cfg {Object[]} filters
      * Array of {@link Ext.util.Filter Filters} for this collection.
@@ -35,8 +35,8 @@ Ext.define('Ext.util.Collection', {
 </span>    },
 
     mixins: {
-        sortable: 'Ext.mixin.Sortable',
-        filterable: 'Ext.mixin.Filterable'
+        sortable: &#39;Ext.mixin.Sortable&#39;,
+        filterable: &#39;Ext.mixin.Filterable&#39;
     },
 
 <span id='Ext-util-Collection-method-constructor'>    constructor: function(keyFn, config) {
@@ -273,8 +273,8 @@ Ext.define('Ext.util.Collection', {
             key = me.getKey(item);
         }
 
-        if (typeof key != 'undefined' &amp;&amp; key !== null) {
-            if (typeof me.map[key] != 'undefined') {
+        if (typeof key != &#39;undefined&#39; &amp;&amp; key !== null) {
+            if (typeof me.map[key] != &#39;undefined&#39;) {
                 return me.replace(key, item);
             }
             me.map[key] = item;
@@ -374,7 +374,7 @@ Ext.define('Ext.util.Collection', {
         }
 
         oldItem = map[oldKey];
-        if (typeof oldKey == 'undefined' || oldKey === null || typeof oldItem == 'undefined') {
+        if (typeof oldKey == &#39;undefined&#39; || oldKey === null || typeof oldItem == &#39;undefined&#39;) {
              return me.add(newKey, item);
         }
 
@@ -487,8 +487,8 @@ Ext.define('Ext.util.Collection', {
             key = newKeys[i];
             item = newItems[i];
 
-            if (typeof key != 'undefined' &amp;&amp; key !== null) {
-                if (typeof map[key] != 'undefined') {
+            if (typeof key != &#39;undefined&#39; &amp;&amp; key !== null) {
+                if (typeof map[key] != &#39;undefined&#39;) {
                     me.replace(key, item);
                     continue;
                 }
@@ -527,7 +527,7 @@ Ext.define('Ext.util.Collection', {
      * The function should return a Boolean value. Returning `false` from the function will stop the iteration.
      * @param {Function} fn The function to execute for each item.
      * @param {Mixed} fn.item The collection item.
-     * @param {Number} fn.index The item's index.
+     * @param {Number} fn.index The item&#39;s index.
      * @param {Number} fn.length The total number of items in the collection.
      * @param {Object} scope The scope (`this` reference) in which the function is executed. Defaults to the current
      * item in the iteration.
@@ -635,8 +635,8 @@ Ext.define('Ext.util.Collection', {
             return me.add(key, item);
         }
 
-        if (typeof key != 'undefined' &amp;&amp; key !== null) {
-            if (typeof map[key] != 'undefined') {
+        if (typeof key != &#39;undefined&#39; &amp;&amp; key !== null) {
+            if (typeof map[key] != &#39;undefined&#39;) {
                 me.replace(key, item);
                 return false;
             }
@@ -682,7 +682,7 @@ Ext.define('Ext.util.Collection', {
 
         if (sorted &amp;&amp; this.getAutoSort()) {
             // &lt;debug&gt;
-            Ext.Logger.error('Inserting a collection of items into a sorted Collection is invalid. Please just add these items or remove the sorters.');
+            Ext.Logger.error(&#39;Inserting a collection of items into a sorted Collection is invalid. Please just add these items or remove the sorters.&#39;);
             // &lt;/debug&gt;
         }
 
@@ -705,8 +705,8 @@ Ext.define('Ext.util.Collection', {
             key = newKeys[i];
             item = newItems[i];
 
-            if (typeof key != 'undefined' &amp;&amp; key !== null) {
-                if (typeof map[key] != 'undefined') {
+            if (typeof key != &#39;undefined&#39; &amp;&amp; key !== null) {
+                if (typeof map[key] != &#39;undefined&#39;) {
                     me.replace(key, item);
                     continue;
                 }
@@ -751,7 +751,7 @@ Ext.define('Ext.util.Collection', {
         if (index === -1) {
             Ext.Array.remove(this.all, item);
 
-            if (typeof this.getKey == 'function') {
+            if (typeof this.getKey == &#39;function&#39;) {
                 var key = this.getKey(item);
                 if (key !== undefined) {
                     delete this.map[key];
@@ -796,7 +796,7 @@ Ext.define('Ext.util.Collection', {
             item = items[index];
             key = keys[index];
 
-            if (typeof key != 'undefined') {
+            if (typeof key != &#39;undefined&#39;) {
                 delete me.map[key];
             }
 
@@ -891,11 +891,11 @@ Ext.define('Ext.util.Collection', {
         if (fromMap !== undefined) {
             item = fromMap;
         }
-        else if (typeof key == 'number') {
+        else if (typeof key == &#39;number&#39;) {
             item = me.items[key];
         }
 
-        return typeof item != 'function' || me.getAllowFunctions() ? item : null; // for prototype!
+        return typeof item != &#39;function&#39; || me.getAllowFunctions() ? item : null; // for prototype!
     },
 
 <span id='Ext-util-Collection-method-getAt'>    /**
@@ -936,7 +936,7 @@ Ext.define('Ext.util.Collection', {
      * @return {Boolean} `true` if the collection contains the Object as a key.
      */
     containsKey: function(key) {
-        return typeof this.map[key] != 'undefined';
+        return typeof this.map[key] != &#39;undefined&#39;;
     },
 
 <span id='Ext-util-Collection-method-clear'>    /**
@@ -987,7 +987,7 @@ Ext.define('Ext.util.Collection', {
         }
 
         start = start || 0;
-        end = Math.min(typeof end == 'undefined' ? me.length - 1 : end, me.length - 1);
+        end = Math.min(typeof end == &#39;undefined&#39; ? me.length - 1 : end, me.length - 1);
         if (start &lt;= end) {
             for (i = start; i &lt;= end; i++) {
                 range[range.length] = items[i];

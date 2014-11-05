@@ -18,17 +18,17 @@
   <pre class="prettyprint lang-js"><span id='Ext-event-publisher-ElementSize'>/**
 </span> * @private
  */
-Ext.define('Ext.event.publisher.ElementSize', {
+Ext.define(&#39;Ext.event.publisher.ElementSize&#39;, {
 
-    extend: 'Ext.event.publisher.Publisher',
+    extend: &#39;Ext.event.publisher.Publisher&#39;,
 
     requires: [
-        'Ext.util.SizeMonitor'
+        &#39;Ext.util.SizeMonitor&#39;
     ],
 
-<span id='Ext-event-publisher-ElementSize-property-targetType'>    targetType: 'element',
+<span id='Ext-event-publisher-ElementSize-property-targetType'>    targetType: &#39;element&#39;,
 </span>
-<span id='Ext-event-publisher-ElementSize-property-handledEvents'>    handledEvents: ['resize'],
+<span id='Ext-event-publisher-ElementSize-property-handledEvents'>    handledEvents: [&#39;resize&#39;],
 </span>
 <span id='Ext-event-publisher-ElementSize-method-constructor'>    constructor: function() {
 </span>        this.monitors = {};
@@ -63,7 +63,7 @@ Ext.define('Ext.event.publisher.ElementSize', {
             args: [target, element]
         });
 
-        this.dispatcher.addListener('element', target, 'painted', 'forceRefresh', sizeMonitor);
+        this.dispatcher.addListener(&#39;element&#39;, target, &#39;painted&#39;, &#39;forceRefresh&#39;, sizeMonitor);
 
         return true;
     },
@@ -88,7 +88,7 @@ Ext.define('Ext.event.publisher.ElementSize', {
 
         sizeMonitor = monitors[id];
 
-        this.dispatcher.removeListener('element', target, 'painted', 'forceRefresh', sizeMonitor);
+        this.dispatcher.removeListener(&#39;element&#39;, target, &#39;painted&#39;, &#39;forceRefresh&#39;, sizeMonitor);
 
         sizeMonitor.destroy();
         delete monitors[id];
@@ -97,7 +97,7 @@ Ext.define('Ext.event.publisher.ElementSize', {
     },
 
 <span id='Ext-event-publisher-ElementSize-method-onElementResize'>    onElementResize: function(target, element, info) {
-</span>        Ext.TaskQueue.requestRead('dispatch', this, [target, 'resize', [element, info]]);
+</span>        Ext.TaskQueue.requestRead(&#39;dispatch&#39;, this, [target, &#39;resize&#39;, [element, info]]);
     }
 });
 </pre>

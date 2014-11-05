@@ -20,9 +20,9 @@
  *
  * @private
  */
-Ext.define('Ext.event.recognizer.DoubleTap', {
+Ext.define(&#39;Ext.event.recognizer.DoubleTap&#39;, {
 
-    extend: 'Ext.event.recognizer.SingleTouch',
+    extend: &#39;Ext.event.recognizer.SingleTouch&#39;,
 
     inheritableStatics: {
 <span id='Ext-event-recognizer-DoubleTap-static-property-DIFFERENT_TARGET'>        DIFFERENT_TARGET: 0x03
@@ -32,7 +32,7 @@ Ext.define('Ext.event.recognizer.DoubleTap', {
 <span id='Ext-event-recognizer-DoubleTap-cfg-maxDuration'>        maxDuration: 300
 </span>    },
 
-<span id='Ext-event-recognizer-DoubleTap-property-handledEvents'>    handledEvents: ['singletap', 'doubletap'],
+<span id='Ext-event-recognizer-DoubleTap-property-handledEvents'>    handledEvents: [&#39;singletap&#39;, &#39;doubletap&#39;],
 </span>
 <span id='Ext-dom-Element-event-singletap'>    /**
 </span>     * @member Ext.dom.Element
@@ -96,7 +96,7 @@ Ext.define('Ext.event.recognizer.DoubleTap', {
                 this.lastTarget = null;
                 this.lastTapTime = 0;
 
-                this.fire('doubletap', e, [touch], {
+                this.fire(&#39;doubletap&#39;, e, [touch], {
                     touch: touch,
                     duration: duration
                 });
@@ -116,7 +116,7 @@ Ext.define('Ext.event.recognizer.DoubleTap', {
     },
 
 <span id='Ext-event-recognizer-DoubleTap-method-fireSingleTap'>    fireSingleTap: function(e, touch) {
-</span>        this.fire('singletap', e, [touch], {
+</span>        this.fire(&#39;singletap&#39;, e, [touch], {
             touch: touch
         });
     }

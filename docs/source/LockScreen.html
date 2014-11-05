@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">//Created by Yilei Mou on 10/29/14
+<span id='SEEC-view-login-LockScreen'>/**
+</span> * A customized component. Simulating the IOS lock screen with a fantastic slider.
+ */
+Ext.define(&#39;SEEC.view.login.LockScreen&#39;, {
+    extend: &#39;Ext.Container&#39;,
+    xtype: &#39;lockscreen&#39;,
+    config: {
+<span id='SEEC-view-login-LockScreen-cfg-cls'>        cls: &#39;lock-screen&#39;
+</span>    },
+<span id='SEEC-view-login-LockScreen-method-initialize'>    initialize: function () {
+</span>        var me = this;
+        this.callParent(arguments);
+        me.setInitialTpl();
+    },
+
+<span id='SEEC-view-login-LockScreen-method-setInitialTpl'>    /**
+</span>     * Set the initial customized html template.
+     */
+    setInitialTpl: function () {
+        var me = this;
+        var timeTpl = me.getTimeTpl();
+        var bottomSlideHtml = me.getBottomSlideHtml();
+        me.tpl = Ext.create(&#39;Ext.XTemplate&#39;, [
+            &#39;&lt;div&gt;&#39;,
+                timeTpl,
+                bottomSlideHtml,
+            &#39;&lt;/div&gt;&#39;
+        ].join(&#39;&#39;));
+        me.tpl.insertFirst(me.element.child(&#39;div&#39;), {
+            time: SEEC.util.Utils.timeRenderer(new Date()),
+            date: SEEC.util.Utils.dateRenderer(new Date())
+        });
+    },
+
+<span id='SEEC-view-login-LockScreen-method-getTimeTpl'>    /**
+</span>     * Create the clock container template
+     * @returns {string}
+     */
+    getTimeTpl: function () {
+        return [
+            &#39;&lt;tpl&gt;&#39;,
+                &#39;&lt;div class=&quot;time-container&quot;&gt;&#39;,
+                    &#39;&lt;div class=&quot;time&quot;&gt;{time}&lt;/div&gt;&#39;,
+                    &#39;&lt;div class=&quot;date&quot;&gt;{date}&lt;/div&gt;&#39;,
+                &#39;&lt;/div&gt;&#39;,
+            &#39;&lt;/tpl&gt;&#39;
+        ].join(&#39;&#39;);
+    },
+
+<span id='SEEC-view-login-LockScreen-method-getBottomSlideHtml'>    /**
+</span>     * Create the slider template
+     * @returns {string}
+     */
+    getBottomSlideHtml: function () {
+        var html = [
+            &#39;&lt;div class=&quot;slide-bottom&quot;&gt;&#39;, &#39;&#39; +
+                &#39;&gt; slide to unlock&#39;,
+            &#39;&lt;/div&gt;&#39;
+        ].join(&#39;&#39;);
+        return html;
+    },
+
+<span id='SEEC-view-login-LockScreen-method-resetTime'>    /**
+</span>     * Reset the clock time
+     */
+    resetTime: function () {
+        var me = this;
+        if (me.tpl) {
+            me.tpl.overwrite(me.body, {time: new Date()});
+        }
+    }
+});</pre>
+</body>
+</html>

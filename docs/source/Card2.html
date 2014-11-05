@@ -19,7 +19,7 @@
 </span> * @aside guide layouts
  * @aside video layouts
  *
- * Sometimes you want to show several screens worth of information but you've only got a small screen to work with.
+ * Sometimes you want to show several screens worth of information but you&#39;ve only got a small screen to work with.
  * TabPanels and Carousels both enable you to see one screen of many at a time, and underneath they both use a Card
  * Layout.
  *
@@ -31,11 +31,11 @@
  *
  *
  * Here the gray box is our Container, and the blue box inside it is the currently active card. The three other cards
- * are hidden from view, but can be swapped in later. While it's not too common to create Card layouts directly, you
+ * are hidden from view, but can be swapped in later. While it&#39;s not too common to create Card layouts directly, you
  * can do so like this:
  *
- *     var panel = Ext.create('Ext.Panel', {
- *         layout: 'card',
+ *     var panel = Ext.create(&#39;Ext.Panel&#39;, {
+ *         layout: &#39;card&#39;,
  *         items: [
  *             {
  *                 html: &quot;First Item&quot;
@@ -55,7 +55,7 @@
  *     panel.{@link Ext.Container#setActiveItem setActiveItem}(1);
  *
  * Here we create a Panel with a Card Layout and later set the second item active (the active item index is zero-based,
- * so 1 corresponds to the second item). Normally you're better off using a {@link Ext.tab.Panel tab panel} or a
+ * so 1 corresponds to the second item). Normally you&#39;re better off using a {@link Ext.tab.Panel tab panel} or a
  * {@link Ext.carousel.Carousel carousel}.
  *
  * For a more detailed overview of what layouts are and the types of layouts shipped with Sencha Touch 2, check out the
@@ -63,10 +63,10 @@
  */
 
 
-Ext.define('Ext.layout.Card', {
-    extend: 'Ext.layout.Default',
+Ext.define(&#39;Ext.layout.Card&#39;, {
+    extend: &#39;Ext.layout.Default&#39;,
 
-    alias: 'layout.card',
+    alias: &#39;layout.card&#39;,
 
 <span id='Ext-layout-Card-property-isCard'>    isCard: true,
 </span>
@@ -79,12 +79,12 @@ Ext.define('Ext.layout.Card', {
      * @param {Mixed} oldActiveItem The old active item
      */
         
-    layoutClass: 'x-layout-card',
+    layoutClass: &#39;x-layout-card&#39;,
 
-<span id='Ext-layout-Card-property-itemClass'>    itemClass: 'x-layout-card-item',
+<span id='Ext-layout-Card-property-itemClass'>    itemClass: &#39;x-layout-card-item&#39;,
 </span>
     requires: [
-        'Ext.fx.layout.Card'
+        &#39;Ext.fx.layout.Card&#39;
     ],
 
 <span id='Ext-layout-Card-method-applyAnimation'>    /**
@@ -111,7 +111,7 @@ Ext.define('Ext.layout.Card', {
 </span>        this.callSuper(arguments);
 
         container.innerElement.addCls(this.layoutClass);
-        container.onInitialized('onContainerInitialized', this);
+        container.onInitialized(&#39;onContainerInitialized&#39;, this);
     },
 
 <span id='Ext-layout-Card-method-onContainerInitialized'>    onContainerInitialized: function() {
@@ -126,14 +126,14 @@ Ext.define('Ext.layout.Card', {
             }
         }
 
-        container.on('activeitemchange', 'onContainerActiveItemChange', this);
+        container.on(&#39;activeitemchange&#39;, &#39;onContainerActiveItemChange&#39;, this);
     },
 
 <span id='Ext-layout-Card-method-onContainerActiveItemChange'>    /**
 </span>     * @private
      */
     onContainerActiveItemChange: function(container) {
-        this.relayEvent(arguments, 'doActiveItemChange');
+        this.relayEvent(arguments, &#39;doActiveItemChange&#39;);
     },
 
 <span id='Ext-layout-Card-method-onItemInnerStateChange'>    onItemInnerStateChange: function(item, isInner, destroying) {

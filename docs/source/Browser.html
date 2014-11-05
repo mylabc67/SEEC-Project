@@ -22,23 +22,23 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.Browser', {
+Ext.define(&#39;Ext.device.Browser&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.Communicator',
-        'Ext.device.browser.Cordova',
-        'Ext.device.browser.Simulator'
+        &#39;Ext.device.Communicator&#39;,
+        &#39;Ext.device.browser.Cordova&#39;,
+        &#39;Ext.device.browser.Simulator&#39;
     ],
 
 <span id='Ext-device-Browser-method-constructor'>    constructor: function() {
 </span>        var browserEnv = Ext.browser.is;
 
         if (browserEnv.WebView &amp;&amp; browserEnv.Cordova) {
-            return Ext.create('Ext.device.browser.Cordova');
+            return Ext.create(&#39;Ext.device.browser.Cordova&#39;);
         }
 
-        return Ext.create('Ext.device.browser.Simulator');
+        return Ext.create(&#39;Ext.device.browser.Simulator&#39;);
     }
 });
 </pre>

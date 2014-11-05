@@ -26,7 +26,7 @@
  *
  * Several Operations can be batched together in a {@link Ext.data.Batch batch}.
  */
-Ext.define('Ext.data.Operation', {
+Ext.define(&#39;Ext.data.Operation&#39;, {
     config: {
 <span id='Ext-data-Operation-cfg-synchronous'>        /**
 </span>         * @cfg {Boolean} synchronous
@@ -38,42 +38,42 @@ Ext.define('Ext.data.Operation', {
 
 <span id='Ext-data-Operation-cfg-action'>        /**
 </span>         * @cfg {String} action
-         * The action being performed by this Operation. Should be one of 'create', 'read', 'update' or 'destroy'.
+         * The action being performed by this Operation. Should be one of &#39;create&#39;, &#39;read&#39;, &#39;update&#39; or &#39;destroy&#39;.
          * @accessor
          */
         action: null,
 
 <span id='Ext-data-Operation-cfg-filters'>        /**
 </span>         * @cfg {Ext.util.Filter[]} filters
-         * Optional array of filter objects. Only applies to 'read' actions.
+         * Optional array of filter objects. Only applies to &#39;read&#39; actions.
          * @accessor
          */
         filters: null,
 
 <span id='Ext-data-Operation-cfg-sorters'>        /**
 </span>         * @cfg {Ext.util.Sorter[]} sorters
-         * Optional array of sorter objects. Only applies to 'read' actions.
+         * Optional array of sorter objects. Only applies to &#39;read&#39; actions.
          * @accessor
          */
         sorters: null,
 
 <span id='Ext-data-Operation-cfg-grouper'>        /**
 </span>         * @cfg {Ext.util.Grouper} grouper
-         * Optional grouping configuration. Only applies to 'read' actions where grouping is desired.
+         * Optional grouping configuration. Only applies to &#39;read&#39; actions where grouping is desired.
          * @accessor
          */
         grouper: null,
 
 <span id='Ext-data-Operation-cfg-start'>        /**
 </span>         * @cfg {Number} start
-         * The start index (offset), used in paging when running a 'read' action.
+         * The start index (offset), used in paging when running a &#39;read&#39; action.
          * @accessor
          */
         start: null,
 
 <span id='Ext-data-Operation-cfg-limit'>        /**
 </span>         * @cfg {Number} limit
-         * The number of records to load. Used on 'read' actions when paging is being used.
+         * The number of records to load. Used on &#39;read&#39; actions when paging is being used.
          * @accessor
          */
         limit: null,
@@ -113,7 +113,7 @@ Ext.define('Ext.data.Operation', {
          * The records associated to this operation. Before an operation starts, these
          * are the records you are updating, creating, or destroying. After an operation
          * is completed, a Proxy usually sets these records on the Operation to become
-         * the processed records. If you don't set these records on your operation in
+         * the processed records. If you don&#39;t set these records on your operation in
          * your proxy, then the getter will return the ones defined on the {@link #resultSet}
          * @accessor
          */
@@ -121,7 +121,7 @@ Ext.define('Ext.data.Operation', {
 
 <span id='Ext-data-Operation-cfg-request'>        /**
 </span>         * @cfg {Ext.data.Request} request
-         * The request used for this Operation. Operations don't usually care about Request and Response data, but in the
+         * The request used for this Operation. Operations don&#39;t usually care about Request and Response data, but in the
          * ServerProxy and any of its subclasses they may be useful for further processing.
          * @accessor
          */
@@ -221,11 +221,11 @@ Ext.define('Ext.data.Operation', {
     },
 
 <span id='Ext-data-Operation-method-applyModel'>    applyModel: function(model) {
-</span>        if (typeof model == 'string') {
+</span>        if (typeof model == &#39;string&#39;) {
             model = Ext.data.ModelManager.getModel(model);
 
             if (!model) {
-                Ext.Logger.error('Model with name ' + arguments[0] + ' doesnt exist.');
+                Ext.Logger.error(&#39;Model with name &#39; + arguments[0] + &#39; doesnt exist.&#39;);
             }
         }
 
@@ -235,7 +235,7 @@ Ext.define('Ext.data.Operation', {
 
         // &lt;debug&gt;
         if (!model) {
-            Ext.Logger.warn('Unless you define your model using metadata, an Operation needs to have a model defined.');
+            Ext.Logger.warn(&#39;Unless you define your model using metadata, an Operation needs to have a model defined.&#39;);
         }
         // &lt;/debug&gt;
 
@@ -335,7 +335,7 @@ Ext.define('Ext.data.Operation', {
      * @return {Boolean} Whether the operation should cause a write to occur.
      */
     allowWrite: function() {
-        return this.getAction() != 'read';
+        return this.getAction() != &#39;read&#39;;
     },
 
 <span id='Ext-data-Operation-method-process'>    process: function(action, resultSet, request, response) {
@@ -350,7 +350,7 @@ Ext.define('Ext.data.Operation', {
             return false;
         }
 
-        return this['process' + Ext.String.capitalize(action)].call(this, resultSet, request, response);
+        return this[&#39;process&#39; + Ext.String.capitalize(action)].call(this, resultSet, request, response);
     },
 
 <span id='Ext-data-Operation-method-processRead'>    processRead: function(resultSet) {
@@ -390,7 +390,7 @@ Ext.define('Ext.data.Operation', {
             }
             // &lt;debug&gt;
             else {
-                Ext.Logger.warn('Unable to match the record that came back from the server.');
+                Ext.Logger.warn(&#39;Unable to match the record that came back from the server.&#39;);
             }
             // &lt;/debug&gt;
         }
@@ -413,7 +413,7 @@ Ext.define('Ext.data.Operation', {
             }
             // &lt;debug&gt;
             else {
-                Ext.Logger.warn('Unable to match the updated record that came back from the server.');
+                Ext.Logger.warn(&#39;Unable to match the updated record that came back from the server.&#39;);
             }
             // &lt;/debug&gt;
         }
@@ -432,11 +432,11 @@ Ext.define('Ext.data.Operation', {
 
             if (currentRecord) {
                 currentRecord.setIsErased(true);
-                currentRecord.notifyStores('afterErase', currentRecord);
+                currentRecord.notifyStores(&#39;afterErase&#39;, currentRecord);
             }
             // &lt;debug&gt;
             else {
-                Ext.Logger.warn('Unable to match the destroyed record that came back from the server.');
+                Ext.Logger.warn(&#39;Unable to match the destroyed record that came back from the server.&#39;);
             }
             // &lt;/debug&gt;
         }
@@ -480,7 +480,7 @@ Ext.define('Ext.data.Operation', {
      * @inheritdoc Ext.data.Operation#grouper
      * @deprecated 2.0.0 Please use {@link #grouper} instead.
      */
-    Ext.deprecateProperty(this, 'group', 'grouper');
+    Ext.deprecateProperty(this, &#39;group&#39;, &#39;grouper&#39;);
     // &lt;/deprecated&gt;
 });
 </pre>

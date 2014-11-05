@@ -25,7 +25,7 @@
  * {@link Ext.data.Store} or {@link Ext.data.TreeStore}.
  */
 Ext.define(&quot;Ext.util.Sortable&quot;, {
-    extend: 'Ext.mixin.Mixin',
+    extend: &#39;Ext.mixin.Mixin&#39;,
 <span id='Ext-util-Sortable-property-isSortable'>    /**
 </span>     * @property {Boolean} isSortable
      * Flag denoting that this object is sortable. Always `true`.
@@ -35,7 +35,7 @@ Ext.define(&quot;Ext.util.Sortable&quot;, {
     
 <span id='Ext-util-Sortable-property-mixinConfig'>    mixinConfig: {
 </span>        hooks: {
-            destroy: 'destroy'
+            destroy: &#39;destroy&#39;
         }
     },
     
@@ -46,7 +46,7 @@ Ext.define(&quot;Ext.util.Sortable&quot;, {
     defaultSortDirection: &quot;ASC&quot;,
     
     requires: [
-        'Ext.util.Sorter'
+        &#39;Ext.util.Sorter&#39;
     ],
 
 <span id='Ext-util-Sortable-property-sortRoot'>    /**
@@ -66,7 +66,7 @@ Ext.define(&quot;Ext.util.Sortable&quot;, {
 </span>         * @property {Ext.util.MixedCollection} sorters
          * The collection of {@link Ext.util.Sorter Sorters} currently applied to this Store
          */
-        me.sorters = Ext.create('Ext.util.AbstractMixedCollection', false, function(item) {
+        me.sorters = Ext.create(&#39;Ext.util.AbstractMixedCollection&#39;, false, function(item) {
             return item.id || item.property;
         });
         
@@ -79,17 +79,17 @@ Ext.define(&quot;Ext.util.Sortable&quot;, {
 </span>     * Sorts the data in the Store by one or more of its properties. Example usage:
      *
      *     //sort by a single field
-     *     myStore.sort('myField', 'DESC');
+     *     myStore.sort(&#39;myField&#39;, &#39;DESC&#39;);
      *
      *     //sorting by multiple fields
      *     myStore.sort([
      *         {
-     *             property : 'age',
-     *             direction: 'ASC'
+     *             property : &#39;age&#39;,
+     *             direction: &#39;ASC&#39;
      *         },
      *         {
-     *             property : 'name',
-     *             direction: 'DESC'
+     *             property : &#39;name&#39;,
+     *             direction: &#39;DESC&#39;
      *         }
      *     ]);
      *
@@ -98,15 +98,15 @@ Ext.define(&quot;Ext.util.Sortable&quot;, {
      *
      * When passing a single string argument to sort, Store maintains a ASC/DESC toggler per field, so this code:
      *
-     *     store.sort('myField');
-     *     store.sort('myField');
+     *     store.sort(&#39;myField&#39;);
+     *     store.sort(&#39;myField&#39;);
      *
      * Is equivalent to this code, because Store handles the toggling automatically:
      *
-     *     store.sort('myField', 'ASC');
-     *     store.sort('myField', 'DESC');
+     *     store.sort(&#39;myField&#39;, &#39;ASC&#39;);
+     *     store.sort(&#39;myField&#39;, &#39;DESC&#39;);
      *
-     * @param {String/Ext.util.Sorter[]} sorters Either a string name of one of the fields in this Store's configured
+     * @param {String/Ext.util.Sorter[]} sorters Either a string name of one of the fields in this Store&#39;s configured
      * {@link Ext.data.Model Model}, or an array of sorter configurations.
      * @param {String} [direction=&quot;ASC&quot;] The overall direction to sort the data by.
      * @param {String} [where]
@@ -149,7 +149,7 @@ Ext.define(&quot;Ext.util.Sortable&quot;, {
         if (newSorters &amp;&amp; newSorters.length) {
             newSorters = me.decodeSorters(newSorters);
             if (Ext.isString(where)) {
-                if (where === 'prepend') {
+                if (where === &#39;prepend&#39;) {
                     sorters = me.sorters.clone().items;
                     
                     me.sorters.clear();
@@ -237,7 +237,7 @@ Ext.define(&quot;Ext.util.Sortable&quot;, {
                 }
 
                 //support a function to be passed as a sorter definition
-                if (typeof config == 'function') {
+                if (typeof config == &#39;function&#39;) {
                     config = {
                         sorterFn: config
                     };
@@ -248,7 +248,7 @@ Ext.define(&quot;Ext.util.Sortable&quot;, {
                     field = fields.get(config.property);
                     config.transform = field ? field.sortType : undefined;
                 }
-                sorters[i] = Ext.create('Ext.util.Sorter', config);
+                sorters[i] = Ext.create(&#39;Ext.util.Sorter&#39;, config);
             }
         }
 

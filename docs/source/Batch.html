@@ -25,9 +25,9 @@
  *
  * Usually these are only used internally by {@link Ext.data.proxy.Proxy} classes.
  */
-Ext.define('Ext.data.Batch', {
+Ext.define(&#39;Ext.data.Batch&#39;, {
     mixins: {
-        observable: 'Ext.mixin.Observable'
+        observable: &#39;Ext.mixin.Observable&#39;
     },
 
     config: {
@@ -171,7 +171,7 @@ Ext.define('Ext.data.Batch', {
         if (operation === undefined) {
             me.isRunning = false;
             me.isComplete = true;
-            me.fireEvent('complete', me, operations[operations.length - 1]);
+            me.fireEvent(&#39;complete&#39;, me, operations[operations.length - 1]);
         } else {
             me.current = index;
 
@@ -180,9 +180,9 @@ Ext.define('Ext.data.Batch', {
 
                 if (hasException) {
                     me.hasException = true;
-                    me.fireEvent('exception', me, operation);
+                    me.fireEvent(&#39;exception&#39;, me, operation);
                 } else {
-                    me.fireEvent('operationcomplete', me, operation);
+                    me.fireEvent(&#39;operationcomplete&#39;, me, operation);
                 }
 
                 if (hasException &amp;&amp; me.getPauseOnException()) {

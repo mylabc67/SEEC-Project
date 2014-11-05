@@ -25,74 +25,74 @@
  * Access the global instance stored in {@link Ext.browser} instead.
  * @private
  */
-Ext.define('Ext.env.Browser', {
+Ext.define(&#39;Ext.env.Browser&#39;, {
     requires: [
-        'Ext.Version'
+        &#39;Ext.Version&#39;
     ],
 
     statics: {
 <span id='Ext-env-Browser-static-property-browserNames'>        browserNames: {
-</span>            ie: 'IE',
-            firefox: 'Firefox',
-            safari: 'Safari',
-            chrome: 'Chrome',
-            opera: 'Opera',
-            dolfin: 'Dolfin',
-            webosbrowser: 'webOSBrowser',
-            chromeMobile: 'ChromeMobile',
-            chromeiOS: 'ChromeiOS',
-            silk: 'Silk',
-            other: 'Other'
+</span>            ie: &#39;IE&#39;,
+            firefox: &#39;Firefox&#39;,
+            safari: &#39;Safari&#39;,
+            chrome: &#39;Chrome&#39;,
+            opera: &#39;Opera&#39;,
+            dolfin: &#39;Dolfin&#39;,
+            webosbrowser: &#39;webOSBrowser&#39;,
+            chromeMobile: &#39;ChromeMobile&#39;,
+            chromeiOS: &#39;ChromeiOS&#39;,
+            silk: &#39;Silk&#39;,
+            other: &#39;Other&#39;
         },
 <span id='Ext-env-Browser-static-property-engineNames'>        engineNames: {
-</span>            webkit: 'WebKit',
-            gecko: 'Gecko',
-            presto: 'Presto',
-            trident: 'Trident',
-            other: 'Other'
+</span>            webkit: &#39;WebKit&#39;,
+            gecko: &#39;Gecko&#39;,
+            presto: &#39;Presto&#39;,
+            trident: &#39;Trident&#39;,
+            other: &#39;Other&#39;
         },
 <span id='Ext-env-Browser-static-property-enginePrefixes'>        enginePrefixes: {
-</span>            webkit: 'AppleWebKit/',
-            gecko: 'Gecko/',
-            presto: 'Presto/',
-            trident: 'Trident/'
+</span>            webkit: &#39;AppleWebKit/&#39;,
+            gecko: &#39;Gecko/&#39;,
+            presto: &#39;Presto/&#39;,
+            trident: &#39;Trident/&#39;
         },
 <span id='Ext-env-Browser-static-property-browserPrefixes'>        browserPrefixes: {
-</span>            ie: 'MSIE ',
-            firefox: 'Firefox/',
-            chrome: 'Chrome/',
-            safari: 'Version/',
-            opera: 'OPR/',
-            dolfin: 'Dolfin/',
-            webosbrowser: 'wOSBrowser/',
-            chromeMobile: 'CrMo/',
-            chromeiOS: 'CriOS/',
-            silk: 'Silk/'
+</span>            ie: &#39;MSIE &#39;,
+            firefox: &#39;Firefox/&#39;,
+            chrome: &#39;Chrome/&#39;,
+            safari: &#39;Version/&#39;,
+            opera: &#39;OPR/&#39;,
+            dolfin: &#39;Dolfin/&#39;,
+            webosbrowser: &#39;wOSBrowser/&#39;,
+            chromeMobile: &#39;CrMo/&#39;,
+            chromeiOS: &#39;CriOS/&#39;,
+            silk: &#39;Silk/&#39;
         }
     },
 
 <span id='Ext-env-Browser-property-styleDashPrefixes'>    styleDashPrefixes: {
-</span>        WebKit: '-webkit-',
-        Gecko: '-moz-',
-        Trident: '-ms-',
-        Presto: '-o-',
-        Other: ''
+</span>        WebKit: &#39;-webkit-&#39;,
+        Gecko: &#39;-moz-&#39;,
+        Trident: &#39;-ms-&#39;,
+        Presto: &#39;-o-&#39;,
+        Other: &#39;&#39;
     },
 
 <span id='Ext-env-Browser-property-stylePrefixes'>    stylePrefixes: {
-</span>        WebKit: 'Webkit',
-        Gecko: 'Moz',
-        Trident: 'ms',
-        Presto: 'O',
-        Other: ''
+</span>        WebKit: &#39;Webkit&#39;,
+        Gecko: &#39;Moz&#39;,
+        Trident: &#39;ms&#39;,
+        Presto: &#39;O&#39;,
+        Other: &#39;&#39;
     },
 
 <span id='Ext-env-Browser-property-propertyPrefixes'>    propertyPrefixes: {
-</span>        WebKit: 'webkit',
-        Gecko: 'moz',
-        Trident: 'ms',
-        Presto: 'o',
-        Other: ''
+</span>        WebKit: &#39;webkit&#39;,
+        Gecko: &#39;moz&#39;,
+        Trident: &#39;ms&#39;,
+        Presto: &#39;o&#39;,
+        Other: &#39;&#39;
     },
 
     // scope: Ext.env.Browser.prototype
@@ -100,7 +100,7 @@ Ext.define('Ext.env.Browser', {
 <span id='Ext-env-Browser-method-is'>    /**
 </span>     * A &quot;hybrid&quot; property, can be either accessed as a method call, for example:
      *
-     *     if (Ext.browser.is('IE')) {
+     *     if (Ext.browser.is(&#39;IE&#39;)) {
      *         // ...
      *     }
      *
@@ -161,7 +161,7 @@ Ext.define('Ext.env.Browser', {
     version: null,
 
 <span id='Ext-env-Browser-property-engineName'>    /**
-</span>     * The full name of the current browser's engine.
+</span>     * The full name of the current browser&#39;s engine.
      * Possible values are:
      *
      * - WebKit
@@ -182,7 +182,7 @@ Ext.define('Ext.env.Browser', {
     engineVersion: null,
 
 <span id='Ext-env-Browser-method-setFlag'>    setFlag: function(name, value) {
-</span>        if (typeof value == 'undefined') {
+</span>        if (typeof value == &#39;undefined&#39;) {
             value = true;
         }
 
@@ -200,14 +200,14 @@ Ext.define('Ext.env.Browser', {
         this.userAgent = userAgent;
 
         var statics = this.statics(),
-            browserMatch = userAgent.match(new RegExp('((?:' + Ext.Object.getValues(statics.browserPrefixes).join(')|(?:') + '))([\\w\\._]+)')),
-            engineMatch = userAgent.match(new RegExp('((?:' + Ext.Object.getValues(statics.enginePrefixes).join(')|(?:') + '))([\\w\\._]+)')),
+            browserMatch = userAgent.match(new RegExp(&#39;((?:&#39; + Ext.Object.getValues(statics.browserPrefixes).join(&#39;)|(?:&#39;) + &#39;))([\\w\\._]+)&#39;)),
+            engineMatch = userAgent.match(new RegExp(&#39;((?:&#39; + Ext.Object.getValues(statics.enginePrefixes).join(&#39;)|(?:&#39;) + &#39;))([\\w\\._]+)&#39;)),
             browserNames = statics.browserNames,
             browserName = browserNames.other,
             engineNames = statics.engineNames,
             engineName = engineNames.other,
-            browserVersion = '',
-            engineVersion = '',
+            browserVersion = &#39;&#39;,
+            engineVersion = &#39;&#39;,
             isWebView = false,
             is, i, name;
 
@@ -225,8 +225,8 @@ Ext.define('Ext.env.Browser', {
             engineVersion = new Ext.Version(engineMatch[2]);
         }
 
-        if (engineName == 'Trident' &amp;&amp; browserName != 'IE') {
-            browserName = 'IE';
+        if (engineName == &#39;Trident&#39; &amp;&amp; browserName != &#39;IE&#39;) {
+            browserName = &#39;IE&#39;;
             var version = userAgent.match(/.*rv:(\d+.\d+)/);
             if (version &amp;&amp; version.length) {
                 version = version[1];
@@ -242,17 +242,17 @@ Ext.define('Ext.env.Browser', {
         }
 
         if (userAgent.match(/Android.*Chrome/g)) {
-            browserName = 'ChromeMobile';
+            browserName = &#39;ChromeMobile&#39;;
         }
 
         if (userAgent.match(/OPR/)) {
-            browserName = 'Opera';
+            browserName = &#39;Opera&#39;;
             browserMatch = userAgent.match(/OPR\/(\d+.\d+)/);
             browserVersion = new Ext.Version(browserMatch[1]);
         }
 
-        if(browserName === 'Safari' &amp;&amp; userAgent.match(/BB10/)) {
-            browserName = 'BlackBerry';
+        if(browserName === &#39;Safari&#39; &amp;&amp; userAgent.match(/BB10/)) {
+            browserName = &#39;BlackBerry&#39;;
         }
 
         Ext.apply(this, {
@@ -265,7 +265,7 @@ Ext.define('Ext.env.Browser', {
         this.setFlag(browserName);
 
         if (browserVersion) {
-            this.setFlag(browserName + (browserVersion.getMajor() || ''));
+            this.setFlag(browserName + (browserVersion.getMajor() || &#39;&#39;));
             this.setFlag(browserName + browserVersion.getShortVersion());
         }
 
@@ -280,7 +280,7 @@ Ext.define('Ext.env.Browser', {
         this.setFlag(name);
 
         if (engineVersion) {
-            this.setFlag(engineName + (engineVersion.getMajor() || ''));
+            this.setFlag(engineName + (engineVersion.getMajor() || &#39;&#39;));
             this.setFlag(engineName + engineVersion.getShortVersion());
         }
 
@@ -292,23 +292,23 @@ Ext.define('Ext.env.Browser', {
             }
         }
 
-        this.setFlag('Standalone', !!navigator.standalone);
+        this.setFlag(&#39;Standalone&#39;, !!navigator.standalone);
 
-        this.setFlag('Ripple', !!document.getElementById(&quot;tinyhippos-injected&quot;) &amp;&amp; !Ext.isEmpty(window.top.ripple));
-        this.setFlag('WebWorks', !!window.blackberry);
+        this.setFlag(&#39;Ripple&#39;, !!document.getElementById(&quot;tinyhippos-injected&quot;) &amp;&amp; !Ext.isEmpty(window.top.ripple));
+        this.setFlag(&#39;WebWorks&#39;, !!window.blackberry);
 
-        if (typeof window.PhoneGap != 'undefined' || typeof window.Cordova != 'undefined' || typeof window.cordova != 'undefined') {
+        if (typeof window.PhoneGap != &#39;undefined&#39; || typeof window.Cordova != &#39;undefined&#39; || typeof window.cordova != &#39;undefined&#39;) {
             isWebView = true;
-            this.setFlag('PhoneGap');
-            this.setFlag('Cordova');
+            this.setFlag(&#39;PhoneGap&#39;);
+            this.setFlag(&#39;Cordova&#39;);
         }
         else if (!!window.isNK) {
             isWebView = true;
-            this.setFlag('Sencha');
+            this.setFlag(&#39;Sencha&#39;);
         }
 
         if (/(Glass)/i.test(userAgent)) {
-            this.setFlag('GoogleGlass');
+            this.setFlag(&#39;GoogleGlass&#39;);
         }
 
         // Check if running in UIWebView
@@ -317,7 +317,7 @@ Ext.define('Ext.env.Browser', {
         }
 
         // Flag to check if it we are in the WebView
-        this.setFlag('WebView', isWebView);
+        this.setFlag(&#39;WebView&#39;, isWebView);
 
 <span id='Ext-env-Browser-property-isStrict'>        /**
 </span>         * @property {Boolean}
@@ -353,14 +353,14 @@ Ext.define('Ext.env.Browser', {
     },
 
 <span id='Ext-env-Browser-method-getPreferredTranslationMethod'>    getPreferredTranslationMethod: function(config) {
-</span>        if (typeof config == 'object' &amp;&amp; 'translationMethod' in config &amp;&amp; config.translationMethod !== 'auto') {
+</span>        if (typeof config == &#39;object&#39; &amp;&amp; &#39;translationMethod&#39; in config &amp;&amp; config.translationMethod !== &#39;auto&#39;) {
             return config.translationMethod;
         } else {
             if (this.is.AndroidStock2 || this.is.IE) {
-                return 'scrollposition';
+                return &#39;scrollposition&#39;;
             }
             else {
-                return 'csstransform';
+                return &#39;csstransform&#39;;
             }
         }
     }
@@ -405,9 +405,9 @@ Ext.define('Ext.env.Browser', {
         }
     }
 
-    Ext.deprecatePropertyValue(Ext, 'isStrict', browserEnv.isStrict, &quot;Ext.isStrict is deprecated, &quot; +
+    Ext.deprecatePropertyValue(Ext, &#39;isStrict&#39;, browserEnv.isStrict, &quot;Ext.isStrict is deprecated, &quot; +
         &quot;please use Ext.browser.isStrict instead&quot;);
-    Ext.deprecatePropertyValue(Ext, 'userAgent', browserEnv.userAgent, &quot;Ext.userAgent is deprecated, &quot; +
+    Ext.deprecatePropertyValue(Ext, &#39;userAgent&#39;, browserEnv.userAgent, &quot;Ext.userAgent is deprecated, &quot; +
         &quot;please use Ext.browser.userAgent instead&quot;);
     //&lt;/deprecated&gt;
 });

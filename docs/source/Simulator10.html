@@ -18,9 +18,9 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-notification-Simulator'>/**
 </span> * @private
  */
-Ext.define('Ext.device.notification.Simulator', {
-    extend: 'Ext.device.notification.Abstract',
-    requires: ['Ext.MessageBox', 'Ext.util.Audio'],
+Ext.define(&#39;Ext.device.notification.Simulator&#39;, {
+    extend: &#39;Ext.device.notification.Abstract&#39;,
+    requires: [&#39;Ext.MessageBox&#39;, &#39;Ext.util.Audio&#39;],
 
 <span id='Ext-device-notification-Simulator-property-msg'>    // @private
 </span>    msg: null,
@@ -44,7 +44,7 @@ Ext.define('Ext.device.notification.Simulator', {
             buttons.push(button);
         }
 
-        this.msg = Ext.create('Ext.MessageBox');
+        this.msg = Ext.create(&#39;Ext.MessageBox&#39;);
 
         callback = function(itemId) {
             if (config.callback) {
@@ -95,7 +95,7 @@ Ext.define('Ext.device.notification.Simulator', {
             buttons.push(button);
         }
 
-        this.msg = Ext.create('Ext.MessageBox');
+        this.msg = Ext.create(&#39;Ext.MessageBox&#39;);
 
         callback = function(buttonText, value) {
             if (config.callback) {
@@ -139,8 +139,8 @@ Ext.define('Ext.device.notification.Simulator', {
         ];
 
         var head = document.getElementsByTagName(&quot;head&quot;)[0];
-        var cssNode = document.createElement('style');
-        cssNode.innerHTML = animation.join('\n');
+        var cssNode = document.createElement(&#39;style&#39;);
+        cssNode.innerHTML = animation.join(&#39;\n&#39;);
         head.appendChild(cssNode);
 
         setTimeout(function() {

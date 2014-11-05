@@ -24,13 +24,13 @@
  * from http://domainB.com because cross-domain ajax requests are prohibited by the browser.
  *
  * We can get around this using a JsonP proxy. JsonP proxy injects a `&lt;script&gt;` tag into the DOM whenever an AJAX request
- * would usually be made. Let's say we want to load data from http://domainB.com/users - the script tag that would be
+ * would usually be made. Let&#39;s say we want to load data from http://domainB.com/users - the script tag that would be
  * injected might look like this:
  *
  *     &lt;script src=&quot;http://domainB.com/users?callback=someCallback&quot;&gt;&lt;/script&gt;
  *
  * When we inject the tag above, the browser makes a request to that url and includes the response as if it was any
- * other type of JavaScript include. By passing a callback in the url above, we're telling domainB's server that we want
+ * other type of JavaScript include. By passing a callback in the url above, we&#39;re telling domainB&#39;s server that we want
  * to be notified when the result comes in and that it should call our callback function with the data it sends back. So
  * long as the server formats the response to look like this, everything will work:
  *
@@ -44,32 +44,32 @@
  *         ]
  *     });
  *
- * As soon as the script finishes loading, the 'someCallback' function that we passed in the url is called with the JSON
+ * As soon as the script finishes loading, the &#39;someCallback&#39; function that we passed in the url is called with the JSON
  * object that the server returned.
  *
  * JsonP proxy takes care of all of this automatically. It formats the url you pass, adding the callback parameter
  * automatically. It even creates a temporary callback function, waits for it to be called and then puts the data into
- * the Proxy making it look just like you loaded it through a normal {@link Ext.data.proxy.Ajax AjaxProxy}. Here's how
+ * the Proxy making it look just like you loaded it through a normal {@link Ext.data.proxy.Ajax AjaxProxy}. Here&#39;s how
  * we might set that up:
  *
- *     Ext.define('User', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;User&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
- *             fields: ['id', 'name', 'email']
+ *             fields: [&#39;id&#39;, &#39;name&#39;, &#39;email&#39;]
  *         }
  *     });
  *
- *     var store = Ext.create('Ext.data.Store', {
- *         model: 'User',
+ *     var store = Ext.create(&#39;Ext.data.Store&#39;, {
+ *         model: &#39;User&#39;,
  *         proxy: {
- *             type: 'jsonp',
- *             url : 'http://domainB.com/users'
+ *             type: &#39;jsonp&#39;,
+ *             url : &#39;http://domainB.com/users&#39;
  *         }
  *     });
  *
  *     store.load();
  *
- * That's all we need to do - JsonP proxy takes care of the rest. In this case the Proxy will have injected a script tag
+ * That&#39;s all we need to do - JsonP proxy takes care of the rest. In this case the Proxy will have injected a script tag
  * like this:
  *
  *     &lt;script src=&quot;http://domainB.com/users?callback=callback1&quot;&gt;&lt;/script&gt;
@@ -78,12 +78,12 @@
  *
  * This script tag can be customized using the {@link #callbackKey} configuration. For example:
  *
- *     var store = Ext.create('Ext.data.Store', {
- *         model: 'User',
+ *     var store = Ext.create(&#39;Ext.data.Store&#39;, {
+ *         model: &#39;User&#39;,
  *         proxy: {
- *             type: 'jsonp',
- *             url : 'http://domainB.com/users',
- *             callbackKey: 'theCallbackFunction'
+ *             type: &#39;jsonp&#39;,
+ *             url : &#39;http://domainB.com/users&#39;,
+ *             callbackKey: &#39;theCallbackFunction&#39;
  *         }
  *     });
  *
@@ -119,17 +119,17 @@
  *
  * PHP:
  *
- *     $callback = $_REQUEST['callback'];
+ *     $callback = $_REQUEST[&#39;callback&#39;];
  *
  *     // Create the output object.
- *     $output = array('a' =&gt; 'Apple', 'b' =&gt; 'Banana');
+ *     $output = array(&#39;a&#39; =&gt; &#39;Apple&#39;, &#39;b&#39; =&gt; &#39;Banana&#39;);
  *
  *     //start output
  *     if ($callback) {
- *         header('Content-Type: text/javascript');
- *         echo $callback . '(' . json_encode($output) . ');';
+ *         header(&#39;Content-Type: text/javascript&#39;);
+ *         echo $callback . &#39;(&#39; . json_encode($output) . &#39;);&#39;;
  *     } else {
- *         header('Content-Type: application/x-json');
+ *         header(&#39;Content-Type: application/x-json&#39;);
  *         echo json_encode($output);
  *     }
  *
@@ -145,32 +145,32 @@
  *     }
  *     Response.Write(responseString);
  */
-Ext.define('Ext.data.proxy.JsonP', {
-    extend: 'Ext.data.proxy.Server',
-    alternateClassName: 'Ext.data.ScriptTagProxy',
-    alias: ['proxy.jsonp', 'proxy.scripttag'],
-    requires: ['Ext.data.JsonP'],
+Ext.define(&#39;Ext.data.proxy.JsonP&#39;, {
+    extend: &#39;Ext.data.proxy.Server&#39;,
+    alternateClassName: &#39;Ext.data.ScriptTagProxy&#39;,
+    alias: [&#39;proxy.jsonp&#39;, &#39;proxy.scripttag&#39;],
+    requires: [&#39;Ext.data.JsonP&#39;],
 
     config: {
-<span id='Ext-data-proxy-JsonP-cfg-defaultWriterType'>        defaultWriterType: 'base',
+<span id='Ext-data-proxy-JsonP-cfg-defaultWriterType'>        defaultWriterType: &#39;base&#39;,
 </span>
 <span id='Ext-data-proxy-JsonP-cfg-callbackKey'>        /**
 </span>         * @cfg {String} callbackKey
          * See {@link Ext.data.JsonP#callbackKey}.
          * @accessor
          */
-        callbackKey : 'callback',
+        callbackKey : &#39;callback&#39;,
 
 <span id='Ext-data-proxy-JsonP-cfg-recordParam'>        /**
 </span>         * @cfg {String} recordParam
-         * The param name to use when passing records to the server (e.g. 'records=someEncodedRecordString').
+         * The param name to use when passing records to the server (e.g. &#39;records=someEncodedRecordString&#39;).
          * @accessor
          */
-        recordParam: 'records',
+        recordParam: &#39;records&#39;,
 
 <span id='Ext-data-proxy-JsonP-cfg-autoAppendParams'>        /**
 </span>         * @cfg {Boolean} autoAppendParams
-         * `true` to automatically append the request's params to the generated url.
+         * `true` to automatically append the request&#39;s params to the generated url.
          * @accessor
          */
         autoAppendParams: true
@@ -188,8 +188,8 @@ Ext.define('Ext.data.proxy.JsonP', {
     doRequest: function(operation, callback, scope) {
         // &lt;debug&gt;
         var action = operation.getAction();
-        if (action !== 'read') {
-            Ext.Logger.error('JsonP proxies can only be used to read data.');
+        if (action !== &#39;read&#39;) {
+            Ext.Logger.error(&#39;JsonP proxies can only be used to read data.&#39;);
         }
         // &lt;/debug&gt;
 

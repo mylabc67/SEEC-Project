@@ -20,10 +20,10 @@
  *
  * Scroll position implementation
  */
-Ext.define('Ext.util.translatable.ScrollPosition', {
-    extend: 'Ext.util.translatable.Dom',
+Ext.define(&#39;Ext.util.translatable.ScrollPosition&#39;, {
+    extend: &#39;Ext.util.translatable.Dom&#39;,
 
-<span id='Ext-util-translatable-ScrollPosition-property-type'>    type: 'scrollposition',
+<span id='Ext-util-translatable-ScrollPosition-property-type'>    type: &#39;scrollposition&#39;,
 </span>
     config: {
 <span id='Ext-util-translatable-ScrollPosition-cfg-useWrapper'>        useWrapper: true
@@ -41,7 +41,7 @@ Ext.define('Ext.util.translatable.ScrollPosition', {
                 return null;
             }
 
-            if (container.hasCls(Ext.baseCSSPrefix + 'translatable-hboxfix')) {
+            if (container.hasCls(Ext.baseCSSPrefix + &#39;translatable-hboxfix&#39;)) {
                 container = container.getParent();
             }
 
@@ -52,12 +52,12 @@ Ext.define('Ext.util.translatable.ScrollPosition', {
                 wrapper = container;
             }
 
-            element.addCls('x-translatable');
-            wrapper.addCls('x-translatable-container');
+            element.addCls(&#39;x-translatable&#39;);
+            wrapper.addCls(&#39;x-translatable-container&#39;);
 
             this.wrapper = wrapper;
 
-            wrapper.on('painted', function() {
+            wrapper.on(&#39;painted&#39;, function() {
                 if (!this.isAnimating) {
                     this.refresh();
                 }
@@ -76,11 +76,11 @@ Ext.define('Ext.util.translatable.ScrollPosition', {
         if (wrapper) {
             dom = wrapper.dom;
 
-            if (typeof x == 'number') {
+            if (typeof x == &#39;number&#39;) {
                 dom.scrollLeft = 500000 - x;
             }
 
-            if (typeof y == 'number') {
+            if (typeof y == &#39;number&#39;) {
                 dom.scrollTop = 500000 - y;
             }
         }
@@ -95,11 +95,11 @@ Ext.define('Ext.util.translatable.ScrollPosition', {
                 if (this.getUseWrapper()) {
                     wrapper.doReplaceWith(element);
                 }
-                element.removeCls('x-translatable');
+                element.removeCls(&#39;x-translatable&#39;);
             }
             if (!wrapper.isDestroyed) {
-                wrapper.removeCls('x-translatable-container');
-                wrapper.un('painted', 'refresh', this);
+                wrapper.removeCls(&#39;x-translatable-container&#39;);
+                wrapper.un(&#39;painted&#39;, &#39;refresh&#39;, this);
             }
 
             delete this.wrapper;

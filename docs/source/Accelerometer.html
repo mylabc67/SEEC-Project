@@ -28,13 +28,13 @@
  *
  *     Ext.device.Accelerometer.getCurrentAcceleration({
  *         success: function(acceleration) {
- *                      alert('Acceleration X: ' + acceleration.x + '\n' +
- *                      'Acceleration Y: ' + acceleration.y + '\n' +
- *                      'Acceleration Z: ' + acceleration.z + '\n' +
- *                      'Timestamp: '      + acceleration.timestamp + '\n');
+ *                      alert(&#39;Acceleration X: &#39; + acceleration.x + &#39;\n&#39; +
+ *                      &#39;Acceleration Y: &#39; + acceleration.y + &#39;\n&#39; +
+ *                      &#39;Acceleration Z: &#39; + acceleration.z + &#39;\n&#39; +
+ *                      &#39;Timestamp: &#39;      + acceleration.timestamp + &#39;\n&#39;);
  *          },
  *         failure: function() {
- *             console.log('something went wrong!');
+ *             console.log(&#39;something went wrong!&#39;);
  *         }
  *     });
  *
@@ -43,13 +43,13 @@
  *     Ext.device.Accelerometer.watchAcceleration({
  *         frequency: 500, // Update every 1/2 second
  *         callback: function(acceleration) {
- *                      console.log('Acceleration X: ' + acceleration.x + '\n' +
- *                      'Acceleration Y: ' + acceleration.y + '\n' +
- *                      'Acceleration Z: ' + acceleration.z + '\n' +
- *                      'Timestamp: '      + acceleration.timestamp + '\n');
+ *                      console.log(&#39;Acceleration X: &#39; + acceleration.x + &#39;\n&#39; +
+ *                      &#39;Acceleration Y: &#39; + acceleration.y + &#39;\n&#39; +
+ *                      &#39;Acceleration Z: &#39; + acceleration.z + &#39;\n&#39; +
+ *                      &#39;Timestamp: &#39;      + acceleration.timestamp + &#39;\n&#39;);
  *          },
  *         failure: function() {
- *             console.log('something went wrong!');
+ *             console.log(&#39;something went wrong!&#39;);
  *         }
  *     });
  *
@@ -57,21 +57,21 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.Accelerometer', {
+Ext.define(&#39;Ext.device.Accelerometer&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.accelerometer.Cordova',
-        'Ext.device.accelerometer.Simulator'
+        &#39;Ext.device.accelerometer.Cordova&#39;,
+        &#39;Ext.device.accelerometer.Simulator&#39;
     ],
 
 <span id='Ext-device-Accelerometer-method-constructor'>    constructor: function() {
 </span>        var browserEnv = Ext.browser.is;
         if (browserEnv.WebView &amp;&amp; browserEnv.Cordova) {
-            return Ext.create('Ext.device.accelerometer.Cordova');
+            return Ext.create(&#39;Ext.device.accelerometer.Cordova&#39;);
         }
 
-        return Ext.create('Ext.device.accelerometer.Simulator');
+        return Ext.create(&#39;Ext.device.accelerometer.Simulator&#39;);
     }
 });
 </pre>

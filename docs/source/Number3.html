@@ -21,22 +21,22 @@
  * The Number field creates an HTML5 number input and is usually created inside a form. Because it creates an HTML
  * number input field, most browsers will show a specialized virtual keyboard for entering numbers. The Number field
  * only accepts numerical input and also provides additional spinner UI that increases or decreases the current value
- * by a configured {@link #stepValue step value}. Here's how we might use one in a form:
+ * by a configured {@link #stepValue step value}. Here&#39;s how we might use one in a form:
  *
  *     @example
- *     Ext.create('Ext.form.Panel', {
+ *     Ext.create(&#39;Ext.form.Panel&#39;, {
  *         fullscreen: true,
  *         items: [
  *             {
- *                 xtype: 'fieldset',
- *                 title: 'How old are you?',
+ *                 xtype: &#39;fieldset&#39;,
+ *                 title: &#39;How old are you?&#39;,
  *                 items: [
  *                     {
- *                         xtype: 'numberfield',
- *                         label: 'Age',
+ *                         xtype: &#39;numberfield&#39;,
+ *                         label: &#39;Age&#39;,
  *                         minValue: 18,
  *                         maxValue: 150,
- *                         name: 'age'
+ *                         name: &#39;age&#39;
  *                     }
  *                 ]
  *             }
@@ -45,9 +45,9 @@
  *
  * Or on its own, outside of a form:
  *
- *     Ext.create('Ext.field.Number', {
- *         label: 'Age',
- *         value: '26'
+ *     Ext.create(&#39;Ext.field.Number&#39;, {
+ *         label: &#39;Age&#39;,
+ *         value: &#39;26&#39;
  *     });
  *
  * ## minValue, maxValue and stepValue
@@ -58,16 +58,16 @@
  * are tapped on. For example, to create a salary field that ticks up and down by $1,000 each tap we can do this:
  *
  *     @example
- *     Ext.create('Ext.form.Panel', {
+ *     Ext.create(&#39;Ext.form.Panel&#39;, {
  *         fullscreen: true,
  *         items: [
  *             {
- *                 xtype: 'fieldset',
- *                 title: 'Are you rich yet?',
+ *                 xtype: &#39;fieldset&#39;,
+ *                 title: &#39;Are you rich yet?&#39;,
  *                 items: [
  *                     {
- *                         xtype: 'numberfield',
- *                         label: 'Salary',
+ *                         xtype: &#39;numberfield&#39;,
+ *                         label: &#39;Salary&#39;,
  *                         value: 30000,
  *                         minValue: 25000,
  *                         maxValue: 50000,
@@ -86,10 +86,10 @@
  * the user interacts with the component. Check out the {@link Ext.field.Text} docs to see the additional functionality
  * available.
  */
-Ext.define('Ext.field.Number', {
-    extend: 'Ext.field.Text',
-    xtype: 'numberfield',
-    alternateClassName: 'Ext.form.Number',
+Ext.define(&#39;Ext.field.Number&#39;, {
+    extend: &#39;Ext.field.Text&#39;,
+    xtype: &#39;numberfield&#39;,
+    alternateClassName: &#39;Ext.form.Number&#39;,
 
     config: {
 <span id='Ext-field-Number-cfg-component'>        /**
@@ -97,14 +97,14 @@ Ext.define('Ext.field.Number', {
          * @inheritdoc
          */
         component: {
-            type: 'number'
+            type: &#39;number&#39;
         },
 
 <span id='Ext-field-Number-cfg-ui'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        ui: 'number'
+        ui: &#39;number&#39;
     },
 
 <span id='Ext-field-Number-property-proxyConfig'>    proxyConfig: {
@@ -172,7 +172,7 @@ Ext.define('Ext.field.Number', {
         }
 
         value = parseFloat(value);
-        return (isNaN(value)) ? '' : value;
+        return (isNaN(value)) ? &#39;&#39; : value;
     },
 
 <span id='Ext-field-Number-method-getValue'>    getValue: function() {
@@ -181,7 +181,7 @@ Ext.define('Ext.field.Number', {
     },
 
 <span id='Ext-field-Number-method-doClearIconTap'>    doClearIconTap: function(me, e) {
-</span>        me.getComponent().setValue('');
+</span>        me.getComponent().setValue(&#39;&#39;);
         me.getValue();
         me.hideClearIcon();
     }

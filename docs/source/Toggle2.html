@@ -18,34 +18,34 @@
   <pre class="prettyprint lang-js"><span id='Ext-slider-Toggle'>/**
 </span> * @private
  */
-Ext.define('Ext.slider.Toggle', {
-    extend: 'Ext.slider.Slider',
+Ext.define(&#39;Ext.slider.Toggle&#39;, {
+    extend: &#39;Ext.slider.Slider&#39;,
 
     config: {
 <span id='Ext-slider-Toggle-cfg-baseCls'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        baseCls: 'x-toggle',
+        baseCls: &#39;x-toggle&#39;,
 
 <span id='Ext-slider-Toggle-cfg-minValueCls'>        /**
 </span>         * @cfg {String} minValueCls CSS class added to the field when toggled to its minValue
          * @accessor
          */
-        minValueCls: 'x-toggle-off',
+        minValueCls: &#39;x-toggle-off&#39;,
 
 <span id='Ext-slider-Toggle-cfg-maxValueCls'>        /**
 </span>         * @cfg {String} maxValueCls CSS class added to the field when toggled to its maxValue
          * @accessor
          */
-        maxValueCls: 'x-toggle-on'
+        maxValueCls: &#39;x-toggle-on&#39;
     },
 
 <span id='Ext-slider-Toggle-method-initialize'>    initialize: function() {
 </span>        this.callParent();
 
         this.on({
-            change: 'onChange'
+            change: &#39;onChange&#39;
         });
     },
 
@@ -90,7 +90,7 @@ Ext.define('Ext.slider.Toggle', {
             newValue = this.getValue()[index];
 
         if (oldValue !== newValue) {
-            this.fireEvent('change', this, thumb, newValue, oldValue);
+            this.fireEvent(&#39;change&#39;, this, thumb, newValue, oldValue);
         }
     },
 

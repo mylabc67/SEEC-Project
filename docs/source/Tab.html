@@ -16,14 +16,14 @@
 </head>
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js"><span id='Ext-tab-Tab'>/**
-</span> * Used in the {@link Ext.tab.Bar} component. This shouldn't be used directly, instead use
+</span> * Used in the {@link Ext.tab.Bar} component. This shouldn&#39;t be used directly, instead use
  * {@link Ext.tab.Bar} or {@link Ext.tab.Panel}.
  * @private
  */
-Ext.define('Ext.tab.Tab', {
-    extend: 'Ext.Button',
-    xtype: 'tab',
-    alternateClassName: 'Ext.Tab',
+Ext.define(&#39;Ext.tab.Tab&#39;, {
+    extend: &#39;Ext.Button&#39;,
+    xtype: &#39;tab&#39;,
+    alternateClassName: &#39;Ext.Tab&#39;,
 
 <span id='Ext-tab-Tab-property-isTab'>    // @private
 </span>    isTab: true,
@@ -33,7 +33,7 @@ Ext.define('Ext.tab.Tab', {
 </span>         * @cfg baseCls
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'tab',
+        baseCls: Ext.baseCSSPrefix + &#39;tab&#39;,
 
 <span id='Ext-tab-Tab-cfg-pressedCls'>        /**
 </span>         * @cfg {String} pressedCls
@@ -41,7 +41,7 @@ Ext.define('Ext.tab.Tab', {
          * Providing your own CSS for this class enables you to customize the pressed state.
          * @accessor
          */
-        pressedCls: Ext.baseCSSPrefix + 'tab-pressed',
+        pressedCls: Ext.baseCSSPrefix + &#39;tab-pressed&#39;,
 
 <span id='Ext-tab-Tab-cfg-activeCls'>        /**
 </span>         * @cfg {String} activeCls
@@ -49,7 +49,7 @@ Ext.define('Ext.tab.Tab', {
          * Providing your own CSS for this class enables you to customize the active state.
          * @accessor
          */
-        activeCls: Ext.baseCSSPrefix + 'tab-active',
+        activeCls: Ext.baseCSSPrefix + &#39;tab-active&#39;,
 
 <span id='Ext-tab-Tab-cfg-active'>        /**
 </span>         * @cfg {Boolean} active
@@ -63,18 +63,18 @@ Ext.define('Ext.tab.Tab', {
          * The title of the card that this tab is bound to.
          * @accessor
          */
-        title: '&amp;nbsp;'
+        title: &#39;&amp;nbsp;&#39;
     },
 
 <span id='Ext-tab-Tab-method-updateIconCls'>    updateIconCls : function(newCls, oldCls) {
 </span>        this.callParent([newCls, oldCls]);
 
         if (oldCls) {
-            this.removeCls('x-tab-icon');
+            this.removeCls(&#39;x-tab-icon&#39;);
         }
 
         if (newCls) {
-            this.addCls('x-tab-icon');
+            this.addCls(&#39;x-tab-icon&#39;);
         }
     },
 
@@ -98,10 +98,10 @@ Ext.define('Ext.tab.Tab', {
 </span>        var activeCls = this.getActiveCls();
         if (active &amp;&amp; !oldActive) {
             this.element.addCls(activeCls);
-            this.fireEvent('activate', this);
+            this.fireEvent(&#39;activate&#39;, this);
         } else if (oldActive) {
             this.element.removeCls(activeCls);
-            this.fireEvent('deactivate', this);
+            this.fireEvent(&#39;deactivate&#39;, this);
         }
     }
 }, function() {

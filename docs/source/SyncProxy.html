@@ -30,27 +30,27 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 
 	constructor: function(config,callback,scope) {
 		//
-		Ext.data.utilities.check('SyncProxy', 'constructor', 'config', config, ['store','database_name','key']);
+		Ext.data.utilities.check(&#39;SyncProxy&#39;, &#39;constructor&#39;, &#39;config&#39;, config, [&#39;store&#39;,&#39;database_name&#39;,&#39;key&#39;]);
 		//
 		Ext.data.SyncProxy.superclass.constructor.call(this, config);
 		this.store= config.store;
 		//
 		// System Name
 		//
-		this.store.readValue('Sencha.Sync.system_name',function(system_name){
+		this.store.readValue(&#39;Sencha.Sync.system_name&#39;,function(system_name){
 			config.system_name= system_name || Ext.data.UUIDGenerator.generate();
-			this.store.writeValue('Sencha.Sync.system_name',config.system_name,function(){
+			this.store.writeValue(&#39;Sencha.Sync.system_name&#39;,config.system_name,function(){
 				//
 				// Load Configuration
 				//
 				Ext.data.utilities.apply(this,[
-					'readConfig_DatabaseDefinition',
-					'readConfig_CSV',
-					'readConfig_Generator'],[config],function(){
+					&#39;readConfig_DatabaseDefinition&#39;,
+					&#39;readConfig_CSV&#39;,
+					&#39;readConfig_Generator&#39;],[config],function(){
 					if (this.definition.system_name===undefined) {
 						this.definition.set({system_name:Ext.data.UUIDGenerator.generate()});
 					}
-					console.log(&quot;SyncProxy - Opened database '&quot;+config.key+&quot;/&quot;+config.database_name+&quot;/&quot;+config.datastore_name+&quot;'&quot;)
+					console.log(&quot;SyncProxy - Opened database &#39;&quot;+config.key+&quot;/&quot;+config.database_name+&quot;/&quot;+config.datastore_name+&quot;&#39;&quot;)
 					if (callback) { callback.call(scope,this) }
 				},this);
 			},this);
@@ -60,7 +60,7 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
   create: function(operation, callback, scope) {
 		operation.records.forEach(function(record) {
 			record.setCreateState(this.makeGenerator());
-			// if there's no user id, then use the oid.
+			// if there&#39;s no user id, then use the oid.
 			if (record.get(this.idProperty)===this.idPropertyDefaultValue) {
 				var p= record.getPair(Ext.data.SyncModel.OID);
 				record.data[this.idProperty]= p.v;
@@ -70,7 +70,7 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 		var records= this.encodeRecords(operation.records)
 		return this.store.create(records,function() {
 			this.indexCreatedRecords(records,function(){
-				//console.log('create',operation);
+				//console.log(&#39;create&#39;,operation);
 				this.doCallback(callback,scope,operation);
 			},this);
 		},this);
@@ -92,7 +92,7 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 
 		if (operation.id!==undefined) {
 			this.store.indexLookup(operation.id,function(oid) {
-				// JCM if the id is not in the index, then it doesn't exist, so we can return now...
+				// JCM if the id is not in the index, then it doesn&#39;t exist, so we can return now...
 				this.store.read(oid,function(record) {
 					makeResultSet.call(this,operation,[record],true);
 					this.doCallback(callback,scope,operation);
@@ -135,7 +135,7 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 			if (!oid) {
 				var id= record.data[this.idProperty];
 				this.store.indexLookup(id,function(oid) {
-					// JCM if the id is not in the index, then it doesn't exist, so we don't need to try deleting it.
+					// JCM if the id is not in the index, then it doesn&#39;t exist, so we don&#39;t need to try deleting it.
 					if (oid) {
 						record.data[Ext.data.SyncModel.OID]= oid;
 						records.push(record);
@@ -149,7 +149,7 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 		},this,function(){
 			records= this.encodeRecords(records);
 			this.store.update(records,function(operation) {
-				operation.action= 'destroy';
+				operation.action= &#39;destroy&#39;;
 				this.indexDestroyedRecords(records,function(){
 					this.doCallback(callback,scope,operation);
 				},this);
@@ -174,10 +174,10 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 				}
 	  }
 		this.definition.set({idProperty:this.idProperty,idPropertyDefaultValue:this.idPropertyDefaultValue},function(){},this);
-		// extend the user's model with the replication state data,
+		// extend the user&#39;s model with the replication state data,
 		Ext.apply(model.prototype, Ext.data.SyncModel);
-		// and create a local storage model, based on the user's model.
-		this.storageModel= model.prototype.createReplStorageModel(this.modelName); // JCM shouldn't need to pass the name in
+		// and create a local storage model, based on the user&#39;s model.
+		this.storageModel= model.prototype.createReplStorageModel(this.modelName); // JCM shouldn&#39;t need to pass the name in
 		this.store.setModel(this.storageModel, setOnStore);
   },
 
@@ -192,7 +192,7 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 	setReplicaNumber: function(new_replica_number,callback,scope) {
 		if (!callback) { throw &quot;ERROR - SyncProxy - setReplicaNumber - no callback provided.&quot; }
   	var old_replica_number= this.replicaNumber();
-		console.log('SyncProxy.setReplicaNumber from',old_replica_number,'to',new_replica_number)
+		console.log(&#39;SyncProxy.setReplicaNumber from&#39;,old_replica_number,&#39;to&#39;,new_replica_number)
     this.changeReplicaNumber(old_replica_number,new_replica_number,function(){
 			this.definition.setReplicaNumber(new_replica_number,function(){
 		  	this.csv.changeReplicaNumber(old_replica_number,new_replica_number,function(){
@@ -203,7 +203,7 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 	},
 
   changeReplicaNumber: function(old_replica_number,new_replica_number,callback,scope) {
-		console.log('SyncProxy.changeReplicaNumber from',old_replica_number,'to',new_replica_number)
+		console.log(&#39;SyncProxy.changeReplicaNumber from&#39;,old_replica_number,&#39;to&#39;,new_replica_number)
 		if (!callback) { throw &quot;ERROR - SyncProxy - changeReplicaNumber - no callback provided.&quot; }
 		this.forEachRecordAsync(function(record,next_callback,next_scope) {
 			if (!record.isSystemModel()){
@@ -270,14 +270,14 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 
   applyUpdate: function(update,callback,scope,last_ref) { // Attribute Value - Conflict Detection and Resolution
 		if (last_ref) {
-			console.log('ref ==&gt; ',this.us(update));
+			console.log(&#39;ref ==&gt; &#39;,this.us(update));
 		} else {
-			console.log('applyUpdate',this.us(update));
+			console.log(&#39;applyUpdate&#39;,this.us(update));
 		}
 		this.store.read(update.i,function(record) {
 			if (record) {
 				var ref= record.ref();
-				if (ref &amp;&amp; update.p[0]!='_') { // JCM this is a bit sneaky
+				if (ref &amp;&amp; update.p[0]!=&#39;_&#39;) { // JCM this is a bit sneaky
 					if (update.i===ref) {
 						console.log(&quot;Error - applyUpdate - Infinite loop following reference. &quot;,ref);
 						callback.call(scope);
@@ -303,12 +303,12 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 		if (update.p===Ext.data.SyncModel.OID) {
 			// ...which is ok, because the update is intending to create it
 			var record= this.createNewRecord(update.v,update.c);
-			//console.log('applyUpdate',Ext.encode(record.data),'( create )');
+			//console.log(&#39;applyUpdate&#39;,Ext.encode(record.data),&#39;( create )&#39;);
 			this.store.create([record],callback,scope);
 		} else {
 			// ...which is not ok, because given the strict ordering of updates
 			// by change stamp the update creating the object must be sent first.
-			// But, let's be forgiving and create the record to receive the update.
+			// But, let&#39;s be forgiving and create the record to receive the update.
 			console.log(&quot;Warning - Update received for unknown record &quot;+update.i,update)
 			var record= this.createNewRecord(update.i,update.i);
 			record.setPair(update.p,update.v,update.c);
@@ -324,11 +324,11 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 		} else {
 			// different value for the id, so check if a record already exists with that value
 			this.store.indexLookup(update.v,function(existing_record_oid) {
-				//console.log(this.us(update),'id already exists')
+				//console.log(this.us(update),&#39;id already exists&#39;)
 				if (existing_record_oid) {
-					//console.log('existing_record_oid',existing_record_oid)
+					//console.log(&#39;existing_record_oid&#39;,existing_record_oid)
 					this.readById(update.v,existing_record_oid,function(existing_record) {
-						//console.log('existing_record',Ext.encode(existing_record.data))
+						//console.log(&#39;existing_record&#39;,Ext.encode(existing_record.data))
 						// JCM if the process were to fail part way through these updates...
 						// JCM would the system be hoarked?
 						this.applyUpdateToRecordForUniqueId(record,update,function(){
@@ -337,12 +337,12 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 							var r_before, r_after;
 							if (r_cs.greaterThan(er_cs)) {
 								// the record being updated is more recent then the existing record
-								//console.log(this.us(update),'existing record is older');
+								//console.log(this.us(update),&#39;existing record is older&#39;);
 								r_before= existing_record;
 								r_after= record;
 							} else {
 								// the existing record is more recent than the record being updated
-								//console.log(this.us(update),'existing record is newer');
+								//console.log(this.us(update),&#39;existing record is newer&#39;);
 								r_before= record;
 								r_after= existing_record;
 							}
@@ -391,12 +391,12 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 
 	applyUpdateToRecord: function(record,update,callback,scope) {
 		if (record.putUpdate(update)) {
-			//console.log(this.us(update),'accepted')
+			//console.log(this.us(update),&#39;accepted&#39;)
 			this.store.update([record],function() {
 				callback.call(scope,true);
 			},scope);
 		} else {
-			//console.log(this.us(update),'rejected')
+			//console.log(this.us(update),&#39;rejected&#39;)
 			callback.call(scope,false);
 		}
 	},
@@ -406,7 +406,7 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 			if (record) {
 				callback.call(scope,record);
 			} else {
-				console.log('ERROR - SyncProxy - applyUpdateToUniqueID - ID Index refers to an non-existant object:',id,'=&gt;',oid,'(This should not be possible.)');
+				console.log(&#39;ERROR - SyncProxy - applyUpdateToUniqueID - ID Index refers to an non-existant object:&#39;,id,&#39;=&gt;&#39;,oid,&#39;(This should not be possible.)&#39;);
 			}
 		},this);
 	},
@@ -433,16 +433,16 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 				updates2.push(update);
 			}
 		},this);
-		//console.log('updatesForMergeRecords - csv',csv);
-		//console.log('updatesForMergeRecords - r1',r1.data);
-		//console.log('updatesForMergeRecords - r2',r2.data);
-		//console.log('updatesForMergeRecords - updates',updates2);
+		//console.log(&#39;updatesForMergeRecords - csv&#39;,csv);
+		//console.log(&#39;updatesForMergeRecords - r1&#39;,r1.data);
+		//console.log(&#39;updatesForMergeRecords - r2&#39;,r2.data);
+		//console.log(&#39;updatesForMergeRecords - updates&#39;,updates2);
 		return updates2;
 	},
 
 	updatesForMakeReference: function(r1,r2) { // JCM move into applyUpdateToUniqueID?
 		if (r1.oid()===r2.oid()) {
-			console.log('updatesForMakeReference',r1.data,r2.data);
+			console.log(&#39;updatesForMakeReference&#39;,r1.data,r2.data);
 			throw &quot;Error - SyncProxy - Tried to create reference to self.&quot;
 		}
 		var cs1= this.generateChangeStamp();
@@ -458,7 +458,7 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 			v: cs2.to_s(),
 			c: cs2
 		}];
-		//console.log('updatesForMakeReference',updates);
+		//console.log(&#39;updatesForMakeReference&#39;,updates);
 		return updates;
 	},
 
@@ -471,7 +471,7 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 	},
 
 	indexCreatedRecords: function(records, callback, scope) {
-		//console.log('indexCreatedRecords');
+		//console.log(&#39;indexCreatedRecords&#39;);
 		Ext.data.array.forEachAsync(records,function(record,next_callback,next_scope){
 			var record_id= record.data[this.idProperty];
 			if (record_id) {
@@ -483,7 +483,7 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 	},
 
 	indexDestroyedRecords: function(records, callback, scope) {
-		//console.log('indexDestroyedRecords');
+		//console.log(&#39;indexDestroyedRecords&#39;);
 		Ext.data.array.forEachAsync(records,function(record,next_callback,next_scope){
 			var record_id= record.data[this.idProperty];
 			if (record_id) {
@@ -527,11 +527,11 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 					if (r) {
 						next_callback.call(next_scope);
 					} else {
-						console.log('hasSameRecords - false - ',this.replicaNumber(),x.replicaNumber())
+						console.log(&#39;hasSameRecords - false - &#39;,this.replicaNumber(),x.replicaNumber())
 						callback.call(scope,false);
 					}
 				} else {
-					console.log('hasSameRecords - false - ',this.replicaNumber(),x.replicaNumber())
+					console.log(&#39;hasSameRecords - false - &#39;,this.replicaNumber(),x.replicaNumber())
 					callback.call(scope,false);
 				}
 			},this);
@@ -541,12 +541,12 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 	},
 
 	console_log: function(text,callback,scope) { // for testing
-		console.log('---- ',text);
+		console.log(&#39;---- &#39;,text);
 		this.forEachRecordAsync(function(r1,next_callback,next_scope){
 			console.log(Ext.encode(r1.data));
 			next_callback.call(next_scope);
 		},this,function(){
-			console.log('----');
+			console.log(&#39;----&#39;);
 			callback.call(scope);
 		},this);
 	},
@@ -589,7 +589,7 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 			database_name: config.database_name,
 			replica_type: config.replica_type
 		};
-		this.readConfig(Ext.data.DatabaseDefinition,'definition',default_data,overwrite_data,function(definition) {
+		this.readConfig(Ext.data.DatabaseDefinition,&#39;definition&#39;,default_data,overwrite_data,function(definition) {
 			this.definition= definition;
 			callback.call(scope);
 		},this);
@@ -600,14 +600,14 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 			r: this.definition.replica_number,
 			clock: config.clock
 		};
-		this.readConfig(Ext.data.CSGenerator,'generator',{},overwrite_data,function(generator){
+		this.readConfig(Ext.data.CSGenerator,&#39;generator&#39;,{},overwrite_data,function(generator){
 			this.generator= generator;
 			callback.call(scope);
 		},this);
 	},
 
 	readConfig_CSV: function(config,callback,scope) {
-		this.readConfig(Ext.data.CSV,'csv',{},{},function(csv){
+		this.readConfig(Ext.data.CSV,&#39;csv&#39;,{},{},function(csv){
 			this.csv= csv;
 			callback.call(scope);
 		},this);
@@ -657,7 +657,7 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 	},
 
 	doCallback: function(callback, scope, operation) {
-    if (typeof callback == 'function') {
+    if (typeof callback == &#39;function&#39;) {
 			callback.call(scope || this, operation);
     }
 	},
@@ -666,10 +666,10 @@ Ext.data.SyncProxy = Ext.extend(Ext.data.Proxy, {
 		var p= Ext.isArray(u.p) ? u.p.join() : u.p;
 		var v= u.v;
 		switch (typeof u.v) {
-			case 'object':
+			case &#39;object&#39;:
 				v= Ext.encode(u.v);
 		}
-		return '('+u.i+' . '+p+' = \''+v+'\' @ '+u.c.to_s()+')';
+		return &#39;(&#39;+u.i+&#39; . &#39;+p+&#39; = \&#39;&#39;+v+&#39;\&#39; @ &#39;+u.c.to_s()+&#39;)&#39;;
 	}
 
 });

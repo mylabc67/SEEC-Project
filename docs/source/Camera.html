@@ -39,7 +39,7 @@
  *         quality: 75,
  *         width: 200,
  *         height: 200,
- *         destination: 'data'
+ *         destination: &#39;data&#39;
  *     });
  *
  * See the documentation for {@link Ext.device.Camera#capture} all available configurations.
@@ -48,14 +48,14 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.Camera', {
+Ext.define(&#39;Ext.device.Camera&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.Communicator',
-        'Ext.device.camera.Cordova',
-        'Ext.device.camera.Sencha',
-        'Ext.device.camera.Simulator'
+        &#39;Ext.device.Communicator&#39;,
+        &#39;Ext.device.camera.Cordova&#39;,
+        &#39;Ext.device.camera.Sencha&#39;,
+        &#39;Ext.device.camera.Simulator&#39;
     ],
 
 <span id='Ext-device-Camera-method-constructor'>    constructor: function() {
@@ -63,13 +63,13 @@ Ext.define('Ext.device.Camera', {
 
         if (browserEnv.WebView) {
             if (browserEnv.Cordova) {
-                return Ext.create('Ext.device.camera.Cordova');
+                return Ext.create(&#39;Ext.device.camera.Cordova&#39;);
             } else if (browserEnv.Sencha) {
-                return Ext.create('Ext.device.camera.Sencha');
+                return Ext.create(&#39;Ext.device.camera.Sencha&#39;);
             }
         }
 
-        return Ext.create('Ext.device.camera.Simulator');
+        return Ext.create(&#39;Ext.device.camera.Simulator&#39;);
     }
 });
 </pre>

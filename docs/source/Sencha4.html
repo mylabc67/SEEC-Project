@@ -18,8 +18,8 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-device-Sencha'>/**
 </span> * @private
  */
-Ext.define('Ext.device.device.Sencha', {
-    extend: 'Ext.device.device.Abstract',
+Ext.define(&#39;Ext.device.device.Sencha&#39;, {
+    extend: &#39;Ext.device.device.Abstract&#39;,
 
 <span id='Ext-device-device-Sencha-method-constructor'>    constructor: function() {
 </span>        this.callSuper(arguments);
@@ -27,16 +27,16 @@ Ext.define('Ext.device.device.Sencha', {
         this.uuid = device.uuid;
         this.platform = device.platformName || Ext.os.name;
         this.scheme = Ext.device.Communicator.send({
-            command: 'OpenURL#getScheme',
+            command: &#39;OpenURL#getScheme&#39;,
             sync: true
         }) || false;
 
         Ext.device.Communicator.send({
-            command: 'OpenURL#watch',
+            command: &#39;OpenURL#watch&#39;,
             callbacks: {
                 callback: function(scheme) {
                     this.scheme = scheme || false;
-                    this.fireEvent('schemeupdate', this, this.scheme);
+                    this.fireEvent(&#39;schemeupdate&#39;, this, this.scheme);
                 }
             },
             scope: this
@@ -45,7 +45,7 @@ Ext.define('Ext.device.device.Sencha', {
 
 <span id='Ext-device-device-Sencha-method-openURL'>    openURL: function(url) {
 </span>        Ext.device.Communicator.send({
-            command: 'OpenURL#open',
+            command: &#39;OpenURL#open&#39;,
             url: url
         });
     }

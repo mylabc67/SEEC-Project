@@ -35,8 +35,8 @@ Ext.dom.Element.addMembers({
      * @param {Boolean} local (optional) `true` to get the local (element top/left-relative) anchor position instead
      * of page coordinates.
      * @param {Object} size (optional) An object containing the size to use for calculating anchor position.
-     * `{width: (target width), height: (target height)}` (defaults to the element's current size)
-     * @return {Array} [x, y] An array containing the element's x and y coordinates.
+     * `{width: (target width), height: (target height)}` (defaults to the element&#39;s current size)
+     * @return {Array} [x, y] An array containing the element&#39;s x and y coordinates.
      */
     getAnchorXY: function(anchor, local, size) {
         //&lt;debug warn&gt;
@@ -94,16 +94,16 @@ Ext.dom.Element.addMembers({
 
         //&lt;debug&gt;
         if (!el || !el.dom) {
-            throw new Error(&quot;Element.alignToXY with an element that doesn't exist&quot;);
+            throw new Error(&quot;Element.alignToXY with an element that doesn&#39;t exist&quot;);
         }
         //&lt;/debug&gt;
         offsets = offsets || [0, 0];
 
-        if (!position || position == '?') {
-            position = 'tl-bl?';
+        if (!position || position == &#39;?&#39;) {
+            position = &#39;tl-bl?&#39;;
         }
         else if (! (/-/).test(position) &amp;&amp; position !== &quot;&quot;) {
-            position = 'tl-' + position;
+            position = &#39;tl-&#39; + position;
         }
         position = position.toLowerCase();
 
@@ -136,8 +136,8 @@ Ext.dom.Element.addMembers({
         p2 = matches[2];
         constrain = !!matches[3];
 
-        //Subtract the aligned el's internal xy from the target's offset xy
-        //plus custom offset to get the aligned el's new offset xy
+        //Subtract the aligned el&#39;s internal xy from the target&#39;s offset xy
+        //plus custom offset to get the aligned el&#39;s new offset xy
         a1 = me.getAnchorXY(p1, true);
         a2 = el.getAnchorXY(p2, local);
 
@@ -184,10 +184,10 @@ Ext.dom.Element.addMembers({
             if (!dom) {
                 return;
             }
-            var anchor = this.self.data.call(this.self, dom, '_anchor');
+            var anchor = this.self.data.call(this.self, dom, &#39;_anchor&#39;);
 
         if(!anchor){
-            anchor = this.self.data.call(this.self, dom, '_anchor', {});
+            anchor = this.self.data.call(this.self, dom, &#39;_anchor&#39;, {});
         }
         return anchor;
     },

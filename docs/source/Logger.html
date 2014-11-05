@@ -22,42 +22,42 @@
  *
  * ## Example
  *
- *     Ext.Logger.deprecate('This method is no longer supported.');
+ *     Ext.Logger.deprecate(&#39;This method is no longer supported.&#39;);
  *
  * @singleton
  */
 (function() {
-var Logger = Ext.define('Ext.log.Logger', {
+var Logger = Ext.define(&#39;Ext.log.Logger&#39;, {
 
-    extend: 'Ext.log.Base',
+    extend: &#39;Ext.log.Base&#39;,
 
     statics: {
-        defaultPriority: 'info',
+        defaultPriority: &#39;info&#39;,
 
         priorities: {
 <span id='Ext-Logger-method-verbose'>            /**
 </span>             * @method verbose
-             * Convenience method for {@link #log} with priority 'verbose'.
+             * Convenience method for {@link #log} with priority &#39;verbose&#39;.
              */
             verbose:    0,
 <span id='Ext-Logger-method-info'>            /**
 </span>             * @method info
-             * Convenience method for {@link #log} with priority 'info'.
+             * Convenience method for {@link #log} with priority &#39;info&#39;.
              */
             info:       1,
 <span id='Ext-Logger-method-deprecate'>            /**
 </span>             * @method deprecate
-             * Convenience method for {@link #log} with priority 'deprecate'.
+             * Convenience method for {@link #log} with priority &#39;deprecate&#39;.
              */
             deprecate:  2,
 <span id='Ext-Logger-method-warn'>            /**
 </span>             * @method warn
-             * Convenience method for {@link #log} with priority 'warn'.
+             * Convenience method for {@link #log} with priority &#39;warn&#39;.
              */
             warn:       3,
 <span id='Ext-Logger-method-error'>            /**
 </span>             * @method error
-             * Convenience method for {@link #log} with priority 'error'.
+             * Convenience method for {@link #log} with priority &#39;error&#39;.
              */
             error:      4
         }
@@ -65,7 +65,7 @@ var Logger = Ext.define('Ext.log.Logger', {
 
     config: {
         enabled: true,
-        minPriority: 'deprecate',
+        minPriority: &#39;deprecate&#39;,
         writers: {}
     },
 
@@ -83,12 +83,12 @@ var Logger = Ext.define('Ext.log.Logger', {
             priorities = statics.priorities,
             priorityValue = priorities[priority],
             caller = this.log.caller,
-            callerDisplayName = '',
+            callerDisplayName = &#39;&#39;,
             writers = this.getWriters(),
             event, i, originalCaller;
 
         if (!priority) {
-            priority = 'info';
+            priority = &#39;info&#39;;
         }
 
         if (priorities[this.getMinPriority()] &gt; priorityValue) {
@@ -106,7 +106,7 @@ var Logger = Ext.define('Ext.log.Logger', {
             message = String(message);
         }
 
-        if (typeof callerId == 'number') {
+        if (typeof callerId == &#39;number&#39;) {
             i = callerId;
 
             do {
@@ -132,7 +132,7 @@ var Logger = Ext.define('Ext.log.Logger', {
         }
         else {
             caller = caller.caller;
-            callerDisplayName = Ext.getDisplayName(callerId) + '#' + caller.$name;
+            callerDisplayName = Ext.getDisplayName(callerId) + &#39;#&#39; + caller.$name;
         }
 
         event = {
@@ -160,7 +160,7 @@ var Logger = Ext.define('Ext.log.Logger', {
                 callerId = 1;
             }
 
-            if (typeof callerId == 'number') {
+            if (typeof callerId == &#39;number&#39;) {
                 callerId += 1;
             }
 

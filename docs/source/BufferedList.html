@@ -20,11 +20,11 @@
  * @extends Ext.plugin.Plugin
  * Description
  */
-Ext.define('Ext.plugin.BufferedList', {
-    alias: 'plugin.bufferedlist',
+Ext.define(&#39;Ext.plugin.BufferedList&#39;, {
+    alias: &#39;plugin.bufferedlist&#39;,
 
     mixins: [
-        'Ext.mixin.Bindable'
+        &#39;Ext.mixin.Bindable&#39;
     ],
 
     config: {
@@ -38,7 +38,7 @@ Ext.define('Ext.plugin.BufferedList', {
 
 <span id='Ext-plugin-BufferedList-method-updateList'>    updateList: function(list) {
 </span>        if (list) {
-            this.bind(list, 'setItemsCount', 'setItemsCount');
+            this.bind(list, &#39;setItemsCount&#39;, &#39;setItemsCount&#39;);
 
             Ext.apply(list, {
                  updateAllListItems: Ext.Function.bind(this.updateAllListItems, this),
@@ -47,7 +47,7 @@ Ext.define('Ext.plugin.BufferedList', {
             });
 
             list.getStore().on({
-                totalcountchange: 'onTotalCountChange',
+                totalcountchange: &#39;onTotalCountChange&#39;,
                 scope: this
             });
         }
@@ -99,11 +99,11 @@ Ext.define('Ext.plugin.BufferedList', {
     },
 
 <span id='Ext-plugin-BufferedList-method-handleItemUpdates'>    handleItemUpdates: function(y) {
-</span>        console.log(y, 'handle item updates');
+</span>        console.log(y, &#39;handle item updates&#39;);
     },
 
 <span id='Ext-plugin-BufferedList-method-onAnimationIdle'>    onAnimationIdle: function() {
-</span>        console.log('on animation idle');
+</span>        console.log(&#39;on animation idle&#39;);
     }
 });</pre>
 </body>

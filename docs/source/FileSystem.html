@@ -22,30 +22,30 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.FileSystem', {
+Ext.define(&#39;Ext.device.FileSystem&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.Communicator',
-        'Ext.device.filesystem.Cordova',
-        'Ext.device.filesystem.Chrome',
-        'Ext.device.filesystem.Simulator',
-        'Ext.device.filesystem.Sencha'
+        &#39;Ext.device.Communicator&#39;,
+        &#39;Ext.device.filesystem.Cordova&#39;,
+        &#39;Ext.device.filesystem.Chrome&#39;,
+        &#39;Ext.device.filesystem.Simulator&#39;,
+        &#39;Ext.device.filesystem.Sencha&#39;
     ],
 
 <span id='Ext-device-FileSystem-method-constructor'>    constructor: function() {
 </span>        var browserEnv = Ext.browser.is;
         if (browserEnv.WebView) {
             if (browserEnv.Cordova) {
-                return Ext.create('Ext.device.filesystem.Cordova');
+                return Ext.create(&#39;Ext.device.filesystem.Cordova&#39;);
             } else if (browserEnv.Sencha) {
-                return Ext.create('Ext.device.filesystem.Sencha');
+                return Ext.create(&#39;Ext.device.filesystem.Sencha&#39;);
             }
         } else if (browserEnv.Chrome) {
-            return Ext.create('Ext.device.filesystem.Chrome');
+            return Ext.create(&#39;Ext.device.filesystem.Chrome&#39;);
         }
 
-        return Ext.create('Ext.device.filesystem.Simulator');
+        return Ext.create(&#39;Ext.device.filesystem.Simulator&#39;);
     }
 });
 </pre>

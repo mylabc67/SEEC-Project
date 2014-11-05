@@ -26,9 +26,9 @@
  * Creating and opening a database:
  *
  *     var db = Ext.device.SQLite.openDatabase({
- *         name: 'mydb',
- *         version: '1.0', // is ignored if `creationCallback` is provided
- *         displayName: 'My Database',
+ *         name: &#39;mydb&#39;,
+ *         version: &#39;1.0&#39;, // is ignored if `creationCallback` is provided
+ *         displayName: &#39;My Database&#39;,
  *         estimatedSize: 2 * 1024 * 1024,
  *         creationCallback: function (db) { // optional
  *             // you can set database version here by calling `db.changeVersion(...)` method (see below)
@@ -44,16 +44,16 @@
  *
  *     var db = ...;
  *     db.changeVersion({
- *         oldVersion: '',
- *         newVersion: '1.0',
+ *         oldVersion: &#39;&#39;,
+ *         newVersion: &#39;1.0&#39;,
  *         callback: function(tx) { // optional
  *             // you can execute SQL statements here by calling `tx.executeSql(...)` methods (see below)
  *         },
  *         success: function() { // optional
- *             console.log('success!');
+ *             console.log(&#39;success!&#39;);
  *         },
  *         failure: function(err) { // optional
- *             console.log('failed with error: ' + err);
+ *             console.log(&#39;failed with error: &#39; + err);
  *         }
  *     });
  *
@@ -65,10 +65,10 @@
  *             // you can execute SQL statements here by calling `tx.executeSql(...)` methods (see below)
  *         },
  *         success: function() { // optional
- *             console.log('transaction has been successfully commited!');
+ *             console.log(&#39;transaction has been successfully commited!&#39;);
  *         },
  *         failure: function(err) { // optional
- *             console.log('transaction has been rolled back with error: ' + err);
+ *             console.log(&#39;transaction has been rolled back with error: &#39; + err);
  *         }
  *     });
  *
@@ -78,7 +78,7 @@
  *
  *     function(tx) { // next methods must be called within `db.transaction(...)` or `tx.executeSql(...)` callbacks
  *         tx.executeSql({
- *             sqlStatement: 'CREATE TABLE IF NOT EXISTS foo (id INTEGER PRIMARY KEY, name TEXT, value INTEGER)',
+ *             sqlStatement: &#39;CREATE TABLE IF NOT EXISTS foo (id INTEGER PRIMARY KEY, name TEXT, value INTEGER)&#39;,
  *             arguments: [], // optional
  *             callback: function(tx, resultSet) { // optional
  *             },
@@ -87,18 +87,18 @@
  *             }
  *         });
  *         tx.executeSql({
- *             sqlStatement: 'INSERT INTO foo (name, value) VALUES (?, ?)',
- *             arguments: ['xxx', 1], // arguments to bind each `?` placeholder in SQL statement
+ *             sqlStatement: &#39;INSERT INTO foo (name, value) VALUES (?, ?)&#39;,
+ *             arguments: [&#39;xxx&#39;, 1], // arguments to bind each `?` placeholder in SQL statement
  *             callback: function(tx, resultSet) { // optional
  *                 var rowId = esultSet.getInsertId(); // throws an exception if SQL statement did not insert a row
- *                 console.log('ID of inserted record: ' + rowId);
+ *                 console.log(&#39;ID of inserted record: &#39; + rowId);
  *             },
  *             failure: function(tx, err) {
  *                 return false; // return `false` to continue executing next SQL statement
  *             }
  *         });
  *         tx.executeSql({
- *             sqlStatement: 'SELECT * FROM foo',
+ *             sqlStatement: &#39;SELECT * FROM foo&#39;,
  *             callback: function(tx, resultSet) {
  *                 for (var i = 0; i &lt; resultSet.rows.getLength(); ++i) {
  *                     console.log(resultSet.rows.item(i));
@@ -113,18 +113,18 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.SQLite', {
+Ext.define(&#39;Ext.device.SQLite&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.Communicator',
-        'Ext.device.sqlite.Sencha'
+        &#39;Ext.device.Communicator&#39;,
+        &#39;Ext.device.sqlite.Sencha&#39;
     ],
 
 <span id='Ext-device-SQLite-method-constructor'>    constructor: function() {
 </span>        var browserEnv = Ext.browser.is;
         if(browserEnv.Sencha) {
-            return Ext.create('Ext.device.sqlite.Sencha');
+            return Ext.create(&#39;Ext.device.sqlite.Sencha&#39;);
         }
 
         return {};

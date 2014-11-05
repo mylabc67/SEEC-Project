@@ -16,7 +16,7 @@
 </head>
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js"><span id='Ext-TitleBar'>/**
-</span> * {@link Ext.TitleBar}'s are most commonly used as a docked item within an {@link Ext.Container}.
+</span> * {@link Ext.TitleBar}&#39;s are most commonly used as a docked item within an {@link Ext.Container}.
  *
  * The main difference between a {@link Ext.TitleBar} and an {@link Ext.Toolbar} is that
  * the {@link #title} configuration is **always** centered horizontally in a {@link Ext.TitleBar} between
@@ -29,78 +29,78 @@
  *
  *     @example preview
  *     Ext.Viewport.add({
- *         xtype: 'titlebar',
- *         docked: 'top',
- *         title: 'Navigation',
+ *         xtype: &#39;titlebar&#39;,
+ *         docked: &#39;top&#39;,
+ *         title: &#39;Navigation&#39;,
  *         items: [
  *             {
- *                 iconCls: 'add',
- *                 align: 'left'
+ *                 iconCls: &#39;add&#39;,
+ *                 align: &#39;left&#39;
  *             },
  *             {
- *                 iconCls: 'home',
- *                 align: 'right'
+ *                 iconCls: &#39;home&#39;,
+ *                 align: &#39;right&#39;
  *             }
  *         ]
  *     });
  *
  *     Ext.Viewport.setStyleHtmlContent(true);
- *     Ext.Viewport.setHtml('This shows the title being centered and buttons using align &lt;i&gt;left&lt;/i&gt; and &lt;i&gt;right&lt;/i&gt;.');
+ *     Ext.Viewport.setHtml(&#39;This shows the title being centered and buttons using align &lt;i&gt;left&lt;/i&gt; and &lt;i&gt;right&lt;/i&gt;.&#39;);
  *
  * &lt;br /&gt;
  *
  *     @example preview
  *     Ext.Viewport.add({
- *         xtype: 'titlebar',
- *         docked: 'top',
- *         title: 'Navigation',
+ *         xtype: &#39;titlebar&#39;,
+ *         docked: &#39;top&#39;,
+ *         title: &#39;Navigation&#39;,
  *         items: [
  *             {
- *                 align: 'left',
- *                 text: 'This button has a super long title'
+ *                 align: &#39;left&#39;,
+ *                 text: &#39;This button has a super long title&#39;
  *             },
  *             {
- *                 iconCls: 'home',
- *                 align: 'right'
+ *                 iconCls: &#39;home&#39;,
+ *                 align: &#39;right&#39;
  *             }
  *         ]
  *     });
  *
  *     Ext.Viewport.setStyleHtmlContent(true);
- *     Ext.Viewport.setHtml('This shows how the title is automatically moved to the right when one of the aligned buttons is very wide.');
+ *     Ext.Viewport.setHtml(&#39;This shows how the title is automatically moved to the right when one of the aligned buttons is very wide.&#39;);
  *
  * &lt;br /&gt;
  *
  *     @example preview
  *     Ext.Viewport.add({
- *         xtype: 'titlebar',
- *         docked: 'top',
- *         title: 'A very long title',
+ *         xtype: &#39;titlebar&#39;,
+ *         docked: &#39;top&#39;,
+ *         title: &#39;A very long title&#39;,
  *         items: [
  *             {
- *                 align: 'left',
- *                 text: 'This button has a super long title'
+ *                 align: &#39;left&#39;,
+ *                 text: &#39;This button has a super long title&#39;
  *             },
  *             {
- *                 align: 'right',
- *                 text: 'Another button'
+ *                 align: &#39;right&#39;,
+ *                 text: &#39;Another button&#39;
  *             }
  *         ]
  *     });
  *
  *     Ext.Viewport.setStyleHtmlContent(true);
- *     Ext.Viewport.setHtml('This shows how the title and buttons will automatically adjust their size when the width of the items are too wide..');
+ *     Ext.Viewport.setHtml(&#39;This shows how the title and buttons will automatically adjust their size when the width of the items are too wide..&#39;);
  *
- * The {@link #defaultType} of Toolbar's is {@link Ext.Button button}.
+ * The {@link #defaultType} of Toolbar&#39;s is {@link Ext.Button button}.
  */
-Ext.define('Ext.TitleBar', {
-    extend: 'Ext.Container',
-    xtype: 'titlebar',
+Ext.define(&#39;Ext.TitleBar&#39;, {
+    extend: &#39;Ext.Container&#39;,
+    xtype: &#39;titlebar&#39;,
 
     requires: [
-        'Ext.Button',
-        'Ext.Title',
-        'Ext.Spacer'
+        &#39;Ext.Button&#39;,
+        &#39;Ext.Title&#39;,
+        &#39;Ext.Spacer&#39;
     ],
 
 <span id='Ext-TitleBar-property-isToolbar'>    // @private
@@ -111,20 +111,20 @@ Ext.define('Ext.TitleBar', {
 </span>         * @cfg
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'toolbar',
+        baseCls: Ext.baseCSSPrefix + &#39;toolbar&#39;,
 
 <span id='Ext-TitleBar-cfg-cls'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        cls: Ext.baseCSSPrefix + 'navigation-bar',
+        cls: Ext.baseCSSPrefix + &#39;navigation-bar&#39;,
 
 <span id='Ext-TitleBar-cfg-ui'>        /**
 </span>         * @cfg {String} ui
-         * Style options for Toolbar. Either 'light' or 'dark'.
+         * Style options for Toolbar. Either &#39;light&#39; or &#39;dark&#39;.
          * @accessor
          */
-        ui: 'dark',
+        ui: &#39;dark&#39;,
 
 <span id='Ext-TitleBar-cfg-title'>        /**
 </span>         * @cfg {String} title
@@ -138,14 +138,14 @@ Ext.define('Ext.TitleBar', {
          * The alignment for the title of the toolbar.
          * @accessor
          */
-        titleAlign: 'center',
+        titleAlign: &#39;center&#39;,
 
 <span id='Ext-TitleBar-cfg-defaultType'>        /**
 </span>         * @cfg {String} defaultType
          * The default xtype to create.
          * @accessor
          */
-        defaultType: 'button',
+        defaultType: &#39;button&#39;,
 
 <span id='Ext-TitleBar-cfg-minHeight'>        /**
 </span>         * @cfg {String} minHeight
@@ -159,7 +159,7 @@ Ext.define('Ext.TitleBar', {
          * @hide
          */
         layout: {
-            type: 'hbox'
+            type: &#39;hbox&#39;
         },
 
 <span id='Ext-TitleBar-cfg-items'>        /**
@@ -177,15 +177,15 @@ Ext.define('Ext.TitleBar', {
 </span>         * @cfg {String} maxButtonWidth The maximum width of the button by percentage
          * @accessor
          */
-        maxButtonWidth: '40%'
+        maxButtonWidth: &#39;40%&#39;
     },
 
 <span id='Ext-TitleBar-property-platformConfig'>    platformConfig: [{
-</span>        theme: ['Blackberry', 'Tizen'],
-        titleAlign: 'left'
+</span>        theme: [&#39;Blackberry&#39;, &#39;Tizen&#39;],
+        titleAlign: &#39;left&#39;
     }, {
-        theme: ['Cupertino'],
-        maxButtonWidth: '80%'
+        theme: [&#39;Cupertino&#39;],
+        maxButtonWidth: &#39;80%&#39;
     }],
 
 <span id='Ext-TitleBar-property-hasCSSMinHeight'>    hasCSSMinHeight: true,
@@ -201,7 +201,7 @@ Ext.define('Ext.TitleBar', {
         delete this.initialItems;
 
         this.on({
-            painted: 'refreshTitlePosition',
+            painted: &#39;refreshTitlePosition&#39;,
             single: true
         });
     },
@@ -214,62 +214,62 @@ Ext.define('Ext.TitleBar', {
         me.initialItems = items;
 
         me.leftBox = me.add({
-            xtype: 'container',
-            style: 'position: relative',
+            xtype: &#39;container&#39;,
+            style: &#39;position: relative&#39;,
             layout: {
-                type: 'hbox',
-                align: 'center'
+                type: &#39;hbox&#39;,
+                align: &#39;center&#39;
             },
             listeners: {
-                resize: 'refreshTitlePosition',
+                resize: &#39;refreshTitlePosition&#39;,
                 scope: me
             }
         });
 
         me.spacer = me.add({
-            xtype: 'component',
-            style: 'position: relative',
+            xtype: &#39;component&#39;,
+            style: &#39;position: relative&#39;,
             flex: 1,
             listeners: {
-                resize: 'refreshTitlePosition',
+                resize: &#39;refreshTitlePosition&#39;,
                 scope: me
             }
         });
 
         me.rightBox = me.add({
-            xtype: 'container',
-            style: 'position: relative',
+            xtype: &#39;container&#39;,
+            style: &#39;position: relative&#39;,
             layout: {
-                type: 'hbox',
-                align: 'center'
+                type: &#39;hbox&#39;,
+                align: &#39;center&#39;
             },
             listeners: {
-                resize: 'refreshTitlePosition',
+                resize: &#39;refreshTitlePosition&#39;,
                 scope: me
             }
         });
 
 
         switch(titleAlign) {
-            case 'left':
+            case &#39;left&#39;:
                 me.titleComponent = me.leftBox.add({
-                    xtype: 'title',
-                    cls: Ext.baseCSSPrefix + 'title-align-left',
+                    xtype: &#39;title&#39;,
+                    cls: Ext.baseCSSPrefix + &#39;title-align-left&#39;,
                     hidden: defaults.hidden
                 });
                 me.refreshTitlePosition = Ext.emptyFn;
             break;
-            case 'right':
+            case &#39;right&#39;:
                 me.titleComponent = me.rightBox.add({
-                    xtype: 'title',
-                    cls: Ext.baseCSSPrefix + 'title-align-right',
+                    xtype: &#39;title&#39;,
+                    cls: Ext.baseCSSPrefix + &#39;title-align-right&#39;,
                     hidden: defaults.hidden
                 });
                 me.refreshTitlePosition = Ext.emptyFn;
             break;
             default:
                 me.titleComponent = me.add({
-                    xtype: 'title',
+                    xtype: &#39;title&#39;,
                     hidden: defaults.hidden,
                     centered: true
                 });
@@ -282,7 +282,7 @@ Ext.define('Ext.TitleBar', {
     },
 
 <span id='Ext-TitleBar-method-doBoxAdd'>    doBoxAdd: function(item) {
-</span>        if (item.config.align == 'right') {
+</span>        if (item.config.align == &#39;right&#39;) {
             this.rightBox.add(item);
         }
         else {
@@ -291,7 +291,7 @@ Ext.define('Ext.TitleBar', {
     },
 
 <span id='Ext-TitleBar-method-doBoxRemove'>    doBoxRemove: function(item, destroy) {
-</span>        if (item.config.align == 'right') {
+</span>        if (item.config.align == &#39;right&#39;) {
             this.rightBox.remove(item, destroy);
         }
         else {
@@ -300,7 +300,7 @@ Ext.define('Ext.TitleBar', {
     },
 
 <span id='Ext-TitleBar-method-doBoxInsert'>    doBoxInsert: function(index, item) {
-</span>        if (item.config.align == 'right') {
+</span>        if (item.config.align == &#39;right&#39;) {
             this.rightBox.insert(index, item);
         }
         else {
@@ -313,7 +313,7 @@ Ext.define('Ext.TitleBar', {
 
         //check if it is a percentage
         if (Ext.isString(maxButtonWidth)) {
-            maxButtonWidth = parseInt(maxButtonWidth.replace('%', ''), 10);
+            maxButtonWidth = parseInt(maxButtonWidth.replace(&#39;%&#39;, &#39;&#39;), 10);
         }
         maxButtonWidth = Math.round((this.element.getWidth() / 100) * maxButtonWidth);
 
@@ -332,13 +332,13 @@ Ext.define('Ext.TitleBar', {
 
         //set the min/max width of the left button
         var leftBox = this.leftBox,
-            leftButton = leftBox.down('button'),
+            leftButton = leftBox.down(&#39;button&#39;),
             singleButton = leftBox.getItems().getCount() == 1,
             leftBoxWidth, maxButtonWidth;
 
         if (leftButton &amp;&amp; singleButton) {
             if (leftButton.getWidth() == null) {
-                leftButton.renderElement.setWidth('auto');
+                leftButton.renderElement.setWidth(&#39;auto&#39;);
             }
 
             leftBoxWidth = leftBox.renderElement.getWidth();

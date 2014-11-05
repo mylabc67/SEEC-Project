@@ -26,17 +26,17 @@
  * is text entered into the form, and which removes that text when tapped.
  *
  *     @example
- *     Ext.create('Ext.form.Panel', {
+ *     Ext.create(&#39;Ext.form.Panel&#39;, {
  *         fullscreen: true,
  *         items: [
  *             {
- *                 xtype: 'fieldset',
- *                 title: 'Search',
+ *                 xtype: &#39;fieldset&#39;,
+ *                 title: &#39;Search&#39;,
  *                 items: [
  *                     {
- *                         xtype: 'searchfield',
- *                         label: 'Query',
- *                         name: 'query'
+ *                         xtype: &#39;searchfield&#39;,
+ *                         label: &#39;Query&#39;,
+ *                         name: &#39;query&#39;
  *                     }
  *                 ]
  *             }
@@ -45,9 +45,9 @@
  *
  * Or on its own, outside of a form:
  *
- *     Ext.create('Ext.field.Search', {
- *         label: 'Search:',
- *         value: 'query'
+ *     Ext.create(&#39;Ext.field.Search&#39;, {
+ *         label: &#39;Search:&#39;,
+ *         value: &#39;query&#39;
  *     });
  *
  * Because search field inherits from {@link Ext.field.Text textfield} it gains all of the functionality that text
@@ -55,10 +55,10 @@
  * as the user interacts with the component. Check out the {@link Ext.field.Text} docs to see the additional
  * functionality available.
  */
-Ext.define('Ext.field.Search', {
-    extend: 'Ext.field.Text',
-    xtype: 'searchfield',
-    alternateClassName: 'Ext.form.Search',
+Ext.define(&#39;Ext.field.Search&#39;, {
+    extend: &#39;Ext.field.Text&#39;,
+    xtype: &#39;searchfield&#39;,
+    alternateClassName: &#39;Ext.form.Search&#39;,
 
     config: {
 <span id='Ext-field-Search-cfg-component'>        /**
@@ -66,20 +66,20 @@ Ext.define('Ext.field.Search', {
          * @inheritdoc
          */
         component: {
-	        type: 'search'
+	        type: &#39;search&#39;
 	    },
 
 <span id='Ext-field-Search-cfg-ui'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-	    ui: 'search'
+	    ui: &#39;search&#39;
     },
 
 <span id='Ext-field-Search-property-platformConfig'>    platformConfig: [{
-</span>        platform: 'blackberry',
+</span>        platform: &#39;blackberry&#39;,
         component: {
-            type: 'text'
+            type: &#39;text&#39;
         }
     }]
 });

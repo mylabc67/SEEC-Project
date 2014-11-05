@@ -19,32 +19,32 @@
 </span> * Adds a Load More button at the bottom of the list. When the user presses this button,
  * the next page of data will be loaded into the store and appended to the List.
  *
- * By specifying `{@link #autoPaging}: true`, an 'infinite scroll' effect can be achieved,
+ * By specifying `{@link #autoPaging}: true`, an &#39;infinite scroll&#39; effect can be achieved,
  * i.e., the next page of content will load automatically when the user scrolls to the
  * bottom of the list.
  *
  * ## Example
  *
- *     Ext.create('Ext.dataview.List', {
+ *     Ext.create(&#39;Ext.dataview.List&#39;, {
  *
- *         store: Ext.create('TweetStore'),
+ *         store: Ext.create(&#39;TweetStore&#39;),
  *
  *         plugins: [
  *             {
- *                 xclass: 'Ext.plugin.ListPaging',
+ *                 xclass: &#39;Ext.plugin.ListPaging&#39;,
  *                 autoPaging: true
  *             }
  *         ],
  *
  *         itemTpl: [
- *             '&lt;img src=&quot;{profile_image_url}&quot; /&gt;',
- *             '&lt;div class=&quot;tweet&quot;&gt;{text}&lt;/div&gt;'
+ *             &#39;&lt;img src=&quot;{profile_image_url}&quot; /&gt;&#39;,
+ *             &#39;&lt;div class=&quot;tweet&quot;&gt;{text}&lt;/div&gt;&#39;
  *         ]
  *     });
  */
-Ext.define('Ext.plugin.ListPaging', {
-    extend: 'Ext.Component',
-    alias: 'plugin.listpaging',
+Ext.define(&#39;Ext.plugin.ListPaging&#39;, {
+    extend: &#39;Ext.Component&#39;,
+    alias: &#39;plugin.listpaging&#39;,
 
     config: {
 <span id='Ext-plugin-ListPaging-cfg-autoPaging'>        /**
@@ -56,37 +56,37 @@ Ext.define('Ext.plugin.ListPaging', {
 <span id='Ext-plugin-ListPaging-cfg-loadMoreText'>        /**
 </span>         * @cfg {String} loadMoreText The text used as the label of the Load More button.
          */
-        loadMoreText: 'Load More...',
+        loadMoreText: &#39;Load More...&#39;,
 
 <span id='Ext-plugin-ListPaging-cfg-noMoreRecordsText'>        /**
-</span>         * @cfg {String} noMoreRecordsText The text used as the label of the Load More button when the Store's
+</span>         * @cfg {String} noMoreRecordsText The text used as the label of the Load More button when the Store&#39;s
          * {@link Ext.data.Store#totalCount totalCount} indicates that all of the records available on the server are
          * already loaded
          */
-        noMoreRecordsText: 'No More Records',
+        noMoreRecordsText: &#39;No More Records&#39;,
 
 <span id='Ext-plugin-ListPaging-cfg-loadTpl'>        /**
 </span>         * @private
          * @cfg {String} loadTpl The template used to render the load more text
          */
         loadTpl: [
-            '&lt;div class=&quot;{cssPrefix}loading-spinner&quot; style=&quot;font-size: 180%; margin: 10px auto;&quot;&gt;',
-                 '&lt;span class=&quot;{cssPrefix}loading-top&quot;&gt;&lt;/span&gt;',
-                 '&lt;span class=&quot;{cssPrefix}loading-right&quot;&gt;&lt;/span&gt;',
-                 '&lt;span class=&quot;{cssPrefix}loading-bottom&quot;&gt;&lt;/span&gt;',
-                 '&lt;span class=&quot;{cssPrefix}loading-left&quot;&gt;&lt;/span&gt;',
-            '&lt;/div&gt;',
-            '&lt;div class=&quot;{cssPrefix}list-paging-msg&quot;&gt;{message}&lt;/div&gt;'
-        ].join(''),
+            &#39;&lt;div class=&quot;{cssPrefix}loading-spinner&quot; style=&quot;font-size: 180%; margin: 10px auto;&quot;&gt;&#39;,
+                 &#39;&lt;span class=&quot;{cssPrefix}loading-top&quot;&gt;&lt;/span&gt;&#39;,
+                 &#39;&lt;span class=&quot;{cssPrefix}loading-right&quot;&gt;&lt;/span&gt;&#39;,
+                 &#39;&lt;span class=&quot;{cssPrefix}loading-bottom&quot;&gt;&lt;/span&gt;&#39;,
+                 &#39;&lt;span class=&quot;{cssPrefix}loading-left&quot;&gt;&lt;/span&gt;&#39;,
+            &#39;&lt;/div&gt;&#39;,
+            &#39;&lt;div class=&quot;{cssPrefix}list-paging-msg&quot;&gt;{message}&lt;/div&gt;&#39;
+        ].join(&#39;&#39;),
 
 <span id='Ext-plugin-ListPaging-cfg-loadMoreCmp'>        /**
 </span>         * @cfg {Object} loadMoreCmp
          * @private
          */
         loadMoreCmp: {
-            xtype: 'component',
-            baseCls: Ext.baseCSSPrefix + 'list-paging',
-            scrollDock: 'bottom',
+            xtype: &#39;component&#39;,
+            baseCls: Ext.baseCSSPrefix + &#39;list-paging&#39;,
+            scrollDock: &#39;bottom&#39;,
             hidden: true
         },
 
@@ -101,7 +101,7 @@ Ext.define('Ext.plugin.ListPaging', {
 </span>         * @private
          * @cfg {String} loadingCls The CSS class that is added to the {@link #loadMoreCmp} while the Store is loading
          */
-        loadingCls: Ext.baseCSSPrefix + 'loading',
+        loadingCls: Ext.baseCSSPrefix + &#39;loading&#39;,
 
 <span id='Ext-plugin-ListPaging-cfg-list'>        /**
 </span>         * @private
@@ -111,7 +111,7 @@ Ext.define('Ext.plugin.ListPaging', {
 
 <span id='Ext-plugin-ListPaging-cfg-scroller'>        /**
 </span>         * @private
-         * @cfg {Ext.scroll.Scroller} scroller Local reference to the List's Scroller
+         * @cfg {Ext.scroll.Scroller} scroller Local reference to the List&#39;s Scroller
          */
         scroller: null,
 
@@ -136,7 +136,7 @@ Ext.define('Ext.plugin.ListPaging', {
 
         this.addLoadMoreCmp();
 
-        // The List's Store could change at any time so make sure we are informed when that happens
+        // The List&#39;s Store could change at any time so make sure we are informed when that happens
         list.updateStore = Ext.Function.createInterceptor(list.updateStore, this.bindStore, this);
 
         if (this.getAutoPaging()) {
@@ -172,9 +172,9 @@ Ext.define('Ext.plugin.ListPaging', {
 
 <span id='Ext-plugin-ListPaging-method-disableDataViewMask'>    /**
 </span>     * @private
-     * Removes the List/DataView's loading mask because we show our own in the plugin. The logic here disables the
-     * loading mask immediately if the store is autoloading. If it's not autoloading, allow the mask to show the first
-     * time the Store loads, then disable it and use the plugin's loading spinner.
+     * Removes the List/DataView&#39;s loading mask because we show our own in the plugin. The logic here disables the
+     * loading mask immediately if the store is autoloading. If it&#39;s not autoloading, allow the mask to show the first
+     * time the Store loads, then disable it and use the plugin&#39;s loading spinner.
      * @param {Ext.data.Store} store The store that is bound to the DataView
      */
     disableDataViewMask: function() {
@@ -208,12 +208,12 @@ Ext.define('Ext.plugin.ListPaging', {
                 cssPrefix: Ext.baseCSSPrefix,
                 message: this.getLoadMoreText()
             }),
-            scrollDock: 'bottom',
+            scrollDock: &#39;bottom&#39;,
             listeners: {
                 tap: {
                     fn: this.loadNextPage,
                     scope: this,
-                    element: 'element'
+                    element: &#39;element&#39;
                 }
             }
         });
@@ -223,7 +223,7 @@ Ext.define('Ext.plugin.ListPaging', {
 
 <span id='Ext-plugin-ListPaging-method-onScrollEnd'>    /**
 </span>     * @private
-     * If we're using autoPaging and detect that the user has scrolled to the bottom, kick off loading of the next page
+     * If we&#39;re using autoPaging and detect that the user has scrolled to the bottom, kick off loading of the next page
      */
     onScrollEnd: function(scroller, x, y) {
         var list = this.getList();
@@ -253,8 +253,8 @@ Ext.define('Ext.plugin.ListPaging', {
 
 <span id='Ext-plugin-ListPaging-method-onStoreBeforeLoad'>    /**
 </span>     * @private
-     * If the Store is just about to load but it's currently empty, we hide the load more button because this is
-     * usually an outcome of setting a new Store on the List so we don't want the load more button to flash while
+     * If the Store is just about to load but it&#39;s currently empty, we hide the load more button because this is
+     * usually an outcome of setting a new Store on the List so we don&#39;t want the load more button to flash while
      * the new Store loads
      */
     onStoreBeforeLoad: function(store) {
@@ -276,7 +276,7 @@ Ext.define('Ext.plugin.ListPaging', {
         }
         this.setLoading(false);
 
-        //if we've reached the end of the data set, switch to the noMoreRecordsText
+        //if we&#39;ve reached the end of the data set, switch to the noMoreRecordsText
         loadCmp.setHtml(template.apply({
             cssPrefix: Ext.baseCSSPrefix,
             message: message
@@ -300,7 +300,7 @@ Ext.define('Ext.plugin.ListPaging', {
 
 <span id='Ext-plugin-ListPaging-method-addLoadMoreCmp'>    /**
 </span>     * @private
-     * Because the attached List's inner list element is rendered after our init function is called,
+     * Because the attached List&#39;s inner list element is rendered after our init function is called,
      * we need to dynamically add the loadMoreCmp later. This does this once and caches the result.
      */
     addLoadMoreCmp: function() {
@@ -315,7 +315,7 @@ Ext.define('Ext.plugin.ListPaging', {
              * @param {Ext.plugin.ListPaging} this The list paging plugin
              * @param {Ext.List} list The list
              */
-            list.fireEvent('loadmorecmpadded', this, list);
+            list.fireEvent(&#39;loadmorecmpadded&#39;, this, list);
             this.setLoadMoreCmpAdded(true);
         }
 
@@ -325,7 +325,7 @@ Ext.define('Ext.plugin.ListPaging', {
 <span id='Ext-plugin-ListPaging-method-storeFullyLoaded'>    /**
 </span>     * @private
      * Returns true if the Store is detected as being fully loaded, or the server did not return a total count, which
-     * means we're in 'infinite' mode
+     * means we&#39;re in &#39;infinite&#39; mode
      * @return {Boolean}
      */
     storeFullyLoaded: function() {

@@ -15,23 +15,23 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js">Ext.define('Ext.device.Storage', {
+  <pre class="prettyprint lang-js">Ext.define(&#39;Ext.device.Storage&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.storage.Cordova',
-        'Ext.device.storage.Simulator'
+        &#39;Ext.device.storage.Cordova&#39;,
+        &#39;Ext.device.storage.Simulator&#39;
     ],
 
     constructor: function() {
         var browserEnv = Ext.browser.is;
         if (browserEnv.WebView) {
             if (browserEnv.Cordova) {
-                return Ext.create('Ext.device.storage.Cordova');
+                return Ext.create(&#39;Ext.device.storage.Cordova&#39;);
             }
         }
 
-        return Ext.create('Ext.device.storage.Simulator');
+        return Ext.create(&#39;Ext.device.storage.Simulator&#39;);
     }
 });
 </pre>

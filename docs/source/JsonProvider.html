@@ -23,12 +23,12 @@
  * @abstract
  */
 
-Ext.define('Ext.direct.JsonProvider', {
-    extend: 'Ext.direct.Provider',
+Ext.define(&#39;Ext.direct.JsonProvider&#39;, {
+    extend: &#39;Ext.direct.Provider&#39;,
 
-    alias: 'direct.jsonprovider',
+    alias: &#39;direct.jsonprovider&#39;,
 
-    uses: ['Ext.direct.ExceptionEvent'],
+    uses: [&#39;Ext.direct.ExceptionEvent&#39;],
 
 <span id='Ext-direct-JsonProvider-method-parseResponse'>    /**
 </span>     * Parse the JSON response.
@@ -61,11 +61,11 @@ Ext.define('Ext.direct.JsonProvider', {
         try {
             data = this.parseResponse(response);
         } catch(e) {
-            event = Ext.create('Ext.direct.ExceptionEvent', {
+            event = Ext.create(&#39;Ext.direct.ExceptionEvent&#39;, {
                 data: e,
                 xhr: response,
                 code: Ext.direct.Manager.exceptions.PARSE,
-                message: 'Error parsing json response: \n\n ' + data
+                message: &#39;Error parsing json response: \n\n &#39; + data
             });
             return [event];
         }
@@ -86,7 +86,7 @@ Ext.define('Ext.direct.JsonProvider', {
      * @return {Ext.direct.Event} The event.
      */
     createEvent: function(response) {
-        return Ext.create('direct.' + response.type, response);
+        return Ext.create(&#39;direct.&#39; + response.type, response);
     }
 });</pre>
 </body>

@@ -19,13 +19,13 @@
 </span> * @class Ext.data.plugin.Buffered
  * Description
  */
-Ext.define('Ext.data.plugin.Buffered', {
-    alias: 'plugin.storebuffered',
+Ext.define(&#39;Ext.data.plugin.Buffered&#39;, {
+    alias: &#39;plugin.storebuffered&#39;,
 
-    extend: 'Ext.Evented',
+    extend: &#39;Ext.Evented&#39;,
 
     requires: [
-        'Ext.util.BufferedCollection'
+        &#39;Ext.util.BufferedCollection&#39;
     ],
 
     config: {
@@ -90,9 +90,9 @@ Ext.define('Ext.data.plugin.Buffered', {
             this.updateBufferedCollection(this.getBufferedCollection());
 
             //&lt;debug&gt;
-            Ext.Function.interceptBefore(store, 'add', function() {
+            Ext.Function.interceptBefore(store, &#39;add&#39;, function() {
                 Ext.Error.raise({
-                    msg: 'add method may not be called on a buffered store'
+                    msg: &#39;add method may not be called on a buffered store&#39;
                 });
             });
             //&lt;/debug&gt;
@@ -149,7 +149,7 @@ Ext.define('Ext.data.plugin.Buffered', {
             limit: viewSize,
 
             addRecords: false,
-            action: 'read',
+            action: &#39;read&#39;,
             model: store.getModel()
         });
 
@@ -174,7 +174,7 @@ Ext.define('Ext.data.plugin.Buffered', {
             if (me.isRangeCached(startIndex, endIndex)) {
                 store.loading = false;
 
-                bufferedCollection.un('pageadded', waitForRequestedRange);
+                bufferedCollection.un(&#39;pageadded&#39;, waitForRequestedRange);
                 records = bufferedCollection.getRange(startIndex, endIndex);
 
                 if (options.callback) {
@@ -185,11 +185,11 @@ Ext.define('Ext.data.plugin.Buffered', {
 
         delete prefetchOptions.callback;
 
-        store.on('prefetch', function(store, records, successful) {
+        store.on(&#39;prefetch&#39;, function(store, records, successful) {
             if (successful) {
                 totalCount = store.getTotalCount();
                 if (totalCount) {
-                    bufferedCollection.on('pageadded', waitForRequestedRange);
+                    bufferedCollection.on(&#39;pageadded&#39;, waitForRequestedRange);
 
                     // As soon as we have the size of the dataset, ensure we are not waiting for more than can ever arrive,
                     endIndex = Math.min(endIndex, totalCount - 1);
@@ -247,15 +247,15 @@ Ext.define('Ext.data.plugin.Buffered', {
         if (!me.pageRequests[options.page]) {
             // Copy options into a new object so as not to mutate passed in objects
             options = Ext.applyIf({
-                action : 'read',
+                action : &#39;read&#39;,
                 sorters: store.getSorters(),
                 filters: store.getFilters(),
                 grouper: store.getGrouper()
             }, options);
 
-            operation = Ext.create('Ext.data.Operation', options);
+            operation = Ext.create(&#39;Ext.data.Operation&#39;, options);
 
-            if (store.fireEvent('beforeprefetch', me, operation) !== false) {
+            if (store.fireEvent(&#39;beforeprefetch&#39;, me, operation) !== false) {
                 me.pageRequests[options.page] = store.getProxy().read(operation, me.onProxyPrefetch, me);
             }
         }
@@ -285,7 +285,7 @@ Ext.define('Ext.data.plugin.Buffered', {
                 store.setTotalCount(total);
                 bufferedCollection.setTotalCount(total);
 
-                store.fireEvent('totalcountchange', store, total);
+                store.fireEvent(&#39;totalcountchange&#39;, store, total);
             }
         }
 
@@ -295,9 +295,9 @@ Ext.define('Ext.data.plugin.Buffered', {
             me.cachePage(records, page);
         }
 
-        store.fireEvent('prefetch', store, records, successful, operation);
+        store.fireEvent(&#39;prefetch&#39;, store, records, successful, operation);
 
-        //this is a callback that would have been passed to the 'read' function and is optional
+        //this is a callback that would have been passed to the &#39;read&#39; function and is optional
         Ext.callback(operation.callback, operation.scope || me, [records, operation, successful]);
     },
 

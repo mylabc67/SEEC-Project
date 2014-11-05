@@ -23,20 +23,20 @@
  *
  *     // Used within a toolbar
  *     {
- *         xtype: 'toolbar',
+ *         xtype: &#39;toolbar&#39;,
  *         items: [{
- *             xclass: 'Ext.ux.TabMenuButton',
- *             text: 'Chats',
- *             iconCls: 'chats',
+ *             xclass: &#39;Ext.ux.TabMenuButton&#39;,
+ *             text: &#39;Chats&#39;,
+ *             iconCls: &#39;chats&#39;,
  *             menuItems: [{
- *                 text: 'Chats',
- *                 iconCls: 'chats',
+ *                 text: &#39;Chats&#39;,
+ *                 iconCls: &#39;chats&#39;,
  *                 handler: function() {
  *                     // do something
  *                 }
  *             }, {
- *                 text: 'Contacts',
- *                 iconCls: 'contacts',
+ *                 text: &#39;Contacts&#39;,
+ *                 iconCls: &#39;contacts&#39;,
  *                 handler: function() {
  *                     // do something
  *                 }
@@ -44,39 +44,39 @@
  *         }]
  *     }
  */
-Ext.define('Ext.ux.TabMenuButton', {
-    extend: 'Ext.ux.MenuButton',
+Ext.define(&#39;Ext.ux.TabMenuButton&#39;, {
+    extend: &#39;Ext.ux.MenuButton&#39;,
 
     config: {
 <span id='Ext-ux-TabMenuButton-cfg-ui'>        /**
 </span>         * @hide
          */
-        ui: 'tab',
+        ui: &#39;tab&#39;,
 
 <span id='Ext-ux-TabMenuButton-cfg-cls'>        /**
 </span>         * @hide
          */
-        cls: 'tabmenu',
+        cls: &#39;tabmenu&#39;,
 
 <span id='Ext-ux-TabMenuButton-property-menuItems'>        /**
 </span>         * The items to be used within the {@link Ext.Menu} which is shown when this button is tapped.
          *
          *     // Used within a toolbar
          *     {
-         *         xtype: 'toolbar',
+         *         xtype: &#39;toolbar&#39;,
          *         items: [{
-         *             xclass: 'Ext.ux.TabMenuButton',
-         *             text: 'Chats',
-         *             iconCls: 'chats',
+         *             xclass: &#39;Ext.ux.TabMenuButton&#39;,
+         *             text: &#39;Chats&#39;,
+         *             iconCls: &#39;chats&#39;,
          *             menuItems: [{
-         *                 text: 'Chats',
-         *                 iconCls: 'chats',
+         *                 text: &#39;Chats&#39;,
+         *                 iconCls: &#39;chats&#39;,
          *                 handler: function() {
          *                     // do something
          *                 }
          *             }, {
-         *                 text: 'Contacts',
-         *                 iconCls: 'contacts',
+         *                 text: &#39;Contacts&#39;,
+         *                 iconCls: &#39;contacts&#39;,
          *                 handler: function() {
          *                     // do something
          *                 }
@@ -91,7 +91,7 @@ Ext.define('Ext.ux.TabMenuButton', {
 <span id='Ext-ux-TabMenuButton-cfg-menuSide'>        /**
 </span>         * @hide
          */
-        menuSide: 'left'
+        menuSide: &#39;left&#39;
     },
 
 <span id='Ext-ux-TabMenuButton-method-onMenuButtonTap'>    onMenuButtonTap: function(button) {

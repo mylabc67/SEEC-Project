@@ -26,21 +26,21 @@
  * Using the NavigationView is very simple. Here is a basic example of it in action:
  *
  *     @example
- *     var view = Ext.create('Ext.NavigationView', {
+ *     var view = Ext.create(&#39;Ext.NavigationView&#39;, {
  *         fullscreen: true,
  *
  *         items: [{
- *             title: 'First',
+ *             title: &#39;First&#39;,
  *             items: [{
- *                 xtype: 'button',
- *                 text: 'Push a new view!',
+ *                 xtype: &#39;button&#39;,
+ *                 text: &#39;Push a new view!&#39;,
  *                 handler: function() {
  *                     // use the push() method to push another view. It works much like
  *                     // add() or setActiveItem(). it accepts a view instance, or you can give it
  *                     // a view config.
  *                     view.push({
- *                         title: 'Second',
- *                         html: 'Second view!'
+ *                         title: &#39;Second&#39;,
+ *                         html: &#39;Second view!&#39;
  *                     });
  *                 }
  *             }]
@@ -52,8 +52,8 @@
  * and showing the new title.
  *
  *     view.push({
- *         title: 'A new view',
- *         html: 'Some new content'
+ *         title: &#39;A new view&#39;,
+ *         html: &#39;Some new content&#39;
  *     });
  *
  * As you can see, it is as simple as calling the {@link #method-push} method, with a new view (instance or object). Done.
@@ -68,18 +68,18 @@
  *
  * @aside guide navigation_view
  */
-Ext.define('Ext.navigation.View', {
-    extend: 'Ext.Container',
-    alternateClassName: 'Ext.NavigationView',
-    xtype: 'navigationview',
-    requires: ['Ext.navigation.Bar'],
+Ext.define(&#39;Ext.navigation.View&#39;, {
+    extend: &#39;Ext.Container&#39;,
+    alternateClassName: &#39;Ext.NavigationView&#39;,
+    xtype: &#39;navigationview&#39;,
+    requires: [&#39;Ext.navigation.Bar&#39;],
 
     config: {
 <span id='Ext-navigation-View-cfg-baseCls'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'navigationview',
+        baseCls: Ext.baseCSSPrefix + &#39;navigationview&#39;,
 
 <span id='Ext-navigation-View-cfg-navigationBar'>        /**
 </span>         * @cfg {Boolean/Object} navigationBar
@@ -88,22 +88,22 @@ Ext.define('Ext.navigation.View', {
          * You can just pass in a normal object if you want to customize the NavigationBar. For example:
          *
          *     navigationBar: {
-         *         ui: 'dark',
-         *         docked: 'bottom'
+         *         ui: &#39;dark&#39;,
+         *         docked: &#39;bottom&#39;
          *     }
          *
          * You **cannot** specify a *title* property in this configuration. The title of the navigationBar is taken
          * from the configuration of this views children:
          *
          *     view.push({
-         *         title: 'This views title which will be shown in the navigation bar',
-         *         html: 'Some HTML'
+         *         title: &#39;This views title which will be shown in the navigation bar&#39;,
+         *         html: &#39;Some HTML&#39;
          *     });
          *
          * @accessor
          */
         navigationBar: {
-            docked: 'top'
+            docked: &#39;top&#39;
         },
 
 <span id='Ext-navigation-View-cfg-defaultBackButtonText'>        /**
@@ -114,7 +114,7 @@ Ext.define('Ext.navigation.View', {
          * - The {@link #useTitleForBackButtonText} configuration is `true`.
          * @accessor
          */
-        defaultBackButtonText: 'Back',
+        defaultBackButtonText: &#39;Back&#39;,
 
 <span id='Ext-navigation-View-cfg-useTitleForBackButtonText'>        /**
 </span>         * @cfg {Boolean} useTitleForBackButtonText
@@ -128,12 +128,12 @@ Ext.define('Ext.navigation.View', {
 </span>         * @cfg {Array/Object} items The child items to add to this NavigationView. This is usually an array of Component
          * configurations or instances, for example:
          *
-         *     Ext.create('Ext.Container', {
+         *     Ext.create(&#39;Ext.Container&#39;, {
          *         items: [
          *             {
-         *                 xtype: 'panel',
-         *                 title: 'My title',
-         *                 html: 'This is an item'
+         *                 xtype: &#39;panel&#39;,
+         *                 title: &#39;My title&#39;,
+         *                 html: &#39;This is an item&#39;
          *             }
          *         ]
          *     });
@@ -148,23 +148,23 @@ Ext.define('Ext.navigation.View', {
 
 <span id='Ext-navigation-View-cfg-layout'>        /**
 </span>         * @cfg {Object}
-         * Layout used in this navigation view, type must be set to 'card'.
+         * Layout used in this navigation view, type must be set to &#39;card&#39;.
          * **Android NOTE:** Older Android devices have poor animation performance. It is recommended to set the animation to null, for example:
          *
          *      layout: {
-         *          type: 'card',
+         *          type: &#39;card&#39;,
          *          animation: null
          *      }
          *
          * @accessor
          */
         layout: {
-            type: 'card',
+            type: &#39;card&#39;,
             animation: {
                 duration: 300,
-                easing: 'ease-out',
-                type: 'slide',
-                direction: 'left'
+                easing: &#39;ease-out&#39;,
+                type: &#39;slide&#39;,
+                direction: &#39;left&#39;
             }
         }
     },
@@ -190,7 +190,7 @@ Ext.define('Ext.navigation.View', {
      */
 
     platformConfig: [{
-        theme: ['Blackberry'],
+        theme: [&#39;Blackberry&#39;],
         navigationBar: {
             splitNavigation: true
         }
@@ -208,18 +208,18 @@ Ext.define('Ext.navigation.View', {
                 scope: me
             });
 
-            me.relayEvents(navBar, 'rightbuttontap');
+            me.relayEvents(navBar, &#39;rightbuttontap&#39;);
 
             me.relayEvents(me, {
-                add: 'push',
-                remove: 'pop'
+                add: &#39;push&#39;,
+                remove: &#39;pop&#39;
             });
         }
 
         //&lt;debug&gt;
         var layout = me.getLayout();
         if (layout &amp;&amp; !layout.isCard) {
-            Ext.Logger.error('The base layout for a NavigationView must always be a Card Layout');
+            Ext.Logger.error(&#39;The base layout for a NavigationView must always be a Card Layout&#39;);
         }
         //&lt;/debug&gt;
     },
@@ -239,7 +239,7 @@ Ext.define('Ext.navigation.View', {
      */
     onBackButtonTap: function() {
         this.pop();
-        this.fireEvent('back', this);
+        this.fireEvent(&#39;back&#39;, this);
     },
 
 <span id='Ext-navigation-View-method-push'>    /**
@@ -336,9 +336,9 @@ Ext.define('Ext.navigation.View', {
         if (this.$titleContainer) {
             //&lt;debug&gt;
             if (!this.$titleContainer.setTitle) {
-                Ext.Logger.error('You have selected to display a title in a component that does not \
+                Ext.Logger.error(&#39;You have selected to display a title in a component that does not \
                     support titles in NavigationView. Please remove the `title` configuration from your \
-                    NavigationView item, or change it to a component that has a `setTitle` method.');
+                    NavigationView item, or change it to a component that has a `setTitle` method.&#39;);
             }
             //&lt;/debug&gt;
 
@@ -443,15 +443,15 @@ Ext.define('Ext.navigation.View', {
         if (!config) {
             config = {
                 hidden: true,
-                docked: 'top'
+                docked: &#39;top&#39;
             };
         }
 
         if (config.title) {
             delete config.title;
             //&lt;debug&gt;
-            Ext.Logger.warn(&quot;Ext.navigation.View: The 'navigationBar' configuration does not accept a 'title' property. You &quot; +
-                &quot;set the title of the navigationBar by giving this navigation view's children a 'title' property.&quot;);
+            Ext.Logger.warn(&quot;Ext.navigation.View: The &#39;navigationBar&#39; configuration does not accept a &#39;title&#39; property. You &quot; +
+                &quot;set the title of the navigationBar by giving this navigation view&#39;s children a &#39;title&#39; property.&quot;);
             //&lt;/debug&gt;
         }
 
@@ -460,17 +460,17 @@ Ext.define('Ext.navigation.View', {
         // Blackberry specific nav setup where title is on the top title bar and the bottom toolbar is used for buttons and BACK
         if (config.splitNavigation) {
             this.$titleContainer = this.add({
-                docked: 'top',
-                xtype: 'titlebar',
-                ui: 'light',
-                title: this.$currentTitle || ''
+                docked: &#39;top&#39;,
+                xtype: &#39;titlebar&#39;,
+                ui: &#39;light&#39;,
+                title: this.$currentTitle || &#39;&#39;
             });
 
             var containerConfig = (config.splitNavigation === true) ? {} : config.splitNavigation;
 
             this.$backButtonContainer = this.add({
-                xtype: 'toolbar',
-                docked: 'bottom',
+                xtype: &#39;toolbar&#39;,
+                docked: &#39;bottom&#39;,
                 hidden: true
             });
 
@@ -483,10 +483,10 @@ Ext.define('Ext.navigation.View', {
             });
 
             this.$backButton = this.$backButtonContainer.add({
-                xtype: 'button',
-                text: 'Back',
+                xtype: &#39;button&#39;,
+                text: &#39;Back&#39;,
                 hidden: true,
-                ui: 'back'
+                ui: &#39;back&#39;
             });
 
             // Default config items go into the bottom bar
@@ -506,7 +506,7 @@ Ext.define('Ext.navigation.View', {
 
             config = {
                 hidden: true,
-                docked: 'top'
+                docked: &#39;top&#39;
             };
         }
 
@@ -603,7 +603,7 @@ Ext.define('Ext.navigation.View', {
         }
 
         if (this.initialized) {
-            this.fireEvent('add', this, item, index);
+            this.fireEvent(&#39;add&#39;, this, item, index);
         }
     },
 
@@ -615,9 +615,9 @@ Ext.define('Ext.navigation.View', {
         if (this.$titleContainer) {
             //&lt;debug&gt;
             if (!this.$titleContainer.setTitle) {
-                Ext.Logger.error('You have selected to display a title in a component that does not \
+                Ext.Logger.error(&#39;You have selected to display a title in a component that does not \
                     support titles in NavigationView. Please remove the `title` configuration from your \
-                    NavigationView item, or change it to a component that has a `setTitle` method.');
+                    NavigationView item, or change it to a component that has a `setTitle` method.&#39;);
             }
             //&lt;/debug&gt;
 

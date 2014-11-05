@@ -18,15 +18,15 @@
   <pre class="prettyprint lang-js"><span id='Ext-mixin-Filterable'>/**
 </span> * @private
  */
-Ext.define('Ext.mixin.Filterable', {
-    extend: 'Ext.mixin.Mixin',
+Ext.define(&#39;Ext.mixin.Filterable&#39;, {
+    extend: &#39;Ext.mixin.Mixin&#39;,
 
     requires: [
-        'Ext.util.Filter'
+        &#39;Ext.util.Filter&#39;
     ],
 
 <span id='Ext-mixin-Filterable-property-mixinConfig'>    mixinConfig: {
-</span>        id: 'filterable'
+</span>        id: &#39;filterable&#39;
     },
 
     config: {
@@ -40,7 +40,7 @@ Ext.define('Ext.mixin.Filterable', {
 <span id='Ext-mixin-Filterable-cfg-filterRoot'>        /**
 </span>         * @cfg {String} filterRoot
          * The root inside each item in which the properties exist that we want to filter on.
-         * This is useful for filtering records in which the data exists inside a 'data' property.
+         * This is useful for filtering records in which the data exists inside a &#39;data&#39; property.
          */
         filterRoot: null
     },
@@ -85,7 +85,7 @@ Ext.define('Ext.mixin.Filterable', {
     },
 
 <span id='Ext-mixin-Filterable-method-createFiltersCollection'>    createFiltersCollection: function() {
-</span>        this._filters = Ext.create('Ext.util.Collection', function(filter) {
+</span>        this._filters = Ext.create(&#39;Ext.util.Collection&#39;, function(filter) {
             return filter.getId();
         });
         return this._filters;
@@ -177,12 +177,12 @@ Ext.define('Ext.mixin.Filterable', {
             // Finally we get to the point where it has to be invalid
             // &lt;debug&gt;
             else {
-                Ext.Logger.warn('Invalid filter specified:', filter);
+                Ext.Logger.warn(&#39;Invalid filter specified:&#39;, filter);
             }
             // &lt;/debug&gt;
 
             // If a sorter config was created, make it an instance
-            filter = Ext.create('Ext.util.Filter', filterConfig);
+            filter = Ext.create(&#39;Ext.util.Filter&#39;, filterConfig);
             newFilters.push(filter);
         }
 
@@ -219,14 +219,14 @@ Ext.define('Ext.mixin.Filterable', {
         for (i = 0; i &lt; ln; i++) {
             filter = filters[i];
 
-            if (typeof filter === 'string') {
+            if (typeof filter === &#39;string&#39;) {
                 currentFilters.each(function(item) {
                     if (item.getProperty() === filter) {
                         currentFilters.remove(item);
                     }
                 });
             }
-            else if (typeof filter === 'function') {
+            else if (typeof filter === &#39;function&#39;) {
                 currentFilters.each(function(item) {
                     if (item.getFilterFn() === filter) {
                         currentFilters.remove(item);

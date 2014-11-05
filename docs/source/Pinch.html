@@ -20,12 +20,12 @@
  *
  * @private
  */
-Ext.define('Ext.event.recognizer.Pinch', {
-    extend: 'Ext.event.recognizer.MultiTouch',
+Ext.define(&#39;Ext.event.recognizer.Pinch&#39;, {
+    extend: &#39;Ext.event.recognizer.MultiTouch&#39;,
 
 <span id='Ext-event-recognizer-Pinch-property-requiredTouchesCount'>    requiredTouchesCount: 2,
 </span>
-<span id='Ext-event-recognizer-Pinch-property-handledEvents'>    handledEvents: ['pinchstart', 'pinch', 'pinchend'],
+<span id='Ext-event-recognizer-Pinch-property-handledEvents'>    handledEvents: [&#39;pinchstart&#39;, &#39;pinch&#39;, &#39;pinchend&#39;],
 </span>
 <span id='Ext-dom-Element-event-pinchstart'>    /**
 </span>     * @member Ext.dom.Element
@@ -89,14 +89,14 @@ Ext.define('Ext.event.recognizer.Pinch', {
 
             this.startDistance = distance;
 
-            this.fire('pinchstart', e, touches, {
+            this.fire(&#39;pinchstart&#39;, e, touches, {
                 touches: touches,
                 distance: distance,
                 scale: 1
             });
         }
         else {
-            this.fire('pinch', e, touches, {
+            this.fire(&#39;pinch&#39;, e, touches, {
                 touches: touches,
                 distance: distance,
                 scale: distance / this.startDistance
@@ -107,7 +107,7 @@ Ext.define('Ext.event.recognizer.Pinch', {
     },
 
 <span id='Ext-event-recognizer-Pinch-method-fireEnd'>    fireEnd: function(e) {
-</span>        this.fire('pinchend', e, this.lastTouches);
+</span>        this.fire(&#39;pinchend&#39;, e, this.lastTouches);
     },
 
 <span id='Ext-event-recognizer-Pinch-method-fail'>    fail: function() {

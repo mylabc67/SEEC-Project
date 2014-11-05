@@ -28,7 +28,7 @@ Ext.data.CSGenerator = Ext.extend(Ext.data.Config, {
 	
 	constructor: function(config,callback,scope) {
 		Ext.apply(this, config);
-		config.config_id= 'generator';
+		config.config_id= &#39;generator&#39;;
 		Ext.data.CSGenerator.superclass.constructor.call(this, config);
 		this.clock= this.clock || new Ext.data.Clock();
 	  this.t= this.t || this.clock.now();
@@ -42,7 +42,7 @@ Ext.data.CSGenerator = Ext.extend(Ext.data.Config, {
     var current_time= this.clock.now();
     this.update_local_offset(current_time);
     this.s+= 1;
-    if (this.s&gt;255) { // JCM This is totally arbitrary, and it's hard coded too....
+    if (this.s&gt;255) { // JCM This is totally arbitrary, and it&#39;s hard coded too....
       this.t= current_time;
       this.local_offset+= 1;
       this.s= 0;
@@ -129,7 +129,7 @@ Ext.data.CSGenerator = Ext.extend(Ext.data.Config, {
 			local_offset: this.local_offset,
 			global_offset: this.global_offset
 		};
-		data[Ext.data.SyncModel.MODEL]= 'Ext.data.CSGenerator';
+		data[Ext.data.SyncModel.MODEL]= &#39;Ext.data.CSGenerator&#39;;
 		return Ext.data.CSGenerator.superclass.as_data.call(this, data);
 	}
 });

@@ -24,9 +24,9 @@
  * Access the global instance stored in {@link Ext.browser} instead.
  * @private
  */
-Ext.define('Ext.env.Feature', {
+Ext.define(&#39;Ext.env.Feature&#39;, {
 
-    requires: ['Ext.env.Browser', 'Ext.env.OS'],
+    requires: [&#39;Ext.env.Browser&#39;, &#39;Ext.env.OS&#39;],
 
 <span id='Ext-env-Feature-method-constructor'>    constructor: function() {
 </span>        this.testElements = {};
@@ -37,7 +37,7 @@ Ext.define('Ext.env.Feature', {
 
         if (!Ext.theme) {
             Ext.theme = {
-                name: 'Default'
+                name: &#39;Default&#39;
             };
         }
 
@@ -48,14 +48,14 @@ Ext.define('Ext.env.Feature', {
             this.registerTest({
                 ProperHBoxStretching: function() {
                     // IE10 currently has a bug in their flexbox row layout. We feature detect the issue here.
-                    var bodyElement = document.createElement('div'),
-                        innerElement = bodyElement.appendChild(document.createElement('div')),
-                        contentElement = innerElement.appendChild(document.createElement('div')),
+                    var bodyElement = document.createElement(&#39;div&#39;),
+                        innerElement = bodyElement.appendChild(document.createElement(&#39;div&#39;)),
+                        contentElement = innerElement.appendChild(document.createElement(&#39;div&#39;)),
                         innerWidth;
 
-                    bodyElement.setAttribute('style', 'width: 100px; height: 100px; position: relative;');
-                    innerElement.setAttribute('style', 'position: absolute; display: -ms-flexbox; display: -webkit-flex; display: -moz-flexbox; display: flex; -ms-flex-direction: row; -webkit-flex-direction: row; -moz-flex-direction: row; flex-direction: row; min-width: 100%;');
-                    contentElement.setAttribute('style', 'width: 200px; height: 50px;');
+                    bodyElement.setAttribute(&#39;style&#39;, &#39;width: 100px; height: 100px; position: relative;&#39;);
+                    innerElement.setAttribute(&#39;style&#39;, &#39;position: absolute; display: -ms-flexbox; display: -webkit-flex; display: -moz-flexbox; display: flex; -ms-flex-direction: row; -webkit-flex-direction: row; -moz-flex-direction: row; flex-direction: row; min-width: 100%;&#39;);
+                    contentElement.setAttribute(&#39;style&#39;, &#39;width: 200px; height: 50px;&#39;);
                     document.body.appendChild(bodyElement);
                     innerWidth = innerElement.offsetWidth;
                     document.body.removeChild(bodyElement);
@@ -68,9 +68,9 @@ Ext.define('Ext.env.Feature', {
 
 <span id='Ext-env-Feature-method-getTestElement'>    getTestElement: function(tag, createNew) {
 </span>        if (tag === undefined) {
-            tag = 'div';
+            tag = &#39;div&#39;;
         }
-        else if (typeof tag !== 'string') {
+        else if (typeof tag !== &#39;string&#39;) {
             return tag;
         }
 
@@ -89,8 +89,8 @@ Ext.define('Ext.env.Feature', {
 </span>        var elementStyle = this.getTestElement(tag).style,
             cName = Ext.String.capitalize(name);
 
-        if (typeof elementStyle[name] !== 'undefined'
-            || typeof elementStyle[Ext.browser.getStylePrefix(name) + cName] !== 'undefined') {
+        if (typeof elementStyle[name] !== &#39;undefined&#39;
+            || typeof elementStyle[Ext.browser.getStylePrefix(name) + cName] !== &#39;undefined&#39;) {
             return true;
         }
 
@@ -100,7 +100,7 @@ Ext.define('Ext.env.Feature', {
 <span id='Ext-env-Feature-method-isStyleSupportedWithoutPrefix'>    isStyleSupportedWithoutPrefix: function(name, tag) {
 </span>        var elementStyle = this.getTestElement(tag).style;
 
-        if (typeof elementStyle[name] !== 'undefined') {
+        if (typeof elementStyle[name] !== &#39;undefined&#39;) {
             return true;
         }
 
@@ -113,15 +113,15 @@ Ext.define('Ext.env.Feature', {
         }
 
         var element = this.getTestElement(tag),
-            eventName = 'on' + name.toLowerCase(),
+            eventName = &#39;on&#39; + name.toLowerCase(),
             isSupported = (eventName in element);
 
         if (!isSupported) {
             if (element.setAttribute &amp;&amp; element.removeAttribute) {
-                element.setAttribute(eventName, '');
-                isSupported = typeof element[eventName] === 'function';
+                element.setAttribute(eventName, &#39;&#39;);
+                isSupported = typeof element[eventName] === &#39;function&#39;;
 
-                if (typeof element[eventName] !== 'undefined') {
+                if (typeof element[eventName] !== &#39;undefined&#39;) {
                     element[eventName] = undefined;
                 }
 
@@ -179,7 +179,7 @@ Ext.define('Ext.env.Feature', {
      *
      * A &quot;hybrid&quot; property, can be either accessed as a method call, i.e:
      *
-     *     if (Ext.feature.has('Canvas')) {
+     *     if (Ext.feature.has(&#39;Canvas&#39;)) {
      *         // ...
      *     }
      *
@@ -225,8 +225,8 @@ Ext.define('Ext.env.Feature', {
      */
     Ext.feature.registerTest({
         Canvas: function() {
-            var element = this.getTestElement('canvas');
-            return !!(element &amp;&amp; element.getContext &amp;&amp; element.getContext('2d'));
+            var element = this.getTestElement(&#39;canvas&#39;);
+            return !!(element &amp;&amp; element.getContext &amp;&amp; element.getContext(&#39;2d&#39;));
         },
 
         Svg: function() {
@@ -247,7 +247,7 @@ Ext.define('Ext.env.Feature', {
         },
 
         Touch: function() {
-            return Ext.browser.is.Ripple || (this.isEventSupported('touchstart') &amp;&amp; !(Ext.os &amp;&amp; Ext.os.name.match(/Windows|MacOS|Linux/) &amp;&amp; !Ext.os.is.BlackBerry6));
+            return Ext.browser.is.Ripple || (this.isEventSupported(&#39;touchstart&#39;) &amp;&amp; !(Ext.os &amp;&amp; Ext.os.name.match(/Windows|MacOS|Linux/) &amp;&amp; !Ext.os.is.BlackBerry6));
         },
 
         Pointer: function() {
@@ -255,27 +255,27 @@ Ext.define('Ext.env.Feature', {
         },
 
         Orientation: function() {
-            return ('orientation' in window) &amp;&amp; this.isEventSupported('orientationchange');
+            return (&#39;orientation&#39; in window) &amp;&amp; this.isEventSupported(&#39;orientationchange&#39;);
         },
 
         OrientationChange: function() {
-            return this.isEventSupported('orientationchange');
+            return this.isEventSupported(&#39;orientationchange&#39;);
         },
 
         DeviceMotion: function() {
-            return this.isEventSupported('devicemotion');
+            return this.isEventSupported(&#39;devicemotion&#39;);
         },
 
         Geolocation: function() {
-            return 'geolocation' in window.navigator;
+            return &#39;geolocation&#39; in window.navigator;
         },
 
         SqlDatabase: function() {
-            return 'openDatabase' in window;
+            return &#39;openDatabase&#39; in window;
         },
 
         WebSockets: function() {
-            return 'WebSocket' in window;
+            return &#39;WebSocket&#39; in window;
         },
 
         Range: function() {
@@ -288,43 +288,43 @@ Ext.define('Ext.env.Feature', {
         },
 
         History: function() {
-            return ('history' in window &amp;&amp; 'pushState' in window.history);
+            return (&#39;history&#39; in window &amp;&amp; &#39;pushState&#39; in window.history);
         },
 
         CssTransforms: function() {
-            return this.isStyleSupported('transform');
+            return this.isStyleSupported(&#39;transform&#39;);
         },
 
         CssTransformNoPrefix: function() {
-            // This extra check is needed to get around a browser bug where both 'transform' and '-webkit-transform' are present
-            // but the device really only uses '-webkit-transform'. This is seen on the HTC One for example.
+            // This extra check is needed to get around a browser bug where both &#39;transform&#39; and &#39;-webkit-transform&#39; are present
+            // but the device really only uses &#39;-webkit-transform&#39;. This is seen on the HTC One for example.
             // https://sencha.jira.com/browse/TOUCH-5029
             if(!Ext.browser.is.AndroidStock) {
-                return this.isStyleSupportedWithoutPrefix('transform')
+                return this.isStyleSupportedWithoutPrefix(&#39;transform&#39;)
             } else {
-                return this.isStyleSupportedWithoutPrefix('transform') &amp;&amp; !this.isStyleSupportedWithoutPrefix('-webkit-transform');
+                return this.isStyleSupportedWithoutPrefix(&#39;transform&#39;) &amp;&amp; !this.isStyleSupportedWithoutPrefix(&#39;-webkit-transform&#39;);
             }
         },
 
         Css3dTransforms: function() {
             // See https://sencha.jira.com/browse/TOUCH-1544
-            return this.has('CssTransforms') &amp;&amp; this.isStyleSupported('perspective') &amp;&amp; !Ext.browser.is.AndroidStock2;
+            return this.has(&#39;CssTransforms&#39;) &amp;&amp; this.isStyleSupported(&#39;perspective&#39;) &amp;&amp; !Ext.browser.is.AndroidStock2;
         },
 
         CssAnimations: function() {
-            return this.isStyleSupported('animationName');
+            return this.isStyleSupported(&#39;animationName&#39;);
         },
 
         CssTransitions: function() {
-            return this.isStyleSupported('transitionProperty');
+            return this.isStyleSupported(&#39;transitionProperty&#39;);
         },
 
         Audio: function() {
-            return !!this.getTestElement('audio').canPlayType;
+            return !!this.getTestElement(&#39;audio&#39;).canPlayType;
         },
 
         Video: function() {
-            return !!this.getTestElement('video').canPlayType;
+            return !!this.getTestElement(&#39;video&#39;).canPlayType;
         },
 
         ClassList: function() {
@@ -335,11 +335,11 @@ Ext.define('Ext.env.Feature', {
             var supported = false;
 
             try {
-                if ('localStorage' in window &amp;&amp; window['localStorage'] !== null) {
+                if (&#39;localStorage&#39; in window &amp;&amp; window[&#39;localStorage&#39;] !== null) {
                     //this should throw an error in private browsing mode in iOS
-                    localStorage.setItem('sencha-localstorage-test', 'test success');
+                    localStorage.setItem(&#39;sencha-localstorage-test&#39;, &#39;test success&#39;);
                     //clean up if setItem worked
-                    localStorage.removeItem('sencha-localstorage-test');
+                    localStorage.removeItem(&#39;sencha-localstorage-test&#39;);
                     supported = true;
                 }
             } catch ( e ) {}
@@ -348,13 +348,13 @@ Ext.define('Ext.env.Feature', {
         },
 
         XHR2 : function() {
-          return window.ProgressEvent &amp;&amp; window.FormData &amp;&amp; window.XMLHttpRequest &amp;&amp; ('withCredentials' in new XMLHttpRequest);
+          return window.ProgressEvent &amp;&amp; window.FormData &amp;&amp; window.XMLHttpRequest &amp;&amp; (&#39;withCredentials&#39; in new XMLHttpRequest);
         },
 
         XHRUploadProgress : function() {
             if(window.XMLHttpRequest &amp;&amp; !Ext.browser.is.AndroidStock) {
                 var xhr = new XMLHttpRequest();
-                return xhr &amp;&amp; ('upload' in xhr) &amp;&amp; ('onprogress' in xhr.upload);
+                return xhr &amp;&amp; (&#39;upload&#39; in xhr) &amp;&amp; (&#39;onprogress&#39; in xhr.upload);
             }
             return false;
         },
@@ -378,7 +378,7 @@ Ext.define('Ext.env.Feature', {
      * True if current device supports CSS transitions.
      * @deprecated 2.0.0 Please use {@link Ext.feature#has}.CssTransitions instead
      */
-    Ext.deprecatePropertyValue(has, 'Transitions', has.CssTransitions,
+    Ext.deprecatePropertyValue(has, &#39;Transitions&#39;, has.CssTransitions,
                           &quot;Ext.supports.Transitions is deprecated, please use Ext.feature.has.CssTransitions instead&quot;);
 
 <span id='Ext-supports-property-SVG'>    /**
@@ -387,7 +387,7 @@ Ext.define('Ext.env.Feature', {
      * True if current device supports SVG.
      * @deprecated 2.0.0 Please use {@link Ext.feature#has}.Svg instead
      */
-    Ext.deprecatePropertyValue(has, 'SVG', has.Svg,
+    Ext.deprecatePropertyValue(has, &#39;SVG&#39;, has.Svg,
                           &quot;Ext.supports.SVG is deprecated, please use Ext.feature.has.Svg instead&quot;);
 
 <span id='Ext-supports-property-VML'>    /**
@@ -396,7 +396,7 @@ Ext.define('Ext.env.Feature', {
      * True if current device supports VML.
      * @deprecated 2.0.0 Please use {@link Ext.feature#has}.Vml instead
      */
-    Ext.deprecatePropertyValue(has, 'VML', has.Vml,
+    Ext.deprecatePropertyValue(has, &#39;VML&#39;, has.Vml,
                           &quot;Ext.supports.VML is deprecated, please use Ext.feature.has.Vml instead&quot;);
 
 <span id='Ext-supports-property-AudioTag'>    /**
@@ -405,7 +405,7 @@ Ext.define('Ext.env.Feature', {
      * True if current device supports `&lt;audio&gt;` tag.
      * @deprecated 2.0.0 Please use {@link Ext.feature#has}.Audio instead
      */
-    Ext.deprecatePropertyValue(has, 'AudioTag', has.Audio,
+    Ext.deprecatePropertyValue(has, &#39;AudioTag&#39;, has.Audio,
                           &quot;Ext.supports.AudioTag is deprecated, please use Ext.feature.has.Audio instead&quot;);
 
 <span id='Ext-supports-property-GeoLocation'>    /**
@@ -414,7 +414,7 @@ Ext.define('Ext.env.Feature', {
      * True if current device supports geolocation.
      * @deprecated 2.0.0 Please use {@link Ext.feature#has}.Geolocation instead
      */
-    Ext.deprecatePropertyValue(has, 'GeoLocation', has.Geolocation,
+    Ext.deprecatePropertyValue(has, &#39;GeoLocation&#39;, has.Geolocation,
                           &quot;Ext.supports.GeoLocation is deprecated, please use Ext.feature.has.Geolocation instead&quot;);
     var name;
 

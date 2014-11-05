@@ -18,15 +18,15 @@
   <pre class="prettyprint lang-js"><span id='Ext-AbstractManager'>/**
 </span> * @private
  */
-Ext.define('Ext.AbstractManager', {
+Ext.define(&#39;Ext.AbstractManager&#39;, {
 
     /* Begin Definitions */
 
-    requires: ['Ext.util.HashMap'],
+    requires: [&#39;Ext.util.HashMap&#39;],
 
 <span id='Ext-AbstractManager-property-typeName'>    /* End Definitions */
 </span>
-    typeName: 'type',
+    typeName: &#39;type&#39;,
 
 <span id='Ext-AbstractManager-method-constructor'>    constructor: function(config) {
 </span>        Ext.apply(this, config || {});
@@ -35,7 +35,7 @@ Ext.define('Ext.AbstractManager', {
 </span>         * @property {Ext.util.HashMap} all
          * Contains all of the items currently managed
          */
-        this.all = Ext.create('Ext.util.HashMap');
+        this.all = Ext.create(&#39;Ext.util.HashMap&#39;);
 
         this.types = {};
     },
@@ -98,7 +98,7 @@ Ext.define('Ext.AbstractManager', {
 
         //&lt;debug&gt;
         if (Constructor == undefined) {
-            Ext.Error.raise(&quot;The '&quot; + type + &quot;' type has not been registered with this manager&quot;);
+            Ext.Error.raise(&quot;The &#39;&quot; + type + &quot;&#39; type has not been registered with this manager&quot;);
         }
         //&lt;/debug&gt;
 
@@ -121,10 +121,10 @@ Ext.define('Ext.AbstractManager', {
             item = all.get(id);
             fn.call(scope || item, item);
         } else {
-            all.on('add', function(map, key, item){
+            all.on(&#39;add&#39;, function(map, key, item){
                 if (key == id) {
                     fn.call(scope || item, item);
-                    all.un('add', fn, scope);
+                    all.un(&#39;add&#39;, fn, scope);
                 }
             });
         }

@@ -18,9 +18,9 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-geolocation-Simulator'>/**
 </span> * @private
  */
-Ext.define('Ext.device.geolocation.Simulator', {
-    extend: 'Ext.device.geolocation.Abstract',
-    requires: ['Ext.util.Geolocation'],
+Ext.define(&#39;Ext.device.geolocation.Simulator&#39;, {
+    extend: &#39;Ext.device.geolocation.Abstract&#39;,
+    requires: [&#39;Ext.util.Geolocation&#39;],
 
 <span id='Ext-device-geolocation-Simulator-method-getCurrentPosition'>    getCurrentPosition: function(config) {
 </span>        config = this.callParent([config]);
@@ -42,7 +42,7 @@ Ext.define('Ext.device.geolocation.Simulator', {
             }
         });
 
-        this.geolocation = Ext.create('Ext.util.Geolocation', config);
+        this.geolocation = Ext.create(&#39;Ext.util.Geolocation&#39;, config);
         this.geolocation.updateLocation();
 
         return config;
@@ -67,7 +67,7 @@ Ext.define('Ext.device.geolocation.Simulator', {
             }
         });
 
-        this.geolocation = Ext.create('Ext.util.Geolocation', config);
+        this.geolocation = Ext.create(&#39;Ext.util.Geolocation&#39;, config);
 
         return config;
     },

@@ -17,15 +17,15 @@
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js">(function() {
     var lastTime = 0,
-        vendors = ['ms', 'moz', 'webkit', 'o'],
+        vendors = [&#39;ms&#39;, &#39;moz&#39;, &#39;webkit&#39;, &#39;o&#39;],
         ln = vendors.length,
         i, vendor;
 
     for (i = 0; i &lt; ln &amp;&amp; !window.requestAnimationFrame; ++i) {
         vendor = vendors[i];
-        if (window[vendor + 'RequestAnimationFrame']) {
-            window.requestAnimationFrame = window[vendor + 'RequestAnimationFrame'];
-            window.cancelAnimationFrame = window[vendor + 'CancelAnimationFrame'] || window[vendor + 'CancelRequestAnimationFrame'];
+        if (window[vendor + &#39;RequestAnimationFrame&#39;]) {
+            window.requestAnimationFrame = window[vendor + &#39;RequestAnimationFrame&#39;];
+            window.cancelAnimationFrame = window[vendor + &#39;CancelAnimationFrame&#39;] || window[vendor + &#39;CancelRequestAnimationFrame&#39;];
         }
     }
 
@@ -72,7 +72,7 @@
 <span id='Ext-AnimationQueue'>/**
 </span> * @private
  */
-Ext.define('Ext.AnimationQueue', {
+Ext.define(&#39;Ext.AnimationQueue&#39;, {
     singleton: true,
 
 <span id='Ext-AnimationQueue-method-constructor'>    constructor: function() {
@@ -95,7 +95,7 @@ Ext.define('Ext.AnimationQueue', {
         // the callback when the WebView is switched back and forth from / to being background process
         // We use a watchdog timer to workaround this, and restore the pending state correctly if this happens
         // This timer has to be set as an interval from the very beginning and we have to keep it running for
-        // as long as the app lives, setting it later doesn't seem to work
+        // as long as the app lives, setting it later doesn&#39;t seem to work
         if (Ext.os.is.iOS) {
             setInterval(this.watch, 500);
         }
@@ -111,12 +111,12 @@ Ext.define('Ext.AnimationQueue', {
         this.queue.push(arguments);
 
         if (!this.isRunning) {
-            if (this.hasOwnProperty('idleTimer')) {
+            if (this.hasOwnProperty(&#39;idleTimer&#39;)) {
                 clearTimeout(this.idleTimer);
                 delete this.idleTimer;
             }
 
-            if (this.hasOwnProperty('idleQueueTimer')) {
+            if (this.hasOwnProperty(&#39;idleQueueTimer&#39;)) {
                 clearTimeout(this.idleQueueTimer);
                 delete this.idleQueueTimer;
             }
@@ -283,7 +283,7 @@ Ext.define('Ext.AnimationQueue', {
             scope = listener[1],
             args = listener[2];
 
-        fn = (typeof fn == 'string' ? scope[fn] : fn);
+        fn = (typeof fn == &#39;string&#39; ? scope[fn] : fn);
 
         if (Ext.isArray(args)) {
             fn.apply(scope, args);
@@ -299,7 +299,7 @@ Ext.define('Ext.AnimationQueue', {
     },
 
 <span id='Ext-AnimationQueue-method-processIdleQueue'>    processIdleQueue: function() {
-</span>        if (!this.hasOwnProperty('idleQueueTimer')) {
+</span>        if (!this.hasOwnProperty(&#39;idleQueueTimer&#39;)) {
             this.idleQueueTimer = setTimeout(this.processIdleQueueItem, 1);
         }
     },
@@ -322,7 +322,7 @@ Ext.define('Ext.AnimationQueue', {
     },
 
 <span id='Ext-AnimationQueue-method-processTaskQueue'>    processTaskQueue: function() {
-</span>        if (!this.hasOwnProperty('taskQueueTimer')) {
+</span>        if (!this.hasOwnProperty(&#39;taskQueueTimer&#39;)) {
             this.taskQueueTimer = setTimeout(this.processTaskQueueItem, 15);
         }
     },
@@ -346,80 +346,80 @@ Ext.define('Ext.AnimationQueue', {
         }
         Ext.onReady(function() {
             Ext.Viewport.add([{
-                    xtype: 'component',
+                    xtype: &#39;component&#39;,
                     bottom: 50,
                     left: 0,
                     width: 50,
                     height: 20,
-                    html: 'Average',
-                    style: 'background-color: black; color: white; text-align: center; line-height: 20px; font-size: 8px;'
+                    html: &#39;Average&#39;,
+                    style: &#39;background-color: black; color: white; text-align: center; line-height: 20px; font-size: 8px;&#39;
                 },
                 {
-                    id: '__averageFps',
-                    xtype: 'component',
+                    id: &#39;__averageFps&#39;,
+                    xtype: &#39;component&#39;,
                     bottom: 0,
                     left: 0,
                     width: 50,
                     height: 50,
-                    html: '0',
-                    style: 'background-color: red; color: white; text-align: center; line-height: 50px;'
+                    html: &#39;0&#39;,
+                    style: &#39;background-color: red; color: white; text-align: center; line-height: 50px;&#39;
                 },
                 {
-                    xtype: 'component',
+                    xtype: &#39;component&#39;,
                     bottom: 50,
                     left: 50,
                     width: 50,
                     height: 20,
-                    html: 'Min (Last 1k)',
-                    style: 'background-color: black; color: white; text-align: center; line-height: 20px; font-size: 8px;'
+                    html: &#39;Min (Last 1k)&#39;,
+                    style: &#39;background-color: black; color: white; text-align: center; line-height: 20px; font-size: 8px;&#39;
                 },
                 {
-                    id: '__minFps',
-                    xtype: 'component',
+                    id: &#39;__minFps&#39;,
+                    xtype: &#39;component&#39;,
                     bottom: 0,
                     left: 50,
                     width: 50,
                     height: 50,
-                    html: '0',
-                    style: 'background-color: orange; color: white; text-align: center; line-height: 50px;'
+                    html: &#39;0&#39;,
+                    style: &#39;background-color: orange; color: white; text-align: center; line-height: 50px;&#39;
                 },
                 {
-                    xtype: 'component',
+                    xtype: &#39;component&#39;,
                     bottom: 50,
                     left: 100,
                     width: 50,
                     height: 20,
-                    html: 'Max (Last 1k)',
-                    style: 'background-color: black; color: white; text-align: center; line-height: 20px; font-size: 8px;'
+                    html: &#39;Max (Last 1k)&#39;,
+                    style: &#39;background-color: black; color: white; text-align: center; line-height: 20px; font-size: 8px;&#39;
                 },
                 {
-                    id: '__maxFps',
-                    xtype: 'component',
+                    id: &#39;__maxFps&#39;,
+                    xtype: &#39;component&#39;,
                     bottom: 0,
                     left: 100,
                     width: 50,
                     height: 50,
-                    html: '0',
-                    style: 'background-color: yellow; color: black; text-align: center; line-height: 50px;'
+                    html: &#39;0&#39;,
+                    style: &#39;background-color: yellow; color: black; text-align: center; line-height: 50px;&#39;
                 },
                 {
-                    xtype: 'component',
+                    xtype: &#39;component&#39;,
                     bottom: 50,
                     left: 150,
                     width: 50,
                     height: 20,
-                    html: 'Current',
-                    style: 'background-color: black; color: white; text-align: center; line-height: 20px; font-size: 8px;'
+                    html: &#39;Current&#39;,
+                    style: &#39;background-color: black; color: white; text-align: center; line-height: 20px; font-size: 8px;&#39;
                 },
                 {
-                    id: '__currentFps',
-                    xtype: 'component',
+                    id: &#39;__currentFps&#39;,
+                    xtype: &#39;component&#39;,
                     bottom: 0,
                     left: 150,
                     width: 50,
                     height: 50,
-                    html: '0',
-                    style: 'background-color: green; color: white; text-align: center; line-height: 50px;'
+                    html: &#39;0&#39;,
+                    style: &#39;background-color: green; color: white; text-align: center; line-height: 50px;&#39;
                 }
             ]);
             Ext.AnimationQueue.resetFps();
@@ -428,10 +428,10 @@ Ext.define('Ext.AnimationQueue', {
     },
 
 <span id='Ext-AnimationQueue-method-resetFps'>    resetFps: function() {
-</span>        var currentFps = Ext.getCmp('__currentFps'),
-            averageFps = Ext.getCmp('__averageFps'),
-            minFps = Ext.getCmp('__minFps'),
-            maxFps = Ext.getCmp('__maxFps'),
+</span>        var currentFps = Ext.getCmp(&#39;__currentFps&#39;),
+            averageFps = Ext.getCmp(&#39;__averageFps&#39;),
+            minFps = Ext.getCmp(&#39;__minFps&#39;),
+            maxFps = Ext.getCmp(&#39;__maxFps&#39;),
             min = 1000,
             max = 0,
             count = 0,

@@ -18,14 +18,14 @@
   <pre class="prettyprint lang-js"><span id='Ext-layout-wrapper-BoxDock'>/**
 </span> *
  */
-Ext.define('Ext.layout.wrapper.BoxDock', {
+Ext.define(&#39;Ext.layout.wrapper.BoxDock&#39;, {
     config: {
-<span id='Ext-layout-wrapper-BoxDock-cfg-direction'>        direction: 'horizontal',
+<span id='Ext-layout-wrapper-BoxDock-cfg-direction'>        direction: &#39;horizontal&#39;,
 </span><span id='Ext-layout-wrapper-BoxDock-cfg-element'>        element: {
-</span>            className: 'x-dock'
+</span>            className: &#39;x-dock&#39;
         },
 <span id='Ext-layout-wrapper-BoxDock-cfg-bodyElement'>        bodyElement: {
-</span>            className: 'x-dock-body'
+</span>            className: &#39;x-dock-body&#39;
         },
 <span id='Ext-layout-wrapper-BoxDock-cfg-innerWrapper'>        innerWrapper: null,
 </span><span id='Ext-layout-wrapper-BoxDock-cfg-sizeState'>        sizeState: false,
@@ -33,10 +33,10 @@ Ext.define('Ext.layout.wrapper.BoxDock', {
 </span>    },
 
 <span id='Ext-layout-wrapper-BoxDock-property-positionMap'>    positionMap: {
-</span>        top: 'start',
-        left: 'start',
-        bottom: 'end',
-        right: 'end'
+</span>        top: &#39;start&#39;,
+        left: &#39;start&#39;,
+        bottom: &#39;end&#39;,
+        right: &#39;end&#39;
     },
 
 <span id='Ext-layout-wrapper-BoxDock-method-constructor'>    constructor: function(config) {
@@ -75,8 +75,8 @@ Ext.define('Ext.layout.wrapper.BoxDock', {
         }
 
         item.$dockWrapper = this;
-        item.addCls('x-dock-item');
-        item.addCls('x-docked-' + docked);
+        item.addCls(&#39;x-dock-item&#39;);
+        item.addCls(&#39;x-docked-&#39; + docked);
 
         for (i = 0, ln = sideItems.length; i &lt; ln; i++) {
             sibling = sideItems[i];
@@ -96,7 +96,7 @@ Ext.define('Ext.layout.wrapper.BoxDock', {
 
         this.itemsCount++;
 
-        if (position === 'start') {
+        if (position === &#39;start&#39;) {
             element.insertBefore(referenceElement);
         }
         else {
@@ -111,8 +111,8 @@ Ext.define('Ext.layout.wrapper.BoxDock', {
         Ext.Array.remove(items, item);
         item.element.detach();
         delete item.$dockWrapper;
-        item.removeCls('x-dock-item');
-        item.removeCls('x-docked-' + position);
+        item.removeCls(&#39;x-dock-item&#39;);
+        item.removeCls(&#39;x-docked-&#39; + position);
 
         if (--this.itemsCount === 0) {
             this.destroy();
@@ -147,7 +147,7 @@ Ext.define('Ext.layout.wrapper.BoxDock', {
     },
 
 <span id='Ext-layout-wrapper-BoxDock-method-updateElement'>    updateElement: function(element) {
-</span>        element.addCls('x-dock-' + this.getDirection());
+</span>        element.addCls(&#39;x-dock-&#39; + this.getDirection());
     },
 
 <span id='Ext-layout-wrapper-BoxDock-method-applyBodyElement'>    applyBodyElement: function(bodyElement) {
@@ -205,7 +205,7 @@ Ext.define('Ext.layout.wrapper.BoxDock', {
 
         this.setInnerWrapper(null);
 
-        this.unlink('_bodyElement', '_element');
+        this.unlink(&#39;_bodyElement&#39;, &#39;_element&#39;);
 
         this.callSuper();
     }

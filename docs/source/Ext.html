@@ -31,7 +31,7 @@
         emptyFn = function(){},
         i;
 
-    if (typeof Ext === 'undefined') {
+    if (typeof Ext === &#39;undefined&#39;) {
         global.Ext = {};
     }
 
@@ -42,8 +42,8 @@
     }
 
     if (enumerables) {
-        enumerables = ['hasOwnProperty', 'valueOf', 'isPrototypeOf', 'propertyIsEnumerable',
-                       'toLocaleString', 'toString', 'constructor'];
+        enumerables = [&#39;hasOwnProperty&#39;, &#39;valueOf&#39;, &#39;isPrototypeOf&#39;, &#39;propertyIsEnumerable&#39;,
+                       &#39;toLocaleString&#39;, &#39;toString&#39;, &#39;constructor&#39;];
     }
 
 <span id='Ext-property-enumerables'>    /**
@@ -66,7 +66,7 @@
             Ext.apply(object, defaults);
         }
 
-        if (object &amp;&amp; config &amp;&amp; typeof config === 'object') {
+        if (object &amp;&amp; config &amp;&amp; typeof config === &#39;object&#39;) {
             var i, j, k;
 
             for (i in config) {
@@ -87,7 +87,7 @@
     };
 
     Ext.buildSettings = Ext.apply({
-        baseCSSPrefix: 'x-',
+        baseCSSPrefix: &#39;x-&#39;,
         scopeResetCSS: false
     }, Ext.buildSettings || {});
 
@@ -101,7 +101,7 @@
         baseCSSPrefix: Ext.buildSettings.baseCSSPrefix,
 
 <span id='Ext-method-applyIf'>        /**
-</span>         * Copies all the properties of config to object if they don't already exist.
+</span>         * Copies all the properties of config to object if they don&#39;t already exist.
          * @param {Object} object The receiver of the properties.
          * @param {Object} config The source of the properties.
          * @return {Object} returns obj
@@ -184,9 +184,9 @@
                 //&lt;debug&gt;
                 if (!superclass) {
                     Ext.Error.raise({
-                        sourceClass: 'Ext',
-                        sourceMethod: 'extend',
-                        msg: 'Attempting to extend from a class which has not been loaded on the page.'
+                        sourceClass: &#39;Ext&#39;,
+                        sourceMethod: &#39;extend&#39;,
+                        msg: &#39;Attempting to extend from a class which has not been loaded on the page.&#39;
                     });
                 }
                 //&lt;/debug&gt;
@@ -243,7 +243,7 @@
     Ext.apply(Ext, {
 
 <span id='Ext-method-valueFrom'>        /**
-</span>         * Returns the given value itself if it's not empty, as described in {@link Ext#isEmpty}; returns the default
+</span>         * Returns the given value itself if it&#39;s not empty, as described in {@link Ext#isEmpty}; returns the default
          * value (second argument) otherwise.
          *
          * @param {Object} value The value to test.
@@ -277,52 +277,52 @@
          */
         typeOf: function(value) {
             if (value === null) {
-                return 'null';
+                return &#39;null&#39;;
             }
 
             var type = typeof value;
 
-            if (type === 'undefined' || type === 'string' || type === 'number' || type === 'boolean') {
+            if (type === &#39;undefined&#39; || type === &#39;string&#39; || type === &#39;number&#39; || type === &#39;boolean&#39;) {
                 return type;
             }
 
             var typeToString = toString.call(value);
 
             switch(typeToString) {
-                case '[object Array]':
-                    return 'array';
-                case '[object Date]':
-                    return 'date';
-                case '[object Boolean]':
-                    return 'boolean';
-                case '[object Number]':
-                    return 'number';
-                case '[object RegExp]':
-                    return 'regexp';
+                case &#39;[object Array]&#39;:
+                    return &#39;array&#39;;
+                case &#39;[object Date]&#39;:
+                    return &#39;date&#39;;
+                case &#39;[object Boolean]&#39;:
+                    return &#39;boolean&#39;;
+                case &#39;[object Number]&#39;:
+                    return &#39;number&#39;;
+                case &#39;[object RegExp]&#39;:
+                    return &#39;regexp&#39;;
             }
 
-            if (type === 'function') {
-                return 'function';
+            if (type === &#39;function&#39;) {
+                return &#39;function&#39;;
             }
 
-            if (type === 'object') {
+            if (type === &#39;object&#39;) {
                 if (value.nodeType !== undefined) {
                     if (value.nodeType === 3) {
-                        return (/\S/).test(value.nodeValue) ? 'textnode' : 'whitespace';
+                        return (/\S/).test(value.nodeValue) ? &#39;textnode&#39; : &#39;whitespace&#39;;
                     }
                     else {
-                        return 'element';
+                        return &#39;element&#39;;
                     }
                 }
 
-                return 'object';
+                return &#39;object&#39;;
             }
 
             //&lt;debug error&gt;
             Ext.Error.raise({
-                sourceClass: 'Ext',
-                sourceMethod: 'typeOf',
-                msg: 'Failed to determine the type of the specified value &quot;' + value + '&quot;. This is most likely a bug.'
+                sourceClass: &#39;Ext&#39;,
+                sourceMethod: &#39;typeOf&#39;,
+                msg: &#39;Failed to determine the type of the specified value &quot;&#39; + value + &#39;&quot;. This is most likely a bug.&#39;
             });
             //&lt;/debug&gt;
         },
@@ -340,7 +340,7 @@
          * @return {Boolean}
          */
         isEmpty: function(value, allowEmptyString) {
-            return (value === null) || (value === undefined) || (!allowEmptyString ? value === '' : false) || (Ext.isArray(value) &amp;&amp; value.length === 0);
+            return (value === null) || (value === undefined) || (!allowEmptyString ? value === &#39;&#39; : false) || (Ext.isArray(value) &amp;&amp; value.length === 0);
         },
 
 <span id='Ext-method-isArray'>        /**
@@ -350,8 +350,8 @@
          * @return {Boolean}
          * @method
          */
-        isArray: ('isArray' in Array) ? Array.isArray : function(value) {
-            return toString.call(value) === '[object Array]';
+        isArray: (&#39;isArray&#39; in Array) ? Array.isArray : function(value) {
+            return toString.call(value) === &#39;[object Array]&#39;;
         },
 
 <span id='Ext-method-isDate'>        /**
@@ -360,11 +360,11 @@
          * @return {Boolean}
          */
         isDate: function(value) {
-            return toString.call(value) === '[object Date]';
+            return toString.call(value) === &#39;[object Date]&#39;;
         },
 
 <span id='Ext-method-isMSDate'>        /**
-</span>         * Returns 'true' if the passed value is a String that matches the MS Date JSON encoding format
+</span>         * Returns &#39;true&#39; if the passed value is a String that matches the MS Date JSON encoding format
          * @param {String} value The string to test
          * @return {Boolean}
          */
@@ -382,13 +382,13 @@
          * @return {Boolean}
          * @method
          */
-        isObject: (toString.call(null) === '[object Object]') ?
+        isObject: (toString.call(null) === &#39;[object Object]&#39;) ?
         function(value) {
             // check ownerDocument here as well to exclude DOM nodes
-            return value !== null &amp;&amp; value !== undefined &amp;&amp; toString.call(value) === '[object Object]' &amp;&amp; value.ownerDocument === undefined;
+            return value !== null &amp;&amp; value !== undefined &amp;&amp; toString.call(value) === &#39;[object Object]&#39; &amp;&amp; value.ownerDocument === undefined;
         } :
         function(value) {
-            return toString.call(value) === '[object Object]';
+            return toString.call(value) === &#39;[object Object]&#39;;
         },
 
 <span id='Ext-method-isSimpleObject'>        /**
@@ -398,14 +398,14 @@
             return value instanceof Object &amp;&amp; value.constructor === Object;
         },
 <span id='Ext-method-isPrimitive'>        /**
-</span>         * Returns `true` if the passed value is a JavaScript 'primitive', a string, number or Boolean.
+</span>         * Returns `true` if the passed value is a JavaScript &#39;primitive&#39;, a string, number or Boolean.
          * @param {Object} value The value to test.
          * @return {Boolean}
          */
         isPrimitive: function(value) {
             var type = typeof value;
 
-            return type === 'string' || type === 'number' || type === 'boolean';
+            return type === &#39;string&#39; || type === &#39;number&#39; || type === &#39;boolean&#39;;
         },
 
 <span id='Ext-method-isFunction'>        /**
@@ -415,12 +415,12 @@
          * @method
          */
         isFunction:
-        // Safari 3.x and 4.x returns 'function' for typeof &lt;NodeList&gt;, hence we need to fall back to using
+        // Safari 3.x and 4.x returns &#39;function&#39; for typeof &lt;NodeList&gt;, hence we need to fall back to using
         // Object.prorotype.toString (slower)
-        (typeof document !== 'undefined' &amp;&amp; typeof document.getElementsByTagName('body') === 'function') ? function(value) {
-            return toString.call(value) === '[object Function]';
+        (typeof document !== &#39;undefined&#39; &amp;&amp; typeof document.getElementsByTagName(&#39;body&#39;) === &#39;function&#39;) ? function(value) {
+            return toString.call(value) === &#39;[object Function]&#39;;
         } : function(value) {
-            return typeof value === 'function';
+            return typeof value === &#39;function&#39;;
         },
 
 <span id='Ext-method-isNumber'>        /**
@@ -429,12 +429,12 @@
          * @return {Boolean}
          */
         isNumber: function(value) {
-            return typeof value === 'number' &amp;&amp; isFinite(value);
+            return typeof value === &#39;number&#39; &amp;&amp; isFinite(value);
         },
 
 <span id='Ext-method-isNumeric'>        /**
 </span>         * Validates that a value is numeric.
-         * @param {Object} value Examples: 1, '1', '2.34'
+         * @param {Object} value Examples: 1, &#39;1&#39;, &#39;2.34&#39;
          * @return {Boolean} `true` if numeric, `false` otherwise.
          */
         isNumeric: function(value) {
@@ -447,7 +447,7 @@
          * @return {Boolean}
          */
         isString: function(value) {
-            return typeof value === 'string';
+            return typeof value === &#39;string&#39;;
         },
 
 <span id='Ext-method-isBoolean'>        /**
@@ -457,7 +457,7 @@
          * @return {Boolean}
          */
         isBoolean: function(value) {
-            return typeof value === 'boolean';
+            return typeof value === &#39;boolean&#39;;
         },
 
 <span id='Ext-method-isElement'>        /**
@@ -484,7 +484,7 @@
          * @return {Boolean}
          */
         isDefined: function(value) {
-            return typeof value !== 'undefined';
+            return typeof value !== &#39;undefined&#39;;
         },
 
 <span id='Ext-method-isIterable'>        /**
@@ -493,7 +493,7 @@
          * @return {Boolean}
          */
         isIterable: function(value) {
-            return (value &amp;&amp; typeof value !== 'string') ? value.length !== undefined : false;
+            return (value &amp;&amp; typeof value !== &#39;string&#39;) ? value.length !== undefined : false;
         }
     });
 
@@ -518,14 +518,14 @@
             var type = toString.call(item);
 
             // Dates
-            if (type === '[object Date]') {
+            if (type === &#39;[object Date]&#39;) {
                 return new Date(item.getTime());
             }
 
             var i, j, k, clone, key;
 
             // Arrays
-            if (type === '[object Array]') {
+            if (type === &#39;[object Array]&#39;) {
                 i = item.length;
 
                 clone = [];
@@ -535,7 +535,7 @@
                 }
             }
             // Objects
-            else if (type === '[object Object]' &amp;&amp; item.constructor === Object) {
+            else if (type === &#39;[object Object]&#39; &amp;&amp; item.constructor === Object) {
                 clone = {};
 
                 for (key in item) {
@@ -564,7 +564,7 @@
                 var i = 0;
 
                 do {
-                    uniqueGlobalNamespace = 'ExtBox' + (++i);
+                    uniqueGlobalNamespace = &#39;ExtBox&#39; + (++i);
                 } while (Ext.global[uniqueGlobalNamespace] !== undefined);
 
                 Ext.global[uniqueGlobalNamespace] = Ext;
@@ -582,7 +582,7 @@
                 ln = args.length;
 
             if (ln &gt; 0) {
-                args[ln - 1] = 'var Ext=window.' + this.getUniqueGlobalNamespace() + ';' + args[ln - 1];
+                args[ln - 1] = &#39;var Ext=window.&#39; + this.getUniqueGlobalNamespace() + &#39;;&#39; + args[ln - 1];
             }
 
             return Function.prototype.constructor.apply(Function.prototype, args);
@@ -591,7 +591,7 @@
 <span id='Ext-property-globalEval'>        /**
 </span>         * @private
          */
-        globalEval: ('execScript' in global) ? function(code) {
+        globalEval: (&#39;execScript&#39; in global) ? function(code) {
             global.execScript(code)
         } : function(code) {
             (function(){
@@ -606,28 +606,28 @@
          */
         ,Logger: {
             log: function(message, priority) {
-                if ('console' in global) {
+                if (&#39;console&#39; in global) {
                     if (!priority || !(priority in global.console)) {
-                        priority = 'log';
+                        priority = &#39;log&#39;;
                     }
-                    message = '[' + priority.toUpperCase() + '] ' + message;
+                    message = &#39;[&#39; + priority.toUpperCase() + &#39;] &#39; + message;
                     global.console[priority](message);
                 }
             },
             verbose: function(message) {
-                this.log(message, 'verbose');
+                this.log(message, &#39;verbose&#39;);
             },
             info: function(message) {
-                this.log(message, 'info');
+                this.log(message, &#39;info&#39;);
             },
             warn: function(message) {
-                this.log(message, 'warn');
+                this.log(message, &#39;warn&#39;);
             },
             error: function(message) {
                 throw new Error(message);
             },
             deprecate: function(message) {
-                this.log(message, 'warn');
+                this.log(message, &#39;warn&#39;);
             }
         }
         //&lt;/feature&gt;

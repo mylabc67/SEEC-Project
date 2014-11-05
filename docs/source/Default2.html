@@ -18,17 +18,17 @@
   <pre class="prettyprint lang-js"><span id='Ext-layout-Default'>/**
 </span> *
  */
-Ext.define('Ext.layout.Default', {
-    extend: 'Ext.layout.Abstract',
+Ext.define(&#39;Ext.layout.Default&#39;, {
+    extend: &#39;Ext.layout.Abstract&#39;,
 
 <span id='Ext-layout-Default-property-isAuto'>    isAuto: true,
 </span>
-    alias: ['layout.default', 'layout.auto'],
+    alias: [&#39;layout.default&#39;, &#39;layout.auto&#39;],
 
     requires: [
-        'Ext.util.Wrapper',
-        'Ext.layout.wrapper.BoxDock',
-        'Ext.layout.wrapper.Inner'
+        &#39;Ext.util.Wrapper&#39;,
+        &#39;Ext.layout.wrapper.BoxDock&#39;,
+        &#39;Ext.layout.wrapper.Inner&#39;
     ],
 
     config: {
@@ -52,48 +52,48 @@ Ext.define('Ext.layout.Default', {
         animation: null
     },
 
-<span id='Ext-layout-Default-property-centerWrapperClass'>    centerWrapperClass: 'x-center',
+<span id='Ext-layout-Default-property-centerWrapperClass'>    centerWrapperClass: &#39;x-center&#39;,
 </span>
-<span id='Ext-layout-Default-property-dockWrapperClass'>    dockWrapperClass: 'x-dock',
+<span id='Ext-layout-Default-property-dockWrapperClass'>    dockWrapperClass: &#39;x-dock&#39;,
 </span>
 <span id='Ext-layout-Default-property-positionMap'>    positionMap: {
-</span>        top: 'start',
-        left: 'start',
-        middle: 'center',
-        bottom: 'end',
-        right: 'end'
+</span>        top: &#39;start&#39;,
+        left: &#39;start&#39;,
+        middle: &#39;center&#39;,
+        bottom: &#39;end&#39;,
+        right: &#39;end&#39;
     },
 
 <span id='Ext-layout-Default-property-positionDirectionMap'>    positionDirectionMap: {
-</span>        top: 'vertical',
-        bottom: 'vertical',
-        left: 'horizontal',
-        right: 'horizontal'
+</span>        top: &#39;vertical&#39;,
+        bottom: &#39;vertical&#39;,
+        left: &#39;horizontal&#39;,
+        right: &#39;horizontal&#39;
     },
 
 <span id='Ext-layout-Default-method-setContainer'>    setContainer: function(container) {
 </span>        var options = {
-            delegate: '&gt; component'
+            delegate: &#39;&gt; component&#39;
         };
 
         this.dockedItems = [];
 
         this.callSuper(arguments);
 
-        container.on('centeredchange', 'onItemCenteredChange', this, options, 'before')
-            .on('floatingchange', 'onItemFloatingChange', this, options, 'before')
-            .on('dockedchange', 'onBeforeItemDockedChange', this, options, 'before')
-            .on('afterdockedchange', 'onAfterItemDockedChange', this, options);
+        container.on(&#39;centeredchange&#39;, &#39;onItemCenteredChange&#39;, this, options, &#39;before&#39;)
+            .on(&#39;floatingchange&#39;, &#39;onItemFloatingChange&#39;, this, options, &#39;before&#39;)
+            .on(&#39;dockedchange&#39;, &#39;onBeforeItemDockedChange&#39;, this, options, &#39;before&#39;)
+            .on(&#39;afterdockedchange&#39;, &#39;onAfterItemDockedChange&#39;, this, options);
     },
 
 <span id='Ext-layout-Default-method-monitorSizeStateChange'>    monitorSizeStateChange: function() {
 </span>        this.monitorSizeStateChange = Ext.emptyFn;
-        this.container.on('sizestatechange', 'onContainerSizeStateChange', this);
+        this.container.on(&#39;sizestatechange&#39;, &#39;onContainerSizeStateChange&#39;, this);
     },
 
 <span id='Ext-layout-Default-method-monitorSizeFlagsChange'>    monitorSizeFlagsChange: function() {
 </span>        this.monitorSizeFlagsChange = Ext.emptyFn;
-        this.container.on('sizeflagschange', 'onContainerSizeFlagsChange', this);
+        this.container.on(&#39;sizeflagschange&#39;, &#39;onContainerSizeFlagsChange&#39;, this);
     },
 
 <span id='Ext-layout-Default-method-onItemAdd'>    onItemAdd: function(item) {
@@ -203,7 +203,7 @@ Ext.define('Ext.layout.Default', {
     },
 
 <span id='Ext-layout-Default-method-onItemCenteredChange'>    onItemCenteredChange: function(item, centered) {
-</span>        var wrapperName = '$centerWrapper';
+</span>        var wrapperName = &#39;$centerWrapper&#39;;
 
         if (centered) {
             this.insertBodyItem(item);
@@ -259,7 +259,7 @@ Ext.define('Ext.layout.Default', {
 <span id='Ext-layout-Default-method-refreshDockedItemLayoutSizeFlags'>    refreshDockedItemLayoutSizeFlags: function(item) {
 </span>        var container = this.container,
             dockedDirection = this.positionDirectionMap[item.getDocked()],
-            binaryMask = (dockedDirection === 'horizontal') ? container.LAYOUT_HEIGHT : container.LAYOUT_WIDTH,
+            binaryMask = (dockedDirection === &#39;horizontal&#39;) ? container.LAYOUT_HEIGHT : container.LAYOUT_WIDTH,
             flags = (container.getSizeFlags() &amp; binaryMask);
 
         item.setLayoutSizeFlags(flags);
@@ -281,7 +281,7 @@ Ext.define('Ext.layout.Default', {
         this.monitorSizeFlagsChange();
 
         if (!dockInnerWrapper) {
-            dockInnerWrapper = this.link('dockInnerWrapper', new Ext.layout.wrapper.Inner({
+            dockInnerWrapper = this.link(&#39;dockInnerWrapper&#39;, new Ext.layout.wrapper.Inner({
                 container: this.container
             }));
         }
@@ -297,7 +297,7 @@ Ext.define('Ext.layout.Default', {
             newWrapper.addItem(item);
             newWrapper.getElement().replace(dockInnerWrapper.getElement());
             newWrapper.setInnerWrapper(dockInnerWrapper);
-            container.onInitialized('onContainerSizeStateChange', this);
+            container.onInitialized(&#39;onContainerSizeStateChange&#39;, this);
         }
         else {
             for (i = 0; i &lt; ln; i++) {
@@ -362,7 +362,7 @@ Ext.define('Ext.layout.Default', {
             }
         }
 
-        container.onInitialized('refreshDockedItemLayoutSizeFlags', this, [item]);
+        container.onInitialized(&#39;refreshDockedItemLayoutSizeFlags&#39;, this, [item]);
     },
 
 <span id='Ext-layout-Default-method-getDockWrapper'>    getDockWrapper: function() {

@@ -19,10 +19,10 @@
 </span> * Represents a collection of a set of key and value pairs. Each key in the HashMap must be unique, the same
  * key cannot exist twice. Access to items is provided via the key only. Sample usage:
  *
- *     var map = Ext.create('Ext.util.HashMap');
- *     map.add('key1', 1);
- *     map.add('key2', 2);
- *     map.add('key3', 3);
+ *     var map = Ext.create(&#39;Ext.util.HashMap&#39;);
+ *     map.add(&#39;key1&#39;, 1);
+ *     map.add(&#39;key2&#39;, 2);
+ *     map.add(&#39;key3&#39;, 3);
  *
  *     map.each(function(key, value, length){
  *         console.log(key, value, length);
@@ -31,9 +31,9 @@
  * The HashMap is an unordered class, there is no guarantee when iterating over the items that they will be in
  * any particular order. If this is required, then use a {@link Ext.util.MixedCollection}.
  */
-Ext.define('Ext.util.HashMap', {
+Ext.define(&#39;Ext.util.HashMap&#39;, {
     mixins: {
-        observable: 'Ext.mixin.Observable'
+        observable: &#39;Ext.mixin.Observable&#39;
     },
 
 <span id='Ext-util-HashMap-cfg-keyFn'>    /**
@@ -130,7 +130,7 @@ Ext.define('Ext.util.HashMap', {
             data;
 
         if (me.containsKey(key)) {
-            throw new Error('This key already exists in the HashMap');
+            throw new Error(&#39;This key already exists in the HashMap&#39;);
         }
 
         data = this.getData(key, value);
@@ -138,12 +138,12 @@ Ext.define('Ext.util.HashMap', {
         value = data[1];
         me.map[key] = value;
         ++me.length;
-        me.fireEvent('add', me, key, value);
+        me.fireEvent(&#39;add&#39;, me, key, value);
         return value;
     },
 
 <span id='Ext-util-HashMap-method-replace'>    /**
-</span>     * Replaces an item in the hash. If the key doesn't exist, the
+</span>     * Replaces an item in the hash. If the key doesn&#39;t exist, the
      * `{@link #method-add}` method will be used.
      * @param {String} key The key of the item.
      * @param {Object} value The new value for the item.
@@ -159,7 +159,7 @@ Ext.define('Ext.util.HashMap', {
         }
         old = map[key];
         map[key] = value;
-        me.fireEvent('replace', me, key, value, old);
+        me.fireEvent(&#39;replace&#39;, me, key, value, old);
         return value;
     },
 
@@ -189,7 +189,7 @@ Ext.define('Ext.util.HashMap', {
             value = me.map[key];
             delete me.map[key];
             --me.length;
-            me.fireEvent('remove', me, key, value);
+            me.fireEvent(&#39;remove&#39;, me, key, value);
             return true;
         }
         return false;
@@ -198,7 +198,7 @@ Ext.define('Ext.util.HashMap', {
 <span id='Ext-util-HashMap-method-get'>    /**
 </span>     * Retrieves an item with a particular key.
      * @param {String} key The key to lookup.
-     * @return {Object} The value at that key. If it doesn't exist, `undefined` is returned.
+     * @return {Object} The value at that key. If it doesn&#39;t exist, `undefined` is returned.
      */
     get: function(key) {
         return this.map[key];
@@ -213,7 +213,7 @@ Ext.define('Ext.util.HashMap', {
         me.map = {};
         me.length = 0;
         if (initial !== true) {
-            me.fireEvent('clear', me);
+            me.fireEvent(&#39;clear&#39;, me);
         }
         return me;
     },

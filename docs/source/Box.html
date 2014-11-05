@@ -48,11 +48,11 @@
  *
  * See the {@link Ext.layout.VBox VBox layout docs} for more information on using vboxes.
  */
-Ext.define('Ext.layout.Box', {
-    extend: 'Ext.layout.Default',
+Ext.define(&#39;Ext.layout.Box&#39;, {
+    extend: &#39;Ext.layout.Default&#39;,
 
     config: {
-<span id='Ext-layout-Box-cfg-orient'>        orient: 'horizontal',
+<span id='Ext-layout-Box-cfg-orient'>        orient: &#39;horizontal&#39;,
 </span>
 <span id='Ext-layout-Box-cfg-align'>        /**
 </span>         * @cfg {String} align
@@ -63,11 +63,11 @@ Ext.define('Ext.layout.Box', {
          * - ** end ** : child items are packed together at right side of container
          * - **stretch** : child items are stretched vertically to fill the height of the container
          *
-         * Please see the 'Pack and Align' section of the [Layout guide](#!/guide/layouts) for a detailed example and
+         * Please see the &#39;Pack and Align&#39; section of the [Layout guide](#!/guide/layouts) for a detailed example and
          * explanation.
          * @accessor
          */
-        align: 'start',
+        align: &#39;start&#39;,
 
 <span id='Ext-layout-Box-cfg-pack'>        /**
 </span>         * @cfg {String} pack
@@ -77,28 +77,28 @@ Ext.define('Ext.layout.Box', {
          * - ** start ** : child items are packed together at left side of container
          * - ** center ** : child items are packed together at mid-width of container
          * - ** end ** : child items are packed together at right side of container
-         * - ** justify ** : child items are packed evenly across the container. Uses the 'justify-content: space-between' css property
+         * - ** justify ** : child items are packed evenly across the container. Uses the &#39;justify-content: space-between&#39; css property
          *
-         * Please see the 'Pack and Align' section of the [Layout guide](#!/guide/layouts) for a detailed example and
+         * Please see the &#39;Pack and Align&#39; section of the [Layout guide](#!/guide/layouts) for a detailed example and
          * explanation.
          * @accessor
          */
-        pack: 'start'
+        pack: &#39;start&#39;
     },
 
-    alias: 'layout.tablebox',
+    alias: &#39;layout.tablebox&#39;,
 
-<span id='Ext-layout-Box-property-layoutBaseClass'>    layoutBaseClass: 'x-layout-tablebox',
+<span id='Ext-layout-Box-property-layoutBaseClass'>    layoutBaseClass: &#39;x-layout-tablebox&#39;,
 </span>
-<span id='Ext-layout-Box-property-itemClass'>    itemClass: 'x-layout-tablebox-item',
+<span id='Ext-layout-Box-property-itemClass'>    itemClass: &#39;x-layout-tablebox-item&#39;,
 </span>
 <span id='Ext-layout-Box-method-setContainer'>    setContainer: function(container) {
 </span>        this.callSuper(arguments);
 
         container.innerElement.addCls(this.layoutBaseClass);
 
-        container.on('flexchange', 'onItemFlexChange', this, {
-            delegate: '&gt; component'
+        container.on(&#39;flexchange&#39;, &#39;onItemFlexChange&#39;, this, {
+            delegate: &#39;&gt; component&#39;
         });
     },
 

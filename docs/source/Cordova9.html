@@ -21,9 +21,9 @@
  * For more documentation see
  * http://docs.phonegap.com/en/2.7.0/cordova_file_file.md.html#File
  */
-Ext.define('Ext.device.filesystem.Cordova', {
-    alternateClassName: 'Ext.device.filesystem.PhoneGap',
-    extend: 'Ext.device.filesystem.HTML5',
+Ext.define(&#39;Ext.device.filesystem.Cordova&#39;, {
+    alternateClassName: &#39;Ext.device.filesystem.PhoneGap&#39;,
+    extend: &#39;Ext.device.filesystem.HTML5&#39;,
 <span id='Ext-device-filesystem-Cordova-method-constructor'>    constructor: function() {
 </span>        Ext.override(Ext.device.filesystem.Entry,
             {
@@ -38,13 +38,13 @@ Ext.define('Ext.device.filesystem.Cordova', {
                  * File creation options {create:true, exclusive:false}
                  *
                  * @param {Boolean} config.options.create
-                 * Indicates if the file should be created if it doesn't exist
+                 * Indicates if the file should be created if it doesn&#39;t exist
                  *
                  * @param {Boolean} config.options.exclusive
                  * Used with the create option only indicates whether a creation causes an error if the file already exists
                  *
                  * @param {Function} config.success
-                 * The function called when the File's Metadata is written successfully
+                 * The function called when the File&#39;s Metadata is written successfully
                  *
                  * @param {Function} config.failure
                  * The function called when the File request causes an error
@@ -84,13 +84,13 @@ Ext.define('Ext.device.filesystem.Cordova', {
                  * File creation options {create:true, exclusive:false}
                  *
                  * @param {Boolean} config.options.create
-                 * Indicates if the file should be created if it doesn't exist
+                 * Indicates if the file should be created if it doesn&#39;t exist
                  *
                  * @param {Boolean} config.options.exclusive
                  * Used with the create option only indicates whether a creation causes an error if the file already exists
                  *
                  * @param {Function} config.success
-                 * The function called when the File's Metadata is written successfully
+                 * The function called when the File&#39;s Metadata is written successfully
                  *
                  * @param {Function} config.failure
                  * The function called when the File request causes an error
@@ -155,7 +155,7 @@ Ext.define('Ext.device.filesystem.Cordova', {
              *
              * @param {Object} config.headers
              * Map of header name =&gt; header values. Multiple values should be specified an array of values
-             * var headers={'headerParam':'headerValue'};
+             * var headers={&#39;headerParam&#39;:&#39;headerValue&#39;};
              *
              * @param {Function} config.success
              * The function called when the File is uploaded successfully
@@ -172,7 +172,7 @@ Ext.define('Ext.device.filesystem.Cordova', {
             upload: function(config) {
                 var options = new FileUploadOptions();
                 options.fileKey = config.fileKey || &quot;file&quot;;
-                options.fileName = this.path.substr(this.path.lastIndexOf('/') + 1);
+                options.fileName = this.path.substr(this.path.lastIndexOf(&#39;/&#39;) + 1);
                 options.mimeType = config.mimeType || &quot;image/jpeg&quot;;
                 options.params = config.params || {};
                 options.headers = config.headers || {};

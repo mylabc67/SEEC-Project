@@ -19,24 +19,24 @@
 </span> * @private
  * Android version of viewport.
  */
-Ext.define('Ext.viewport.Android', {
-    extend: 'Ext.viewport.Default',
+Ext.define(&#39;Ext.viewport.Android&#39;, {
+    extend: &#39;Ext.viewport.Default&#39;,
 
     config: {
 <span id='Ext-viewport-Android-cfg-translatable'>        translatable: {
-</span>            translationMethod: 'csstransform'
+</span>            translationMethod: &#39;csstransform&#39;
         }
     },
 
 <span id='Ext-viewport-Android-method-constructor'>    constructor: function() {
-</span>        this.on('orientationchange', 'hideKeyboardIfNeeded', this, { prepend: true });
+</span>        this.on(&#39;orientationchange&#39;, &#39;hideKeyboardIfNeeded&#39;, this, { prepend: true });
 
         this.callSuper(arguments);
 
         // Viewport is initialized before event system, we need to wait until the application is ready before
         // we add the resize listener. Otherwise it will only fire if another resize listener is added later.
         var me = this;
-        Ext.onReady(function() { Ext.getBody().on('resize', me.onResize, me);});
+        Ext.onReady(function() { Ext.getBody().on(&#39;resize&#39;, me.onResize, me);});
     },
 
 <span id='Ext-viewport-Android-method-getWindowWidth'>    getWindowWidth: function () {
@@ -54,16 +54,16 @@ Ext.define('Ext.viewport.Android', {
             box = Ext.fly(focusedElement).getPageBox();
 
         if (!input) {
-            this.dummyInput = input = document.createElement('input');
-            input.style.position = 'absolute';
-            input.style.opacity = '0';
-            input.style.pointerEvents = 'none';
+            this.dummyInput = input = document.createElement(&#39;input&#39;);
+            input.style.position = &#39;absolute&#39;;
+            input.style.opacity = &#39;0&#39;;
+            input.style.pointerEvents = &#39;none&#39;;
             document.body.appendChild(input);
         }
 
-        input.style.left = box.left + 'px';
-        input.style.top = box.top + 'px';
-        input.style.display = '';
+        input.style.left = box.left + &#39;px&#39;;
+        input.style.top = box.top + &#39;px&#39;;
+        input.style.display = &#39;&#39;;
 
         return input;
     },
@@ -79,7 +79,7 @@ Ext.define('Ext.viewport.Android', {
             dummy.focus();
 
             setTimeout(function() {
-                dummy.style.display = 'none';
+                dummy.style.display = &#39;none&#39;;
             }, 100);
         }
     },
@@ -92,15 +92,15 @@ Ext.define('Ext.viewport.Android', {
             delete this.focusedElement;
             eventController.pause();
 
-            if (Ext.os.version.lt('4')) {
-                focusedElement.style.display = 'none';
+            if (Ext.os.version.lt(&#39;4&#39;)) {
+                focusedElement.style.display = &#39;none&#39;;
             }
             else {
                 focusedElement.blur();
             }
 
             setTimeout(function() {
-                focusedElement.style.display = '';
+                focusedElement.style.display = &#39;&#39;;
                 eventController.resume();
             }, 1000);
         }
@@ -126,7 +126,7 @@ Ext.define('Ext.viewport.Android', {
 
         }, function() {
             //&lt;debug error&gt;
-            Ext.Logger.error(&quot;Timeout waiting for viewport's outerHeight to change before firing orientationchange&quot;, this);
+            Ext.Logger.error(&quot;Timeout waiting for viewport&#39;s outerHeight to change before firing orientationchange&quot;, this);
             //&lt;/debug&gt;
         });
 
@@ -192,8 +192,8 @@ Ext.define('Ext.viewport.Android', {
     },
 
 <span id='Ext-viewport-Android-method-doPreventZooming'>    doPreventZooming: function (e) {
-</span>        // Don't prevent right mouse event
-        if ('button' in e &amp;&amp; e.button !== 0) {
+</span>        // Don&#39;t prevent right mouse event
+        if (&#39;button&#39; in e &amp;&amp; e.button !== 0) {
             return;
         }
 
@@ -212,8 +212,8 @@ Ext.define('Ext.viewport.Android', {
     var version = Ext.os.version,
         userAgent = Ext.browser.userAgent,
         // These Android devices have a nasty bug which causes JavaScript timers to be completely frozen
-        // when the browser's viewport is being panned.
-        isBuggy = /(htc|desire|incredible|ADR6300)/i.test(userAgent) &amp;&amp; version.lt('2.3');
+        // when the browser&#39;s viewport is being panned.
+        isBuggy = /(htc|desire|incredible|ADR6300)/i.test(userAgent) &amp;&amp; version.lt(&#39;2.3&#39;);
 
     if (isBuggy) {
         this.override({
@@ -263,10 +263,10 @@ Ext.define('Ext.viewport.Android', {
         });
     }
 
-    if (version.match('2')) {
+    if (version.match(&#39;2&#39;)) {
         this.override({
             onReady: function() {
-                this.addWindowListener('resize', Ext.Function.bind(this.onWindowResize, this));
+                this.addWindowListener(&#39;resize&#39;, Ext.Function.bind(this.onWindowResize, this));
 
                 this.callParent(arguments);
             },
@@ -291,7 +291,7 @@ Ext.define('Ext.viewport.Android', {
             }
         });
     }
-    else if (version.gtEq('3.1')) {
+    else if (version.gtEq(&#39;3.1&#39;)) {
         this.override({
             isHeightMaximized: function(height) {
                 this.scrollToTop();
@@ -299,7 +299,7 @@ Ext.define('Ext.viewport.Android', {
             }
         });
     }
-    else if (version.match('3')) {
+    else if (version.match(&#39;3&#39;)) {
         this.override({
             isHeightMaximized: function() {
                 this.scrollToTop();
@@ -308,7 +308,7 @@ Ext.define('Ext.viewport.Android', {
         })
     }
 
-    if (version.gtEq('4')) {
+    if (version.gtEq(&#39;4&#39;)) {
         this.override({
             doBlurInput: Ext.emptyFn
         });

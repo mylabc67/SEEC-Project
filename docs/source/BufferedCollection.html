@@ -20,11 +20,11 @@
  * @extends Ext.util.Collection
  * Description
  */
-Ext.define('Ext.util.BufferedCollection', {
-    extend: 'Ext.util.Collection',
+Ext.define(&#39;Ext.util.BufferedCollection&#39;, {
+    extend: &#39;Ext.util.Collection&#39;,
 
     mixins: [
-        'Ext.util.Observable'
+        &#39;Ext.util.Observable&#39;
     ],
 
     config: {
@@ -45,7 +45,7 @@ Ext.define('Ext.util.BufferedCollection', {
             limit = pageSize;
 
         this.all.splice.apply(this.all, [start, limit].concat(records));
-        this.fireEvent('pageadded', page, records, this.items);
+        this.fireEvent(&#39;pageadded&#39;, page, records, this.items);
     },
 
 <span id='Ext-util-BufferedCollection-method-hasRange'>    hasRange: function(start, end) {

@@ -23,14 +23,14 @@
  *
  * This should never be extended.
  */
-Ext.define('Ext.scroll.View', {
-    extend: 'Ext.Evented',
+Ext.define(&#39;Ext.scroll.View&#39;, {
+    extend: &#39;Ext.Evented&#39;,
 
-    alternateClassName: 'Ext.util.ScrollView',
+    alternateClassName: &#39;Ext.util.ScrollView&#39;,
 
     requires: [
-        'Ext.scroll.Scroller',
-        'Ext.scroll.Indicator'
+        &#39;Ext.scroll.Scroller&#39;,
+        &#39;Ext.scroll.Indicator&#39;
     ],
 
     config: {
@@ -38,7 +38,7 @@ Ext.define('Ext.scroll.View', {
 </span>         * @cfg {String} indicatorsUi
          * The style of the indicators of this view. Available options are `dark` or `light`.
          */
-        indicatorsUi: 'dark',
+        indicatorsUi: &#39;dark&#39;,
 
 <span id='Ext-scroll-View-cfg-element'>        element: null,
 </span>
@@ -46,16 +46,16 @@ Ext.define('Ext.scroll.View', {
 </span>
 <span id='Ext-scroll-View-cfg-indicators'>        indicators: {
 </span>            x: {
-                axis: 'x'
+                axis: &#39;x&#39;
             },
             y: {
-                axis: 'y'
+                axis: &#39;y&#39;
             }
         },
 
 <span id='Ext-scroll-View-cfg-indicatorsHidingDelay'>        indicatorsHidingDelay: 100,
 </span>
-<span id='Ext-scroll-View-cfg-cls'>        cls: Ext.baseCSSPrefix + 'scroll-view'
+<span id='Ext-scroll-View-cfg-cls'>        cls: Ext.baseCSSPrefix + &#39;scroll-view&#39;
 </span>    },
 
 <span id='Ext-scroll-View-method-getScroller'>    /**
@@ -73,7 +73,7 @@ Ext.define('Ext.scroll.View', {
             return null;
         }
 
-        if (typeof config == 'string') {
+        if (typeof config == &#39;string&#39;) {
             config = {
                 direction: config
             };
@@ -150,9 +150,9 @@ Ext.define('Ext.scroll.View', {
 
 <span id='Ext-scroll-View-method-updateIndicators'>    updateIndicators: function(indicators) {
 </span>        this.indicatorsGrid = Ext.Element.create({
-            className: 'x-scroll-bar-grid-wrapper',
+            className: &#39;x-scroll-bar-grid-wrapper&#39;,
             children: [{
-                className: 'x-scroll-bar-grid',
+                className: &#39;x-scroll-bar-grid&#39;,
                 children: [
                     {
                         children: [{}, {
@@ -172,10 +172,10 @@ Ext.define('Ext.scroll.View', {
 <span id='Ext-scroll-View-method-updateScroller'>    updateScroller: function(scroller) {
 </span>        scroller.on({
             scope: this,
-            scrollstart: 'onScrollStart',
-            scroll: 'onScroll',
-            scrollend: 'onScrollEnd',
-            refresh: 'refreshIndicators'
+            scrollstart: &#39;onScrollStart&#39;,
+            scroll: &#39;onScroll&#39;,
+            scrollend: &#39;onScrollEnd&#39;,
+            refresh: &#39;refreshIndicators&#39;
         });
     },
 
@@ -212,16 +212,16 @@ Ext.define('Ext.scroll.View', {
 <span id='Ext-scroll-View-method-showIndicators'>    showIndicators: function() {
 </span>        var indicators = this.getIndicators();
 
-        if (this.hasOwnProperty('indicatorsHidingTimer')) {
+        if (this.hasOwnProperty(&#39;indicatorsHidingTimer&#39;)) {
             clearTimeout(this.indicatorsHidingTimer);
             delete this.indicatorsHidingTimer;
         }
 
-        if (this.isAxisEnabled('x')) {
+        if (this.isAxisEnabled(&#39;x&#39;)) {
             indicators.x.show();
         }
 
-        if (this.isAxisEnabled('y')) {
+        if (this.isAxisEnabled(&#39;y&#39;)) {
             indicators.y.show();
         }
     },
@@ -240,11 +240,11 @@ Ext.define('Ext.scroll.View', {
 <span id='Ext-scroll-View-method-doHideIndicators'>    doHideIndicators: function() {
 </span>        var indicators = this.getIndicators();
 
-        if (this.isAxisEnabled('x')) {
+        if (this.isAxisEnabled(&#39;x&#39;)) {
             indicators.x.hide();
         }
 
-        if (this.isAxisEnabled('y')) {
+        if (this.isAxisEnabled(&#39;y&#39;)) {
             indicators.y.hide();
         }
     },
@@ -259,8 +259,8 @@ Ext.define('Ext.scroll.View', {
     },
 
 <span id='Ext-scroll-View-method-onScroll'>    onScroll: function(scroller, x, y) {
-</span>        this.setIndicatorValue('x', x);
-        this.setIndicatorValue('y', y);
+</span>        this.setIndicatorValue(&#39;x&#39;, x);
+        this.setIndicatorValue(&#39;y&#39;, y);
 
         //&lt;debug&gt;
         if (this.isBenchmarking) {
@@ -347,11 +347,11 @@ Ext.define('Ext.scroll.View', {
 <span id='Ext-scroll-View-method-refreshIndicators'>    refreshIndicators: function() {
 </span>        var indicators = this.getIndicators();
 
-        indicators.x.setActive(this.isAxisEnabled('x'));
-        indicators.y.setActive(this.isAxisEnabled('y'));
+        indicators.x.setActive(this.isAxisEnabled(&#39;x&#39;));
+        indicators.y.setActive(this.isAxisEnabled(&#39;y&#39;));
 
-        this.refreshIndicator('x');
-        this.refreshIndicator('y');
+        this.refreshIndicator(&#39;x&#39;);
+        this.refreshIndicator(&#39;y&#39;);
     },
 
 <span id='Ext-scroll-View-method-destroy'>    destroy: function() {
@@ -360,7 +360,7 @@ Ext.define('Ext.scroll.View', {
 
         Ext.destroy(this.getScroller(), this.indicatorsGrid);
 
-        if (this.hasOwnProperty('indicatorsHidingTimer')) {
+        if (this.hasOwnProperty(&#39;indicatorsHidingTimer&#39;)) {
             clearTimeout(this.indicatorsHidingTimer);
             delete this.indicatorsHidingTimer;
         }

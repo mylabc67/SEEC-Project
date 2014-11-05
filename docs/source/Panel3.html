@@ -25,14 +25,14 @@
  * Component in the Tab Panel gets its own Tab, which shows the Component when tapped on. Tabs can be positioned at
  * the top or the bottom of the Tab Panel, and can optionally accept title and icon configurations.
  *
- * Here's how we can set up a simple Tab Panel with tabs at the bottom. Use the controls at the top left of the example
+ * Here&#39;s how we can set up a simple Tab Panel with tabs at the bottom. Use the controls at the top left of the example
  * to toggle between code mode and live preview mode (you can also edit the code and see your changes in the live
  * preview):
  *
  *     @example miniphone preview
- *     Ext.create('Ext.TabPanel', {
+ *     Ext.create(&#39;Ext.TabPanel&#39;, {
  *         fullscreen: true,
- *         tabBarPosition: 'bottom',
+ *         tabBarPosition: &#39;bottom&#39;,
  *
  *         defaults: {
  *             styleHtmlContent: true
@@ -40,14 +40,14 @@
  *
  *         items: [
  *             {
- *                 title: 'Home',
- *                 iconCls: 'home',
- *                 html: 'Home Screen'
+ *                 title: &#39;Home&#39;,
+ *                 iconCls: &#39;home&#39;,
+ *                 html: &#39;Home Screen&#39;
  *             },
  *             {
- *                 title: 'Contact',
- *                 iconCls: 'user',
- *                 html: 'Contact Screen'
+ *                 title: &#39;Contact&#39;,
+ *                 iconCls: &#39;user&#39;,
+ *                 html: &#39;Contact Screen&#39;
  *             }
  *         ]
  *     });
@@ -56,7 +56,7 @@
  * the tab bar at the top, which makes our Tab Panel look like this:
  *
  *     @example miniphone preview
- *     Ext.create('Ext.TabPanel', {
+ *     Ext.create(&#39;Ext.TabPanel&#39;, {
  *         fullscreen: true,
  *
  *         defaults: {
@@ -65,23 +65,23 @@
  *
  *         items: [
  *             {
- *                 title: 'Home',
- *                 html: 'Home Screen'
+ *                 title: &#39;Home&#39;,
+ *                 html: &#39;Home Screen&#39;
  *             },
  *             {
- *                 title: 'Contact',
- *                 html: 'Contact Screen'
+ *                 title: &#39;Contact&#39;,
+ *                 html: &#39;Contact Screen&#39;
  *             }
  *         ]
  *     });
  *
  */
-Ext.define('Ext.tab.Panel', {
-    extend: 'Ext.Container',
-    xtype : 'tabpanel',
-    alternateClassName: 'Ext.TabPanel',
+Ext.define(&#39;Ext.tab.Panel&#39;, {
+    extend: &#39;Ext.Container&#39;,
+    xtype : &#39;tabpanel&#39;,
+    alternateClassName: &#39;Ext.TabPanel&#39;,
 
-    requires: ['Ext.tab.Bar'],
+    requires: [&#39;Ext.tab.Bar&#39;],
 
     config: {
 <span id='Ext-tab-Panel-cfg-ui'>        /**
@@ -90,7 +90,7 @@ Ext.define('Ext.tab.Panel', {
          * Available values are: `light` and `dark`.
          * @accessor
          */
-        ui: 'dark',
+        ui: &#39;dark&#39;,
 
 <span id='Ext-tab-Panel-cfg-tabBar'>        /**
 </span>         * @cfg {Object} tabBar
@@ -102,20 +102,20 @@ Ext.define('Ext.tab.Panel', {
 <span id='Ext-tab-Panel-cfg-tabBarPosition'>        /**
 </span>         * @cfg {String} tabBarPosition
          * The docked position for the {@link #tabBar} instance.
-         * Possible values are 'top' and 'bottom'.
+         * Possible values are &#39;top&#39; and &#39;bottom&#39;.
          * @accessor
          */
-        tabBarPosition: 'top',
+        tabBarPosition: &#39;top&#39;,
 
 <span id='Ext-tab-Panel-cfg-layout'>        /**
 </span>         * @cfg layout
          * @inheritdoc
          */
         layout: {
-            type: 'card',
+            type: &#39;card&#39;,
             animation: {
-                type: 'slide',
-                direction: 'left'
+                type: &#39;slide&#39;,
+                direction: &#39;left&#39;
             }
         },
 
@@ -123,7 +123,7 @@ Ext.define('Ext.tab.Panel', {
 </span>         * @cfg cls
          * @inheritdoc
          */
-        cls: Ext.baseCSSPrefix + 'tabpanel'
+        cls: Ext.baseCSSPrefix + &#39;tabpanel&#39;
 
 <span id='Ext-tab-Panel-cfg-scrollable'>        /**
 </span>         * @cfg {Boolean/String/Object} scrollable
@@ -141,22 +141,22 @@ Ext.define('Ext.tab.Panel', {
 </span>        this.callParent();
 
         this.on({
-            order: 'before',
-            activetabchange: 'doTabChange',
-            delegate: '&gt; tabbar',
+            order: &#39;before&#39;,
+            activetabchange: &#39;doTabChange&#39;,
+            delegate: &#39;&gt; tabbar&#39;,
             scope   : this
         });
 
         this.on({
-            disabledchange: 'onItemDisabledChange',
-            delegate: '&gt; component',
+            disabledchange: &#39;onItemDisabledChange&#39;,
+            delegate: &#39;&gt; component&#39;,
             scope   : this
         });
     },
 
 <span id='Ext-tab-Panel-property-platformConfig'>    platformConfig: [{
-</span>        theme: ['Blackberry'],
-        tabBarPosition: 'bottom'
+</span>        theme: [&#39;Blackberry&#39;],
+        tabBarPosition: &#39;bottom&#39;
     }],
 
 <span id='Ext-tab-Panel-method-applyScrollable'>    /**
@@ -318,7 +318,7 @@ Ext.define('Ext.tab.Panel', {
         //&lt;debug warn&gt;
         if (!currentTabInstance &amp;&amp; !tabConfig.title &amp;&amp; !tabConfig.iconCls) {
             if (!tabConfig.title &amp;&amp; !tabConfig.iconCls) {
-                Ext.Logger.error('Adding a card to a tab container without specifying any tab configuration');
+                Ext.Logger.error(&#39;Adding a card to a tab container without specifying any tab configuration&#39;);
             }
         }
         //&lt;/debug&gt;
@@ -361,7 +361,7 @@ Ext.define('Ext.tab.Panel', {
      * @inheritdoc Ext.tab.Panel#tabBarPosition
      * @deprecated 2.0.0 Please use {@link #tabBarPosition} instead.
      */
-    Ext.deprecateProperty(this, 'tabBarDock', 'tabBarPosition');
+    Ext.deprecateProperty(this, &#39;tabBarDock&#39;, &#39;tabBarPosition&#39;);
     //&lt;/deprecated&gt;
 });
 </pre>

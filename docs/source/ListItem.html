@@ -22,7 +22,7 @@
  * ListItem configures and updates the {@link Ext.data.Model records} for  
  * the sub-component items in a list. 
  *   
- * Overwrite the `updateRecord()` method to set a sub-component's value. 
+ * Overwrite the `updateRecord()` method to set a sub-component&#39;s value. 
  * Sencha Touch calls `updateRecord()` whenever the data in the list updates.
  *
  * The `updatedata` event fires after `updateRecord()` runs.
@@ -35,28 +35,28 @@
  * The following example shows how to configure and update sub-component items
  * in a list:
  *
- *     Ext.define('Twitter.view.TweetListItem', {
- *         extend: 'Ext.dataview.component.ListItem',
- *         xtype : 'tweetlistitem',
+ *     Ext.define(&#39;Twitter.view.TweetListItem&#39;, {
+ *         extend: &#39;Ext.dataview.component.ListItem&#39;,
+ *         xtype : &#39;tweetlistitem&#39;,
  *         requires: [
- *             'Ext.Img'
+ *             &#39;Ext.Img&#39;
  *         ],
  *         config: {
  *             userName: {
- *                 cls: 'username'
+ *                 cls: &#39;username&#39;
  *             },
  *             text: {
- *                 cls: 'text'
+ *                 cls: &#39;text&#39;
  *             },
  *             avatar: {
- *                 docked: 'left',
- *                 xtype : 'image',
- *                 cls   : 'avatar',
- *                 width: '48px',
- *                 height: '48px'
+ *                 docked: &#39;left&#39;,
+ *                 xtype : &#39;image&#39;,
+ *                 cls   : &#39;avatar&#39;,
+ *                 width: &#39;48px&#39;,
+ *                 height: &#39;48px&#39;
  *             },
  *             layout: {
- *                 type: 'vbox'
+ *                 type: &#39;vbox&#39;
  *             }
  *         },
  *     
@@ -95,40 +95,40 @@
  *                 return;
  *             }
  *
- *             this.getUserName().setHtml(record.get('username'));
- *             this.getText().setHtml(record.get('text'));
- *             this.getAvatar().setSrc(record.get('avatar_url'));
+ *             this.getUserName().setHtml(record.get(&#39;username&#39;));
+ *             this.getText().setHtml(record.get(&#39;text&#39;));
+ *             this.getAvatar().setSrc(record.get(&#39;avatar_url&#39;));
  *             this.callParent(arguments);
  *
  *         }
  *     });
  *
  */
-Ext.define('Ext.dataview.component.ListItem', {
-    extend: 'Ext.dataview.component.DataItem',
-    xtype : 'listitem',
+Ext.define(&#39;Ext.dataview.component.ListItem&#39;, {
+    extend: &#39;Ext.dataview.component.DataItem&#39;,
+    xtype : &#39;listitem&#39;,
 
     config: {
-<span id='Ext-dataview-component-ListItem-cfg-baseCls'>        baseCls: Ext.baseCSSPrefix + 'list-item',
+<span id='Ext-dataview-component-ListItem-cfg-baseCls'>        baseCls: Ext.baseCSSPrefix + &#39;list-item&#39;,
 </span>
 <span id='Ext-dataview-component-ListItem-cfg-dataMap'>        dataMap: null,
 </span>
 <span id='Ext-dataview-component-ListItem-cfg-body'>        body: {
-</span>            xtype: 'component',
-            cls: 'x-list-item-body'
+</span>            xtype: &#39;component&#39;,
+            cls: &#39;x-list-item-body&#39;
         },
 
 <span id='Ext-dataview-component-ListItem-cfg-disclosure'>        disclosure: {
-</span>            xtype: 'component',
-            cls: 'x-list-disclosure',
+</span>            xtype: &#39;component&#39;,
+            cls: &#39;x-list-disclosure&#39;,
             hidden: true,
-            docked: 'right'
+            docked: &#39;right&#39;
         },
 
 <span id='Ext-dataview-component-ListItem-cfg-header'>        header: {
-</span>            xtype: 'component',
-            cls: 'x-list-header',
-            html: ' '
+</span>            xtype: &#39;component&#39;,
+            cls: &#39;x-list-header&#39;,
+            html: &#39; &#39;
         },
 
 <span id='Ext-dataview-component-ListItem-cfg-tpl'>        tpl: null,
@@ -200,7 +200,7 @@ Ext.define('Ext.dataview.component.ListItem', {
 
         if (disclosure &amp;&amp; record &amp;&amp; dataview.getOnItemDisclosure()) {
             var disclosureProperty = dataview.getDisclosureProperty();
-            disclosure[(data.hasOwnProperty(disclosureProperty) &amp;&amp; data[disclosureProperty] === false) ? 'hide' : 'show']();
+            disclosure[(data.hasOwnProperty(disclosureProperty) &amp;&amp; data[disclosureProperty] === false) ? &#39;hide&#39; : &#39;show&#39;]();
         }
 
 <span id='Ext-dataview-component-ListItem-event-updatedata'>        /**
@@ -209,7 +209,7 @@ Ext.define('Ext.dataview.component.ListItem', {
          * @param {Ext.dataview.component.DataItem} this The DataItem instance.
          * @param {Object} newData The new data.
          */
-        me.fireEvent('updatedata', me, data);
+        me.fireEvent(&#39;updatedata&#39;, me, data);
     },
 
 <span id='Ext-dataview-component-ListItem-method-destroy'>    destroy: function() {

@@ -18,27 +18,27 @@
   <pre class="prettyprint lang-js"><span id='Ext-dataview-component-SimpleListItem'>/**
 </span> * A SimpleListItem is a simplified list item that is used by {@link Ext.dataview.List} when
  * useSimpleItems is set to true.  It supports disclosure icons and headers and generates the
- * slimmest markup possible to achieve this. It doesn't support container functionality like adding
+ * slimmest markup possible to achieve this. It doesn&#39;t support container functionality like adding
  * or docking items. If you require those features you should have your list use
  * {@link Ext.dataview.component.ListItem} instances.
  */
-Ext.define('Ext.dataview.component.SimpleListItem', {
-    extend: 'Ext.Component',
-    xtype : 'simplelistitem',
+Ext.define(&#39;Ext.dataview.component.SimpleListItem&#39;, {
+    extend: &#39;Ext.Component&#39;,
+    xtype : &#39;simplelistitem&#39;,
 
     config: {
-<span id='Ext-dataview-component-SimpleListItem-cfg-baseCls'>        baseCls: Ext.baseCSSPrefix + 'list-item',
+<span id='Ext-dataview-component-SimpleListItem-cfg-baseCls'>        baseCls: Ext.baseCSSPrefix + &#39;list-item&#39;,
 </span>
 <span id='Ext-dataview-component-SimpleListItem-cfg-disclosure'>        disclosure: {
-</span>            xtype: 'component',
-            cls: 'x-list-disclosure',
+</span>            xtype: &#39;component&#39;,
+            cls: &#39;x-list-disclosure&#39;,
             hidden: true
         },
 
 <span id='Ext-dataview-component-SimpleListItem-cfg-header'>        header: {
-</span>            xtype: 'component',
-            cls: 'x-list-header',
-            html: ' '
+</span>            xtype: &#39;component&#39;,
+            cls: &#39;x-list-header&#39;,
+            html: &#39; &#39;
         },
 
 <span id='Ext-dataview-component-SimpleListItem-cfg-dataview'>        /*
@@ -54,7 +54,7 @@ Ext.define('Ext.dataview.component.SimpleListItem', {
     },
 
 <span id='Ext-dataview-component-SimpleListItem-method-initialize'>    initialize: function() {
-</span>        this.element.addCls(this.getBaseCls() + '-tpl');
+</span>        this.element.addCls(this.getBaseCls() + &#39;-tpl&#39;);
     },
 
 <span id='Ext-dataview-component-SimpleListItem-method-applyHeader'>    applyHeader: function(header) {
@@ -95,7 +95,7 @@ Ext.define('Ext.dataview.component.SimpleListItem', {
 
         if (disclosure &amp;&amp; record &amp;&amp; dataview.getOnItemDisclosure()) {
             var disclosureProperty = dataview.getDisclosureProperty();
-            disclosure[(data.hasOwnProperty(disclosureProperty) &amp;&amp; data[disclosureProperty] === false) ? 'hide' : 'show']();
+            disclosure[(data.hasOwnProperty(disclosureProperty) &amp;&amp; data[disclosureProperty] === false) ? &#39;hide&#39; : &#39;show&#39;]();
         }
     },
 

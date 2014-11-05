@@ -36,32 +36,32 @@
  *
  * @mixins Ext.mixin.Observable
  */
-Ext.define('Ext.dom.Element', {
-    alternateClassName: 'Ext.Element',
+Ext.define(&#39;Ext.dom.Element&#39;, {
+    alternateClassName: &#39;Ext.Element&#39;,
 
     mixins: [
-        'Ext.mixin.Identifiable'
+        &#39;Ext.mixin.Identifiable&#39;
     ],
 
     requires: [
-        'Ext.dom.Query',
-        'Ext.dom.Helper'
+        &#39;Ext.dom.Query&#39;,
+        &#39;Ext.dom.Helper&#39;
     ],
 
-<span id='Ext-dom-Element-property-observableType'>    observableType: 'element',
+<span id='Ext-dom-Element-property-observableType'>    observableType: &#39;element&#39;,
 </span>
-    xtype: 'element',
+    xtype: &#39;element&#39;,
 
     statics: {
 <span id='Ext-dom-Element-static-property-CREATE_ATTRIBUTES'>        CREATE_ATTRIBUTES: {
-</span>            style: 'style',
-            className: 'className',
-            cls: 'cls',
-            classList: 'classList',
-            text: 'text',
-            hidden: 'hidden',
-            html: 'html',
-            children: 'children'
+</span>            style: &#39;style&#39;,
+            className: &#39;className&#39;,
+            cls: &#39;cls&#39;,
+            classList: &#39;classList&#39;,
+            text: &#39;text&#39;,
+            hidden: &#39;hidden&#39;,
+            html: &#39;html&#39;,
+            children: &#39;children&#39;
         },
 
 <span id='Ext-dom-Element-static-method-create'>        create: function(attributes, domNode) {
@@ -75,18 +75,18 @@ Ext.define('Ext.dom.Element', {
             if (attributes.isElement) {
                 return attributes.dom;
             }
-            else if ('nodeType' in attributes) {
+            else if (&#39;nodeType&#39; in attributes) {
                 return attributes;
             }
 
-            if (typeof attributes == 'string') {
+            if (typeof attributes == &#39;string&#39;) {
                 return document.createTextNode(attributes);
             }
 
             tag = attributes.tag;
 
             if (!tag) {
-                tag = 'div';
+                tag = &#39;div&#39;;
             }
             if (attributes.namespace) {
                 element = document.createElementNS(attributes.namespace, tag);
@@ -96,12 +96,12 @@ Ext.define('Ext.dom.Element', {
             elementStyle = element.style;
 
             for (name in attributes) {
-                if (name != 'tag') {
+                if (name != &#39;tag&#39;) {
                     value = attributes[name];
 
                     switch (name) {
                         case ATTRIBUTES.style:
-                                if (typeof value == 'string') {
+                                if (typeof value == &#39;string&#39;) {
                                     element.setAttribute(name, value);
                                 }
                                 else {
@@ -119,7 +119,7 @@ Ext.define('Ext.dom.Element', {
                             break;
 
                         case ATTRIBUTES.classList:
-                            element.className = value.join(' ');
+                            element.className = value.join(&#39; &#39;);
                             break;
 
                         case ATTRIBUTES.text:
@@ -128,7 +128,7 @@ Ext.define('Ext.dom.Element', {
 
                         case ATTRIBUTES.hidden:
                             if (value) {
-                                element.style.display = 'none';
+                                element.style.display = &#39;none&#39;;
                             }
                             break;
 
@@ -180,7 +180,7 @@ Ext.define('Ext.dom.Element', {
             }
 
             // DOM Id
-            if (typeof element == 'string') {
+            if (typeof element == &#39;string&#39;) {
                 dom = document.getElementById(element);
 
                 if (cache.hasOwnProperty(element)) {
@@ -207,7 +207,7 @@ Ext.define('Ext.dom.Element', {
             }
 
              // DOM element
-            if ('tagName' in element) {
+            if (&#39;tagName&#39; in element) {
                 id = element.id;
 
                 if (cache.hasOwnProperty(id)) {
@@ -243,7 +243,7 @@ Ext.define('Ext.dom.Element', {
                 // create a bogus element object representing the document object
                 if (!this.documentElement) {
                     this.documentElement = new this(document.documentElement);
-                    this.documentElement.setId('ext-application');
+                    this.documentElement.setId(&#39;ext-application&#39;);
                 }
 
                 return this.documentElement;
@@ -287,7 +287,7 @@ Ext.define('Ext.dom.Element', {
             var fElements = form.elements || (document.forms[form] || Ext.getDom(form)).elements,
                 hasSubmit = false,
                 encoder = encodeURIComponent,
-                data = '',
+                data = &#39;&#39;,
                 eLen = fElements.length,
                 element, name, type, options, hasValue, e,
                 o, oLen, opt;
@@ -304,13 +304,13 @@ Ext.define('Ext.dom.Element', {
                         for (o = 0; o &lt; oLen; o++) {
                             opt = options[o];
                             if (opt.selected) {
-                                hasValue = opt.hasAttribute ? opt.hasAttribute('value') : opt.getAttributeNode('value').specified;
-                                data += Ext.String.format('{0}={1}&amp;', encoder(name), encoder(hasValue ? opt.value : opt.text));
+                                hasValue = opt.hasAttribute ? opt.hasAttribute(&#39;value&#39;) : opt.getAttributeNode(&#39;value&#39;).specified;
+                                data += Ext.String.format(&#39;{0}={1}&amp;&#39;, encoder(name), encoder(hasValue ? opt.value : opt.text));
                             }
                         }
                     } else if (!(/file|undefined|reset|button/i.test(type))) {
-                        if (!(/radio|checkbox/i.test(type) &amp;&amp; !element.checked) &amp;&amp; !(type == 'submit' &amp;&amp; hasSubmit)) {
-                            data += encoder(name) + '=' + encoder(element.value) + '&amp;';
+                        if (!(/radio|checkbox/i.test(type) &amp;&amp; !element.checked) &amp;&amp; !(type == &#39;submit&#39; &amp;&amp; hasSubmit)) {
+                            data += encoder(name) + &#39;=&#39; + encoder(element.value) + &#39;&amp;&#39;;
                             hasSubmit = /submit/i.test(type);
                         }
                     }
@@ -325,26 +325,26 @@ Ext.define('Ext.dom.Element', {
          * @returns {String}
          */
         serializeNode: function (node) {
-            var result = '',
+            var result = &#39;&#39;,
                 i, n, attr, child;
             if (node.nodeType === document.TEXT_NODE) {
                 return node.nodeValue;
             }
-            result += '&lt;' + node.nodeName;
+            result += &#39;&lt;&#39; + node.nodeName;
             if (node.attributes.length) {
                 for (i = 0, n = node.attributes.length; i &lt; n; i++) {
                     attr = node.attributes[i];
-                    result += ' ' + attr.name + '=&quot;' + attr.value + '&quot;';
+                    result += &#39; &#39; + attr.name + &#39;=&quot;&#39; + attr.value + &#39;&quot;&#39;;
                 }
             }
-            result += '&gt;';
+            result += &#39;&gt;&#39;;
             if (node.childNodes &amp;&amp; node.childNodes.length) {
                 for (i = 0, n = node.childNodes.length; i &lt; n; i++) {
                     child = node.childNodes[i];
                     result += this.serializeNode(child);
                 }
             }
-            result += '&lt;/' + node.nodeName + '&gt;';
+            result += &#39;&lt;/&#39; + node.nodeName + &#39;&gt;&#39;;
             return result;
         }
     },
@@ -355,7 +355,7 @@ Ext.define('Ext.dom.Element', {
 <span id='Ext-dom-Element-event-painted'>    /**
 </span>     * @event painted
      * Fires whenever this Element actually becomes visible (painted) on the screen. This is useful when you need to
-     * perform 'read' operations on the DOM element, i.e: calculating natural sizes and positioning.
+     * perform &#39;read&#39; operations on the DOM element, i.e: calculating natural sizes and positioning.
      *
      * __Note:__ This event is not available to be used with event delegation. Instead `painted` only fires if you explicitly
      * add at least one listener to it, for performance reasons.
@@ -366,7 +366,7 @@ Ext.define('Ext.dom.Element', {
 <span id='Ext-dom-Element-event-resize'>    /**
 </span>     * @event resize
      * Important note: For the best performance on mobile devices, use this only when you absolutely need to monitor
-     * a Element's size.
+     * a Element&#39;s size.
      *
      * __Note:__ This event is not available to be used with event delegation. Instead `resize` only fires if you explicitly
      * add at least one listener to it, for performance reasons.
@@ -375,7 +375,7 @@ Ext.define('Ext.dom.Element', {
      */
 
     constructor: function(dom) {
-        if (typeof dom == 'string') {
+        if (typeof dom == &#39;string&#39;) {
             dom = document.getElementById(dom);
         }
 
@@ -465,9 +465,9 @@ Ext.define('Ext.dom.Element', {
 </span>        var dom = this.dom,
             domStyle = dom.style;
 
-        domStyle.display = 'none';
+        domStyle.display = &#39;none&#39;;
         dom.offsetHeight;
-        domStyle.display = '';
+        domStyle.display = &#39;&#39;;
     },
 
 <span id='Ext-dom-Element-property-isPainted'>    isPainted: (function() {
@@ -494,10 +494,10 @@ Ext.define('Ext.dom.Element', {
             if (attributes.hasOwnProperty(attribute)) {
                 value = attributes[attribute];
 
-                if (attribute == 'style') {
+                if (attribute == &#39;style&#39;) {
                     this.applyStyles(value);
                 }
-                else if (attribute == 'cls') {
+                else if (attribute == &#39;cls&#39;) {
                     dom.className = value;
                 }
                 else if (useSet !== false) {
@@ -517,7 +517,7 @@ Ext.define('Ext.dom.Element', {
     },
 
 <span id='Ext-dom-Element-method-is'>    /**
-</span>     * Returns `true` if this element matches the passed simple selector (e.g. 'div.some-class' or 'span:first-child').
+</span>     * Returns `true` if this element matches the passed simple selector (e.g. &#39;div.some-class&#39; or &#39;span:first-child&#39;).
      * @param {String} selector The simple selector to test.
      * @return {Boolean} `true` if this element matches the selector, else `false`.
      */
@@ -537,7 +537,7 @@ Ext.define('Ext.dom.Element', {
     },
 
 <span id='Ext-dom-Element-method-getAttribute'>    /**
-</span>     * Returns the value of an attribute from the element's underlying DOM node.
+</span>     * Returns the value of an attribute from the element&#39;s underlying DOM node.
      * @param {String} name The attribute name.
      * @param {String} [namespace] The namespace in which to look for the attribute.
      * @return {String} The attribute value.
@@ -550,7 +550,7 @@ Ext.define('Ext.dom.Element', {
     },
 
 <span id='Ext-dom-Element-method-setSizeState'>    setSizeState: function(state) {
-</span>        var classes = ['x-sized', 'x-unsized', 'x-stretched'],
+</span>        var classes = [&#39;x-sized&#39;, &#39;x-unsized&#39;, &#39;x-stretched&#39;],
             states = [true, false, null],
             index = states.indexOf(state),
             addedClass;
@@ -567,7 +567,7 @@ Ext.define('Ext.dom.Element', {
     },
 
 <span id='Ext-dom-Element-method-destroy'>    /**
-</span>     * Removes this element's DOM reference. Note that event and cache removal is handled at {@link Ext#removeNode}
+</span>     * Removes this element&#39;s DOM reference. Note that event and cache removal is handled at {@link Ext#removeNode}
      */
     destroy: function() {
         this.isDestroyed = true;
@@ -575,7 +575,7 @@ Ext.define('Ext.dom.Element', {
         var cache = Ext.Element.cache,
             dom = this.dom;
 
-        if (dom &amp;&amp; dom.parentNode &amp;&amp; dom.tagName != 'BODY') {
+        if (dom &amp;&amp; dom.parentNode &amp;&amp; dom.tagName != &#39;BODY&#39;) {
             dom.parentNode.removeChild(dom);
         }
 
@@ -603,7 +603,7 @@ Ext.define('Ext.dom.Element', {
          * {@link Ext.dom.Element#fly}.
          *
          * Use this to make one-time references to DOM elements which are not going to be accessed again either by
-         * application code, or by Ext's classes. If accessing an element which will be processed regularly, then {@link Ext#get Ext.get}
+         * application code, or by Ext&#39;s classes. If accessing an element which will be processed regularly, then {@link Ext#get Ext.get}
          * will be more appropriate to take advantage of the caching provided by the {@link Ext.dom.Element}
          * class.
          *
@@ -618,7 +618,7 @@ Ext.define('Ext.dom.Element', {
                 flyweights = Element._flyweights,
                 cachedElement;
 
-            named = named || '_global';
+            named = named || &#39;_global&#39;;
 
             element = Ext.getDom(element);
 
@@ -655,8 +655,8 @@ Ext.define('Ext.dom.Element', {
     };
 
     Ext.ClassManager.onCreated(function() {
-        Element.mixin('observable', Ext.mixin.Observable);
-    }, null, 'Ext.mixin.Observable');
+        Element.mixin(&#39;observable&#39;, Ext.mixin.Observable);
+    }, null, &#39;Ext.mixin.Observable&#39;);
 
     //&lt;deprecated product=touch since=2.0&gt;
     Ext.deprecateClassMethod(this, {
@@ -666,42 +666,42 @@ Ext.define('Ext.dom.Element', {
          * @inheritdoc Ext.dom.Element#destroy
          * @deprecated 2.0.0 Please use {@link #destroy} instead.
          */
-        remove: 'destroy',
+        remove: &#39;destroy&#39;,
 <span id='Ext-dom-Element-method-setHTML'>        /**
 </span>         * @member Ext.dom.Element
          * @method setHTML
          * @inheritdoc Ext.dom.Element#setHtml
          * @deprecated 2.0.0 Please use {@link #setHtml} instead.
          */
-        setHTML: 'setHtml',
+        setHTML: &#39;setHtml&#39;,
 <span id='Ext-dom-Element-method-update'>        /**
 </span>         * @member Ext.dom.Element
          * @method update
          * @inheritdoc Ext.dom.Element#setHtml
          * @deprecated 2.0.0 Please use {@link #setHtml} instead.
          */
-        update: 'setHtml',
+        update: &#39;setHtml&#39;,
 <span id='Ext-dom-Element-method-getHTML'>        /**
 </span>         * @member Ext.dom.Element
          * @method getHTML
          * @inheritdoc Ext.dom.Element#getHtml
          * @deprecated 2.0.0 Please use {@link #getHtml} instead.
          */
-        getHTML: 'getHtml',
+        getHTML: &#39;getHtml&#39;,
 <span id='Ext-dom-Element-method-purgeAllListeners'>        /**
 </span>         * @member Ext.dom.Element
          * @method purgeAllListeners
          * @inheritdoc Ext.dom.Element#clearListeners
          * @deprecated 2.0.0 Please use {@link #clearListeners} instead.
          */
-        purgeAllListeners: 'clearListeners',
+        purgeAllListeners: &#39;clearListeners&#39;,
 <span id='Ext-dom-Element-method-removeAllListeners'>        /**
 </span>         * @member Ext.dom.Element
          * @method removeAllListeners
          * @inheritdoc Ext.dom.Element#clearListeners
          * @deprecated 2.0.0 Please use {@link #clearListeners} instead.
          */
-        removeAllListeners: 'clearListeners'
+        removeAllListeners: &#39;clearListeners&#39;
     });
 
 <span id='Ext-dom-Element-method-cssTranslate'>    /**
@@ -710,7 +710,7 @@ Ext.define('Ext.dom.Element', {
      * Translates an element using CSS 3 in 2D.
      * @removed 2.0.0
      */
-    Ext.deprecateMethod(Ext.dom.Element, 'cssTranslate', null, &quot;Ext.dom.Element.cssTranslate() has been removed&quot;);
+    Ext.deprecateMethod(Ext.dom.Element, &#39;cssTranslate&#39;, null, &quot;Ext.dom.Element.cssTranslate() has been removed&quot;);
 
 <span id='Ext-dom-Element-method-getOuterHeight'>    /**
 </span>     * @member Ext.dom.Element
@@ -718,7 +718,7 @@ Ext.define('Ext.dom.Element', {
      * Retrieves the height of the element account for the top and bottom margins.
      * @removed 2.0.0
      */
-    Ext.deprecateMethod(Ext.dom.Element, 'getOuterHeight', null, &quot;Ext.dom.Element.getOuterHeight() has been removed&quot;);
+    Ext.deprecateMethod(Ext.dom.Element, &#39;getOuterHeight&#39;, null, &quot;Ext.dom.Element.getOuterHeight() has been removed&quot;);
 
 <span id='Ext-dom-Element-method-getOuterWidth'>    /**
 </span>     * @member Ext.dom.Element
@@ -726,7 +726,7 @@ Ext.define('Ext.dom.Element', {
      * Retrieves the width of the element accounting for the left and right margins.
      * @removed 2.0.0
      */
-    Ext.deprecateMethod(Ext.dom.Element, 'getOuterWidth', null, &quot;Ext.dom.Element.getOuterWidth() has been removed&quot;);
+    Ext.deprecateMethod(Ext.dom.Element, &#39;getOuterWidth&#39;, null, &quot;Ext.dom.Element.getOuterWidth() has been removed&quot;);
 
 <span id='Ext-dom-Element-method-getScrollParent'>    /**
 </span>     * @member Ext.dom.Element
@@ -734,7 +734,7 @@ Ext.define('Ext.dom.Element', {
      * Gets the Scroller instance of the first parent that has one.
      * @removed 2.0.0
      */
-    Ext.deprecateMethod(Ext.dom.Element, 'getScrollParent', null, &quot;Ext.dom.Element.getScrollParent() has been removed&quot;);
+    Ext.deprecateMethod(Ext.dom.Element, &#39;getScrollParent&#39;, null, &quot;Ext.dom.Element.getScrollParent() has been removed&quot;);
 
 <span id='Ext-dom-Element-method-isDescendent'>    /**
 </span>     * @member Ext.dom.Element
@@ -742,7 +742,7 @@ Ext.define('Ext.dom.Element', {
      * Determines if this element is a descendant of the passed in Element.
      * @removed 2.0.0
      */
-    Ext.deprecateMethod(Ext.dom.Element, 'isDescendent', null, &quot;Ext.dom.Element.isDescendent() has been removed&quot;);
+    Ext.deprecateMethod(Ext.dom.Element, &#39;isDescendent&#39;, null, &quot;Ext.dom.Element.isDescendent() has been removed&quot;);
 
 <span id='Ext-dom-Element-method-mask'>    /**
 </span>     * @member Ext.dom.Element
@@ -750,15 +750,15 @@ Ext.define('Ext.dom.Element', {
      * Puts a mask over this element to disable user interaction.
      * @removed 2.0.0
      */
-    Ext.deprecateMethod(Ext.dom.Element, 'mask', null, &quot;Ext.dom.Element.mask() has been removed&quot;);
+    Ext.deprecateMethod(Ext.dom.Element, &#39;mask&#39;, null, &quot;Ext.dom.Element.mask() has been removed&quot;);
 
 <span id='Ext-dom-Element-method-setTopLeft'>    /**
 </span>     * @member Ext.dom.Element
      * @method setTopLeft
-     * Sets the element's top and left positions directly using CSS style.
+     * Sets the element&#39;s top and left positions directly using CSS style.
      * @removed 2.0.0
      */
-    Ext.deprecateMethod(Ext.dom.Element, 'setTopLeft', null, &quot;Ext.dom.Element.setTopLeft() has been removed&quot;);
+    Ext.deprecateMethod(Ext.dom.Element, &#39;setTopLeft&#39;, null, &quot;Ext.dom.Element.setTopLeft() has been removed&quot;);
 
 <span id='Ext-dom-Element-method-unmask'>    /**
 </span>     * @member Ext.dom.Element
@@ -766,7 +766,7 @@ Ext.define('Ext.dom.Element', {
      * Removes a previously applied mask.
      * @removed 2.0.0
      */
-    Ext.deprecateMethod(Ext.dom.Element, 'unmask', null, &quot;Ext.dom.Element.unmask() has been removed&quot;);
+    Ext.deprecateMethod(Ext.dom.Element, &#39;unmask&#39;, null, &quot;Ext.dom.Element.unmask() has been removed&quot;);
     //&lt;/deprecated&gt;
 
 });

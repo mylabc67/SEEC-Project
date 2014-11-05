@@ -35,28 +35,28 @@
  * The functions listed below are mostly utility functions used internally by many of the classes shipped in the
  * framework, but also often useful in your own apps.
  *
- * A method that is crucial to beginning your application is {@link #setup Ext.setup}. Please refer to it's documentation, or the
+ * A method that is crucial to beginning your application is {@link #setup Ext.setup}. Please refer to it&#39;s documentation, or the
  * [Getting Started Guide][getting_started] as a reference on beginning your application.
  *
  *     Ext.setup({
  *         onReady: function() {
  *             Ext.Viewport.add({
- *                 xtype: 'component',
- *                 html: 'Hello world!'
+ *                 xtype: &#39;component&#39;,
+ *                 html: &#39;Hello world!&#39;
  *             });
  *         }
  *     });
  *
  * [getting_started]: #!/guide/getting_started
  */
-Ext.setVersion('touch', '2.4.0.487');
+Ext.setVersion(&#39;touch&#39;, &#39;2.4.0.487&#39;);
 
 Ext.apply(Ext, {
 <span id='Ext-property-version'>    /**
 </span>     * The version of the framework
      * @type String
      */
-    version: Ext.getVersion('touch'),
+    version: Ext.getVersion(&#39;touch&#39;),
 
 <span id='Ext-property-idSeed'>    /**
 </span>     * @private
@@ -68,7 +68,7 @@ Ext.apply(Ext, {
      */
     repaint: function() {
         var mask = Ext.getBody().createChild({
-            cls: Ext.baseCSSPrefix + 'mask ' + Ext.baseCSSPrefix + 'mask-transparent'
+            cls: Ext.baseCSSPrefix + &#39;mask &#39; + Ext.baseCSSPrefix + &#39;mask-transparent&#39;
         });
         setTimeout(function() {
             mask.destroy();
@@ -89,16 +89,16 @@ Ext.apply(Ext, {
         el = Ext.getDom(el) || {};
 
         if (el === document || el === document.documentElement) {
-            el.id = 'ext-app';
+            el.id = &#39;ext-app&#39;;
         }
         else if (el === document.body) {
-            el.id = 'ext-body';
+            el.id = &#39;ext-body&#39;;
         }
         else if (el === window) {
-            el.id = 'ext-window';
+            el.id = &#39;ext-window&#39;;
         }
 
-        el.id = el.id || ((prefix || 'ext-') + (++Ext.idSeed));
+        el.id = el.id || ((prefix || &#39;ext-&#39;) + (++Ext.idSeed));
 
         return el.id;
     },
@@ -125,7 +125,7 @@ Ext.apply(Ext, {
      */
     getHead: function() {
         if (!Ext.documentHeadElement) {
-            Ext.documentHeadElement = Ext.get(document.head || document.getElementsByTagName('head')[0]);
+            Ext.documentHeadElement = Ext.get(document.head || document.getElementsByTagName(&#39;head&#39;)[0]);
         }
 
         return Ext.documentHeadElement;
@@ -161,9 +161,9 @@ Ext.apply(Ext, {
      *
      *     ImageComponent = Ext.extend(Ext.Component, {
      *         initComponent: function() {
-     *             this.autoEl = { tag: 'img' };
+     *             this.autoEl = { tag: &#39;img&#39; };
      *             MyComponent.superclass.initComponent.apply(this, arguments);
-     *             this.initialBox = Ext.copyTo({}, this.initialConfig, 'x,y,width,height');
+     *             this.initialBox = Ext.copyTo({}, this.initialConfig, &#39;x,y,width,height&#39;);
      *         }
      *     });
      *
@@ -177,7 +177,7 @@ Ext.apply(Ext, {
      * @return {Object} The modified object.
      */
     copyTo : function(dest, source, names, usePrototypeKeys) {
-        if (typeof names == 'string') {
+        if (typeof names == &#39;string&#39;) {
             names = names.split(/[,;\s]/);
         }
         Ext.each (names, function(name) {
@@ -220,12 +220,12 @@ Ext.apply(Ext, {
      * Here are some examples:
      *
      *     // gets dom node based on id
-     *     var elDom = Ext.getDom('elId');
+     *     var elDom = Ext.getDom(&#39;elId&#39;);
      *
      *     // gets dom node based on the dom node
      *     var elDom1 = Ext.getDom(elDom);
      *
-     *     // If we don't know if we are working with an
+     *     // If we don&#39;t know if we are working with an
      *     // Ext.Element or a dom node use Ext.getDom
      *     function(el){
      *         var dom = Ext.getDom(el);
@@ -242,7 +242,7 @@ Ext.apply(Ext, {
             return null;
         }
 
-        return el.dom ? el.dom : (typeof el == 'string' ? document.getElementById(el) : el);
+        return el.dom ? el.dom : (typeof el == &#39;string&#39; ? document.getElementById(el) : el);
     },
 
 <span id='Ext-method-removeNode'>    /**
@@ -251,7 +251,7 @@ Ext.apply(Ext, {
      * @param {HTMLElement} node The node to remove.
      */
     removeNode: function(node) {
-        if (node &amp;&amp; node.parentNode &amp;&amp; node.tagName != 'BODY') {
+        if (node &amp;&amp; node.parentNode &amp;&amp; node.tagName != &#39;BODY&#39;) {
             Ext.get(node).clearListeners();
             node.parentNode.removeChild(node);
             delete Ext.cache[node.id];
@@ -264,65 +264,65 @@ Ext.apply(Ext, {
     defaultSetupConfig: {
         eventPublishers: {
             dom: {
-                xclass: 'Ext.event.publisher.Dom'
+                xclass: &#39;Ext.event.publisher.Dom&#39;
             },
             touchGesture: {
-                xclass: 'Ext.event.publisher.TouchGesture',
+                xclass: &#39;Ext.event.publisher.TouchGesture&#39;,
                 recognizers: {
                     drag: {
-                        xclass: 'Ext.event.recognizer.Drag'
+                        xclass: &#39;Ext.event.recognizer.Drag&#39;
                     },
                     tap: {
-                        xclass: 'Ext.event.recognizer.Tap'
+                        xclass: &#39;Ext.event.recognizer.Tap&#39;
                     },
                     doubleTap: {
-                        xclass: 'Ext.event.recognizer.DoubleTap'
+                        xclass: &#39;Ext.event.recognizer.DoubleTap&#39;
                     },
                     longPress: {
-                        xclass: 'Ext.event.recognizer.LongPress'
+                        xclass: &#39;Ext.event.recognizer.LongPress&#39;
                     },
                     swipe: {
-                        xclass: 'Ext.event.recognizer.Swipe'
+                        xclass: &#39;Ext.event.recognizer.Swipe&#39;
                     },
                     pinch: {
-                        xclass: 'Ext.event.recognizer.Pinch'
+                        xclass: &#39;Ext.event.recognizer.Pinch&#39;
                     },
                     rotate: {
-                        xclass: 'Ext.event.recognizer.Rotate'
+                        xclass: &#39;Ext.event.recognizer.Rotate&#39;
                     },
                     edgeSwipe: {
-                        xclass: 'Ext.event.recognizer.EdgeSwipe'
+                        xclass: &#39;Ext.event.recognizer.EdgeSwipe&#39;
                     }
                 }
             },
             componentDelegation: {
-                xclass: 'Ext.event.publisher.ComponentDelegation'
+                xclass: &#39;Ext.event.publisher.ComponentDelegation&#39;
             },
             componentPaint: {
-                xclass: 'Ext.event.publisher.ComponentPaint'
+                xclass: &#39;Ext.event.publisher.ComponentPaint&#39;
             },
 //            componentSize: {
-//                xclass: 'Ext.event.publisher.ComponentSize'
+//                xclass: &#39;Ext.event.publisher.ComponentSize&#39;
 //            },
             elementPaint: {
-                xclass: 'Ext.event.publisher.ElementPaint'
+                xclass: &#39;Ext.event.publisher.ElementPaint&#39;
             },
             elementSize: {
-                xclass: 'Ext.event.publisher.ElementSize'
+                xclass: &#39;Ext.event.publisher.ElementSize&#39;
             }
         },
 
         //&lt;feature logger&gt;
         logger: {
             enabled: true,
-            xclass: 'Ext.log.Logger',
-            minPriority: 'deprecate',
+            xclass: &#39;Ext.log.Logger&#39;,
+            minPriority: &#39;deprecate&#39;,
             writers: {
                 console: {
-                    xclass: 'Ext.log.writer.Console',
+                    xclass: &#39;Ext.log.writer.Console&#39;,
                     throwOnErrors: true,
                     formatter: {
-                        xclass: 'Ext.log.formatter.Default'
+                        xclass: &#39;Ext.log.formatter.Default&#39;
                     }
                 }
             }
@@ -330,11 +330,11 @@ Ext.apply(Ext, {
         //&lt;/feature&gt;
 
         animator: {
-            xclass: 'Ext.fx.Runner'
+            xclass: &#39;Ext.fx.Runner&#39;
         },
 
         viewport: {
-            xclass: 'Ext.viewport.Viewport'
+            xclass: &#39;Ext.viewport.Viewport&#39;
         }
     },
 
@@ -386,14 +386,14 @@ Ext.apply(Ext, {
      * logger (during development). When all of that is ready, it invokes the callback function given to the `onReady` key.
      *
      * The default scope (`this`) of `onReady` is the main viewport. By default the viewport instance is stored in
-     * {@link Ext.Viewport}. For example, this snippet adds a 'Hello World' button that is centered on the screen:
+     * {@link Ext.Viewport}. For example, this snippet adds a &#39;Hello World&#39; button that is centered on the screen:
      *
      *     Ext.setup({
      *         onReady: function() {
      *             this.add({
-     *                 xtype: 'button',
+     *                 xtype: &#39;button&#39;,
      *                 centered: true,
-     *                 text: 'Hello world!'
+     *                 text: &#39;Hello world!&#39;
      *             }); // Equivalent to Ext.Viewport.add(...)
      *         }
      *     });
@@ -419,21 +419,21 @@ Ext.apply(Ext, {
      *
      * @param {String/Object} config.icon
      * Specifies a set of URLs to the application icon for different device form factors. This icon is displayed
-     * when the application is added to the device's Home Screen.
+     * when the application is added to the device&#39;s Home Screen.
      *
      *     Ext.setup({
      *         icon: {
-     *             57: 'resources/icons/Icon.png',
-     *             72: 'resources/icons/Icon~ipad.png',
-     *             114: 'resources/icons/Icon@2x.png',
-     *             144: 'resources/icons/Icon~ipad@2x.png'
+     *             57: &#39;resources/icons/Icon.png&#39;,
+     *             72: &#39;resources/icons/Icon~ipad.png&#39;,
+     *             114: &#39;resources/icons/Icon@2x.png&#39;,
+     *             144: &#39;resources/icons/Icon~ipad@2x.png&#39;
      *         },
      *         onReady: function() {
      *             // ...
      *         }
      *     });
      *
-     * Each key represents the dimension of the icon as a square shape. For example: '57' is the key for a 57 x 57
+     * Each key represents the dimension of the icon as a square shape. For example: &#39;57&#39; is the key for a 57 x 57
      * icon image. Here is the breakdown of each dimension and its device target:
      *
      * - 57: Non-retina iPhone, iPod touch, and all Android devices
@@ -448,7 +448,7 @@ Ext.apply(Ext, {
      * specify it as a string value. This same icon will be used on all supported devices.
      *
      *     Ext.setup({
-     *         icon: 'resources/icons/Icon.png',
+     *         icon: &#39;resources/icons/Icon.png&#39;,
      *         onReady: function() {
      *             // ...
      *         }
@@ -461,20 +461,20 @@ Ext.apply(Ext, {
      *
      *     Ext.setup({
      *         startupImage: {
-     *             '320x460': 'resources/startup/320x460.jpg',
-     *             '640x920': 'resources/startup/640x920.png',
-     *             '640x1096': 'resources/startup/640x1096.png',
-     *             '768x1004': 'resources/startup/768x1004.png',
-     *             '748x1024': 'resources/startup/748x1024.png',
-     *             '1536x2008': 'resources/startup/1536x2008.png',
-     *             '1496x2048': 'resources/startup/1496x2048.png'
+     *             &#39;320x460&#39;: &#39;resources/startup/320x460.jpg&#39;,
+     *             &#39;640x920&#39;: &#39;resources/startup/640x920.png&#39;,
+     *             &#39;640x1096&#39;: &#39;resources/startup/640x1096.png&#39;,
+     *             &#39;768x1004&#39;: &#39;resources/startup/768x1004.png&#39;,
+     *             &#39;748x1024&#39;: &#39;resources/startup/748x1024.png&#39;,
+     *             &#39;1536x2008&#39;: &#39;resources/startup/1536x2008.png&#39;,
+     *             &#39;1496x2048&#39;: &#39;resources/startup/1496x2048.png&#39;
      *         },
      *         onReady: function() {
      *             // ...
      *         }
      *     });
      *
-     * Each key represents the dimension of the image. For example: '320x460' is the key for a 320px x 460px image.
+     * Each key represents the dimension of the image. For example: &#39;320x460&#39; is the key for a 320px x 460px image.
      * Here is the breakdown of each dimension and its device target:
      *
      * - 320x460: Non-retina iPhone, iPod touch, and all Android devices
@@ -485,7 +485,7 @@ Ext.apply(Ext, {
      * - 1536x2008: Retina iPad (third generation) in portrait orientation
      * - 1496x2048: Retina iPad (third generation) in landscape orientation
      *
-     * Please note that there's no automatic fallback mechanism for the startup images. In other words, if you don't specify
+     * Please note that there&#39;s no automatic fallback mechanism for the startup images. In other words, if you don&#39;t specify
      * a valid image for a certain device, nothing will be displayed while the application is being launched on that device.
      *
      * @param {Boolean} config.isIconPrecomposed
@@ -504,7 +504,7 @@ Ext.apply(Ext, {
      * Please refer to {@link Ext.Loader} and {@link Ext.Loader#require} for more information.
      *
      *     Ext.setup({
-     *         requires: ['Ext.Button', 'Ext.tab.Panel'],
+     *         requires: [&#39;Ext.Button&#39;, &#39;Ext.tab.Panel&#39;],
      *         onReady: function() {
      *             // ...
      *         }
@@ -523,7 +523,7 @@ Ext.apply(Ext, {
      *                 recognizers: {
      *                     swipe: {
      *                         // this will include both vertical and horizontal swipe recognizers
-     *                         xclass: 'Ext.event.recognizer.Swipe'
+     *                         xclass: &#39;Ext.event.recognizer.Swipe&#39;
      *                     }
      *                 }
      *             }
@@ -570,7 +570,7 @@ Ext.apply(Ext, {
         delete config.onUpdated;
         delete config.scope;
 
-        Ext.require(['Ext.event.Dispatcher']);
+        Ext.require([&#39;Ext.event.Dispatcher&#39;]);
 
         callback = function() {
             var listeners = Ext.setupListeners,
@@ -621,7 +621,7 @@ Ext.apply(Ext, {
                     }
 
                     Ext.require(requires, function() {
-                        Ext.Viewport.on('ready', callback, null, {single: true});
+                        Ext.Viewport.on(&#39;ready&#39;, callback, null, {single: true});
                     });
                 }
                 else {
@@ -646,29 +646,29 @@ Ext.apply(Ext, {
         });
 
         function addMeta(name, content) {
-            var meta = document.createElement('meta');
+            var meta = document.createElement(&#39;meta&#39;);
 
-            meta.setAttribute('name', name);
-            meta.setAttribute('content', content);
+            meta.setAttribute(&#39;name&#39;, name);
+            meta.setAttribute(&#39;content&#39;, content);
             head.append(meta);
         }
 
         function addIcon(href, sizes, precomposed) {
-            var link = document.createElement('link');
-            link.setAttribute('rel', 'apple-touch-icon' + (precomposed ? '-precomposed' : ''));
-            link.setAttribute('href', href);
+            var link = document.createElement(&#39;link&#39;);
+            link.setAttribute(&#39;rel&#39;, &#39;apple-touch-icon&#39; + (precomposed ? &#39;-precomposed&#39; : &#39;&#39;));
+            link.setAttribute(&#39;href&#39;, href);
             if (sizes) {
-                link.setAttribute('sizes', sizes);
+                link.setAttribute(&#39;sizes&#39;, sizes);
             }
             head.append(link);
         }
 
         function addStartupImage(href, media) {
-            var link = document.createElement('link');
-            link.setAttribute('rel', 'apple-touch-startup-image');
-            link.setAttribute('href', href);
+            var link = document.createElement(&#39;link&#39;);
+            link.setAttribute(&#39;rel&#39;, &#39;apple-touch-startup-image&#39;);
+            link.setAttribute(&#39;href&#39;, href);
             if (media) {
-                link.setAttribute('media', media);
+                link.setAttribute(&#39;media&#39;, media);
             }
             head.append(link);
         }
@@ -676,25 +676,25 @@ Ext.apply(Ext, {
         var icon = config.icon,
             isIconPrecomposed = Boolean(config.isIconPrecomposed),
             startupImage = config.startupImage || {},
-            statusBarStyle = config.statusBarStyle || 'black',
+            statusBarStyle = config.statusBarStyle || &#39;black&#39;,
             devicePixelRatio = window.devicePixelRatio || 1;
 
 
         if (navigator.standalone) {
-            addMeta('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0');
+            addMeta(&#39;viewport&#39;, &#39;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&#39;);
         }
         else {
-            addMeta('viewport', 'initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, minimum-ui');
+            addMeta(&#39;viewport&#39;, &#39;initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, minimum-ui&#39;);
         }
-        addMeta('apple-mobile-web-app-capable', 'yes');
-        addMeta('apple-touch-fullscreen', 'yes');
+        addMeta(&#39;apple-mobile-web-app-capable&#39;, &#39;yes&#39;);
+        addMeta(&#39;apple-touch-fullscreen&#39;, &#39;yes&#39;);
         if (Ext.browser.is.ie) {
-            addMeta('msapplication-tap-highlight', 'no');
+            addMeta(&#39;msapplication-tap-highlight&#39;, &#39;no&#39;);
         }
 
         // status bar style
         if (statusBarStyle) {
-            addMeta('apple-mobile-web-app-status-bar-style', statusBarStyle);
+            addMeta(&#39;apple-mobile-web-app-status-bar-style&#39;, statusBarStyle);
         }
 
         if (Ext.isString(icon)) {
@@ -710,25 +710,25 @@ Ext.apply(Ext, {
         }
 
         //&lt;deprecated product=touch since=2.0.1&gt;
-        if ('phoneStartupScreen' in config) {
+        if (&#39;phoneStartupScreen&#39; in config) {
             //&lt;debug warn&gt;
-            Ext.Logger.deprecate(&quot;[Ext.setup()] 'phoneStartupScreen' config is deprecated, please use 'startupImage' &quot; +
+            Ext.Logger.deprecate(&quot;[Ext.setup()] &#39;phoneStartupScreen&#39; config is deprecated, please use &#39;startupImage&#39; &quot; +
                 &quot;config instead. Refer to the latest API docs for more details&quot;);
             //&lt;/debug&gt;
-            config['320x460'] = config.phoneStartupScreen;
+            config[&#39;320x460&#39;] = config.phoneStartupScreen;
         }
 
-        if ('tabletStartupScreen' in config) {
+        if (&#39;tabletStartupScreen&#39; in config) {
             //&lt;debug warn&gt;
-            Ext.Logger.deprecate(&quot;[Ext.setup()] 'tabletStartupScreen' config is deprecated, please use 'startupImage' &quot; +
+            Ext.Logger.deprecate(&quot;[Ext.setup()] &#39;tabletStartupScreen&#39; config is deprecated, please use &#39;startupImage&#39; &quot; +
                 &quot;config instead. Refer to the latest API docs for more details&quot;);
             //&lt;/debug&gt;
-            config['768x1004'] = config.tabletStartupScreen;
+            config[&#39;768x1004&#39;] = config.tabletStartupScreen;
         }
 
-        if ('glossOnIcon' in config) {
+        if (&#39;glossOnIcon&#39; in config) {
             //&lt;debug warn&gt;
-            Ext.Logger.deprecate(&quot;[Ext.setup()] 'glossOnIcon' config is deprecated, please use 'isIconPrecomposed' &quot; +
+            Ext.Logger.deprecate(&quot;[Ext.setup()] &#39;glossOnIcon&#39; config is deprecated, please use &#39;isIconPrecomposed&#39; &quot; +
                 &quot;config instead. Refer to the latest API docs for more details&quot;);
             //&lt;/debug&gt;
             isIconPrecomposed = Boolean(config.glossOnIcon);
@@ -738,55 +738,55 @@ Ext.apply(Ext, {
         if (Ext.os.is.iPad) {
             if (devicePixelRatio &gt;= 2) {
                 // Retina iPad - Landscape
-                if ('1496x2048' in startupImage) {
-                    addStartupImage(startupImage['1496x2048'], '(orientation: landscape)');
+                if (&#39;1496x2048&#39; in startupImage) {
+                    addStartupImage(startupImage[&#39;1496x2048&#39;], &#39;(orientation: landscape)&#39;);
                 }
                 // Retina iPad - Portrait
-                if ('1536x2008' in startupImage) {
-                    addStartupImage(startupImage['1536x2008'], '(orientation: portrait)');
+                if (&#39;1536x2008&#39; in startupImage) {
+                    addStartupImage(startupImage[&#39;1536x2008&#39;], &#39;(orientation: portrait)&#39;);
                 }
 
                 // Retina iPad
-                if ('144' in icon) {
-                    addIcon(icon['144'], '144x144', isIconPrecomposed);
+                if (&#39;144&#39; in icon) {
+                    addIcon(icon[&#39;144&#39;], &#39;144x144&#39;, isIconPrecomposed);
                 }
             }
             else {
                 // Non-Retina iPad - Landscape
-                if ('748x1024' in startupImage) {
-                    addStartupImage(startupImage['748x1024'], '(orientation: landscape)');
+                if (&#39;748x1024&#39; in startupImage) {
+                    addStartupImage(startupImage[&#39;748x1024&#39;], &#39;(orientation: landscape)&#39;);
                 }
                 // Non-Retina iPad - Portrait
-                if ('768x1004' in startupImage) {
-                    addStartupImage(startupImage['768x1004'], '(orientation: portrait)');
+                if (&#39;768x1004&#39; in startupImage) {
+                    addStartupImage(startupImage[&#39;768x1004&#39;], &#39;(orientation: portrait)&#39;);
                 }
 
                 // Non-Retina iPad
-                if ('72' in icon) {
-                    addIcon(icon['72'], '72x72', isIconPrecomposed);
+                if (&#39;72&#39; in icon) {
+                    addIcon(icon[&#39;72&#39;], &#39;72x72&#39;, isIconPrecomposed);
                 }
             }
         }
         else {
             // Retina iPhone, iPod touch with iOS version &gt;= 4.3
-            if (devicePixelRatio &gt;= 2 &amp;&amp; Ext.os.version.gtEq('4.3')) {
+            if (devicePixelRatio &gt;= 2 &amp;&amp; Ext.os.version.gtEq(&#39;4.3&#39;)) {
                 if (Ext.os.is.iPhone5) {
-                    addStartupImage(startupImage['640x1096']);
+                    addStartupImage(startupImage[&#39;640x1096&#39;]);
                 } else {
-                    addStartupImage(startupImage['640x920']);
+                    addStartupImage(startupImage[&#39;640x920&#39;]);
                 }
 
                 // Retina iPhone and iPod touch
-                if ('114' in icon) {
-                    addIcon(icon['114'], '114x114', isIconPrecomposed);
+                if (&#39;114&#39; in icon) {
+                    addIcon(icon[&#39;114&#39;], &#39;114x114&#39;, isIconPrecomposed);
                 }
             }
             else {
-                addStartupImage(startupImage['320x460']);
+                addStartupImage(startupImage[&#39;320x460&#39;]);
 
                 // Non-Retina iPhone, iPod touch, and Android devices
-                if ('57' in icon) {
-                    addIcon(icon['57'], null, isIconPrecomposed);
+                if (&#39;57&#39; in icon) {
+                    addIcon(icon[&#39;57&#39;], null, isIconPrecomposed);
                 }
             }
         }
@@ -800,7 +800,7 @@ Ext.apply(Ext, {
      *
      *     Ext.application({
      *         launch: function() {
-     *             alert('Application launched!');
+     *             alert(&#39;Application launched!&#39;);
      *         }
      *     });
      *
@@ -818,38 +818,38 @@ Ext.apply(Ext, {
      *
      *     Ext.application({
      *         viewport: {
-     *             layout: 'vbox'
+     *             layout: &#39;vbox&#39;
      *         },
      *         launch: function() {
      *             Ext.Viewport.add({
      *                 flex: 1,
-     *                 html: 'top (flex: 1)'
+     *                 html: &#39;top (flex: 1)&#39;
      *             });
      *
      *             Ext.Viewport.add({
      *                 flex: 4,
-     *                 html: 'bottom (flex: 4)'
+     *                 html: &#39;bottom (flex: 4)&#39;
      *             });
      *         }
      *     });
      *
      * @param {String/Object} config.icon
      * Specifies a set of URLs to the application icon for different device form factors. This icon is displayed
-     * when the application is added to the device's Home Screen.
+     * when the application is added to the device&#39;s Home Screen.
      *
      *     Ext.application({
      *         icon: {
-     *             57: 'resources/icons/Icon.png',
-     *             72: 'resources/icons/Icon~ipad.png',
-     *             114: 'resources/icons/Icon@2x.png',
-     *             144: 'resources/icons/Icon~ipad@2x.png'
+     *             57: &#39;resources/icons/Icon.png&#39;,
+     *             72: &#39;resources/icons/Icon~ipad.png&#39;,
+     *             114: &#39;resources/icons/Icon@2x.png&#39;,
+     *             144: &#39;resources/icons/Icon~ipad@2x.png&#39;
      *         },
      *         launch: function() {
      *             // ...
      *         }
      *     });
      *
-     * Each key represents the dimension of the icon as a square shape. For example: '57' is the key for a 57 x 57
+     * Each key represents the dimension of the icon as a square shape. For example: &#39;57&#39; is the key for a 57 x 57
      * icon image. Here is the breakdown of each dimension and its device target:
      *
      * - 57: Non-retina iPhone, iPod touch, and all Android devices
@@ -864,7 +864,7 @@ Ext.apply(Ext, {
      * specify it as a string value. This same icon will be used on all supported devices.
      *
      *     Ext.setup({
-     *         icon: 'resources/icons/Icon.png',
+     *         icon: &#39;resources/icons/Icon.png&#39;,
      *         onReady: function() {
      *             // ...
      *         }
@@ -877,20 +877,20 @@ Ext.apply(Ext, {
      *
      *     Ext.application({
      *         startupImage: {
-     *             '320x460': 'resources/startup/320x460.jpg',
-     *             '640x920': 'resources/startup/640x920.png',
-     *             '640x1096': 'resources/startup/640x1096.png',
-     *             '768x1004': 'resources/startup/768x1004.png',
-     *             '748x1024': 'resources/startup/748x1024.png',
-     *             '1536x2008': 'resources/startup/1536x2008.png',
-     *             '1496x2048': 'resources/startup/1496x2048.png'
+     *             &#39;320x460&#39;: &#39;resources/startup/320x460.jpg&#39;,
+     *             &#39;640x920&#39;: &#39;resources/startup/640x920.png&#39;,
+     *             &#39;640x1096&#39;: &#39;resources/startup/640x1096.png&#39;,
+     *             &#39;768x1004&#39;: &#39;resources/startup/768x1004.png&#39;,
+     *             &#39;748x1024&#39;: &#39;resources/startup/748x1024.png&#39;,
+     *             &#39;1536x2008&#39;: &#39;resources/startup/1536x2008.png&#39;,
+     *             &#39;1496x2048&#39;: &#39;resources/startup/1496x2048.png&#39;
      *         },
      *         launch: function() {
      *             // ...
      *         }
      *     });
      *
-     * Each key represents the dimension of the image. For example: '320x460' is the key for a 320px x 460px image.
+     * Each key represents the dimension of the image. For example: &#39;320x460&#39; is the key for a 320px x 460px image.
      * Here is the breakdown of each dimension and its device target:
      *
      * - 320x460: Non-retina iPhone, iPod touch, and all Android devices
@@ -901,7 +901,7 @@ Ext.apply(Ext, {
      * - 1536x2008: Retina iPad (third generation) in portrait orientation
      * - 1496x2048: Retina iPad (third generation) in landscape orientation
      *
-     * Please note that there's no automatic fallback mechanism for the startup images. In other words, if you don't specify
+     * Please note that there&#39;s no automatic fallback mechanism for the startup images. In other words, if you don&#39;t specify
      * a valid image for a certain device, nothing will be displayed while the application is being launched on that device.
      *
      * @param {Boolean} config.isIconPrecomposed
@@ -920,7 +920,7 @@ Ext.apply(Ext, {
      * to `true`. Please refer to {@link Ext.Loader} and {@link Ext.Loader#require} for more information.
      *
      *     Ext.application({
-     *         requires: ['Ext.Button', 'Ext.tab.Panel'],
+     *         requires: [&#39;Ext.Button&#39;, &#39;Ext.tab.Panel&#39;],
      *         launch: function() {
      *             // ...
      *         }
@@ -938,7 +938,7 @@ Ext.apply(Ext, {
      *                 recognizers: {
      *                     swipe: {
      *                         // this will include both vertical and horizontal swipe recognizers
-     *                         xclass: 'Ext.event.recognizer.Swipe'
+     *                         xclass: &#39;Ext.event.recognizer.Swipe&#39;
      *                     }
      *                 }
      *             }
@@ -973,10 +973,10 @@ Ext.apply(Ext, {
      *     Ext.application({
      *         onUpdated : function() {
      *             Ext.Msg.confirm(
-     *                 'Application Update',
-     *                 'This application has just successfully been updated to the latest version. Reload now?',
+     *                 &#39;Application Update&#39;,
+     *                 &#39;This application has just successfully been updated to the latest version. Reload now?&#39;,
      *                 function(buttonId) {
-     *                     if (buttonId === 'yes') {
+     *                     if (buttonId === &#39;yes&#39;) {
      *                         window.location.reload();
      *                     }
      *                 }
@@ -993,11 +993,11 @@ Ext.apply(Ext, {
         }
 
         if (!Ext.Loader.config.paths[appName]) {
-            Ext.Loader.setPath(appName, config.appFolder || 'app');
+            Ext.Loader.setPath(appName, config.appFolder || &#39;app&#39;);
         }
 
         requires = Ext.Array.from(config.requires);
-        config.requires = ['Ext.app.Application'];
+        config.requires = [&#39;Ext.app.Application&#39;];
 
         onReady = config.onReady;
         scope = config.scope;
@@ -1098,15 +1098,15 @@ Ext.apply(Ext, {
 <span id='Ext-method-factory'>    /**
 </span>     * A global factory method to instantiate a class from a config object. For example, these two calls are equivalent:
      *
-     *     Ext.factory({ text: 'My Button' }, 'Ext.Button');
-     *     Ext.create('Ext.Button', { text: 'My Button' });
+     *     Ext.factory({ text: &#39;My Button&#39; }, &#39;Ext.Button&#39;);
+     *     Ext.create(&#39;Ext.Button&#39;, { text: &#39;My Button&#39; });
      *
      * If an existing instance is also specified, it will be updated with the supplied config object. This is useful
      * if you need to either create or update an object, depending on if an instance already exists. For example:
      *
      *     var button;
-     *     button = Ext.factory({ text: 'New Button' }, 'Ext.Button', button);     // Button created
-     *     button = Ext.factory({ text: 'Updated Button' }, 'Ext.Button', button); // Button updated
+     *     button = Ext.factory({ text: &#39;New Button&#39; }, &#39;Ext.Button&#39;, button);     // Button created
+     *     button = Ext.factory({ text: &#39;Updated Button&#39; }, &#39;Ext.Button&#39;, button); // Button updated
      *
      * @param {Object} config  The config object to instantiate or update an instance with.
      * @param {String} classReference  The class to instantiate from.
@@ -1130,12 +1130,12 @@ Ext.apply(Ext, {
 
         if (aliasNamespace) {
              // If config is a string value, treat it as an alias
-            if (typeof config == 'string') {
-                return manager.instantiateByAlias(aliasNamespace + '.' + config);
+            if (typeof config == &#39;string&#39;) {
+                return manager.instantiateByAlias(aliasNamespace + &#39;.&#39; + config);
             }
-            // Same if 'type' is given in config
-            else if (Ext.isObject(config) &amp;&amp; 'type' in config) {
-                return manager.instantiateByAlias(aliasNamespace + '.' + config.type, config);
+            // Same if &#39;type&#39; is given in config
+            else if (Ext.isObject(config) &amp;&amp; &#39;type&#39; in config) {
+                return manager.instantiateByAlias(aliasNamespace + &#39;.&#39; + config.type, config);
             }
         }
 
@@ -1149,10 +1149,10 @@ Ext.apply(Ext, {
         }
         //&lt;/debug&gt;
 
-        if ('xtype' in config) {
-            newInstance = manager.instantiateByAlias('widget.' + config.xtype, config);
+        if (&#39;xtype&#39; in config) {
+            newInstance = manager.instantiateByAlias(&#39;widget.&#39; + config.xtype, config);
         }
-        else if ('xclass' in config) {
+        else if (&#39;xclass&#39; in config) {
             newInstance = manager.instantiate(config.xclass, config);
         }
 
@@ -1202,10 +1202,10 @@ Ext.apply(Ext, {
      */
     deprecateProperty: function(object, oldName, newName, message) {
         if (!message) {
-            message = &quot;'&quot; + oldName + &quot;' is deprecated&quot;;
+            message = &quot;&#39;&quot; + oldName + &quot;&#39; is deprecated&quot;;
         }
         if (newName) {
-            message += &quot;, please use '&quot; + newName + &quot;' instead&quot;;
+            message += &quot;, please use &#39;&quot; + newName + &quot;&#39; instead&quot;;
         }
 
         if (newName) {
@@ -1264,7 +1264,7 @@ Ext.apply(Ext, {
      * @member Ext
      */
     deprecateClassMethod: function(cls, name, method, message) {
-        if (typeof name != 'string') {
+        if (typeof name != &#39;string&#39;) {
             var from, to;
 
             for (from in name) {
@@ -1276,12 +1276,12 @@ Ext.apply(Ext, {
             return;
         }
 
-        var isLateBinding = typeof method == 'string',
+        var isLateBinding = typeof method == &#39;string&#39;,
             member;
 
         if (!message) {
-            message = &quot;'&quot; + name + &quot;()' is deprecated, please use '&quot; + (isLateBinding ? method : method.name) +
-                &quot;()' instead&quot;;
+            message = &quot;&#39;&quot; + name + &quot;()&#39; is deprecated, please use &#39;&quot; + (isLateBinding ? method : method.name) +
+                &quot;()&#39; instead&quot;;
         }
 
         if (isLateBinding) {
@@ -1390,7 +1390,7 @@ Ext.apply(Ext, {
             if ((Ext.browser.is.WebWorks || Ext.browser.is.PhoneGap) &amp;&amp; !Ext.os.is.Desktop) {
                 if (!Ext.readyListenerAttached) {
                     Ext.readyListenerAttached = true;
-                    document.addEventListener(Ext.browser.is.PhoneGap ? 'deviceready' : 'webworksready', triggerFn, false);
+                    document.addEventListener(Ext.browser.is.PhoneGap ? &#39;deviceready&#39; : &#39;webworksready&#39;, triggerFn, false);
                 }
             }
             else {
@@ -1400,7 +1400,7 @@ Ext.apply(Ext, {
                 }
                 else if (!Ext.readyListenerAttached) {
                     Ext.readyListenerAttached = true;
-                    window.addEventListener('DOMContentLoaded', function() {
+                    window.addEventListener(&#39;DOMContentLoaded&#39;, function() {
                         if (navigator.standalone) {
                             // When running from Home Screen, the splash screen will not disappear until all
                             // external resource requests finish.
@@ -1445,13 +1445,13 @@ Ext.apply(Ext, {
 });
 
 //&lt;debug&gt;
-Ext.Object.defineProperty(Ext, 'Msg', {
+Ext.Object.defineProperty(Ext, &#39;Msg&#39;, {
     get: function() {
         Ext.Logger.error(&quot;Using Ext.Msg without requiring Ext.MessageBox&quot;);
         return null;
     },
     set: function(value) {
-        Ext.Object.defineProperty(Ext, 'Msg', {
+        Ext.Object.defineProperty(Ext, &#39;Msg&#39;, {
             value: value
         });
         return value;
@@ -1461,11 +1461,11 @@ Ext.Object.defineProperty(Ext, 'Msg', {
 //&lt;/debug&gt;
 
 //&lt;deprecated product=touch since=2.0&gt;
-Ext.deprecateMethod(Ext, 'getOrientation', function() {
+Ext.deprecateMethod(Ext, &#39;getOrientation&#39;, function() {
     return Ext.Viewport.getOrientation();
 }, &quot;Ext.getOrientation() is deprecated, use Ext.Viewport.getOrientation() instead&quot;);
 
-Ext.deprecateMethod(Ext, 'log', function(message) {
+Ext.deprecateMethod(Ext, &#39;log&#39;, function(message) {
     return Ext.Logger.log(message);
 }, &quot;Ext.log() is deprecated, please use Ext.Logger.log() instead&quot;);
 
@@ -1476,7 +1476,7 @@ Ext.deprecateMethod(Ext, 'log', function(message) {
  * @deprecated 2.0.0
  * Please use {@link Ext.Function#bind bind} instead
  */
-Ext.deprecateMethod(Ext.Function, 'createDelegate', Ext.Function.bind, &quot;Ext.createDelegate() is deprecated, please use Ext.Function.bind() instead&quot;);
+Ext.deprecateMethod(Ext.Function, &#39;createDelegate&#39;, Ext.Function.bind, &quot;Ext.createDelegate() is deprecated, please use Ext.Function.bind() instead&quot;);
 
 <span id='Ext-method-createInterceptor'>/**
 </span> * @member Ext
@@ -1485,7 +1485,7 @@ Ext.deprecateMethod(Ext.Function, 'createDelegate', Ext.Function.bind, &quot;Ext
  * @deprecated 2.0.0
  * Please use {@link Ext.Function#createInterceptor createInterceptor} instead
  */
-Ext.deprecateMethod(Ext, 'createInterceptor', Ext.Function.createInterceptor, &quot;Ext.createInterceptor() is deprecated, &quot; +
+Ext.deprecateMethod(Ext, &#39;createInterceptor&#39;, Ext.Function.createInterceptor, &quot;Ext.createInterceptor() is deprecated, &quot; +
     &quot;please use Ext.Function.createInterceptor() instead&quot;);
 
 <span id='Ext-property-SSL_SECURE_URL'>/**
@@ -1495,7 +1495,7 @@ Ext.deprecateMethod(Ext, 'createInterceptor', Ext.Function.createInterceptor, &q
  * src to prevent the IE insecure content warning.
  * @removed 2.0.0
  */
-Ext.deprecateProperty(Ext, 'SSL_SECURE_URL', null, &quot;Ext.SSL_SECURE_URL has been removed&quot;);
+Ext.deprecateProperty(Ext, &#39;SSL_SECURE_URL&#39;, null, &quot;Ext.SSL_SECURE_URL has been removed&quot;);
 
 <span id='Ext-property-enableGarbageCollector'>/**
 </span> * @member Ext
@@ -1503,7 +1503,7 @@ Ext.deprecateProperty(Ext, 'SSL_SECURE_URL', null, &quot;Ext.SSL_SECURE_URL has 
  * `true` to automatically un-cache orphaned Ext.Elements periodically.
  * @removed 2.0.0
  */
-Ext.deprecateProperty(Ext, 'enableGarbageCollector', null, &quot;Ext.enableGarbageCollector has been removed&quot;);
+Ext.deprecateProperty(Ext, &#39;enableGarbageCollector&#39;, null, &quot;Ext.enableGarbageCollector has been removed&quot;);
 
 <span id='Ext-property-enableListenerCollection'>/**
 </span> * @member Ext
@@ -1511,7 +1511,7 @@ Ext.deprecateProperty(Ext, 'enableGarbageCollector', null, &quot;Ext.enableGarba
  * True to automatically purge event listeners during garbageCollection.
  * @removed 2.0.0
  */
-Ext.deprecateProperty(Ext, 'enableListenerCollection', null, &quot;Ext.enableListenerCollection has been removed&quot;);
+Ext.deprecateProperty(Ext, &#39;enableListenerCollection&#39;, null, &quot;Ext.enableListenerCollection has been removed&quot;);
 
 <span id='Ext-property-isSecure'>/**
 </span> * @member Ext
@@ -1519,7 +1519,7 @@ Ext.deprecateProperty(Ext, 'enableListenerCollection', null, &quot;Ext.enableLis
  * True if the page is running over SSL.
  * @removed 2.0.0 Please use {@link Ext.env.Browser#isSecure} instead
  */
-Ext.deprecateProperty(Ext, 'isSecure', null, &quot;Ext.enableListenerCollection has been removed, please use Ext.env.Browser.isSecure instead&quot;);
+Ext.deprecateProperty(Ext, &#39;isSecure&#39;, null, &quot;Ext.enableListenerCollection has been removed, please use Ext.env.Browser.isSecure instead&quot;);
 
 <span id='Ext-method-dispatch'>/**
 </span> * @member Ext
@@ -1527,7 +1527,7 @@ Ext.deprecateProperty(Ext, 'isSecure', null, &quot;Ext.enableListenerCollection 
  * Dispatches a request to a controller action.
  * @removed 2.0.0 Please use {@link Ext.app.Application#dispatch} instead
  */
-Ext.deprecateMethod(Ext, 'dispatch', null, &quot;Ext.dispatch() is deprecated, please use Ext.app.Application.dispatch() instead&quot;);
+Ext.deprecateMethod(Ext, &#39;dispatch&#39;, null, &quot;Ext.dispatch() is deprecated, please use Ext.app.Application.dispatch() instead&quot;);
 
 <span id='Ext-method-getOrientation'>/**
 </span> * @member Ext
@@ -1536,7 +1536,7 @@ Ext.deprecateMethod(Ext, 'dispatch', null, &quot;Ext.dispatch() is deprecated, p
  * @removed 2.0.0
  * Please use {@link Ext.Viewport#getOrientation getOrientation} instead
  */
-Ext.deprecateMethod(Ext, 'getOrientation', null, &quot;Ext.getOrientation() has been removed, &quot; +
+Ext.deprecateMethod(Ext, &#39;getOrientation&#39;, null, &quot;Ext.getOrientation() has been removed, &quot; +
     &quot;please use Ext.Viewport.getOrientation() instead&quot;);
 
 <span id='Ext-method-reg'>/**
@@ -1545,7 +1545,7 @@ Ext.deprecateMethod(Ext, 'getOrientation', null, &quot;Ext.getOrientation() has 
  * Registers a new xtype.
  * @removed 2.0.0
  */
-Ext.deprecateMethod(Ext, 'reg', null, &quot;Ext.reg() has been removed&quot;);
+Ext.deprecateMethod(Ext, &#39;reg&#39;, null, &quot;Ext.reg() has been removed&quot;);
 
 <span id='Ext-method-preg'>/**
 </span> * @member Ext
@@ -1553,7 +1553,7 @@ Ext.deprecateMethod(Ext, 'reg', null, &quot;Ext.reg() has been removed&quot;);
  * Registers a new ptype.
  * @removed 2.0.0
  */
-Ext.deprecateMethod(Ext, 'preg', null, &quot;Ext.preg() has been removed&quot;);
+Ext.deprecateMethod(Ext, &#39;preg&#39;, null, &quot;Ext.preg() has been removed&quot;);
 
 <span id='Ext-method-redirect'>/**
 </span> * @member Ext
@@ -1562,7 +1562,7 @@ Ext.deprecateMethod(Ext, 'preg', null, &quot;Ext.preg() has been removed&quot;);
  * and updating the page url as necessary.
  * @removed 2.0.0
  */
-Ext.deprecateMethod(Ext, 'redirect', null, &quot;Ext.redirect() has been removed&quot;);
+Ext.deprecateMethod(Ext, &#39;redirect&#39;, null, &quot;Ext.redirect() has been removed&quot;);
 
 <span id='Ext-method-regApplication'>/**
 </span> * @member Ext
@@ -1570,7 +1570,7 @@ Ext.deprecateMethod(Ext, 'redirect', null, &quot;Ext.redirect() has been removed
  * Creates a new Application class from the specified config object.
  * @removed 2.0.0
  */
-Ext.deprecateMethod(Ext, 'regApplication', null, &quot;Ext.regApplication() has been removed&quot;);
+Ext.deprecateMethod(Ext, &#39;regApplication&#39;, null, &quot;Ext.regApplication() has been removed&quot;);
 
 <span id='Ext-method-regController'>/**
 </span> * @member Ext
@@ -1578,7 +1578,7 @@ Ext.deprecateMethod(Ext, 'regApplication', null, &quot;Ext.regApplication() has 
  * Creates a new Controller class from the specified config object.
  * @removed 2.0.0
  */
-Ext.deprecateMethod(Ext, 'regController', null, &quot;Ext.regController() has been removed&quot;);
+Ext.deprecateMethod(Ext, &#39;regController&#39;, null, &quot;Ext.regController() has been removed&quot;);
 
 <span id='Ext-method-regLayout'>/**
 </span> * @member Ext
@@ -1586,7 +1586,7 @@ Ext.deprecateMethod(Ext, 'regController', null, &quot;Ext.regController() has be
  * Registers new layout type.
  * @removed 2.0.0
  */
-Ext.deprecateMethod(Ext, 'regLayout', null, &quot;Ext.regLayout() has been removed&quot;);
+Ext.deprecateMethod(Ext, &#39;regLayout&#39;, null, &quot;Ext.regLayout() has been removed&quot;);
 
 //&lt;/deprecated&gt;
 </pre>

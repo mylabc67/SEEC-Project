@@ -15,10 +15,10 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js">Ext.define('Ext.BingMap', {
-    extend: 'Ext.Map',
-    xtype : 'bingmap',
-    requires: ['Ext.util.Geolocation'],
+  <pre class="prettyprint lang-js">Ext.define(&#39;Ext.BingMap&#39;, {
+    extend: &#39;Ext.Map&#39;,
+    xtype : &#39;bingmap&#39;,
+    requires: [&#39;Ext.util.Geolocation&#39;],
 
     // @private
     initMap: function() {
@@ -38,8 +38,8 @@
                     zoom: 12
                 }, mapOptions);
 
-            // This is done separately from the above merge so we don't have to instantiate
-            // a new LatLng if we don't need to
+            // This is done separately from the above merge so we don&#39;t have to instantiate
+            // a new LatLng if we don&#39;t need to
             if (!mapOptions.center) {
                 mapOptions.center = new MM.Location(37.381592, -122.135672); // Palo Alto
             }
@@ -48,7 +48,7 @@
                 Ext.fly(element.dom.firstChild).destroy();
             }
 
-            MM.loadModule('Microsoft.Maps.Overlays.Style', { callback: function () {
+            MM.loadModule(&#39;Microsoft.Maps.Overlays.Style&#39;, { callback: function () {
                 me.setMap(new MM.Map(element.dom,mapOptions));
                 if(mapOptions.callback){
                     mapOptions.callback();
@@ -62,11 +62,11 @@
             //Track zoomLevel and mapType changes
     //        event = MM.event;
             //TODO Investigate how to add listeners in Bing
-    //            event.addListener(map, 'zoom_changed', Ext.bind(me.onZoomChange, me));
-    //            event.addListener(map, 'maptypeid_changed', Ext.bind(me.onTypeChange, me));
-    //            event.addListener(map, 'center_changed', Ext.bind(me.onCenterChange, me));
+    //            event.addListener(map, &#39;zoom_changed&#39;, Ext.bind(me.onZoomChange, me));
+    //            event.addListener(map, &#39;maptypeid_changed&#39;, Ext.bind(me.onTypeChange, me));
+    //            event.addListener(map, &#39;center_changed&#39;, Ext.bind(me.onCenterChange, me));
 
-        me.fireEvent('maprender', me, map);
+        me.fireEvent(&#39;maprender&#39;, me, map);
     },
     setMapCenter: function(coordinates) {
         var me = this,
@@ -74,13 +74,13 @@
             MM = Microsoft.Maps;
 
         if (!me.isPainted()) {
-            me.un('painted', 'setMapCenter', this);
-            me.on('painted', 'setMapCenter', this, { delay: 150, single: true, args: [coordinates] });
+            me.un(&#39;painted&#39;, &#39;setMapCenter&#39;, this);
+            me.on(&#39;painted&#39;, &#39;setMapCenter&#39;, this, { delay: 150, single: true, args: [coordinates] });
             return;
         }
         coordinates = coordinates || new MM.Location(37.381592, -122.135672);
 
-        if (coordinates &amp;&amp; !(coordinates instanceof MM.Location) &amp;&amp; 'longitude' in coordinates) {
+        if (coordinates &amp;&amp; !(coordinates instanceof MM.Location) &amp;&amp; &#39;longitude&#39; in coordinates) {
             coordinates = new MM.Location(coordinates.latitude, coordinates.longitude);
         }
 

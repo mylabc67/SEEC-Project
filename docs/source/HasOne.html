@@ -21,29 +21,29 @@
  * Represents a one to one association with another model. The owner model is expected to have
  * a foreign key which references the primary key of the associated model:
  *
- *     Ext.define('Person', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;Person&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
  *             fields: [
- *                 { name: 'id', type: 'int' },
- *                 { name: 'name', type: 'string' },
- *                 { name: 'address_id', type: 'int'}
+ *                 { name: &#39;id&#39;, type: &#39;int&#39; },
+ *                 { name: &#39;name&#39;, type: &#39;string&#39; },
+ *                 { name: &#39;address_id&#39;, type: &#39;int&#39;}
  *             ],
  *
  *             // we can use the hasOne shortcut on the model to create a hasOne association
- *             associations: { type: 'hasOne', model: 'Address' }
+ *             associations: { type: &#39;hasOne&#39;, model: &#39;Address&#39; }
  *         }
  *     });
  *
- *     Ext.define('Address', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;Address&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
  *             fields: [
- *                 { name: 'id', type: 'int' },
- *                 { name: 'number', type: 'string' },
- *                 { name: 'street', type: 'string' },
- *                 { name: 'city', type: 'string' },
- *                 { name: 'zip', type: 'string' }
+ *                 { name: &#39;id&#39;, type: &#39;int&#39; },
+ *                 { name: &#39;number&#39;, type: &#39;string&#39; },
+ *                 { name: &#39;street&#39;, type: &#39;string&#39; },
+ *                 { name: &#39;city&#39;, type: &#39;string&#39; },
+ *                 { name: &#39;zip&#39;, type: &#39;string&#39; }
  *             ]
  *         }
  *     });
@@ -56,15 +56,15 @@
  *
  * The first function that is added to the owner model is a getter function:
  *
- *     var person = Ext.create('Person', {
+ *     var person = Ext.create(&#39;Person&#39;, {
  *         id: 100,
  *         address_id: 20,
- *         name: 'John Smith'
+ *         name: &#39;John Smith&#39;
  *     });
  *
  *     person.getAddress(function(address, operation) {
  *         // do something with the address object
- *         alert(address.get('id')); // alerts 20
+ *         alert(address.get(&#39;id&#39;)); // alerts 20
  *     }, this);
  *
  * The getAddress function was created on the Person model when we defined the association. This uses the
@@ -99,16 +99,16 @@
  *     person.setAddress(10);
  *
  *     // is equivalent to this call:
- *     person.set('address_id', 10);
+ *     person.set(&#39;address_id&#39;, 10);
  *
  * An instance of the owner model can also be passed as a parameter.
  *
  * If we pass in a second argument, the model will be automatically saved and the second argument passed to
- * the owner model's {@link Ext.data.Model#save save} method:
+ * the owner model&#39;s {@link Ext.data.Model#save save} method:
  *
  *     person.setAddress(10, function(address, operation) {
  *         // the address has been saved
- *         alert(address.get('address_id')); //now alerts 10
+ *         alert(address.get(&#39;address_id&#39;)); //now alerts 10
  *     });
  *
  *     //alternative syntax:
@@ -124,27 +124,27 @@
  * Associations reflect on the models they are linking to automatically set up properties such as the
  * {@link #primaryKey} and {@link #foreignKey}. These can alternatively be specified:
  *
- *     Ext.define('Person', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;Person&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
  *             fields: [
  *                 // ...
  *             ],
  *
  *             associations: [
- *                 { type: 'hasOne', model: 'Address', primaryKey: 'unique_id', foreignKey: 'addr_id' }
+ *                 { type: &#39;hasOne&#39;, model: &#39;Address&#39;, primaryKey: &#39;unique_id&#39;, foreignKey: &#39;addr_id&#39; }
  *             ]
  *         }
  *     });
  *
- * Here we replaced the default primary key (defaults to 'id') and foreign key (calculated as 'address_id')
+ * Here we replaced the default primary key (defaults to &#39;id&#39;) and foreign key (calculated as &#39;address_id&#39;)
  * with our own settings. Usually this will not be needed.
  */
-Ext.define('Ext.data.association.HasOne', {
-    extend: 'Ext.data.association.Association',
-    alternateClassName: 'Ext.data.HasOneAssociation',
+Ext.define(&#39;Ext.data.association.HasOne&#39;, {
+    extend: &#39;Ext.data.association.Association&#39;,
+    alternateClassName: &#39;Ext.data.HasOneAssociation&#39;,
 
-    alias: 'association.hasone',
+    alias: &#39;association.hasone&#39;,
 
     config: {
 <span id='Ext-data-association-HasOne-cfg-foreignKey'>        /**
@@ -152,20 +152,20 @@ Ext.define('Ext.data.association.HasOne', {
          * model. Defaults to the lowercased name of the associated model plus &quot;_id&quot;, e.g. an association with a
          * model called Person would set up a address_id foreign key.
          *
-         *     Ext.define('Person', {
-         *         extend: 'Ext.data.Model',
-         *         fields: ['id', 'name', 'address_id'], // refers to the id of the address object
-         *         hasOne: 'Address'
+         *     Ext.define(&#39;Person&#39;, {
+         *         extend: &#39;Ext.data.Model&#39;,
+         *         fields: [&#39;id&#39;, &#39;name&#39;, &#39;address_id&#39;], // refers to the id of the address object
+         *         hasOne: &#39;Address&#39;
          *     });
          *
-         *     Ext.define('Address', {
-         *         extend: 'Ext.data.Model',
-         *         fields: ['id', 'number', 'street', 'city', 'zip'],
-         *         belongsTo: 'Person'
+         *     Ext.define(&#39;Address&#39;, {
+         *         extend: &#39;Ext.data.Model&#39;,
+         *         fields: [&#39;id&#39;, &#39;number&#39;, &#39;street&#39;, &#39;city&#39;, &#39;zip&#39;],
+         *         belongsTo: &#39;Person&#39;
          *     });
          *     var Person = new Person({
          *         id: 1,
-         *         name: 'John Smith',
+         *         name: &#39;John Smith&#39;,
          *         address_id: 13
          *     }, 1);
          *     person.getAddress(); // Will make a call to the server asking for address_id 13
@@ -174,14 +174,14 @@ Ext.define('Ext.data.association.HasOne', {
         foreignKey: undefined,
 
 <span id='Ext-data-association-HasOne-cfg-getterName'>        /**
-</span>         * @cfg {String} getterName The name of the getter function that will be added to the local model's prototype.
-         * Defaults to 'get' + the name of the foreign model, e.g. getAddress
+</span>         * @cfg {String} getterName The name of the getter function that will be added to the local model&#39;s prototype.
+         * Defaults to &#39;get&#39; + the name of the foreign model, e.g. getAddress
          */
         getterName: undefined,
 
 <span id='Ext-data-association-HasOne-cfg-setterName'>        /**
-</span>         * @cfg {String} setterName The name of the setter function that will be added to the local model's prototype.
-         * Defaults to 'set' + the name of the foreign model, e.g. setAddress
+</span>         * @cfg {String} setterName The name of the setter function that will be added to the local model&#39;s prototype.
+         * Defaults to &#39;set&#39; + the name of the foreign model, e.g. setAddress
          */
         setterName: undefined,
 
@@ -194,7 +194,7 @@ Ext.define('Ext.data.association.HasOne', {
             if (inverse) {
                 foreignKey = inverse.getForeignKey();
             } else {
-                foreignKey = this.getAssociatedName().toLowerCase() + '_id';
+                foreignKey = this.getAssociatedName().toLowerCase() + &#39;_id&#39;;
             }
         }
         return foreignKey;
@@ -223,7 +223,7 @@ Ext.define('Ext.data.association.HasOne', {
 
 <span id='Ext-data-association-HasOne-method-applyInstanceName'>    applyInstanceName: function(instanceName) {
 </span>        if (!instanceName) {
-            instanceName = this.getAssociatedName() + 'HasOneInstance';
+            instanceName = this.getAssociatedName() + &#39;HasOneInstance&#39;;
         }
         return instanceName;
     },
@@ -239,7 +239,7 @@ Ext.define('Ext.data.association.HasOne', {
 <span id='Ext-data-association-HasOne-method-applyGetterName'>    applyGetterName: function(getterName) {
 </span>        if (!getterName) {
             var associatedName = this.getAssociatedName();
-            getterName = 'get' + associatedName[0].toUpperCase() + associatedName.slice(1);
+            getterName = &#39;get&#39; + associatedName[0].toUpperCase() + associatedName.slice(1);
         }
         return getterName;
     },
@@ -247,7 +247,7 @@ Ext.define('Ext.data.association.HasOne', {
 <span id='Ext-data-association-HasOne-method-applySetterName'>    applySetterName: function(setterName) {
 </span>        if (!setterName) {
             var associatedName = this.getAssociatedName();
-            setterName = 'set' + associatedName[0].toUpperCase() + associatedName.slice(1);
+            setterName = &#39;set&#39; + associatedName[0].toUpperCase() + associatedName.slice(1);
         }
         return setterName;
     },
@@ -274,7 +274,7 @@ Ext.define('Ext.data.association.HasOne', {
 
 <span id='Ext-data-association-HasOne-method-createSetter'>    /**
 </span>     * @private
-     * Returns a setter function to be placed on the owner model's prototype
+     * Returns a setter function to be placed on the owner model&#39;s prototype
      * @return {Function} The setter function
      */
     createSetter: function() {
@@ -283,7 +283,7 @@ Ext.define('Ext.data.association.HasOne', {
             instanceName    = me.getInstanceName(),
             associatedModel = me.getAssociatedModel();
 
-        //'this' refers to the Model instance inside this function
+        //&#39;this&#39; refers to the Model instance inside this function
         return function(value, options, scope) {
             var Model = Ext.data.Model,
                 record;
@@ -320,7 +320,7 @@ Ext.define('Ext.data.association.HasOne', {
 
 <span id='Ext-data-association-HasOne-method-createGetter'>    /**
 </span>     * @private
-     * Returns a getter function to be placed on the owner model's prototype. We cache the loaded instance
+     * Returns a getter function to be placed on the owner model&#39;s prototype. We cache the loaded instance
      * the first time it is loaded so that subsequent calls to the getter always receive the same reference.
      * @return {Function} The getter function
      */
@@ -330,7 +330,7 @@ Ext.define('Ext.data.association.HasOne', {
             foreignKey      = me.getForeignKey(),
             instanceName    = me.getInstanceName();
 
-        //'this' refers to the Model instance inside this function
+        //&#39;this&#39; refers to the Model instance inside this function
         return function(options, scope) {
             options = options || {};
 
@@ -339,7 +339,7 @@ Ext.define('Ext.data.association.HasOne', {
                 success, instance, args;
 
             if (options.reload === true || model[instanceName] === undefined) {
-                if (typeof options == 'function') {
+                if (typeof options == &#39;function&#39;) {
                     options = {
                         callback: options,
                         scope: scope || model
@@ -374,7 +374,7 @@ Ext.define('Ext.data.association.HasOne', {
 <span id='Ext-data-association-HasOne-method-read'>    /**
 </span>     * Read associated data
      * @private
-     * @param {Ext.data.Model} record The record we're writing to
+     * @param {Ext.data.Model} record The record we&#39;re writing to
      * @param {Ext.data.reader.Reader} reader The reader for the associated model
      * @param {Object} associationData The raw associated data
      */
@@ -384,7 +384,7 @@ Ext.define('Ext.data.association.HasOne', {
 
         record[this.getSetterName()].call(record, newRecord);
 
-        //if the inverse association was found, set it now on each record we've just created
+        //if the inverse association was found, set it now on each record we&#39;ve just created
         if (inverse) {
             newRecord[inverse.getInstanceName()] = record;
         }
@@ -394,7 +394,7 @@ Ext.define('Ext.data.association.HasOne', {
 </span>        var ownerName = this.getOwnerModel().modelName;
 
         return this.getAssociatedModel().associations.findBy(function(assoc) {
-            return assoc.getType().toLowerCase() === 'belongsto' &amp;&amp; assoc.getAssociatedModel().modelName === ownerName;
+            return assoc.getType().toLowerCase() === &#39;belongsto&#39; &amp;&amp; assoc.getAssociatedModel().modelName === ownerName;
         });
     }
 });

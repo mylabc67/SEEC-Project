@@ -44,7 +44,7 @@
  *
  * ## Attribute Selectors:
  *
- * The use of @ and quotes are optional. For example, div[@foo='bar'] is also a valid attribute selector.
+ * The use of @ and quotes are optional. For example, div[@foo=&#39;bar&#39;] is also a valid attribute selector.
  *
  * * E[foo] has an attribute &quot;foo&quot;
  * * E[foo=bar] has an attribute &quot;foo&quot; that equals &quot;bar&quot;
@@ -86,11 +86,11 @@
 
 <span id='Ext-dom-Query'>/**
 </span> * See {@link Ext.DomQuery} which is the singleton instance of this
- * class.  You most likely don't need to instantiate Ext.dom.Query by
+ * class.  You most likely don&#39;t need to instantiate Ext.dom.Query by
  * yourself.
  * @private
  */
-Ext.define('Ext.dom.Query', {
+Ext.define(&#39;Ext.dom.Query&#39;, {
 <span id='Ext-dom-Query-method-select'>    /**
 </span>     * Selects a group of elements.
      * @param {String} selector The selector/xpath query (can be a comma separated list of selectors)
@@ -104,17 +104,17 @@ Ext.define('Ext.dom.Query', {
 
         root = root || document;
 
-        if (typeof root == 'string') {
+        if (typeof root == &#39;string&#39;) {
             root = document.getElementById(root);
         }
 
         q = q.split(&quot;,&quot;);
 
         for (i = 0,qlen = q.length; i &lt; qlen; i++) {
-            if (typeof q[i] == 'string') {
+            if (typeof q[i] == &#39;string&#39;) {
 
                 //support for node attribute selection
-                if (q[i][0] == '@') {
+                if (q[i][0] == &#39;@&#39;) {
                     nodes = root.getAttributeNode(q[i].substring(1));
                     results.push(nodes);
                 }
@@ -186,7 +186,7 @@ Ext.define('Ext.dom.Query', {
     }
 
 }, function() {
-    Ext.ns('Ext.core');
+    Ext.ns(&#39;Ext.core&#39;);
     Ext.core.DomQuery = Ext.DomQuery = new this();
 <span id='Ext-method-query'>    /**
 </span>     * Shorthand of {@link Ext.dom.Query#select}
@@ -194,7 +194,7 @@ Ext.define('Ext.dom.Query', {
      * @method query
      * @inheritdoc Ext.dom.Query#select
      */
-    Ext.query = Ext.Function.alias(Ext.DomQuery, 'select');
+    Ext.query = Ext.Function.alias(Ext.DomQuery, &#39;select&#39;);
 });
 </pre>
 </body>

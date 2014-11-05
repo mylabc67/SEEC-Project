@@ -59,12 +59,12 @@
 
             return true;
         }(),
-        supportsForEach = 'forEach' in arrayPrototype,
-        supportsMap = 'map' in arrayPrototype,
-        supportsIndexOf = 'indexOf' in arrayPrototype,
-        supportsEvery = 'every' in arrayPrototype,
-        supportsSome = 'some' in arrayPrototype,
-        supportsFilter = 'filter' in arrayPrototype,
+        supportsForEach = &#39;forEach&#39; in arrayPrototype,
+        supportsMap = &#39;map&#39; in arrayPrototype,
+        supportsIndexOf = &#39;indexOf&#39; in arrayPrototype,
+        supportsEvery = &#39;every&#39; in arrayPrototype,
+        supportsSome = &#39;some&#39; in arrayPrototype,
+        supportsFilter = &#39;filter&#39; in arrayPrototype,
         supportsSort = function() {
             var a = [1,2,3,4,5].sort(function(){ return 0; });
             return a[0] === 1 &amp;&amp; a[1] === 2 &amp;&amp; a[2] === 3 &amp;&amp; a[3] === 4 &amp;&amp; a[4] === 5;
@@ -74,8 +74,8 @@
 
     try {
         // IE 6 - 8 will throw an error when using Array.prototype.slice on NodeList
-        if (typeof document !== 'undefined') {
-            slice.call(document.getElementsByTagName('body'));
+        if (typeof document !== &#39;undefined&#39;) {
+            slice.call(document.getElementsByTagName(&#39;body&#39;));
         }
     } catch (e) {
         supportsSliceOnNodeList = false;
@@ -113,7 +113,7 @@
                                                  insert=[a,b,c]
 
     In case A, it is obvious that copying of [4,5,6,7] must be left-to-right so
-    that we don't end up with [0,1,6,7,6,7]. In case B, we have the opposite; we
+    that we don&#39;t end up with [0,1,6,7,6,7]. In case B, we have the opposite; we
     must go right-to-left or else we would end up with [0,1,a,b,c,4,4,4,4].
     */
     function replaceSim (array, index, removeCount, insert) {
@@ -206,7 +206,7 @@
 <span id='Ext-Array-method-each'>        /**
 </span>         * Iterates an array or an iterable value and invoke the given callback function for each item.
          *
-         *     var countries = ['Vietnam', 'Singapore', 'United States', 'Russia'];
+         *     var countries = [&#39;Vietnam&#39;, &#39;Singapore&#39;, &#39;United States&#39;, &#39;Russia&#39;];
          *
          *     Ext.Array.each(countries, function(name, index, countriesItSelf) {
          *         console.log(name);
@@ -227,7 +227,7 @@
          * The iteration can be stopped by returning false in the function callback.
          *
          *     Ext.Array.each(countries, function(name, index, countriesItSelf) {
-         *         if (name === 'Singapore') {
+         *         if (name === &#39;Singapore&#39;) {
          *             return false; // break here
          *         }
          *     });
@@ -272,7 +272,7 @@
 
 <span id='Ext-Array-method-forEach'>        /**
 </span>         * Iterates an array and invoke the given callback function for each item. Note that this will simply
-         * delegate to the native `Array.prototype.forEach` method if supported. It doesn't support stopping the
+         * delegate to the native `Array.prototype.forEach` method if supported. It doesn&#39;t support stopping the
          * iteration by returning `false` in the callback function like {@link Ext.Array#each}. However, performance
          * could be much better in modern browsers comparing with {@link Ext.Array#each}
          *
@@ -345,16 +345,16 @@
          *         var args = Ext.Array.toArray(arguments),
          *             fromSecondToLastArgs = Ext.Array.toArray(arguments, 1);
          *
-         *         alert(args.join(' '));
-         *         alert(fromSecondToLastArgs.join(' '));
+         *         alert(args.join(&#39; &#39;));
+         *         alert(fromSecondToLastArgs.join(&#39; &#39;));
          *     }
          *
-         *     test('just', 'testing', 'here'); // alerts 'just testing here';
-         *                                      // alerts 'testing here';
+         *     test(&#39;just&#39;, &#39;testing&#39;, &#39;here&#39;); // alerts &#39;just testing here&#39;;
+         *                                      // alerts &#39;testing here&#39;;
          *
-         *     Ext.Array.toArray(document.getElementsByTagName('div')); // will convert the NodeList into an array
-         *     Ext.Array.toArray('splitted'); // returns ['s', 'p', 'l', 'i', 't', 't', 'e', 'd']
-         *     Ext.Array.toArray('splitted', 0, 3); // returns ['s', 'p', 'l', 'i']
+         *     Ext.Array.toArray(document.getElementsByTagName(&#39;div&#39;)); // will convert the NodeList into an array
+         *     Ext.Array.toArray(&#39;splitted&#39;); // returns [&#39;s&#39;, &#39;p&#39;, &#39;l&#39;, &#39;i&#39;, &#39;t&#39;, &#39;t&#39;, &#39;e&#39;, &#39;d&#39;]
+         *     Ext.Array.toArray(&#39;splitted&#39;, 0, 3); // returns [&#39;s&#39;, &#39;p&#39;, &#39;l&#39;, &#39;i&#39;]
          *
          * {@link Ext#toArray Ext.toArray} is alias for {@link Ext.Array#toArray Ext.Array.toArray}
          *
@@ -368,8 +368,8 @@
                 return [];
             }
 
-            if (typeof iterable === 'string') {
-                iterable = iterable.split('');
+            if (typeof iterable === &#39;string&#39;) {
+                iterable = iterable.split(&#39;&#39;);
             }
 
             if (supportsSliceOnNodeList) {
@@ -446,7 +446,7 @@
         every: function(array, fn, scope) {
             //&lt;debug&gt;
             if (!fn) {
-                Ext.Error.raise('Ext.Array.every must have a callback function passed as second argument.');
+                Ext.Error.raise(&#39;Ext.Array.every must have a callback function passed as second argument.&#39;);
             }
             //&lt;/debug&gt;
             if (supportsEvery) {
@@ -477,7 +477,7 @@
         some: function(array, fn, scope) {
             //&lt;debug&gt;
             if (!fn) {
-                Ext.Error.raise('Ext.Array.some must have a callback function passed as second argument.');
+                Ext.Error.raise(&#39;Ext.Array.some must have a callback function passed as second argument.&#39;);
             }
             //&lt;/debug&gt;
             if (supportsSome) {
@@ -572,14 +572,14 @@
         },
 
 <span id='Ext-Array-method-from'>        /**
-</span>         * Converts a value to an array if it's not already an array; returns:
+</span>         * Converts a value to an array if it&#39;s not already an array; returns:
          *
          * - An empty array if given value is `undefined` or `null`
          * - Itself if given value is already an array
          * - An array copy if given value is {@link Ext#isIterable iterable} (arguments, NodeList and alike)
          * - An array with one item which is the given value, otherwise
          *
-         * @param {Object} value The value to convert to an array if it's not already is an array.
+         * @param {Object} value The value to convert to an array if it&#39;s not already is an array.
          * @param {Boolean} [newReference=false] (Optional) `true` to clone the given array and return a new reference if necessary.
          * @return {Array} array
          */
@@ -592,7 +592,7 @@
                 return (newReference) ? slice.call(value) : value;
             }
 
-            if (value &amp;&amp; value.length !== undefined &amp;&amp; typeof value !== 'string') {
+            if (value &amp;&amp; value.length !== undefined &amp;&amp; typeof value !== &#39;string&#39;) {
                 return ExtArray.toArray(value);
             }
 
@@ -617,7 +617,7 @@
         },
 
 <span id='Ext-Array-method-include'>        /**
-</span>         * Push an item into the array only if the array doesn't contain it yet.
+</span>         * Push an item into the array only if the array doesn&#39;t contain it yet.
          *
          * @param {Array} array The array.
          * @param {Object} item The item to include.
@@ -630,7 +630,7 @@
 
 <span id='Ext-Array-method-clone'>        /**
 </span>         * Clone a flat array without referencing the previous one. Note that this is different
-         * from `Ext.clone` since it doesn't handle recursive cloning. It's simply a convenient, easy-to-remember method
+         * from `Ext.clone` since it doesn&#39;t handle recursive cloning. It&#39;s simply a convenient, easy-to-remember method
          * for `Array.prototype.slice.call(array)`.
          *
          * @param {Array} array The array
@@ -923,7 +923,7 @@
 
 <span id='Ext-Array-method-erase'>        /**
 </span>         * Removes items from an array. This is functionally equivalent to the splice method
-         * of Array, but works around bugs in IE8's splice method and does not copy the
+         * of Array, but works around bugs in IE8&#39;s splice method and does not copy the
          * removed elements in order to return them (because very often they are ignored).
          *
          * @param {Array} array The Array on which to replace.
@@ -948,7 +948,7 @@
 
 <span id='Ext-Array-method-replace'>        /**
 </span>         * Replaces items in an array. This is functionally equivalent to the splice method
-         * of Array, but works around bugs in IE8's splice method and is often more convenient
+         * of Array, but works around bugs in IE8&#39;s splice method and is often more convenient
          * to call because it accepts an array of items to insert rather than use a variadic
          * argument list.
          *
@@ -963,7 +963,7 @@
 
 <span id='Ext-Array-method-splice'>        /**
 </span>         * Replaces items in an array. This is equivalent to the splice method of Array, but
-         * works around bugs in IE8's splice method. The signature is exactly the same as the
+         * works around bugs in IE8&#39;s splice method. The signature is exactly the same as the
          * splice method except that the array is the first argument. All arguments following
          * removeCount are inserted in the array at index.
          *

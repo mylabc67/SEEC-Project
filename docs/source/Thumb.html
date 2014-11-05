@@ -19,30 +19,30 @@
 </span> * @private
  * Utility class used by Ext.slider.Slider - should never need to be used directly.
  */
-Ext.define('Ext.slider.Thumb', {
-    extend: 'Ext.Component',
-    xtype : 'thumb',
+Ext.define(&#39;Ext.slider.Thumb&#39;, {
+    extend: &#39;Ext.Component&#39;,
+    xtype : &#39;thumb&#39;,
 
     config: {
 <span id='Ext-slider-Thumb-cfg-baseCls'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'thumb',
+        baseCls: Ext.baseCSSPrefix + &#39;thumb&#39;,
 
 <span id='Ext-slider-Thumb-cfg-pressedCls'>        /**
 </span>         * @cfg {String} pressedCls
          * The CSS class to add to the Slider when it is pressed.
          * @accessor
          */
-        pressedCls: Ext.baseCSSPrefix + 'thumb-pressing',
+        pressedCls: Ext.baseCSSPrefix + &#39;thumb-pressing&#39;,
 
 <span id='Ext-slider-Thumb-cfg-draggable'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
         draggable: {
-            direction: 'horizontal'
+            direction: &#39;horizontal&#39;
         }
     },
 
@@ -50,10 +50,10 @@ Ext.define('Ext.slider.Thumb', {
 </span>    // is contained within a modal panel.
     platformConfig: [
         {
-            platform: ['ie10'],
+            platform: [&#39;ie10&#39;],
             draggable: {
                 translatable: {
-                    translationMethod: 'csstransform'
+                    translationMethod: &#39;csstransform&#39;
                 }
             }
         }
@@ -65,28 +65,28 @@ Ext.define('Ext.slider.Thumb', {
 </span>        this.callParent();
 
         this.getDraggable().onBefore({
-            dragstart: 'onDragStart',
-            drag: 'onDrag',
-            dragend: 'onDragEnd',
+            dragstart: &#39;onDragStart&#39;,
+            drag: &#39;onDrag&#39;,
+            dragend: &#39;onDragEnd&#39;,
             scope: this
         });
 
         this.getDraggable().on({
-            touchstart: 'onPress',
-            touchend: 'onRelease',
+            touchstart: &#39;onPress&#39;,
+            touchend: &#39;onRelease&#39;,
             scope: this
         });
 
-        this.element.on('resize', 'onElementResize', this);
+        this.element.on(&#39;resize&#39;, &#39;onElementResize&#39;, this);
     },
 
 <span id='Ext-slider-Thumb-method-getTemplate'>    getTemplate: function() {
 </span>        if(Ext.theme.is.Blackberry) {
             return [
                 {
-                    tag: 'div',
-                    className: Ext.baseCSSPrefix + 'thumb-inner',
-                    reference: 'innerElement'
+                    tag: &#39;div&#39;,
+                    className: Ext.baseCSSPrefix + &#39;thumb-inner&#39;,
+                    reference: &#39;innerElement&#39;
                 }
             ]
         } else {
@@ -119,7 +119,7 @@ Ext.define('Ext.slider.Thumb', {
 
 <span id='Ext-slider-Thumb-method-onRelease'>    // @private
 </span>    onRelease: function(e) {
-        this.fireAction('release', [this, e], 'doRelease');
+        this.fireAction(&#39;release&#39;, [this, e], &#39;doRelease&#39;);
     },
 
 <span id='Ext-slider-Thumb-method-doRelease'>    // @private

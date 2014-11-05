@@ -20,7 +20,7 @@
 <span id='Ext-event-Controller'>/**
 </span> * @private
  */
-Ext.define('Ext.event.Controller', {
+Ext.define(&#39;Ext.event.Controller&#39;, {
 
 <span id='Ext-event-Controller-property-isFiring'>    isFiring: false,
 </span>
@@ -61,7 +61,7 @@ Ext.define('Ext.event.Controller', {
         firingListeners.length = 0;
 
         if (action) {
-            if (action.order !== 'after') {
+            if (action.order !== &#39;after&#39;) {
                 isActionBefore = true;
             }
             else {
@@ -166,7 +166,7 @@ Ext.define('Ext.event.Controller', {
             isLateBinding = listener.isLateBinding;
             scope = listener.scope;
 
-            // Re-bind the callback if it has changed since the last time it's bound (overridden)
+            // Re-bind the callback if it has changed since the last time it&#39;s bound (overridden)
             if (isLateBinding &amp;&amp; boundFn &amp;&amp; boundFn !== scope[fn]) {
                 boundFn = false;
                 firingFn = false;

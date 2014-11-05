@@ -27,9 +27,9 @@ Ext.data.CS = Ext.extend(Object, { // Change Stamp
 	},
 	
 	set: function(x) {
-		if (typeof x === 'string' || x instanceof String) {
+		if (typeof x === &#39;string&#39; || x instanceof String) {
 			this.from_s(x)
-		} else if (typeof x === 'object') {
+		} else if (typeof x === &#39;object&#39;) {
 			this.r= x.r||0;
 			this.t= x.t||0;
 			this.s= x.s||0;
@@ -65,7 +65,7 @@ Ext.data.CS = Ext.extend(Object, { // Change Stamp
 	    this.t= parseInt(m[2])
 	    this.s= m[3] ? parseInt(m[3]) : 0
 		} else {
-			throw &quot;Error - CS - Bad change stamp '&quot;+t+&quot;'.&quot;
+			throw &quot;Error - CS - Bad change stamp &#39;&quot;+t+&quot;&#39;.&quot;
 		}
 		return this;
 	},

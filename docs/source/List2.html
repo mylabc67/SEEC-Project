@@ -23,57 +23,57 @@
  * [Guide](#!/guide/list) and [Video](#!/video/list) for more.
  *
  *     @example miniphone preview
- *     Ext.create('Ext.List', {
+ *     Ext.create(&#39;Ext.List&#39;, {
  *         fullscreen: true,
- *         itemTpl: '{title}',
+ *         itemTpl: &#39;{title}&#39;,
  *         data: [
- *             { title: 'Item 1' },
- *             { title: 'Item 2' },
- *             { title: 'Item 3' },
- *             { title: 'Item 4' }
+ *             { title: &#39;Item 1&#39; },
+ *             { title: &#39;Item 2&#39; },
+ *             { title: &#39;Item 3&#39; },
+ *             { title: &#39;Item 4&#39; }
  *         ]
  *     });
  *
  * A more advanced example showing a list of people grouped by last name:
  *
  *     @example miniphone preview
- *     Ext.define('Contact', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;Contact&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
- *             fields: ['firstName', 'lastName']
+ *             fields: [&#39;firstName&#39;, &#39;lastName&#39;]
  *         }
  *     });
  *
- *     var store = Ext.create('Ext.data.Store', {
- *        model: 'Contact',
- *        sorters: 'lastName',
+ *     var store = Ext.create(&#39;Ext.data.Store&#39;, {
+ *        model: &#39;Contact&#39;,
+ *        sorters: &#39;lastName&#39;,
  *
  *        grouper: {
  *            groupFn: function(record) {
- *                return record.get('lastName')[0];
+ *                return record.get(&#39;lastName&#39;)[0];
  *            }
  *        },
  *
  *        data: [
- *            { firstName: 'Tommy',   lastName: 'Maintz'  },
- *            { firstName: 'Rob',     lastName: 'Dougan'  },
- *            { firstName: 'Ed',      lastName: 'Spencer' },
- *            { firstName: 'Jamie',   lastName: 'Avins'   },
- *            { firstName: 'Aaron',   lastName: 'Conran'  },
- *            { firstName: 'Dave',    lastName: 'Kaneda'  },
- *            { firstName: 'Jacky',   lastName: 'Nguyen'  },
- *            { firstName: 'Abraham', lastName: 'Elias'   },
- *            { firstName: 'Jay',     lastName: 'Robinson'},
- *            { firstName: 'Nigel',   lastName: 'White'   },
- *            { firstName: 'Don',     lastName: 'Griffin' },
- *            { firstName: 'Nico',    lastName: 'Ferrero' },
- *            { firstName: 'Jason',   lastName: 'Johnston'}
+ *            { firstName: &#39;Tommy&#39;,   lastName: &#39;Maintz&#39;  },
+ *            { firstName: &#39;Rob&#39;,     lastName: &#39;Dougan&#39;  },
+ *            { firstName: &#39;Ed&#39;,      lastName: &#39;Spencer&#39; },
+ *            { firstName: &#39;Jamie&#39;,   lastName: &#39;Avins&#39;   },
+ *            { firstName: &#39;Aaron&#39;,   lastName: &#39;Conran&#39;  },
+ *            { firstName: &#39;Dave&#39;,    lastName: &#39;Kaneda&#39;  },
+ *            { firstName: &#39;Jacky&#39;,   lastName: &#39;Nguyen&#39;  },
+ *            { firstName: &#39;Abraham&#39;, lastName: &#39;Elias&#39;   },
+ *            { firstName: &#39;Jay&#39;,     lastName: &#39;Robinson&#39;},
+ *            { firstName: &#39;Nigel&#39;,   lastName: &#39;White&#39;   },
+ *            { firstName: &#39;Don&#39;,     lastName: &#39;Griffin&#39; },
+ *            { firstName: &#39;Nico&#39;,    lastName: &#39;Ferrero&#39; },
+ *            { firstName: &#39;Jason&#39;,   lastName: &#39;Johnston&#39;}
  *        ]
  *     });
  *
- *     Ext.create('Ext.List', {
+ *     Ext.create(&#39;Ext.List&#39;, {
  *        fullscreen: true,
- *        itemTpl: '&lt;div class=&quot;contact&quot;&gt;{firstName} &lt;strong&gt;{lastName}&lt;/strong&gt;&lt;/div&gt;',
+ *        itemTpl: &#39;&lt;div class=&quot;contact&quot;&gt;{firstName} &lt;strong&gt;{lastName}&lt;/strong&gt;&lt;/div&gt;&#39;,
  *        store: store,
  *        grouped: true
  *     });
@@ -81,66 +81,66 @@
  * If you want to dock items to the bottom or top of a List, you can use the scrollDock configuration on child items in this List. The following example adds a button to the bottom of the List.
  *
  *     @example phone preview
- *     Ext.define('Contact', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;Contact&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
- *             fields: ['firstName', 'lastName']
+ *             fields: [&#39;firstName&#39;, &#39;lastName&#39;]
  *         }
  *     });
  *
- *     var store = Ext.create('Ext.data.Store', {
- *        model: 'Contact',
- *        sorters: 'lastName',
+ *     var store = Ext.create(&#39;Ext.data.Store&#39;, {
+ *        model: &#39;Contact&#39;,
+ *        sorters: &#39;lastName&#39;,
  *
  *        grouper: {
  *            groupFn: function(record) {
- *                return record.get('lastName')[0];
+ *                return record.get(&#39;lastName&#39;)[0];
  *            }
  *        },
  *
  *        data: [
- *            { firstName: 'Tommy',   lastName: 'Maintz'  },
- *            { firstName: 'Rob',     lastName: 'Dougan'  },
- *            { firstName: 'Ed',      lastName: 'Spencer' },
- *            { firstName: 'Jamie',   lastName: 'Avins'   },
- *            { firstName: 'Aaron',   lastName: 'Conran'  },
- *            { firstName: 'Dave',    lastName: 'Kaneda'  },
- *            { firstName: 'Jacky',   lastName: 'Nguyen'  },
- *            { firstName: 'Abraham', lastName: 'Elias'   },
- *            { firstName: 'Jay',     lastName: 'Robinson'},
- *            { firstName: 'Nigel',   lastName: 'White'   },
- *            { firstName: 'Don',     lastName: 'Griffin' },
- *            { firstName: 'Nico',    lastName: 'Ferrero' },
- *            { firstName: 'Jason',   lastName: 'Johnston'}
+ *            { firstName: &#39;Tommy&#39;,   lastName: &#39;Maintz&#39;  },
+ *            { firstName: &#39;Rob&#39;,     lastName: &#39;Dougan&#39;  },
+ *            { firstName: &#39;Ed&#39;,      lastName: &#39;Spencer&#39; },
+ *            { firstName: &#39;Jamie&#39;,   lastName: &#39;Avins&#39;   },
+ *            { firstName: &#39;Aaron&#39;,   lastName: &#39;Conran&#39;  },
+ *            { firstName: &#39;Dave&#39;,    lastName: &#39;Kaneda&#39;  },
+ *            { firstName: &#39;Jacky&#39;,   lastName: &#39;Nguyen&#39;  },
+ *            { firstName: &#39;Abraham&#39;, lastName: &#39;Elias&#39;   },
+ *            { firstName: &#39;Jay&#39;,     lastName: &#39;Robinson&#39;},
+ *            { firstName: &#39;Nigel&#39;,   lastName: &#39;White&#39;   },
+ *            { firstName: &#39;Don&#39;,     lastName: &#39;Griffin&#39; },
+ *            { firstName: &#39;Nico&#39;,    lastName: &#39;Ferrero&#39; },
+ *            { firstName: &#39;Jason&#39;,   lastName: &#39;Johnston&#39;}
  *        ]
  *     });
  *
- *     Ext.create('Ext.List', {
+ *     Ext.create(&#39;Ext.List&#39;, {
  *         fullscreen: true,
- *         itemTpl: '&lt;div class=&quot;contact&quot;&gt;{firstName} &lt;strong&gt;{lastName}&lt;/strong&gt;&lt;/div&gt;',
+ *         itemTpl: &#39;&lt;div class=&quot;contact&quot;&gt;{firstName} &lt;strong&gt;{lastName}&lt;/strong&gt;&lt;/div&gt;&#39;,
  *         store: store,
  *         items: [{
- *             xtype: 'button',
- *             scrollDock: 'bottom',
- *             docked: 'bottom',
- *             text: 'Load More...'
+ *             xtype: &#39;button&#39;,
+ *             scrollDock: &#39;bottom&#39;,
+ *             docked: &#39;bottom&#39;,
+ *             text: &#39;Load More...&#39;
  *         }]
  *     });
  */
-Ext.define('Ext.dataview.List', {
-    alternateClassName: 'Ext.List',
-    extend: 'Ext.dataview.DataView',
-    xtype: 'list',
+Ext.define(&#39;Ext.dataview.List&#39;, {
+    alternateClassName: &#39;Ext.List&#39;,
+    extend: &#39;Ext.dataview.DataView&#39;,
+    xtype: &#39;list&#39;,
 
-    mixins: ['Ext.mixin.Bindable'],
+    mixins: [&#39;Ext.mixin.Bindable&#39;],
 
     requires: [
-        'Ext.data.Store',
-        'Ext.dataview.IndexBar',
-        'Ext.dataview.ListItemHeader',
-        'Ext.dataview.component.ListItem',
-        'Ext.dataview.component.SimpleListItem',
-        'Ext.util.PositionMap'
+        &#39;Ext.data.Store&#39;,
+        &#39;Ext.dataview.IndexBar&#39;,
+        &#39;Ext.dataview.ListItemHeader&#39;,
+        &#39;Ext.dataview.component.ListItem&#39;,
+        &#39;Ext.dataview.component.SimpleListItem&#39;,
+        &#39;Ext.util.PositionMap&#39;
     ],
 
 <span id='Ext-dataview-List-event-disclose'>    /**
@@ -161,7 +161,7 @@ Ext.define('Ext.dataview.List', {
          * @accessor
          * @private
          */
-        layout: 'fit',
+        layout: &#39;fit&#39;,
 
 <span id='Ext-dataview-List-cfg-indexBar'>        /**
 </span>         * @cfg {Boolean/Object} indexBar
@@ -184,7 +184,7 @@ Ext.define('Ext.dataview.List', {
 </span>         * @cfg baseCls
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'list',
+        baseCls: Ext.baseCSSPrefix + &#39;list&#39;,
 
 <span id='Ext-dataview-List-cfg-pinHeaders'>        /**
 </span>         * @cfg {Boolean} pinHeaders
@@ -206,7 +206,7 @@ Ext.define('Ext.dataview.List', {
          * The list will still fire the disclose event, and the event can be stopped before itemtap.
          * By setting this config to a function, the function passed will be called when the disclosure
          * is tapped.
-         * Finally you can specify an object with a 'scope' and 'handler'
+         * Finally you can specify an object with a &#39;scope&#39; and &#39;handler&#39;
          * property defined. This will also be bound to the tap event listener
          * and is useful when you want to change the scope of the handler.
          * @accessor
@@ -219,7 +219,7 @@ Ext.define('Ext.dataview.List', {
          * property must be false to prevent the disclosure from being displayed on the item.
          * @accessor
          */
-        disclosureProperty: 'disclosure',
+        disclosureProperty: &#39;disclosure&#39;,
 
 <span id='Ext-dataview-List-cfg-ui'>        /**
 </span>         * @cfg {String} ui
@@ -227,7 +227,7 @@ Ext.define('Ext.dataview.List', {
          * Please note: if you use the `round` UI, {@link #pinHeaders} will be automatically turned off as
          * it is not supported.
          */
-        ui: 'normal',
+        ui: &#39;normal&#39;,
 
 <span id='Ext-dataview-List-cfg-useComponents'>        /**
 </span>         * @cfg {Boolean} useComponents
@@ -288,7 +288,7 @@ Ext.define('Ext.dataview.List', {
 <span id='Ext-dataview-List-cfg-refreshHeightOnUpdate'>        /**
 </span>         * @cfg {Boolean} refreshHeightOnUpdate
          * Set this to false if you make many updates to your list (like in an interval), but updates
-         * won't affect the item's height. Doing this will increase the performance of these updates.
+         * won&#39;t affect the item&#39;s height. Doing this will increase the performance of these updates.
          */
         refreshHeightOnUpdate: true,
 
@@ -337,11 +337,11 @@ Ext.define('Ext.dataview.List', {
 
 <span id='Ext-dataview-List-property-platformConfig'>    platformConfig: [
 </span>        {
-            theme: ['Windows'],
+            theme: [&#39;Windows&#39;],
             itemHeight: 44
         },
         {
-            theme: ['Cupertino'],
+            theme: [&#39;Cupertino&#39;],
             itemHeight: 43
         }
     ],
@@ -358,7 +358,7 @@ Ext.define('Ext.dataview.List', {
         //&lt;debug&gt;
         layout = this.getLayout();
         if (layout &amp;&amp; !layout.isFit) {
-            Ext.Logger.error('The base layout for a DataView must always be a Fit Layout');
+            Ext.Logger.error(&#39;The base layout for a DataView must always be a Fit Layout&#39;);
         }
         //&lt;/debug&gt;
     },
@@ -382,16 +382,16 @@ Ext.define('Ext.dataview.List', {
 
         // We determine the translation methods for headers and items within this List based
         // on the best strategy for the device
-        this.translationMethod = Ext.browser.is.AndroidStock2 ? 'cssposition' : 'csstransform';
+        this.translationMethod = Ext.browser.is.AndroidStock2 ? &#39;cssposition&#39; : &#39;csstransform&#39;;
 
         // Create the inner container that will actually hold all the list items
         if (!container) {
             container = me.container = Ext.factory({
-                xtype: 'container',
+                xtype: &#39;container&#39;,
                 scrollable: {
                     scroller: {
                         autoRefresh: !me.getInfinite(),
-                        direction: 'vertical'
+                        direction: &#39;vertical&#39;
                     }
                 }
             });
@@ -402,7 +402,7 @@ Ext.define('Ext.dataview.List', {
         // which in turn tries to add these items to the container
         me.add(container);
 
-        // We make this List's scrollable the inner containers scrollable
+        // We make this List&#39;s scrollable the inner containers scrollable
         scrollable = container.getScrollable();
         scrollViewElement = me.scrollViewElement = scrollable.getElement();
         me.scrollElement = scrollable.getScroller().getElement();
@@ -413,22 +413,22 @@ Ext.define('Ext.dataview.List', {
         // Create the pinnedHeader instance thats being used when grouping is enabled
         // and insert it into the scrollElement
         pinnedHeader = me.pinnedHeader = Ext.factory({
-            xtype: 'listitemheader',
-            html: '&amp;nbsp;',
+            xtype: &#39;listitemheader&#39;,
+            html: &#39;&amp;nbsp;&#39;,
             translatable: {
                 translationMethod: this.translationMethod
             },
-            cls: ['x-list-header', 'x-list-header-swap']
+            cls: [&#39;x-list-header&#39;, &#39;x-list-header-swap&#39;]
         });
         pinnedHeader.translate(0, -10000);
         pinnedHeader.$position = -10000;
         scrollViewElement.insertFirst(pinnedHeader.renderElement);
 
         // We want to intercept any translate calls made on the scroller to perform specific list logic
-        me.bind(scrollable.getScroller().getTranslatable(), 'doTranslate', 'onTranslate');
+        me.bind(scrollable.getScroller().getTranslatable(), &#39;doTranslate&#39;, &#39;onTranslate&#39;);
     },
 
-<span id='Ext-dataview-List-method-initialize'>    // We override DataView's initialize method with an empty function
+<span id='Ext-dataview-List-method-initialize'>    // We override DataView&#39;s initialize method with an empty function
 </span>    initialize: function() {
         var me = this,
             container = me.container,
@@ -449,26 +449,26 @@ Ext.define('Ext.dataview.List', {
         }
 
         container.element.on({
-            delegate: '.' + me.getBaseCls() + '-disclosure',
-            tap: 'handleItemDisclosure',
+            delegate: &#39;.&#39; + me.getBaseCls() + &#39;-disclosure&#39;,
+            tap: &#39;handleItemDisclosure&#39;,
             scope: me
         });
 
         container.element.on({
-            resize: 'onContainerResize',
+            resize: &#39;onContainerResize&#39;,
             scope: me
         });
 
         // Android 2.x not a direct child
         container.innerElement.on({
-            touchstart: 'onItemTouchStart',
-            touchend: 'onItemTouchEnd',
-            tap: 'onItemTap',
-            taphold: 'onItemTapHold',
-            singletap: 'onItemSingleTap',
-            doubletap: 'onItemDoubleTap',
-            swipe: 'onItemSwipe',
-            delegate: '.' + Ext.baseCSSPrefix + 'list-item',
+            touchstart: &#39;onItemTouchStart&#39;,
+            touchend: &#39;onItemTouchEnd&#39;,
+            tap: &#39;onItemTap&#39;,
+            taphold: &#39;onItemTapHold&#39;,
+            singletap: &#39;onItemSingleTap&#39;,
+            doubletap: &#39;onItemDoubleTap&#39;,
+            swipe: &#39;onItemSwipe&#39;,
+            delegate: &#39;.&#39; + Ext.baseCSSPrefix + &#39;list-item&#39;,
             scope: me
         });
 
@@ -727,7 +727,7 @@ Ext.define('Ext.dataview.List', {
         if (height != scroller.givenSize) {
             scroller.setSize(height);
             scroller.refreshMaxPosition();
-            scroller.fireEvent('refresh', scroller);
+            scroller.fireEvent(&#39;refresh&#39;, scroller);
 
             if (translatable.isAnimating &amp;&amp; translatable.activeEasingY &amp;&amp; translatable.activeEasingY.setMinMomentumValue) {
                 translatable.activeEasingY.setMinMomentumValue(-scroller.getMaxPosition().y);
@@ -835,7 +835,7 @@ Ext.define('Ext.dataview.List', {
         item.$height = config.minHeight;
 
         if (!infinite) {
-            itemCls = me.getBaseCls() + '-item-relative';
+            itemCls = me.getBaseCls() + &#39;-item-relative&#39;;
             item.addCls(itemCls);
         }
 
@@ -890,7 +890,7 @@ Ext.define('Ext.dataview.List', {
     },
 
 <span id='Ext-dataview-List-method-updateUi'>    updateUi: function(newUi, oldUi) {
-</span>        if (newUi &amp;&amp; newUi != oldUi &amp;&amp; newUi == 'round') {
+</span>        if (newUi &amp;&amp; newUi != oldUi &amp;&amp; newUi == &#39;round&#39;) {
             this.setPinHeaders(false);
         }
 
@@ -976,10 +976,10 @@ Ext.define('Ext.dataview.List', {
             item.isLast = false;
         }
 
-        // If the item is already bound to this record then we shouldn't have to do anything
+        // If the item is already bound to this record then we shouldn&#39;t have to do anything
         if (item.$dataIndex !== index) {
             item.$dataIndex = index;
-            me.fireEvent('itemindexchange', me, record, index, item);
+            me.fireEvent(&#39;itemindexchange&#39;, me, record, index, item);
         }
 
         // This is where we actually update the item with the record
@@ -1078,7 +1078,7 @@ Ext.define('Ext.dataview.List', {
             headerCls = Ext.Array.merge(headerCls, currentHeaderCls);
         }
 
-        classCache = itemCls.join(' ');
+        classCache = itemCls.join(&#39; &#39;);
 
         if (item.classCache !== classCache) {
             item.renderElement.setCls(itemCls);
@@ -1161,7 +1161,7 @@ Ext.define('Ext.dataview.List', {
             if (me.visibleCount != currentVisibleCount) {
                 me.setItemsCount(me.visibleCount + me.getBufferSize());
                 // This is a private event used by some plugins
-                me.fireEvent('updatevisiblecount', this, me.visibleCount, currentVisibleCount);
+                me.fireEvent(&#39;updatevisiblecount&#39;, this, me.visibleCount, currentVisibleCount);
             }
         } else if (me.listItems.length &amp;&amp; me.getUseHeaders() &amp;&amp; me.getGrouped() &amp;&amp; me.getPinHeaders()) {
             // Whenever the container resizes, headers might be in different locations. For this reason
@@ -1206,7 +1206,7 @@ Ext.define('Ext.dataview.List', {
 
 <span id='Ext-dataview-List-method-applyDefaultType'>    applyDefaultType: function(defaultType) {
 </span>        if (!defaultType) {
-            defaultType = this.getUseSimpleItems() ? 'simplelistitem' : 'listitem';
+            defaultType = this.getUseSimpleItems() ? &#39;simplelistitem&#39; : &#39;listitem&#39;;
         }
         return defaultType;
     },
@@ -1261,12 +1261,12 @@ Ext.define('Ext.dataview.List', {
 
         if (oldIndexBar) {
             oldIndexBar.un({
-                index: 'onIndex',
+                index: &#39;onIndex&#39;,
                 scope: me
             });
 
             if (!indexBar) {
-                me.element.removeCls(me.getBaseCls() + '-indexed');
+                me.element.removeCls(me.getBaseCls() + &#39;-indexed&#39;);
             }
 
             if (scrollViewElement) {
@@ -1276,12 +1276,12 @@ Ext.define('Ext.dataview.List', {
 
         if (indexBar) {
             indexBar.on({
-                index: 'onIndex',
+                index: &#39;onIndex&#39;,
                 scope: me
             });
 
             if (!oldIndexBar) {
-                me.element.addCls(me.getBaseCls() + '-indexed');
+                me.element.addCls(me.getBaseCls() + &#39;-indexed&#39;);
             }
 
             if (scrollViewElement) {
@@ -1294,8 +1294,8 @@ Ext.define('Ext.dataview.List', {
 </span>        var me = this,
             baseCls = this.getBaseCls(),
             pinnedHeader = me.pinnedHeader,
-            cls = baseCls + '-grouped',
-            unCls = baseCls + '-ungrouped';
+            cls = baseCls + &#39;-grouped&#39;,
+            unCls = baseCls + &#39;-ungrouped&#39;;
 
         if (pinnedHeader) {
             pinnedHeader.translate(0, -10000);
@@ -1329,7 +1329,7 @@ Ext.define('Ext.dataview.List', {
 </span>        var me = this,
             item;
 
-        oldIndex = (typeof oldIndex === 'undefined') ? newIndex : oldIndex;
+        oldIndex = (typeof oldIndex === &#39;undefined&#39;) ? newIndex : oldIndex;
 
         if (me.getInfinite() || (oldIndex !== newIndex)) {
             me.doRefresh();
@@ -1455,11 +1455,11 @@ Ext.define('Ext.dataview.List', {
             grouped: me.getGrouped(),
             baseCls: baseCls,
             selectedCls: me.getSelectedCls(),
-            headerCls: baseCls + '-header-wrap',
-            footerCls: baseCls + '-footer-wrap',
-            firstCls: baseCls + '-item-first',
-            lastCls: baseCls + '-item-last',
-            stripeCls: baseCls + '-item-odd',
+            headerCls: baseCls + &#39;-header-wrap&#39;,
+            footerCls: baseCls + &#39;-footer-wrap&#39;,
+            firstCls: baseCls + &#39;-item-first&#39;,
+            lastCls: baseCls + &#39;-item-last&#39;,
+            stripeCls: baseCls + &#39;-item-odd&#39;,
             striped: me.getStriped(),
             itemMap: me.getItemMap(),
             defaultItemHeight: me.getItemHeight()
@@ -1595,7 +1595,7 @@ Ext.define('Ext.dataview.List', {
             config = item.config;
 
         if (config.scrollDock) {
-            if (config.scrollDock == 'bottom') {
+            if (config.scrollDock == &#39;bottom&#39;) {
                 me.scrollDockItems.bottom.push(item);
             } else {
                 me.scrollDockItems.top.push(item);
@@ -1603,11 +1603,11 @@ Ext.define('Ext.dataview.List', {
 
             if (me.getInfinite()) {
                 item.on({
-                    resize: 'onScrollDockItemResize',
+                    resize: &#39;onScrollDockItemResize&#39;,
                     scope: this
                 });
 
-                item.addCls(me.getBaseCls() + '-scrolldockitem');
+                item.addCls(me.getBaseCls() + &#39;-scrolldockitem&#39;);
                 item.setTranslatable({
                     translationMethod: this.translationMethod
                 });
@@ -1649,8 +1649,8 @@ Ext.define('Ext.dataview.List', {
 
 <span id='Ext-dataview-List-method-onItemTouchStart'>    onItemTouchStart: function(e) {
 </span>        this.container.innerElement.on({
-            touchmove: 'onItemTouchMove',
-            delegate: '.' + Ext.baseCSSPrefix + 'list-item',
+            touchmove: &#39;onItemTouchMove&#39;,
+            delegate: &#39;.&#39; + Ext.baseCSSPrefix + &#39;list-item&#39;,
             single: true,
             scope: this
         });
@@ -1663,8 +1663,8 @@ Ext.define('Ext.dataview.List', {
 
 <span id='Ext-dataview-List-method-onItemTouchEnd'>    onItemTouchEnd: function(e) {
 </span>        this.container.innerElement.un({
-            touchmove: 'onItemTouchMove',
-            delegate: '.' + Ext.baseCSSPrefix + 'list-item',
+            touchmove: &#39;onItemTouchMove&#39;,
+            delegate: &#39;.&#39; + Ext.baseCSSPrefix + &#39;list-item&#39;,
             scope: this
         });
         this.callParent(this.parseEvent(e));
@@ -1692,7 +1692,7 @@ Ext.define('Ext.dataview.List', {
 
 <span id='Ext-dataview-List-method-parseEvent'>    parseEvent: function(e) {
 </span>        var me = this,
-            target = Ext.fly(e.getTarget()).findParent('.' + Ext.baseCSSPrefix + 'list-item', 8),
+            target = Ext.fly(e.getTarget()).findParent(&#39;.&#39; + Ext.baseCSSPrefix + &#39;list-item&#39;, 8),
             item = Ext.getCmp(target.id);
 
         return [me, item, item.$dataIndex, e];
@@ -1728,11 +1728,11 @@ Ext.define('Ext.dataview.List', {
 
 <span id='Ext-dataview-List-method-handleItemDisclosure'>    handleItemDisclosure: function(e) {
 </span>        var me = this,
-            item = Ext.getCmp(Ext.get(e.getTarget()).up('.x-list-item').id),
+            item = Ext.getCmp(Ext.get(e.getTarget()).up(&#39;.x-list-item&#39;).id),
             index = item.$dataIndex,
             record = me.getStore().getAt(index);
 
-        me.fireAction('disclose', [me, record, item, index, e], 'doDisclose');
+        me.fireAction(&#39;disclose&#39;, [me, record, item, index, e], &#39;doDisclose&#39;);
     },
 
 <span id='Ext-dataview-List-method-doDisclose'>    doDisclose: function(me, record, item, index, e) {
@@ -1745,7 +1745,7 @@ Ext.define('Ext.dataview.List', {
 
 <span id='Ext-dataview-List-method-onItemTrigger'>    // apply to the selection model to maintain visual UI cues
 </span>    onItemTrigger: function(me, index, target, record, e) {
-        if (!(this.getPreventSelectionOnDisclose() &amp;&amp; Ext.fly(e.target).hasCls(this.getBaseCls() + '-disclosure'))) {
+        if (!(this.getPreventSelectionOnDisclose() &amp;&amp; Ext.fly(e.target).hasCls(this.getBaseCls() + &#39;-disclosure&#39;))) {
             this.callParent(arguments);
         }
     },

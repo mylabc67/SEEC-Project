@@ -18,11 +18,11 @@
   <pre class="prettyprint lang-js"><span id='Ext-util-Wrapper'>/**
 </span> *
  */
-Ext.define('Ext.util.Wrapper', {
-    mixins: ['Ext.mixin.Bindable'],
+Ext.define(&#39;Ext.util.Wrapper&#39;, {
+    mixins: [&#39;Ext.mixin.Bindable&#39;],
 
 <span id='Ext-util-Wrapper-method-constructor'>    constructor: function(elementConfig, wrappedElement) {
-</span>        var element = this.link('element', Ext.Element.create(elementConfig));
+</span>        var element = this.link(&#39;element&#39;, Ext.Element.create(elementConfig));
 
         if (wrappedElement) {
             element.insertBefore(wrappedElement);
@@ -35,20 +35,20 @@ Ext.define('Ext.util.Wrapper', {
             boundMethodName;
 
         this.boundSizeName = sizeName;
-        this.boundMethodName = boundMethodName = sizeName === 'width' ? 'setWidth' : 'setHeight';
+        this.boundMethodName = boundMethodName = sizeName === &#39;width&#39; ? &#39;setWidth&#39; : &#39;setHeight&#39;;
 
-        this.bind(wrappedElement, boundMethodName, 'onBoundSizeChange');
+        this.bind(wrappedElement, boundMethodName, &#39;onBoundSizeChange&#39;);
         wrappedElement[boundMethodName].call(wrappedElement, wrappedElement.getStyleValue(sizeName));
     },
 
 <span id='Ext-util-Wrapper-method-onBoundSizeChange'>    onBoundSizeChange: function(size, args) {
 </span>        var element = this.element;
 
-        if (typeof size === 'string' &amp;&amp; size.substr(-1) === '%') {
-            args[0] = '100%';
+        if (typeof size === &#39;string&#39; &amp;&amp; size.substr(-1) === &#39;%&#39;) {
+            args[0] = &#39;100%&#39;;
         }
         else {
-            size = '';
+            size = &#39;&#39;;
         }
 
         element[this.boundMethodName].call(element, size);
@@ -78,7 +78,7 @@ Ext.define('Ext.util.Wrapper', {
             size;
 
         if (boundMethodName) {
-            this.unbind(wrappedElement, boundMethodName, 'onBoundSizeChange');
+            this.unbind(wrappedElement, boundMethodName, &#39;onBoundSizeChange&#39;);
             size = element.getStyle(this.boundSizeName);
 
             if (size) {

@@ -20,25 +20,25 @@
  *
  * The Email field creates an HTML5 email input and is usually created inside a form. Because it creates an HTML email
  * input field, most browsers will show a specialized virtual keyboard for email address input. Aside from that, the
- * email field is just a normal text field. Here's an example of how to use it in a form:
+ * email field is just a normal text field. Here&#39;s an example of how to use it in a form:
  *
  *     @example
- *     Ext.create('Ext.form.Panel', {
+ *     Ext.create(&#39;Ext.form.Panel&#39;, {
  *         fullscreen: true,
  *         items: [
  *             {
- *                 xtype: 'fieldset',
- *                 title: 'Register',
+ *                 xtype: &#39;fieldset&#39;,
+ *                 title: &#39;Register&#39;,
  *                 items: [
  *                     {
- *                         xtype: 'emailfield',
- *                         label: 'Email',
- *                         name: 'email'
+ *                         xtype: &#39;emailfield&#39;,
+ *                         label: &#39;Email&#39;,
+ *                         name: &#39;email&#39;
  *                     },
  *                     {
- *                         xtype: 'passwordfield',
- *                         label: 'Password',
- *                         name: 'password'
+ *                         xtype: &#39;passwordfield&#39;,
+ *                         label: &#39;Password&#39;,
+ *                         name: &#39;password&#39;
  *                     }
  *                 ]
  *             }
@@ -47,9 +47,9 @@
  *
  * Or on its own, outside of a form:
  *
- *     Ext.create('Ext.field.Email', {
- *         label: 'Email address',
- *         value: 'prefilled@email.com'
+ *     Ext.create(&#39;Ext.field.Email&#39;, {
+ *         label: &#39;Email address&#39;,
+ *         value: &#39;prefilled@email.com&#39;
  *     });
  *
  * Because email field inherits from {@link Ext.field.Text textfield} it gains all of the functionality that text fields
@@ -57,10 +57,10 @@
  * user interacts with the component. Check out the {@link Ext.field.Text} docs to see the additional functionality
  * available.
  */
-Ext.define('Ext.field.Email', {
-    extend: 'Ext.field.Text',
-    alternateClassName: 'Ext.form.Email',
-    xtype: 'emailfield',
+Ext.define(&#39;Ext.field.Email&#39;, {
+    extend: &#39;Ext.field.Text&#39;,
+    alternateClassName: &#39;Ext.form.Email&#39;,
+    xtype: &#39;emailfield&#39;,
 
     config: {
 <span id='Ext-field-Email-cfg-component'>        /**
@@ -68,7 +68,7 @@ Ext.define('Ext.field.Email', {
          * @inheritdoc
          */
         component: {
-	        type: 'email'
+	        type: &#39;email&#39;
 	    },
 
 <span id='Ext-field-Email-cfg-autoCapitalize'>        /**

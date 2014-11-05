@@ -31,15 +31,15 @@
  * The {@link Ext.field.Slider Slider Field} simply proxies all corresponding getters and setters
  * to the actual {@link Ext.slider.Slider Slider} instance. Writing out all the setters and getters to do that is a tedious task
  * and a waste of code space. Instead, when you sub-class Ext.Decorator, all you need to do is to specify those config items
- * that you want to proxy to the Component using a special 'proxyConfig' class property. Here's how it may look like
+ * that you want to proxy to the Component using a special &#39;proxyConfig&#39; class property. Here&#39;s how it may look like
  * in a Slider Field class:
  *
- *     Ext.define('My.field.Slider', {
- *         extend: 'Ext.Decorator',
+ *     Ext.define(&#39;My.field.Slider&#39;, {
+ *         extend: &#39;Ext.Decorator&#39;,
  *
  *         config: {
  *             component: {
- *                 xtype: 'slider'
+ *                 xtype: &#39;slider&#39;
  *             }
  *         },
  *
@@ -55,8 +55,8 @@
  * Once `My.field.Slider` class is created, it will have all setters and getters methods for all items listed in `proxyConfig`
  * automatically generated. These methods all proxy to the same method names that exist within the Component instance.
  */
-Ext.define('Ext.Decorator', {
-    extend: 'Ext.Component',
+Ext.define(&#39;Ext.Decorator&#39;, {
+    extend: &#39;Ext.Component&#39;,
 
 <span id='Ext-Decorator-property-isDecorator'>    isDecorator: true,
 </span>
@@ -85,7 +85,7 @@ Ext.define('Ext.Decorator', {
     },
 
 <span id='Ext-Decorator-method-onClassExtended'>    onClassExtended: function(Class, members) {
-</span>        if (!members.hasOwnProperty('proxyConfig')) {
+</span>        if (!members.hasOwnProperty(&#39;proxyConfig&#39;)) {
             return;
         }
 
@@ -118,8 +118,8 @@ Ext.define('Ext.Decorator', {
 </span>    updateComponent: function(newComponent, oldComponent) {
         if (oldComponent) {
             if (this.isRendered() &amp;&amp; oldComponent.setRendered(false)) {
-                oldComponent.fireAction('renderedchange', [this, oldComponent, false],
-                    'doUnsetComponent', this, { args: [oldComponent] });
+                oldComponent.fireAction(&#39;renderedchange&#39;, [this, oldComponent, false],
+                    &#39;doUnsetComponent&#39;, this, { args: [oldComponent] });
             }
             else {
                 this.doUnsetComponent(oldComponent);
@@ -128,8 +128,8 @@ Ext.define('Ext.Decorator', {
 
         if (newComponent) {
             if (this.isRendered() &amp;&amp; newComponent.setRendered(true)) {
-                newComponent.fireAction('renderedchange', [this, newComponent, true],
-                    'doSetComponent', this, { args: [newComponent] });
+                newComponent.fireAction(&#39;renderedchange&#39;, [this, newComponent, true],
+                    &#39;doSetComponent&#39;, this, { args: [newComponent] });
             }
             else {
                 this.doSetComponent(newComponent);

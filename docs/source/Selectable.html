@@ -20,13 +20,13 @@
  * all subclasses.
  * @private
  */
-Ext.define('Ext.mixin.Selectable', {
-    extend: 'Ext.mixin.Mixin',
+Ext.define(&#39;Ext.mixin.Selectable&#39;, {
+    extend: &#39;Ext.mixin.Mixin&#39;,
 
 <span id='Ext-mixin-Selectable-property-mixinConfig'>    mixinConfig: {
-</span>        id: 'selectable',
+</span>        id: &#39;selectable&#39;,
         hooks: {
-            updateStore: 'updateStore'
+            updateStore: &#39;updateStore&#39;
         }
     },
 
@@ -56,15 +56,15 @@ Ext.define('Ext.mixin.Selectable', {
 <span id='Ext-mixin-Selectable-cfg-mode'>        /**
 </span>         * @cfg {String} mode
          * Modes of selection.
-         * Valid values are `'SINGLE'`, `'SIMPLE'`, and `'MULTI'`.
+         * Valid values are `&#39;SINGLE&#39;`, `&#39;SIMPLE&#39;`, and `&#39;MULTI&#39;`.
          * @accessor
          */
-        mode: 'SINGLE',
+        mode: &#39;SINGLE&#39;,
 
 <span id='Ext-mixin-Selectable-cfg-allowDeselect'>        /**
 </span>         * @cfg {Boolean} allowDeselect
-         * Allow users to deselect a record in a DataView, List or Grid. Only applicable when the Selectable's `mode` is
-         * `'SINGLE'`.
+         * Allow users to deselect a record in a DataView, List or Grid. Only applicable when the Selectable&#39;s `mode` is
+         * `&#39;SINGLE&#39;`.
          * @accessor
          */
         allowDeselect: false,
@@ -98,11 +98,11 @@ Ext.define('Ext.mixin.Selectable', {
     },
 
 <span id='Ext-mixin-Selectable-property-selectableEventHooks'>    selectableEventHooks: {
-</span>        addrecords: 'onSelectionStoreAdd',
-        removerecords: 'onSelectionStoreRemove',
-        updaterecord: 'onSelectionStoreUpdate',
-        load: 'refreshSelection',
-        refresh: 'refreshSelection'
+</span>        addrecords: &#39;onSelectionStoreAdd&#39;,
+        removerecords: &#39;onSelectionStoreRemove&#39;,
+        updaterecord: &#39;onSelectionStoreUpdate&#39;,
+        load: &#39;refreshSelection&#39;,
+        refresh: &#39;refreshSelection&#39;
     },
 
 <span id='Ext-mixin-Selectable-method-constructor'>    constructor: function() {
@@ -114,10 +114,10 @@ Ext.define('Ext.mixin.Selectable', {
 </span>     * @private
      */
     applyMode: function(mode) {
-        mode = mode ? mode.toUpperCase() : 'SINGLE';
+        mode = mode ? mode.toUpperCase() : &#39;SINGLE&#39;;
         // set to mode specified unless it doesnt exist, in that case
         // use single.
-        return this.modes[mode] ? mode : 'SINGLE';
+        return this.modes[mode] ? mode : &#39;SINGLE&#39;;
     },
 
 <span id='Ext-mixin-Selectable-method-updateStore'>    /**
@@ -134,14 +134,14 @@ Ext.define('Ext.mixin.Selectable', {
             else {
                 oldStore.un(bindEvents);
                 if(newStore) {
-                    newStore.un('clear', 'onSelectionStoreClear', this);
+                    newStore.un(&#39;clear&#39;, &#39;onSelectionStoreClear&#39;, this);
                 }
             }
         }
 
         if (newStore) {
             newStore.on(bindEvents);
-            newStore.onBefore('clear', 'onSelectionStoreClear', this);
+            newStore.onBefore(&#39;clear&#39;, &#39;onSelectionStoreClear&#39;, this);
             me.refreshSelection();
         }
     },
@@ -177,8 +177,8 @@ Ext.define('Ext.mixin.Selectable', {
         var me = this,
             isSelected = me.isSelected(record);
         switch (me.getMode()) {
-            case 'MULTI':
-            case 'SIMPLE':
+            case &#39;MULTI&#39;:
+            case &#39;SIMPLE&#39;:
                 if (isSelected) {
                     me.deselect(record);
                 }
@@ -186,7 +186,7 @@ Ext.define('Ext.mixin.Selectable', {
                     me.select(record, true);
                 }
                 break;
-            case 'SINGLE':
+            case &#39;SINGLE&#39;:
                 if (me.getAllowDeselect() &amp;&amp; isSelected) {
                     // if allowDeselect is on and this record isSelected, deselect it
                     me.deselect(record);
@@ -354,7 +354,7 @@ Ext.define('Ext.mixin.Selectable', {
         for (; i &lt; ln; i++) {
             record = records[i];
 
-            if (typeof record === 'number') {
+            if (typeof record === &#39;number&#39;) {
                 record = store.getAt(record);
             }
 
@@ -387,9 +387,9 @@ Ext.define('Ext.mixin.Selectable', {
 <span id='Ext-mixin-Selectable-method-fireSelectionChange'>    fireSelectionChange: function(records) {
 </span>        var me = this;
         //&lt;deprecated product=touch since=2.0&gt;
-        me.fireAction('beforeselectionchange', [me], function() {
+        me.fireAction(&#39;beforeselectionchange&#39;, [me], function() {
         //&lt;/deprecated&gt;
-            me.fireAction('selectionchange', [me, records], 'getSelection');
+            me.fireAction(&#39;selectionchange&#39;, [me, records], &#39;getSelection&#39;);
         //&lt;deprecated product=touch since=2.0&gt;
         });
         //&lt;/deprecated&gt;

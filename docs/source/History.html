@@ -19,19 +19,19 @@
 </span> * @author Ed Spencer
  * @private
  *
- * Manages the stack of {@link Ext.app.Action} instances that have been decoded, pushes new urls into the browser's
+ * Manages the stack of {@link Ext.app.Action} instances that have been decoded, pushes new urls into the browser&#39;s
  * location object and listens for changes in url, firing the {@link #change} event when a change is detected.
  *
  * This is tied to an {@link Ext.app.Application Application} instance. The Application performs all of the
  * interactions with the History object, no additional integration should be required.
  */
-Ext.define('Ext.app.History', {
-    mixins: ['Ext.mixin.Observable'],
+Ext.define(&#39;Ext.app.History&#39;, {
+    mixins: [&#39;Ext.mixin.Observable&#39;],
 
 <span id='Ext-app-History-event-change'>    /**
 </span>     * @event change
      * Fires when a change in browser url is detected
-     * @param {String} url The new url, after the hash (e.g. http://myapp.com/#someUrl returns 'someUrl')
+     * @param {String} url The new url, after the hash (e.g. http://myapp.com/#someUrl returns &#39;someUrl&#39;)
      */
 
     config: {
@@ -41,19 +41,19 @@ Ext.define('Ext.app.History', {
         actions: [],
 
 <span id='Ext-app-History-cfg-updateUrl'>        /**
-</span>         * @cfg {Boolean} updateUrl `true` to automatically update the browser's url when {@link #add} is called.
+</span>         * @cfg {Boolean} updateUrl `true` to automatically update the browser&#39;s url when {@link #add} is called.
          */
         updateUrl: true,
 
 <span id='Ext-app-History-cfg-token'>        /**
-</span>         * @cfg {String} token The current token as read from the browser's location object.
+</span>         * @cfg {String} token The current token as read from the browser&#39;s location object.
          */
-        token: ''
+        token: &#39;&#39;
     },
 
 <span id='Ext-app-History-method-constructor'>    constructor: function(config) {
 </span>        if (Ext.feature.has.History) {
-            window.addEventListener('hashchange', Ext.bind(this.detectStateChange, this));
+            window.addEventListener(&#39;hashchange&#39;, Ext.bind(this.detectStateChange, this));
         }
         else {
             setInterval(Ext.bind(this.detectStateChange, this), 100);
@@ -66,7 +66,7 @@ Ext.define('Ext.app.History', {
     },
 
 <span id='Ext-app-History-method-add'>    /**
-</span>     * Adds an {@link Ext.app.Action Action} to the stack, optionally updating the browser's url and firing the
+</span>     * Adds an {@link Ext.app.Action Action} to the stack, optionally updating the browser&#39;s url and firing the
      * {@link #change} event.
      * @param {Ext.app.Action} action The Action to add to the stack.
      * @param {Boolean} silent Cancels the firing of the {@link #change} event if `true`.
@@ -85,7 +85,7 @@ Ext.define('Ext.app.History', {
         }
 
         if (silent !== true) {
-            this.fireEvent('change', url);
+            this.fireEvent(&#39;change&#39;, url);
         }
 
         this.setToken(url);
@@ -104,7 +104,7 @@ Ext.define('Ext.app.History', {
             previousAction.getController().getApplication().redirectTo(previousAction.getUrl());
         }
         else {
-            actions[actions.length - 1].getController().getApplication().redirectTo('');
+            actions[actions.length - 1].getController().getApplication().redirectTo(&#39;&#39;);
         }
     },
 
@@ -112,7 +112,7 @@ Ext.define('Ext.app.History', {
 </span>     * @private
      */
     applyToken: function(token) {
-        return token[0] == '#' ? token.substr(1) : token;
+        return token[0] == &#39;#&#39; ? token.substr(1) : token;
     },
 
 <span id='Ext-app-History-method-detectStateChange'>    /**
@@ -132,7 +132,7 @@ Ext.define('Ext.app.History', {
 </span>     * @private
      */
     onStateChange: function() {
-        this.fireEvent('change', window.location.hash.substr(1));
+        this.fireEvent(&#39;change&#39;, window.location.hash.substr(1));
     }
 });
 </pre>

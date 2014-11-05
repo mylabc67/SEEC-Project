@@ -9,11 +9,13 @@ Ext.define('SEEC.view.Main', {
         'Ext.Container',
         'SEEC.view.login.Password',
         'SEEC.view.login.LockScreen',
+        'SEEC.view.dashboard.DashBoard',
         'SEEC.util.Utils'
     ],
     config: {
         layout: {
-            type: 'card'
+            type: 'card',
+            animation: 'pop'
         },
         items: [
             {
@@ -31,8 +33,7 @@ Ext.define('SEEC.view.Main', {
                 ]
             },
             {
-                xtype: 'container',
-                html: '2nd container'
+                xtype: 'dashboard'
             }
         ]
     }

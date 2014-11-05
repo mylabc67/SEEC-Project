@@ -18,8 +18,8 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-device-Abstract'>/**
 </span> * @private
  */
-Ext.define('Ext.device.device.Abstract', {
-    mixins: ['Ext.mixin.Observable'],
+Ext.define(&#39;Ext.device.device.Abstract&#39;, {
+    mixins: [&#39;Ext.mixin.Observable&#39;],
 
 <span id='Ext-device-device-Abstract-event-schemeupdate'>    /**
 </span>     * @event schemeupdate
@@ -32,20 +32,20 @@ Ext.define('Ext.device.device.Abstract', {
      * ## Example
      *
      *     Ext.application({
-     *         name: 'Sencha',
-     *         requires: ['Ext.device.Device'],
+     *         name: &#39;Sencha&#39;,
+     *         requires: [&#39;Ext.device.Device&#39;],
      *         launch: function() {
      *             if (Ext.device.Device.scheme) {
      *                 // the application was opened via another application. Do something:
-     *                 console.log('Applicaton opened via another application: ' + Ext.device.Device.scheme.url);
+     *                 console.log(&#39;Applicaton opened via another application: &#39; + Ext.device.Device.scheme.url);
      *             }
      *
      *             // Listen for future changes
-     *             Ext.device.Device.on('schemeupdate', function(device, scheme) {
+     *             Ext.device.Device.on(&#39;schemeupdate&#39;, function(device, scheme) {
      *                 // the application was launched, closed, and then launched another from another application
-     *                 // this means onReady wont be called again ('cause the application is already running in the 
+     *                 // this means onReady wont be called again (&#39;cause the application is already running in the 
      *                 // background) - but this event will be fired
-     *                 console.log('Applicated reopened via another application: ' + scheme.url);
+     *                 console.log(&#39;Applicated reopened via another application: &#39; + scheme.url);
      *             }, this);
      *         }
      *     });
@@ -64,24 +64,24 @@ Ext.define('Ext.device.device.Abstract', {
      * Returns the name of the current device. If the current device does not have a name (for example, in a browser), it will
      * default to `not available`.
      *
-     *     alert('Device name: ' + Ext.device.Device.name);
+     *     alert(&#39;Device name: &#39; + Ext.device.Device.name);
      */
-    name: 'not available',
+    name: &#39;not available&#39;,
 
 <span id='Ext-device-device-Abstract-property-uuid'>    /**
 </span>     * @property {String} uuid
      * Returns a unique identifier for the current device. If the current device does not have a unique identifier (for example,
      * in a browser), it will default to `anonymous`.
      *
-     *     alert('Device UUID: ' + Ext.device.Device.uuid);
+     *     alert(&#39;Device UUID: &#39; + Ext.device.Device.uuid);
      */
-    uuid: 'anonymous',
+    uuid: &#39;anonymous&#39;,
 
 <span id='Ext-device-device-Abstract-property-platform'>    /**
 </span>     * @property {String} platform
      * The current platform the device is running on.
      *
-     *     alert('Device platform: ' + Ext.device.Device.platform);
+     *     alert(&#39;Device platform: &#39; + Ext.device.Device.platform);
      */
     platform: Ext.os.name,
 
@@ -95,16 +95,16 @@ Ext.define('Ext.device.device.Abstract', {
 </span>     * Opens a specified URL. The URL can contain a custom URL Scheme for another app or service:
      *
      *     // Safari
-     *     Ext.device.Device.openURL('http://sencha.com');
+     *     Ext.device.Device.openURL(&#39;http://sencha.com&#39;);
      *
      *     // Telephone
-     *     Ext.device.Device.openURL('tel:6501231234');
+     *     Ext.device.Device.openURL(&#39;tel:6501231234&#39;);
      *
      *     // SMS with a default number
-     *     Ext.device.Device.openURL('sms:+12345678901');
+     *     Ext.device.Device.openURL(&#39;sms:+12345678901&#39;);
      *
      *     // Email client
-     *     Ext.device.Device.openURL('mailto:rob@sencha.com');
+     *     Ext.device.Device.openURL(&#39;mailto:rob@sencha.com&#39;);
      *
      * You can find a full list of available URL schemes here: [http://wiki.akosma.com/IPhone_URL_Schemes](http://wiki.akosma.com/IPhone_URL_Schemes).
      *

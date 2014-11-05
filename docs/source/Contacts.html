@@ -28,15 +28,15 @@
  * # Example
  *
  *     Ext.application({
- *         name: 'Sencha',
- *         requires: 'Ext.device.Contacts',
+ *         name: &#39;Sencha&#39;,
+ *         requires: &#39;Ext.device.Contacts&#39;,
  *
  *         launch: function() {
  *             Ext.Viewport.add({
- *                 xtype: 'list',
- *                 itemTpl: '{First} {Last}',
+ *                 xtype: &#39;list&#39;,
+ *                 itemTpl: &#39;{First} {Last}&#39;,
  *                 store: {
- *                     fields: ['First', 'Last'],
+ *                     fields: [&#39;First&#39;, &#39;Last&#39;],
  *                     data: Ext.device.Contacts.getContacts()
  *                 }
  *             });
@@ -49,13 +49,13 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.Contacts', {
+Ext.define(&#39;Ext.device.Contacts&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.Communicator',
-        'Ext.device.contacts.Sencha',
-        'Ext.device.contacts.Cordova'
+        &#39;Ext.device.Communicator&#39;,
+        &#39;Ext.device.contacts.Sencha&#39;,
+        &#39;Ext.device.contacts.Cordova&#39;
     ],
 
 <span id='Ext-device-Contacts-method-constructor'>    constructor: function() {
@@ -63,12 +63,12 @@ Ext.define('Ext.device.Contacts', {
 
         if (browserEnv.WebView) {
             if (browserEnv.Cordova) {
-                return Ext.create('Ext.device.contacts.Cordova');
+                return Ext.create(&#39;Ext.device.contacts.Cordova&#39;);
             }else if (browserEnv.Sencha) {
-                return Ext.create('Ext.device.contacts.Sencha');
+                return Ext.create(&#39;Ext.device.contacts.Sencha&#39;);
             }
         }
-        return Ext.create('Ext.device.contacts.Abstract');
+        return Ext.create(&#39;Ext.device.contacts.Abstract&#39;);
     }
 });
 </pre>

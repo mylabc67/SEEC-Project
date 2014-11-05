@@ -38,24 +38,24 @@
  *
  * # Example Usage
  *
- *     Ext.define('User', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;User&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
- *             fields: ['firstName', 'lastName'],
+ *             fields: [&#39;firstName&#39;, &#39;lastName&#39;],
  *             proxy: {
- *                 type: 'direct',
+ *                 type: &#39;direct&#39;,
  *                 directFn: MyApp.getUsers,
- *                 paramOrder: 'id' // Tells the proxy to pass the id as the first parameter to the remoting method.
+ *                 paramOrder: &#39;id&#39; // Tells the proxy to pass the id as the first parameter to the remoting method.
  *             }
  *         }
  *     });
  *     User.load(1);
  */
-Ext.define('Ext.data.proxy.Direct', {
-    extend: 'Ext.data.proxy.Server',
-    alternateClassName: 'Ext.data.DirectProxy',
-    alias: 'proxy.direct',
-    requires: ['Ext.direct.Manager'],
+Ext.define(&#39;Ext.data.proxy.Direct&#39;, {
+    extend: &#39;Ext.data.proxy.Server&#39;,
+    alternateClassName: &#39;Ext.data.DirectProxy&#39;,
+    alias: &#39;proxy.direct&#39;,
+    requires: [&#39;Ext.direct.Manager&#39;],
 
     config: {
 <span id='Ext-data-proxy-Direct-cfg-url'>        /**
@@ -70,10 +70,10 @@ Ext.define('Ext.data.proxy.Direct', {
          * of params delimited by either whitespace, comma, or pipe. For example, any of the following would be
          * acceptable:
          *
-         *     paramOrder: ['param1','param2','param3']
-         *     paramOrder: 'param1 param2 param3'
-         *     paramOrder: 'param1,param2,param3'
-         *     paramOrder: 'param1|param2|param'
+         *     paramOrder: [&#39;param1&#39;,&#39;param2&#39;,&#39;param3&#39;]
+         *     paramOrder: &#39;param1 param2 param3&#39;
+         *     paramOrder: &#39;param1,param2,param3&#39;
+         *     paramOrder: &#39;param1|param2|param&#39;
          */
         paramOrder: undefined,
 
@@ -87,8 +87,8 @@ Ext.define('Ext.data.proxy.Direct', {
 <span id='Ext-data-proxy-Direct-cfg-directFn'>        /**
 </span>         * @cfg {Function/String} directFn
          * Function to call when executing a request. directFn is a simple alternative to defining the api configuration-parameter
-         * for Store's which will not implement a full CRUD api. The directFn may also be a string reference to the fully qualified
-         * name of the function, for example: 'MyApp.company.GetProfile'. This can be useful when using dynamic loading. The string
+         * for Store&#39;s which will not implement a full CRUD api. The directFn may also be a string reference to the fully qualified
+         * name of the function, for example: &#39;MyApp.company.GetProfile&#39;. This can be useful when using dynamic loading. The string
          * will be looked up when the proxy is created.
          */
         directFn : undefined,
@@ -129,7 +129,7 @@ Ext.define('Ext.data.proxy.Direct', {
             me.setDirectFn(method = Manager.parseMethod(fn));
 
             if (!Ext.isFunction(method)) {
-                Ext.Error.raise('Cannot resolve directFn ' + fn);
+                Ext.Error.raise(&#39;Cannot resolve directFn &#39; + fn);
             }
         }
         else if (api) {
@@ -139,7 +139,7 @@ Ext.define('Ext.data.proxy.Direct', {
                     api[fn] = Manager.parseMethod(method);
 
                     if (!Ext.isFunction(api[fn])) {
-                        Ext.Error.raise('Cannot resolve Direct api ' + fn + ' method ' + method);
+                        Ext.Error.raise(&#39;Cannot resolve Direct api &#39; + fn + &#39; method &#39; + method);
                     }
                 }
             }
@@ -165,13 +165,13 @@ Ext.define('Ext.data.proxy.Direct', {
 
         //&lt;debug&gt;
         if (!fn) {
-            Ext.Logger.error('No direct function specified for this proxy');
+            Ext.Logger.error(&#39;No direct function specified for this proxy&#39;);
         }
         //&lt;/debug&gt;
 
         request = writer.write(request);
 
-        if (operation.getAction() == 'read') {
+        if (operation.getAction() == &#39;read&#39;) {
             // We need to pass params
             method = fn.directCfg.method;
             args = method.getArgs(params, me.getParamOrder(), me.getParamsAsHash());
@@ -190,7 +190,7 @@ Ext.define('Ext.data.proxy.Direct', {
     },
 
 <span id='Ext-data-proxy-Direct-method-applyEncoding'>    /*
-</span>     * Inherit docs. We don't apply any encoding here because
+</span>     * Inherit docs. We don&#39;t apply any encoding here because
      * all of the direct requests go out as jsonData
      */
     applyEncoding: function(value) {
@@ -222,7 +222,7 @@ Ext.define('Ext.data.proxy.Direct', {
 
 <span id='Ext-data-proxy-Direct-method-buildUrl'>    // @inheritdoc
 </span>    buildUrl: function() {
-        return '';
+        return &#39;&#39;;
     }
 });
 </pre>

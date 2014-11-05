@@ -1,4 +1,7 @@
 //Created by Yilei Mou on 10/29/14
+/**
+ * A customized component. Simulating the IOS lock screen with a fantastic slider.
+ */
 Ext.define('SEEC.view.login.LockScreen', {
     extend: 'Ext.Container',
     xtype: 'lockscreen',
@@ -11,6 +14,9 @@ Ext.define('SEEC.view.login.LockScreen', {
         me.setInitialTpl();
     },
 
+    /**
+     * Set the initial customized html template.
+     */
     setInitialTpl: function () {
         var me = this;
         var timeTpl = me.getTimeTpl();
@@ -27,6 +33,10 @@ Ext.define('SEEC.view.login.LockScreen', {
         });
     },
 
+    /**
+     * Create the clock container template
+     * @returns {string}
+     */
     getTimeTpl: function () {
         return [
             '<tpl>',
@@ -38,6 +48,10 @@ Ext.define('SEEC.view.login.LockScreen', {
         ].join('');
     },
 
+    /**
+     * Create the slider template
+     * @returns {string}
+     */
     getBottomSlideHtml: function () {
         var html = [
             '<div class="slide-bottom">', '' +
@@ -47,6 +61,9 @@ Ext.define('SEEC.view.login.LockScreen', {
         return html;
     },
 
+    /**
+     * Reset the clock time
+     */
     resetTime: function () {
         var me = this;
         if (me.tpl) {

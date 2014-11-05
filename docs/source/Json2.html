@@ -19,34 +19,34 @@
 </span> * The JSON Reader is used by a Proxy to read a server response that is sent back in JSON format. This usually happens
  * as a result of loading a Store - for example we might create something like this:
  *
- *     Ext.define('User', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;User&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
- *             fields: ['id', 'name', 'email']
+ *             fields: [&#39;id&#39;, &#39;name&#39;, &#39;email&#39;]
  *         }
  *     });
  *
- *     var store = Ext.create('Ext.data.Store', {
- *         model: 'User',
+ *     var store = Ext.create(&#39;Ext.data.Store&#39;, {
+ *         model: &#39;User&#39;,
  *         proxy: {
- *             type: 'ajax',
- *             url : 'users.json',
+ *             type: &#39;ajax&#39;,
+ *             url : &#39;users.json&#39;,
  *             reader: {
- *                 type: 'json'
+ *                 type: &#39;json&#39;
  *             }
  *         }
  *     });
  *
- * The example above creates a 'User' model. Models are explained in the {@link Ext.data.Model Model} docs if you're not
+ * The example above creates a &#39;User&#39; model. Models are explained in the {@link Ext.data.Model Model} docs if you&#39;re not
  * already familiar with them.
  *
- * We created the simplest type of JSON Reader possible by simply telling our {@link Ext.data.Store Store}'s {@link
+ * We created the simplest type of JSON Reader possible by simply telling our {@link Ext.data.Store Store}&#39;s {@link
  * Ext.data.proxy.Proxy Proxy} that we want a JSON Reader. The Store automatically passes the configured model to the
  * Store, so it is as if we passed this instead:
  *
  *     reader: {
- *         type : 'json',
- *         model: 'User'
+ *         type : &#39;json&#39;,
+ *         model: &#39;User&#39;
  *     }
  *
  * The reader we set up is ready to read data from our server - at the moment it will accept a response like this:
@@ -66,7 +66,7 @@
  *
  * ## Reading other JSON formats
  *
- * If you already have your JSON format defined and it doesn't look quite like what we have above, you can usually pass
+ * If you already have your JSON format defined and it doesn&#39;t look quite like what we have above, you can usually pass
  * JsonReader a couple of configuration options to make it parse your format. For example, we can use the
  * {@link #rootProperty} configuration to parse data that comes back like this:
  *
@@ -85,11 +85,11 @@
  *         ]
  *     }
  *
- * To parse this we just pass in a {@link #rootProperty} configuration that matches the 'users' above:
+ * To parse this we just pass in a {@link #rootProperty} configuration that matches the &#39;users&#39; above:
  *
  *     reader: {
- *         type: 'json',
- *         rootProperty: 'users'
+ *         type: &#39;json&#39;,
+ *         rootProperty: &#39;users&#39;
  *     }
  *
  * Sometimes the JSON structure is even more complicated. Document databases like CouchDB often provide metadata around
@@ -112,13 +112,13 @@
  *     }
  *
  * In the case above the record data is nested an additional level inside the &quot;users&quot; array as each &quot;user&quot; item has
- * additional metadata surrounding it ('id' and 'value' in this case). To parse data out of each &quot;user&quot; item in the JSON
+ * additional metadata surrounding it (&#39;id&#39; and &#39;value&#39; in this case). To parse data out of each &quot;user&quot; item in the JSON
  * above we need to specify the {@link #record} configuration like this:
  *
  *     reader: {
- *         type: 'json',
- *         record: 'user',
- *         rootProperty: 'users'
+ *         type: &#39;json&#39;,
+ *         record: &#39;user&#39;,
+ *         rootProperty: &#39;users&#39;
  *     }
  *
  * ## Response MetaData
@@ -133,19 +133,19 @@
  * - {@link #totalProperty}: property name for the total number of records in the data
  * - {@link #successProperty}: property name for the success status of the response
  * - {@link #messageProperty}: property name for an optional response message
- * - {@link Ext.data.Model#cfg-fields fields}: Config used to reconfigure the Model's fields before converting the
+ * - {@link Ext.data.Model#cfg-fields fields}: Config used to reconfigure the Model&#39;s fields before converting the
  *   response data into records
  *
  * An initial Reader configuration containing all of these properties might look like this (&quot;fields&quot; would be
  * included in the Model definition, not shown):
  *
  *     reader: {
- *         type: 'json',
- *         idProperty: 'id',
- *         rootProperty: 'root',
- *         totalProperty: 'total',
- *         successProperty: 'success',
- *         messageProperty: 'message'
+ *         type: &#39;json&#39;,
+ *         idProperty: &#39;id&#39;,
+ *         rootProperty: &#39;root&#39;,
+ *         totalProperty: &#39;total&#39;,
+ *         successProperty: &#39;success&#39;,
+ *         messageProperty: &#39;message&#39;
  *     }
  *
  * If you were to pass a response object containing attributes different from those initially defined above, you could
@@ -161,23 +161,23 @@
  *             &quot;email&quot;: &quot;ed@sencha.com&quot;
  *         }],
  *         &quot;metaData&quot;: {
- *             &quot;idProperty&quot;: 'userId',
+ *             &quot;idProperty&quot;: &#39;userId&#39;,
  *             &quot;rootProperty&quot;: &quot;users&quot;,
- *             &quot;totalProperty&quot;: 'count',
- *             &quot;successProperty&quot;: 'ok',
- *             &quot;messageProperty&quot;: 'msg'
+ *             &quot;totalProperty&quot;: &#39;count&#39;,
+ *             &quot;successProperty&quot;: &#39;ok&#39;,
+ *             &quot;messageProperty&quot;: &#39;msg&#39;
  *         }
  *     }
  *
  * You can also place any other arbitrary data you need into the `metaData` attribute which will be ignored by the Reader,
- * but will be accessible via the Reader's {@link #metaData} property. Application code can then process the passed
+ * but will be accessible via the Reader&#39;s {@link #metaData} property. Application code can then process the passed
  * metadata in any way it chooses.
  *
  * A simple example for how this can be used would be customizing the fields for a Model that is bound to a grid. By passing
  * the `fields` property the Model will be automatically updated by the Reader internally, but that change will not be
  * reflected automatically in the grid unless you also update the column configuration. You could do this manually, or you
  * could simply pass a standard grid column config object as part of the `metaData` attribute
- * and then pass that along to the grid. Here's a very simple example for how that could be accomplished:
+ * and then pass that along to the grid. Here&#39;s a very simple example for how that could be accomplished:
  *
  *     // response format:
  *     {
@@ -191,15 +191,15 @@
  *             &quot;columns&quot;: [
  *                 { &quot;text&quot;: &quot;User ID&quot;, &quot;dataIndex&quot;: &quot;userId&quot;, &quot;width&quot;: 40 },
  *                 { &quot;text&quot;: &quot;User Name&quot;, &quot;dataIndex&quot;: &quot;name&quot;, &quot;flex&quot;: 1 },
- *                 { &quot;text&quot;: &quot;Birthday&quot;, &quot;dataIndex&quot;: &quot;birthday&quot;, &quot;flex&quot;: 1, &quot;format&quot;: 'Y-j-m', &quot;xtype&quot;: &quot;datecolumn&quot; }
+ *                 { &quot;text&quot;: &quot;Birthday&quot;, &quot;dataIndex&quot;: &quot;birthday&quot;, &quot;flex&quot;: 1, &quot;format&quot;: &#39;Y-j-m&#39;, &quot;xtype&quot;: &quot;datecolumn&quot; }
  *             ]
  *         }
  *     }
  */
-Ext.define('Ext.data.reader.Json', {
-    extend: 'Ext.data.reader.Reader',
-    alternateClassName: 'Ext.data.JsonReader',
-    alias : 'reader.json',
+Ext.define(&#39;Ext.data.reader.Json&#39;, {
+    extend: &#39;Ext.data.reader.Reader&#39;,
+    alternateClassName: &#39;Ext.data.JsonReader&#39;,
+    alias : &#39;reader.json&#39;,
 
     config: {
 <span id='Ext-data-reader-Json-cfg-record'>        /**
@@ -231,7 +231,7 @@ Ext.define('Ext.data.reader.Json', {
         }
 
         // Handle the case where data has already been decoded
-        if (typeof responseText !== 'string') {
+        if (typeof responseText !== &#39;string&#39;) {
             return responseText;
         }
 
@@ -246,14 +246,14 @@ Ext.define('Ext.data.reader.Json', {
              * @param {XMLHttpRequest} response The XMLHttpRequest response object.
              * @param {String} error The error message.
              */
-            this.fireEvent('exception', this, response, 'Unable to parse the JSON returned by the server: ' + ex.toString());
-            Ext.Logger.warn('Unable to parse the JSON returned by the server: ' + ex.toString());
+            this.fireEvent(&#39;exception&#39;, this, response, &#39;Unable to parse the JSON returned by the server: &#39; + ex.toString());
+            Ext.Logger.warn(&#39;Unable to parse the JSON returned by the server: &#39; + ex.toString());
         }
         //&lt;debug&gt;
         if (!data) {
-            this.fireEvent('exception', this, response, 'JSON object not found');
+            this.fireEvent(&#39;exception&#39;, this, response, &#39;JSON object not found&#39;);
 
-            Ext.Logger.warn('JSON object not found');
+            Ext.Logger.warn(&#39;JSON object not found&#39;);
         }
         //&lt;/debug&gt;
 
@@ -290,7 +290,7 @@ Ext.define('Ext.data.reader.Json', {
          * We check here whether the fields are dirty since the last read.
          * This works around an issue when a Model is used for both a Tree and another
          * source, because the tree decorates the model with extra fields and it causes
-         * issues because the readers aren't notified.
+         * issues because the readers aren&#39;t notified.
          */
         if (fieldsCollection.isDirty) {
             this.buildExtractors(true);
@@ -306,7 +306,7 @@ Ext.define('Ext.data.reader.Json', {
 
 <span id='Ext-data-reader-Json-method-extractData'>    /**
 </span>     * @private
-     * We're just preparing the data for the superclass by pulling out the record objects we want. If a {@link #record}
+     * We&#39;re just preparing the data for the superclass by pulling out the record objects we want. If a {@link #record}
      * was specified we have to pull those out of the larger JSON object, which is most of what this function is doing
      * @param {Object} root The JSON root node
      * @return {Ext.data.Model[]} The records
@@ -336,9 +336,9 @@ Ext.define('Ext.data.reader.Json', {
 <span id='Ext-data-reader-Json-property-createAccessor'>    /**
 </span>     * @private
      * Returns an accessor function for the given property string. Gives support for properties such as the following:
-     * 'someProperty'
-     * 'some.property'
-     * 'some[&quot;property&quot;]'
+     * &#39;someProperty&#39;
+     * &#39;some.property&#39;
+     * &#39;some[&quot;property&quot;]&#39;
      * This is used by buildExtractors to create optimized extractor functions when casting raw data into model instances.
      */
     createAccessor: function() {
@@ -354,7 +354,7 @@ Ext.define('Ext.data.reader.Json', {
             if (this.getUseSimpleAccessors() !== true) {
                 var i = String(expr).search(re);
                 if (i &gt;= 0) {
-                    return Ext.functionFactory('obj', 'var value; try {value = obj' + (i &gt; 0 ? '.' : '') + expr + '} catch(e) {}; return value;');
+                    return Ext.functionFactory(&#39;obj&#39;, &#39;var value; try {value = obj&#39; + (i &gt; 0 ? &#39;.&#39; : &#39;&#39;) + expr + &#39;} catch(e) {}; return value;&#39;);
                 }
             }
             return function(obj) {
@@ -366,9 +366,9 @@ Ext.define('Ext.data.reader.Json', {
 <span id='Ext-data-reader-Json-method-createFieldAccessExpression'>    /**
 </span>     * @private
      * Returns an accessor expression for the passed Field. Gives support for properties such as the following:
-     * 'someProperty'
-     * 'some.property'
-     * 'some[&quot;property&quot;]'
+     * &#39;someProperty&#39;
+     * &#39;some.property&#39;
+     * &#39;some[&quot;property&quot;]&#39;
      * This is used by buildExtractors to create optimized on extractor function which converts raw data into model instances.
      */
     createFieldAccessExpression: function(field, fieldVarName, dataName) {
@@ -378,18 +378,18 @@ Ext.define('Ext.data.reader.Json', {
             map    = hasMap ? field.getMapping() : field.getName(),
             result, operatorSearch;
 
-        if (typeof map === 'function') {
-            result = fieldVarName + '.getMapping()(' + dataName + ', this)';
+        if (typeof map === &#39;function&#39;) {
+            result = fieldVarName + &#39;.getMapping()(&#39; + dataName + &#39;, this)&#39;;
         }
         else if (me.getUseSimpleAccessors() === true || ((operatorSearch = String(map).search(re)) &lt; 0)) {
             if (!hasMap || isNaN(map)) {
-                // If we don't provide a mapping, we may have a field name that is numeric
-                map = '&quot;' + map + '&quot;';
+                // If we don&#39;t provide a mapping, we may have a field name that is numeric
+                map = &#39;&quot;&#39; + map + &#39;&quot;&#39;;
             }
             result = dataName + &quot;[&quot; + map + &quot;]&quot;;
         }
         else {
-            result = dataName + (operatorSearch &gt; 0 ? '.' : '') + map;
+            result = dataName + (operatorSearch &gt; 0 ? &#39;.&#39; : &#39;&#39;) + map;
         }
 
         return result;

@@ -20,16 +20,16 @@
  * @extends Ext.Component
  * Description
  */
-Ext.define('Ext.plugin.SortableList', {
-    extend: 'Ext.Component',
+Ext.define(&#39;Ext.plugin.SortableList&#39;, {
+    extend: &#39;Ext.Component&#39;,
 
-    alias: 'plugin.sortablelist',
+    alias: &#39;plugin.sortablelist&#39;,
 
-    mixins: ['Ext.mixin.Bindable'],
+    mixins: [&#39;Ext.mixin.Bindable&#39;],
 
     config: {
 <span id='Ext-plugin-SortableList-cfg-list'>        list: null,
-</span><span id='Ext-plugin-SortableList-cfg-handleSelector'>        handleSelector: '.' + Ext.baseCSSPrefix + 'list-sortablehandle'
+</span><span id='Ext-plugin-SortableList-cfg-handleSelector'>        handleSelector: &#39;.&#39; + Ext.baseCSSPrefix + &#39;list-sortablehandle&#39;
 </span>    },
 
 <span id='Ext-plugin-SortableList-method-init'>    init: function(list) {
@@ -43,7 +43,7 @@ Ext.define('Ext.plugin.SortableList', {
             }
             else {
                 list.on({
-                    initialize: 'attachListeners',
+                    initialize: &#39;attachListeners&#39;,
                     scope: this,
                     single: true
                 });
@@ -58,7 +58,7 @@ Ext.define('Ext.plugin.SortableList', {
         this.scrollerElement = scrollerElement;
 
         scrollerElement.onBefore({
-            dragstart: 'onScrollerDragStart',
+            dragstart: &#39;onScrollerDragStart&#39;,
             scope: this
         });
     },
@@ -73,13 +73,13 @@ Ext.define('Ext.plugin.SortableList', {
     },
 
 <span id='Ext-plugin-SortableList-method-onDragStart'>    onDragStart: function(e) {
-</span>        var row = Ext.getCmp(e.getTarget('.' + Ext.baseCSSPrefix + 'list-item').id),
+</span>        var row = Ext.getCmp(e.getTarget(&#39;.&#39; + Ext.baseCSSPrefix + &#39;list-item&#39;).id),
             list = this.getList(),
             store = list.getStore();
 
         this.scrollerElement.on({
-            drag: 'onDrag',
-            dragend: 'onDragEnd',
+            drag: &#39;onDrag&#39;,
+            dragend: &#39;onDragEnd&#39;,
             scope: this
         });
 
@@ -100,7 +100,7 @@ Ext.define('Ext.plugin.SortableList', {
             this.startTranslate = 0;
         }
 
-        row.addCls(Ext.baseCSSPrefix + 'list-item-dragging');
+        row.addCls(Ext.baseCSSPrefix + &#39;list-item-dragging&#39;);
     },
 
 <span id='Ext-plugin-SortableList-method-onDrag'>    onDrag: function(e) {
@@ -174,20 +174,20 @@ Ext.define('Ext.plugin.SortableList', {
             position = row.$position;
 
         this.scrollerElement.un({
-            drag: 'onDrag',
-            dragend: 'onDragEnd',
+            drag: &#39;onDrag&#39;,
+            dragend: &#39;onDragEnd&#39;,
             scope: this
         });
 
         this.animating = true;
 
-        row.getTranslatable().on('animationend', function() {
-            row.removeCls(Ext.baseCSSPrefix + 'list-item-dragging');
+        row.getTranslatable().on(&#39;animationend&#39;, function() {
+            row.removeCls(Ext.baseCSSPrefix + &#39;list-item-dragging&#39;);
 
             list.updateListItem(row, row.$dataIndex, listItemInfo);
             row.$position = position;
 
-            list.fireEvent('dragsort', list, row, this.currentDragRowIndex, this.dragRowIndex);
+            list.fireEvent(&#39;dragsort&#39;, list, row, this.currentDragRowIndex, this.dragRowIndex);
             this.animating = false;
         }, me, {single: true});
 

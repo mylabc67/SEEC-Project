@@ -23,22 +23,22 @@
  * text fields inside a form, like this:
  *
  *     @example
- *     Ext.create('Ext.form.Panel', {
+ *     Ext.create(&#39;Ext.form.Panel&#39;, {
  *         fullscreen: true,
  *         items: [
  *             {
- *                 xtype: 'fieldset',
- *                 title: 'Enter your name',
+ *                 xtype: &#39;fieldset&#39;,
+ *                 title: &#39;Enter your name&#39;,
  *                 items: [
  *                     {
- *                         xtype: 'textfield',
- *                         label: 'First Name',
- *                         name: 'firstName'
+ *                         xtype: &#39;textfield&#39;,
+ *                         label: &#39;First Name&#39;,
+ *                         name: &#39;firstName&#39;
  *                     },
  *                     {
- *                         xtype: 'textfield',
- *                         label: 'Last Name',
- *                         name: 'lastName'
+ *                         xtype: &#39;textfield&#39;,
+ *                         label: &#39;Last Name&#39;,
+ *                         name: &#39;lastName&#39;
  *                     }
  *                 ]
  *             }
@@ -47,9 +47,9 @@
  *
  * This creates two text fields inside a form. Text Fields can also be created outside of a Form, like this:
  *
- *     Ext.create('Ext.field.Text', {
- *         label: 'Your Name',
- *         value: 'Ed Spencer'
+ *     Ext.create(&#39;Ext.field.Text&#39;, {
+ *         label: &#39;Your Name&#39;,
+ *         value: &#39;Ed Spencer&#39;
  *     });
  *
  * ## Configuring
@@ -59,18 +59,18 @@
  * a text field to have a maximum length of 10 characters, with placeholder text that disappears when the field is
  * focused:
  *
- *     Ext.create('Ext.field.Text', {
- *         label: 'Username',
+ *     Ext.create(&#39;Ext.field.Text&#39;, {
+ *         label: &#39;Username&#39;,
  *         maxLength: 10,
- *         placeHolder: 'Enter your username'
+ *         placeHolder: &#39;Enter your username&#39;
  *     });
  *
  * The autoComplete, autoCapitalize and autoCorrect configs simply set those attributes on the text field and allow the
  * native browser to provide those capabilities. For example, to enable auto complete and auto correct, simply
  * configure your text field like this:
  *
- *     Ext.create('Ext.field.Text', {
- *         label: 'Username',
+ *     Ext.create(&#39;Ext.field.Text&#39;, {
+ *         label: &#39;Username&#39;,
  *         autoComplete: true,
  *         autoCorrect: true
  *     });
@@ -81,10 +81,10 @@
  * a lot of shared functionality for all fields, including setting values, clearing and basic validation. See the
  * {@link Ext.field.Field} documentation to see how to leverage its capabilities.
  */
-Ext.define('Ext.field.Text', {
-    extend: 'Ext.field.Field',
-    xtype: 'textfield',
-    alternateClassName: 'Ext.form.Text',
+Ext.define(&#39;Ext.field.Text&#39;, {
+    extend: &#39;Ext.field.Field&#39;,
+    xtype: &#39;textfield&#39;,
+    alternateClassName: &#39;Ext.form.Text&#39;,
 
 <span id='Ext-field-Text-event-focus'>    /**
 </span>     * @event focus
@@ -153,7 +153,7 @@ Ext.define('Ext.field.Text', {
 </span>         * @cfg
          * @inheritdoc
          */
-        ui: 'text',
+        ui: &#39;text&#39;,
 
 <span id='Ext-field-Text-cfg-clearIcon'>        /**
 </span>         * @cfg
@@ -174,14 +174,14 @@ Ext.define('Ext.field.Text', {
         maxLength: null,
 
 <span id='Ext-field-Text-cfg-autoComplete'>        /**
-</span>         * True to set the field's DOM element autocomplete attribute to &quot;on&quot;, false to set to &quot;off&quot;.
+</span>         * True to set the field&#39;s DOM element autocomplete attribute to &quot;on&quot;, false to set to &quot;off&quot;.
          * @cfg {Boolean} autoComplete
          * @accessor
          */
         autoComplete: null,
 
 <span id='Ext-field-Text-cfg-autoCapitalize'>        /**
-</span>         * True to set the field's DOM element autocapitalize attribute to &quot;on&quot;, false to set to &quot;off&quot;.
+</span>         * True to set the field&#39;s DOM element autocapitalize attribute to &quot;on&quot;, false to set to &quot;off&quot;.
          * @cfg {Boolean} autoCapitalize
          * @accessor
          */
@@ -206,12 +206,12 @@ Ext.define('Ext.field.Text', {
          * @accessor
          */
         component: {
-            xtype: 'input',
-            type: 'text',
+            xtype: &#39;input&#39;,
+            type: &#39;text&#39;,
             fastFocus: true
         },
 
-<span id='Ext-field-Text-cfg-bubbleEvents'>        bubbleEvents: ['action']
+<span id='Ext-field-Text-cfg-bubbleEvents'>        bubbleEvents: [&#39;action&#39;]
 </span>    },
 
 <span id='Ext-field-Text-method-initialize'>    // @private
@@ -223,13 +223,13 @@ Ext.define('Ext.field.Text', {
         me.getComponent().on({
             scope: this,
 
-            keyup       : 'onKeyUp',
-            change      : 'onChange',
-            focus       : 'onFocus',
-            blur        : 'onBlur',
-            paste       : 'onPaste',
-            mousedown   : 'onMouseDown',
-            clearicontap: 'onClearIconTap'
+            keyup       : &#39;onKeyUp&#39;,
+            change      : &#39;onChange&#39;,
+            focus       : &#39;onFocus&#39;,
+            blur        : &#39;onBlur&#39;,
+            paste       : &#39;onPaste&#39;,
+            mousedown   : &#39;onMouseDown&#39;,
+            clearicontap: &#39;onClearIconTap&#39;
         });
 
         // set the originalValue of the textfield, if one exists
@@ -241,7 +241,7 @@ Ext.define('Ext.field.Text', {
 
 <span id='Ext-field-Text-method-syncEmptyCls'>    syncEmptyCls: function() {
 </span>        var empty = (this._value) ? this._value.length : false,
-            cls = Ext.baseCSSPrefix + 'empty';
+            cls = Ext.baseCSSPrefix + &#39;empty&#39;;
 
         if (empty) {
             this.removeCls(cls);
@@ -260,7 +260,7 @@ Ext.define('Ext.field.Text', {
             component.setValue(newValue);
         }
 
-        this[valueValid &amp;&amp; this.isDirty() ? 'showClearIcon' : 'hideClearIcon']();
+        this[valueValid &amp;&amp; this.isDirty() ? &#39;showClearIcon&#39; : &#39;hideClearIcon&#39;]();
 
         this.syncEmptyCls();
     },
@@ -371,7 +371,7 @@ Ext.define('Ext.field.Text', {
             valueValid = value !== undefined &amp;&amp; value !== null &amp;&amp; value !== &quot;&quot;;
 
         if (me.getClearIcon() &amp;&amp; !me.getDisabled() &amp;&amp; !me.getReadOnly() &amp;&amp; valueValid) {
-            me.element.addCls(Ext.baseCSSPrefix + 'field-clearable');
+            me.element.addCls(Ext.baseCSSPrefix + &#39;field-clearable&#39;);
         }
 
         return me;
@@ -380,12 +380,12 @@ Ext.define('Ext.field.Text', {
 <span id='Ext-field-Text-method-hideClearIcon'>    // @private
 </span>    hideClearIcon: function() {
         if (this.getClearIcon()) {
-            this.element.removeCls(Ext.baseCSSPrefix + 'field-clearable');
+            this.element.removeCls(Ext.baseCSSPrefix + &#39;field-clearable&#39;);
         }
     },
 
 <span id='Ext-field-Text-method-onKeyUp'>    onKeyUp: function(e) {
-</span>        this.fireAction('keyup', [this, e], 'doKeyUp');
+</span>        this.fireAction(&#39;keyup&#39;, [this, e], &#39;doKeyUp&#39;);
     },
 
 <span id='Ext-field-Text-method-doKeyUp'>    /**
@@ -398,10 +398,10 @@ Ext.define('Ext.field.Text', {
             // allows value to be zero but not undefined or null (other falsey values)
             valueValid = value !== undefined &amp;&amp; value !== null &amp;&amp; value !== &quot;&quot;;
 
-        this[valueValid ? 'showClearIcon' : 'hideClearIcon']();
+        this[valueValid ? &#39;showClearIcon&#39; : &#39;hideClearIcon&#39;]();
 
         if (e.browserEvent.keyCode === 13) {
-            me.fireAction('action', [me, e], 'doAction');
+            me.fireAction(&#39;action&#39;, [me, e], &#39;doAction&#39;);
         }
     },
 
@@ -410,34 +410,34 @@ Ext.define('Ext.field.Text', {
     },
 
 <span id='Ext-field-Text-method-onClearIconTap'>    onClearIconTap: function(e) {
-</span>        this.fireAction('clearicontap', [this, e], 'doClearIconTap');
+</span>        this.fireAction(&#39;clearicontap&#39;, [this, e], &#39;doClearIconTap&#39;);
     },
 
 <span id='Ext-field-Text-method-doClearIconTap'>    // @private
 </span>    doClearIconTap: function(me, e) {
-        me.setValue('');
+        me.setValue(&#39;&#39;);
 
         //sync with the input
         me.getValue();
     },
 
 <span id='Ext-field-Text-method-onChange'>    onChange: function(me, value, startValue) {
-</span>        me.fireEvent('change', this, value, startValue);
+</span>        me.fireEvent(&#39;change&#39;, this, value, startValue);
     },
 
 <span id='Ext-field-Text-method-onFocus'>    onFocus: function(e) {
-</span>        this.addCls(Ext.baseCSSPrefix + 'field-focused');
+</span>        this.addCls(Ext.baseCSSPrefix + &#39;field-focused&#39;);
         this.isFocused = true;
-        this.fireEvent('focus', this, e);
+        this.fireEvent(&#39;focus&#39;, this, e);
     },
 
 <span id='Ext-field-Text-method-onBlur'>    onBlur: function(e) {
 </span>        var me = this;
 
-        this.removeCls(Ext.baseCSSPrefix + 'field-focused');
+        this.removeCls(Ext.baseCSSPrefix + &#39;field-focused&#39;);
         this.isFocused = false;
 
-        me.fireEvent('blur', me, e);
+        me.fireEvent(&#39;blur&#39;, me, e);
 
         setTimeout(function() {
             me.isFocused = false;
@@ -445,11 +445,11 @@ Ext.define('Ext.field.Text', {
     },
 
 <span id='Ext-field-Text-method-onPaste'>    onPaste: function(e) {
-</span>        this.fireEvent('paste', this, e);
+</span>        this.fireEvent(&#39;paste&#39;, this, e);
     },
 
 <span id='Ext-field-Text-method-onMouseDown'>    onMouseDown: function(e) {
-</span>        this.fireEvent('mousedown', this, e);
+</span>        this.fireEvent(&#39;mousedown&#39;, this, e);
     },
 
 <span id='Ext-field-Text-method-focus'>    /**
@@ -494,7 +494,7 @@ Ext.define('Ext.field.Text', {
         //we need to call this to sync the input with this field
         this.getValue();
 
-        this[this.isDirty() ? 'showClearIcon' : 'hideClearIcon']();
+        this[this.isDirty() ? &#39;showClearIcon&#39; : &#39;hideClearIcon&#39;]();
     },
 
 <span id='Ext-field-Text-method-isDirty'>    isDirty: function() {

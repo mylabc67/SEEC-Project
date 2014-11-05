@@ -22,37 +22,37 @@
  * Data reader class to create an Array of {@link Ext.data.Model} objects from an Array.
  * Each element of that Array represents a row of data fields. The
  * fields are pulled into a Record object using as a subscript, the `mapping` property
- * of the field definition if it exists, or the field's ordinal position in the definition.
+ * of the field definition if it exists, or the field&#39;s ordinal position in the definition.
  *
  * Example code:
  *
- *     Employee = Ext.define('Employee', {
- *         extend: 'Ext.data.Model',
+ *     Employee = Ext.define(&#39;Employee&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
  *             fields: [
- *                 'id',
- *                 {name: 'name', mapping: 1}, // &quot;mapping&quot; only needed if an &quot;id&quot; field is present which
- *                 {name: 'occupation', mapping: 2} // precludes using the ordinal position as the index.
+ *                 &#39;id&#39;,
+ *                 {name: &#39;name&#39;, mapping: 1}, // &quot;mapping&quot; only needed if an &quot;id&quot; field is present which
+ *                 {name: &#39;occupation&#39;, mapping: 2} // precludes using the ordinal position as the index.
  *             ]
  *         }
  *     });
  *
  *     var myReader = new Ext.data.reader.Array({
- *         model: 'Employee'
+ *         model: &#39;Employee&#39;
  *     }, Employee);
  *
  * This would consume an Array like this:
  *
- *     [ [1, 'Bill', 'Gardener'], [2, 'Ben', 'Horticulturalist'] ]
+ *     [ [1, &#39;Bill&#39;, &#39;Gardener&#39;], [2, &#39;Ben&#39;, &#39;Horticulturalist&#39;] ]
  *
  * @constructor
  * Create a new ArrayReader
  * @param {Object} meta Metadata configuration options.
  */
-Ext.define('Ext.data.reader.Array', {
-    extend: 'Ext.data.reader.Json',
-    alternateClassName: 'Ext.data.ArrayReader',
-    alias : 'reader.array',
+Ext.define(&#39;Ext.data.reader.Array&#39;, {
+    extend: &#39;Ext.data.reader.Json&#39;,
+    alternateClassName: &#39;Ext.data.ArrayReader&#39;,
+    alias : &#39;reader.array&#39;,
 
     // For Array Reader, methods in the base which use these properties must not see the defaults
     config: {
@@ -62,7 +62,7 @@ Ext.define('Ext.data.reader.Array', {
 
 <span id='Ext-data-reader-Array-method-createFieldAccessExpression'>    /**
 </span>     * @private
-     * Returns an accessor expression for the passed Field from an Array using either the Field's mapping, or
+     * Returns an accessor expression for the passed Field from an Array using either the Field&#39;s mapping, or
      * its ordinal position in the fields collection as the index.
      * This is used by buildExtractors to create optimized on extractor function which converts raw data into model instances.
      */
@@ -72,11 +72,11 @@ Ext.define('Ext.data.reader.Array', {
             index  = (mapping == null) ? me.getModel().getFields().indexOf(field) : mapping,
             result;
 
-        if (typeof index === 'function') {
-            result = fieldVarName + '.getMapping()(' + dataName + ', this)';
+        if (typeof index === &#39;function&#39;) {
+            result = fieldVarName + &#39;.getMapping()(&#39; + dataName + &#39;, this)&#39;;
         } else {
             if (isNaN(index)) {
-                index = '&quot;' + index + '&quot;';
+                index = &#39;&quot;&#39; + index + &#39;&quot;&#39;;
             }
             result = dataName + &quot;[&quot; + index + &quot;]&quot;;
         }

@@ -24,22 +24,22 @@
  * back a hidden userId field:
  *
  *     @example
- *     var form = Ext.create('Ext.form.Panel', {
+ *     var form = Ext.create(&#39;Ext.form.Panel&#39;, {
  *         fullscreen: true,
  *         items: [
  *             {
- *                 xtype: 'fieldset',
- *                 title: 'Enter your name',
+ *                 xtype: &#39;fieldset&#39;,
+ *                 title: &#39;Enter your name&#39;,
  *                 items: [
  *                     {
- *                         xtype: 'hiddenfield',
- *                         name: 'userId',
+ *                         xtype: &#39;hiddenfield&#39;,
+ *                         name: &#39;userId&#39;,
  *                         value: 123
  *                     },
  *                     {
- *                         xtype: 'checkboxfield',
- *                         label: 'Enable notifications',
- *                         name: 'notifications'
+ *                         xtype: &#39;checkboxfield&#39;,
+ *                         label: &#39;Enable notifications&#39;,
+ *                         name: &#39;notifications&#39;
  *                     }
  *                 ]
  *             }
@@ -50,16 +50,16 @@
  * check box will be visible, but both fields will be submitted. Hidden fields cannot be tabbed to - they are removed
  * from the tab index so when your user taps the next/previous field buttons the hidden field is skipped over.
  *
- * It's easy to read and update the value of a hidden field within a form. Using the example above, we can get a
+ * It&#39;s easy to read and update the value of a hidden field within a form. Using the example above, we can get a
  * reference to the hidden field and then set it to a new value in 2 lines of code:
  *
- *     var userId = form.down('hiddenfield')[0];
+ *     var userId = form.down(&#39;hiddenfield&#39;)[0];
  *     userId.setValue(1234);
  */
-Ext.define('Ext.field.Hidden', {
-    extend: 'Ext.field.Text',
-    alternateClassName: 'Ext.form.Hidden',
-    xtype: 'hiddenfield',
+Ext.define(&#39;Ext.field.Hidden&#39;, {
+    extend: &#39;Ext.field.Text&#39;,
+    alternateClassName: &#39;Ext.form.Hidden&#39;,
+    xtype: &#39;hiddenfield&#39;,
 
     config: {
 <span id='Ext-field-Hidden-cfg-component'>        /**
@@ -67,15 +67,15 @@ Ext.define('Ext.field.Hidden', {
          * @inheritdoc
          */
         component: {
-            xtype: 'input',
-            type : 'hidden'
+            xtype: &#39;input&#39;,
+            type : &#39;hidden&#39;
         },
 
 <span id='Ext-field-Hidden-cfg-ui'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        ui: 'hidden',
+        ui: &#39;hidden&#39;,
 
 <span id='Ext-field-Hidden-cfg-hidden'>        /**
 </span>         * @cfg hidden

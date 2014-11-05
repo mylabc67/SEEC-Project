@@ -21,9 +21,9 @@
  * Please see the {@link Ext.Audio} and {@link Ext.Video} classes for more information.
  * @private
  */
-Ext.define('Ext.Media', {
-    extend: 'Ext.Component',
-    xtype: 'media',
+Ext.define(&#39;Ext.Media&#39;, {
+    extend: &#39;Ext.Component&#39;,
+    xtype: &#39;media&#39;,
 
 <span id='Ext-Media-event-play'>    /**
 </span>     * @event play
@@ -81,12 +81,12 @@ Ext.define('Ext.Media', {
          * Location of the media to play.
          * @accessor
          */
-        url: '',
+        url: &#39;&#39;,
 
 <span id='Ext-Media-cfg-enableControls'>        /**
 </span>         * @cfg {Boolean} enableControls
          * Set this to `false` to turn off the native media controls.
-         * Defaults to `false` when you are on Android, as it doesn't support controls.
+         * Defaults to `false` when you are on Android, as it doesn&#39;t support controls.
          * @accessor
          */
         enableControls: Ext.os.is.Android ? false : true,
@@ -158,12 +158,12 @@ Ext.define('Ext.Media', {
         });
 
         me.addMediaListener({
-            canplay: 'onCanPlay',
-            play: 'onPlay',
-            pause: 'onPause',
-            ended: 'onEnd',
-            volumechange: 'onVolumeChange',
-            timeupdate: 'onTimeUpdate'
+            canplay: &#39;onCanPlay&#39;,
+            play: &#39;onPlay&#39;,
+            pause: &#39;onPause&#39;,
+            ended: &#39;onEnd&#39;,
+            volumechange: &#39;onVolumeChange&#39;,
+            timeupdate: &#39;onTimeUpdate&#39;
         });
     },
 
@@ -180,27 +180,27 @@ Ext.define('Ext.Media', {
     },
 
 <span id='Ext-Media-method-onPlay'>    onPlay: function() {
-</span>        this.fireEvent('play', this);
+</span>        this.fireEvent(&#39;play&#39;, this);
     },
 
 <span id='Ext-Media-method-onCanPlay'>    onCanPlay: function() {
-</span>        this.fireEvent('canplay', this);
+</span>        this.fireEvent(&#39;canplay&#39;, this);
     },
 
 <span id='Ext-Media-method-onPause'>    onPause: function() {
-</span>        this.fireEvent('pause', this, this.getCurrentTime());
+</span>        this.fireEvent(&#39;pause&#39;, this, this.getCurrentTime());
     },
 
 <span id='Ext-Media-method-onEnd'>    onEnd: function() {
-</span>        this.fireEvent('ended', this, this.getCurrentTime());
+</span>        this.fireEvent(&#39;ended&#39;, this, this.getCurrentTime());
     },
 
 <span id='Ext-Media-method-onVolumeChange'>    onVolumeChange: function() {
-</span>        this.fireEvent('volumechange', this, this.media.dom.volume);
+</span>        this.fireEvent(&#39;volumechange&#39;, this, this.media.dom.volume);
     },
 
 <span id='Ext-Media-method-onTimeUpdate'>    onTimeUpdate: function() {
-</span>        this.fireEvent('timeupdate', this, this.getCurrentTime());
+</span>        this.fireEvent(&#39;timeupdate&#39;, this, this.getCurrentTime());
     },
 
 <span id='Ext-Media-method-isPlaying'>    /**
@@ -241,7 +241,7 @@ Ext.define('Ext.Media', {
 
         dom.src = newUrl;
 
-        if ('load' in dom) {
+        if (&#39;load&#39; in dom) {
             dom.load();
         }
 
@@ -254,14 +254,14 @@ Ext.define('Ext.Media', {
 </span>     * Updates the controls of the video element.
      */
     updateEnableControls: function(enableControls) {
-        this.media.dom.controls = enableControls ? 'controls' : false;
+        this.media.dom.controls = enableControls ? &#39;controls&#39; : false;
     },
 
 <span id='Ext-Media-method-updateLoop'>    /**
 </span>     * Updates the loop setting of the media element.
      */
     updateLoop: function(loop) {
-        this.media.dom.loop = loop ? 'loop' : false;
+        this.media.dom.loop = loop ? &#39;loop&#39; : false;
     },
 
 <span id='Ext-Media-method-play'>    /**
@@ -270,7 +270,7 @@ Ext.define('Ext.Media', {
     play: function() {
         var dom = this.media.dom;
 
-        if ('play' in dom) {
+        if (&#39;play&#39; in dom) {
             dom.play();
             setTimeout(function() {
                 dom.play();
@@ -284,7 +284,7 @@ Ext.define('Ext.Media', {
     pause: function() {
         var dom = this.media.dom;
 
-        if ('pause' in dom) {
+        if (&#39;pause&#39; in dom) {
             dom.pause();
         }
     },
@@ -307,7 +307,7 @@ Ext.define('Ext.Media', {
         var me = this;
 
         me.setCurrentTime(0);
-        me.fireEvent('stop', me);
+        me.fireEvent(&#39;stop&#39;, me);
         me.pause();
     },
 
@@ -318,7 +318,7 @@ Ext.define('Ext.Media', {
 
 <span id='Ext-Media-method-updateMuted'>    //@private
 </span>    updateMuted: function(muted) {
-        this.fireEvent('mutedchange', this, muted);
+        this.fireEvent(&#39;mutedchange&#39;, this, muted);
 
         this.media.dom.muted = muted;
     },

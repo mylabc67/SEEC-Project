@@ -15,10 +15,10 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js">Ext.define('Ext.ux.parse.Proxy', {
-    extend: 'Ext.data.proxy.Server',
-    alias: 'proxy.parse',
-    requires: ['Ext.data.Request', 'Ext.ux.parse.Reader', 'Ext.ux.parse.Helper'],
+  <pre class="prettyprint lang-js">Ext.define(&#39;Ext.ux.parse.Proxy&#39;, {
+    extend: &#39;Ext.data.proxy.Server&#39;,
+    alias: &#39;proxy.parse&#39;,
+    requires: [&#39;Ext.data.Request&#39;, &#39;Ext.ux.parse.Reader&#39;, &#39;Ext.ux.parse.Helper&#39;],
 
     config: {
         reader: &quot;parse&quot;,
@@ -30,11 +30,11 @@
 
         if (window.Parse) {
             // &lt;debug&gt;
-            Ext.Logger.warn('You must set your Parse ApplicationID prior to calling any Proxy Functions');
+            Ext.Logger.warn(&#39;You must set your Parse ApplicationID prior to calling any Proxy Functions&#39;);
             // &lt;/debug&gt;
         } else {
             // &lt;debug&gt;
-            Ext.Logger.warn('Parse not found, please include parse in your app.json or via script tag');
+            Ext.Logger.warn(&#39;Parse not found, please include parse in your app.json or via script tag&#39;);
             // &lt;/debug&gt;
         }
         return false;

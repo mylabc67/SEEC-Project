@@ -16,7 +16,7 @@
 </head>
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js"><span id='Ext-data-Connection'>/**
-</span> * The Connection class encapsulates a connection to the page's originating domain, allowing requests to be made either
+</span> * The Connection class encapsulates a connection to the page&#39;s originating domain, allowing requests to be made either
  * to a configured URL, or to a URL specified at request time.
  *
  * Requests made by this class are asynchronous, and will return immediately. No data from the server will be available
@@ -46,9 +46,9 @@
  *
  * __Note:__ It is not possible to check the response code of the hidden iframe, so the success handler will _always_ fire.
  */
-Ext.define('Ext.data.Connection', {
+Ext.define(&#39;Ext.data.Connection&#39;, {
     mixins: {
-        observable: 'Ext.mixin.Observable'
+        observable: &#39;Ext.mixin.Observable&#39;
     },
 
     statics: {
@@ -75,8 +75,8 @@ Ext.define('Ext.data.Connection', {
          */
         method: null,
 
-<span id='Ext-data-Connection-cfg-username'>        username: '',
-</span><span id='Ext-data-Connection-cfg-password'>        password: '',
+<span id='Ext-data-Connection-cfg-username'>        username: &#39;&#39;,
+</span><span id='Ext-data-Connection-cfg-password'>        password: &#39;&#39;,
 </span>
 <span id='Ext-data-Connection-cfg-disableCaching'>        /**
 </span>         * @cfg {Boolean} disableCaching
@@ -90,7 +90,7 @@ Ext.define('Ext.data.Connection', {
          * Change the parameter which is sent went disabling caching through a cache buster.
          * @accessor
          */
-        disableCachingParam: '_dc',
+        disableCachingParam: &#39;_dc&#39;,
 
 <span id='Ext-data-Connection-cfg-timeout'>        /**
 </span>         * @cfg {Number} timeout
@@ -114,7 +114,7 @@ Ext.define('Ext.data.Connection', {
         defaultHeaders: null,
 
 <span id='Ext-data-Connection-cfg-useDefaultHeader'>        useDefaultHeader : true,
-</span><span id='Ext-data-Connection-cfg-defaultPostHeader'>        defaultPostHeader : 'application/x-www-form-urlencoded; charset=UTF-8',
+</span><span id='Ext-data-Connection-cfg-defaultPostHeader'>        defaultPostHeader : &#39;application/x-www-form-urlencoded; charset=UTF-8&#39;,
 </span>
 <span id='Ext-data-Connection-cfg-useDefaultXhrHeader'>        /**
 </span>         * @cfg {Boolean} useDefaultXhrHeader
@@ -129,7 +129,7 @@ Ext.define('Ext.data.Connection', {
          * The value of the default Xhr header (X-Requested-With). This is only used when {@link #useDefaultXhrHeader}
          * is set to `true`.
          */
-        defaultXhrHeader : 'XMLHttpRequest',
+        defaultXhrHeader : &#39;XMLHttpRequest&#39;,
 
 <span id='Ext-data-Connection-cfg-autoAbort'>        autoAbort: false
 </span>    },
@@ -176,13 +176,13 @@ Ext.define('Ext.data.Connection', {
      * in a callback function.
      *
      *     Ext.Ajax.request({
-     *         url: 'ajax_demo/sample.json',
+     *         url: &#39;ajax_demo/sample.json&#39;,
      *         success: function(response, opts) {
      *             var obj = Ext.decode(response.responseText);
      *             console.dir(obj);
      *         },
      *         failure: function(response, opts) {
-     *             console.log('server-side failure with status code ' + response.status);
+     *             console.log(&#39;server-side failure with status code &#39; + response.status);
      *         }
      *     });
      *
@@ -291,7 +291,7 @@ Ext.define('Ext.data.Connection', {
         var me = this,
             scope = options.scope || window,
             username = options.username || me.getUsername(),
-            password = options.password || me.getPassword() || '',
+            password = options.password || me.getPassword() || &#39;&#39;,
             useXhr2 = options.xhr2 === true &amp;&amp; Ext.feature.has.XHR2,
             async, requestOptions, request, headers, xhr;
 
@@ -299,7 +299,7 @@ Ext.define('Ext.data.Connection', {
             options.withCredentials = true;
         }
 
-        if (me.fireEvent('beforerequest', me, options) !== false) {
+        if (me.fireEvent(&#39;beforerequest&#39;, me, options) !== false) {
             requestOptions = me.setOptions(options, scope);
 
             if (this.isFormUpload(options) === true) {
@@ -343,7 +343,7 @@ Ext.define('Ext.data.Connection', {
 
             // bind our onload/statechange listener
             if (async) {
-                xhr[useXhr2 ? 'onload' : 'onreadystatechange'] = Ext.Function.bind(me.onStateChange, me, [request]);
+                xhr[useXhr2 ? &#39;onload&#39; : &#39;onreadystatechange&#39;] = Ext.Function.bind(me.onStateChange, me, [request]);
             }
 
             if(useXhr2) {
@@ -373,7 +373,7 @@ Ext.define('Ext.data.Connection', {
 
                 if(Ext.feature.has.XHRUploadProgress) {
                         xhr.upload.onprogress = function (e){
-                        me.fireEvent('requestuploadprogress', me, request, e);
+                        me.fireEvent(&#39;requestuploadprogress&#39;, me, request, e);
                         if(options.progress.isProgressable) {
                             Ext.callback(options.progress.updateProgress, options.progress, [(e.loaded / e.total), &quot;upload&quot;]);
                         }else if(Ext.isFunction(options.progress)) {
@@ -414,9 +414,9 @@ Ext.define('Ext.data.Connection', {
 
         var id = Ext.id(),
             me = this,
-            frame = document.createElement('iframe'),
+            frame = document.createElement(&#39;iframe&#39;),
             hiddens = [],
-            encoding = 'multipart/form-data',
+            encoding = &#39;multipart/form-data&#39;,
             buf = {
                 target: form.target,
                 method: form.method,
@@ -424,9 +424,9 @@ Ext.define('Ext.data.Connection', {
                 enctype: form.enctype,
                 action: form.action
             }, addField = function(name, value) {
-            hiddenItem = document.createElement('input');
+            hiddenItem = document.createElement(&#39;input&#39;);
             Ext.fly(hiddenItem).set({
-                type: 'hidden',
+                type: &#39;hidden&#39;,
                 value: value,
                 name: name
             });
@@ -442,20 +442,20 @@ Ext.define('Ext.data.Connection', {
         Ext.fly(frame).set({
             id: id,
             name: id,
-            cls: Ext.baseCSSPrefix + 'hide-display',
+            cls: Ext.baseCSSPrefix + &#39;hide-display&#39;,
             src: Ext.SSL_SECURE_URL
         });
 
         document.body.appendChild(frame);
 
-        // This is required so that IE doesn't pop the response up in a new window.
+        // This is required so that IE doesn&#39;t pop the response up in a new window.
         if (document.frames) {
             document.frames[id].name = id;
         }
 
         Ext.fly(form).set({
             target: id,
-            method: 'POST',
+            method: &#39;POST&#39;,
             enctype: encoding,
             encoding: encoding,
             action: url || buf.action
@@ -474,10 +474,10 @@ Ext.define('Ext.data.Connection', {
             });
         }
 
-        frame.addEventListener('load',
+        frame.addEventListener(&#39;load&#39;,
             function() {
                 Ext.callback(me.onUploadComplete, me, [frame, options, id]);
-                frame.removeEventListener('load', arguments.callee)
+                frame.removeEventListener(&#39;load&#39;, arguments.callee)
             }
         );
         form.submit();
@@ -491,7 +491,7 @@ Ext.define('Ext.data.Connection', {
 <span id='Ext-data-Connection-method-onUploadComplete'>    onUploadComplete : function(frame, options, id) {
 </span>        // bogus response object
         var response = {
-                responseText: '',
+                responseText: &#39;&#39;,
                 responseXML: null,
                 request: {
                     options: options
@@ -503,7 +503,7 @@ Ext.define('Ext.data.Connection', {
             doc = (frame.contentWindow &amp;&amp; frame.contentWindow.document) || frame.contentDocument || window.frames[id].document;
 
             if (doc) {
-                if (doc.hasOwnProperty('body') &amp;&amp; doc.body) {
+                if (doc.hasOwnProperty(&#39;body&#39;) &amp;&amp; doc.body) {
                     body = doc.body;
                 }
 
@@ -522,7 +522,7 @@ Ext.define('Ext.data.Connection', {
             }
         } catch (e) {
             response.success = false;
-            response.message = 'Cross-Domain access is not permitted between frames. XHR2 is recommended for this type of request.';
+            response.message = &#39;Cross-Domain access is not permitted between frames. XHR2 is recommended for this type of request.&#39;;
             response.error = e;
         }
 
@@ -532,7 +532,7 @@ Ext.define('Ext.data.Connection', {
 <span id='Ext-data-Connection-method-onAfterUploadComplete'>    onAfterUploadComplete: function(response, frame, options) {
 </span>        var me = this;
 
-        me.fireEvent('requestcomplete', me, response, options);
+        me.fireEvent(&#39;requestcomplete&#39;, me, response, options);
 
         Ext.callback(options.callback, options.scope, [options, true, response]);
 
@@ -548,7 +548,7 @@ Ext.define('Ext.data.Connection', {
     isFormUpload: function(options) {
         var form = this.getForm(options);
         if (form) {
-            return (options.isUpload || (this.multiPartRe).test(form.getAttribute('enctype')));
+            return (options.isUpload || (this.multiPartRe).test(form.getAttribute(&#39;enctype&#39;)));
         }
         return false;
     },
@@ -594,7 +594,7 @@ Ext.define('Ext.data.Connection', {
 
         //&lt;debug&gt;
         if (!url) {
-            Ext.Logger.error('No URL specified');
+            Ext.Logger.error(&#39;No URL specified&#39;);
         }
         //&lt;/debug&gt;
 
@@ -616,7 +616,7 @@ Ext.define('Ext.data.Connection', {
             }
             if (data instanceof Uint8Array) {
                 // Note: Newer chrome version (v22 and up) warn that it is deprecated to send the ArrayBuffer and to send the ArrayBufferView instead. For FF this fails so for now send the ArrayBuffer.
-                data = data.buffer; //  send the underlying buffer, not the view, since that's not supported on versions of chrome older than 22
+                data = data.buffer; //  send the underlying buffer, not the view, since that&#39;s not supported on versions of chrome older than 22
             }
         }
 
@@ -629,14 +629,14 @@ Ext.define('Ext.data.Connection', {
             extraParams = Ext.Object.toQueryString(extraParams);
         }
 
-        params = params + ((extraParams) ? ((params) ? '&amp;' : '') + extraParams : '');
+        params = params + ((extraParams) ? ((params) ? &#39;&amp;&#39; : &#39;&#39;) + extraParams : &#39;&#39;);
 
         urlParams = Ext.isObject(urlParams) ? Ext.Object.toQueryString(urlParams) : urlParams;
 
         params = this.setupParams(options, params);
 
         // decide the proper method for this request
-        method = (options.method || me.getMethod() || ((params || data) ? 'POST' : 'GET')).toUpperCase();
+        method = (options.method || me.getMethod() || ((params || data) ? &#39;POST&#39; : &#39;GET&#39;)).toUpperCase();
         this.setupMethod(options, method);
 
 
@@ -644,11 +644,11 @@ Ext.define('Ext.data.Connection', {
 
         // append date to prevent caching
         if (disableCache) {
-            url = Ext.urlAppend(url, (options.disableCachingParam || me.getDisableCachingParam()) + '=' + (new Date().getTime()));
+            url = Ext.urlAppend(url, (options.disableCachingParam || me.getDisableCachingParam()) + &#39;=&#39; + (new Date().getTime()));
         }
 
         // if the method is get or there is json/xml data append the params to the url
-        if ((method == 'GET' || data) &amp;&amp; params) {
+        if ((method == &#39;GET&#39; || data) &amp;&amp; params) {
             url = Ext.urlAppend(url, params);
             params = null;
         }
@@ -693,7 +693,7 @@ Ext.define('Ext.data.Connection', {
             serializedForm;
         if (form &amp;&amp; !this.isFormUpload(options)) {
             serializedForm = Ext.Element.serializeForm(form);
-            params = params ? (params + '&amp;' + serializedForm) : serializedForm;
+            params = params ? (params + &#39;&amp;&#39; + serializedForm) : serializedForm;
         }
         return params;
     },
@@ -707,7 +707,7 @@ Ext.define('Ext.data.Connection', {
      */
     setupMethod: function(options, method) {
         if (this.isFormUpload(options)) {
-            return 'POST';
+            return &#39;POST&#39;;
         }
         return method;
     },
@@ -729,29 +729,29 @@ Ext.define('Ext.data.Connection', {
             key,
             header;
 
-        if (!headers['Content-Type'] &amp;&amp; (data || params)) {
+        if (!headers[&#39;Content-Type&#39;] &amp;&amp; (data || params)) {
             if (data) {
                 if (options.rawData) {
-                    contentType = 'text/plain';
+                    contentType = &#39;text/plain&#39;;
                 } else {
                     if (xmlData &amp;&amp; Ext.isDefined(xmlData)) {
-                        contentType = 'text/xml';
+                        contentType = &#39;text/xml&#39;;
                     } else if (jsonData &amp;&amp; Ext.isDefined(jsonData)) {
-                        contentType = 'application/json';
+                        contentType = &#39;application/json&#39;;
                     }
                 }
             }
             if (!(Ext.feature.has.XHR2 &amp;&amp; data instanceof FormData)) {
-                headers['Content-Type'] = contentType;
+                headers[&#39;Content-Type&#39;] = contentType;
             }
         }
 
-        if (((me.getUseDefaultXhrHeader() &amp;&amp; options.useDefaultXhrHeader !== false) || options.useDefaultXhrHeader) &amp;&amp; !headers['X-Requested-With']) {
-            headers['X-Requested-With'] = me.getDefaultXhrHeader();
+        if (((me.getUseDefaultXhrHeader() &amp;&amp; options.useDefaultXhrHeader !== false) || options.useDefaultXhrHeader) &amp;&amp; !headers[&#39;X-Requested-With&#39;]) {
+            headers[&#39;X-Requested-With&#39;] = me.getDefaultXhrHeader();
         }
 
         if(!Ext.isEmpty(options.username) &amp;&amp; !Ext.isEmpty(options.password)) {
-            headers['Authorization'] = &quot;Basic &quot; + btoa(options.username+&quot;:&quot;+options.password);
+            headers[&#39;Authorization&#39;] = &quot;Basic &quot; + btoa(options.username+&quot;:&quot;+options.password);
         }
 
         // set up all the request headers on the xhr object
@@ -764,14 +764,14 @@ Ext.define('Ext.data.Connection', {
 
             }
         } catch(e) {
-            me.fireEvent('exception', key, header);
+            me.fireEvent(&#39;exception&#39;, key, header);
         }
 
         if(options.responseType) {
             try {
                 xhr.responseType = options.responseType === &quot;blob&quot; &amp;&amp; Ext.browser.is.Safari ? &quot;arraybuffer&quot; : options.responseType;
             } catch (e) {
-                // nothing to do. We're still continuing with the request.
+                // nothing to do. We&#39;re still continuing with the request.
             }
         }
 
@@ -790,11 +790,11 @@ Ext.define('Ext.data.Connection', {
         var options = [function() {
             return new XMLHttpRequest();
         }, function() {
-            return new ActiveXObject('MSXML2.XMLHTTP.3.0');
+            return new ActiveXObject(&#39;MSXML2.XMLHTTP.3.0&#39;);
         }, function() {
-            return new ActiveXObject('MSXML2.XMLHTTP');
+            return new ActiveXObject(&#39;MSXML2.XMLHTTP&#39;);
         }, function() {
-            return new ActiveXObject('Microsoft.XMLHTTP');
+            return new ActiveXObject(&#39;Microsoft.XMLHTTP&#39;);
         }], i = 0,
             len = options.length,
             xhr;
@@ -916,7 +916,7 @@ Ext.define('Ext.data.Connection', {
                 result.success = false;
             }
         } catch (e) {
-            // in some browsers we can't access the status if the readyState is not 4, so the request has failed
+            // in some browsers we can&#39;t access the status if the readyState is not 4, so the request has failed
             result = {
                 success : false,
                 isException : false
@@ -926,7 +926,7 @@ Ext.define('Ext.data.Connection', {
 
         if (success) {
             response = me.createResponse(request);
-            me.fireEvent('requestcomplete', me, response, options);
+            me.fireEvent(&#39;requestcomplete&#39;, me, response, options);
             Ext.callback(options.success, options.scope, [response, options]);
         } else {
             if (result.isException || request.aborted || request.timedout) {
@@ -934,7 +934,7 @@ Ext.define('Ext.data.Connection', {
             } else {
                 response = me.createResponse(request);
             }
-            me.fireEvent('requestexception', me, response, options);
+            me.fireEvent(&#39;requestexception&#39;, me, response, options);
             Ext.callback(options.failure, options.scope, [response, options]);
         }
         Ext.callback(options.callback, options.scope, [options, success, response]);
@@ -998,17 +998,17 @@ Ext.define('Ext.data.Connection', {
             request.success = false;
             lines = [];
         } else {
-            lines = xhr.getAllResponseHeaders().replace(this.lineBreakRe, '\n').split('\n');
+            lines = xhr.getAllResponseHeaders().replace(this.lineBreakRe, &#39;\n&#39;).split(&#39;\n&#39;);
         }
 
         count = lines.length;
 
         while (count--) {
             line = lines[count];
-            index = line.indexOf(':');
+            index = line.indexOf(&#39;:&#39;);
             if (index &gt;= 0) {
                 key = line.substr(0, index).toLowerCase();
-                if (line.charAt(index + 1) == ' ') {
+                if (line.charAt(index + 1) == &#39; &#39;) {
                     ++index;
                 }
                 headers[key] = line.substr(index + 1);
@@ -1037,7 +1037,7 @@ Ext.define('Ext.data.Connection', {
             response.responseBytes = new Blob([response.responseBytes], {type:xhr.getResponseHeader(&quot;Content-Type&quot;)})
         }
 
-        // If we don't explicitly tear down the xhr reference, IE6/IE7 will hold this in the closure of the
+        // If we don&#39;t explicitly tear down the xhr reference, IE6/IE7 will hold this in the closure of the
         // functions created with getResponseHeader/getAllResponseHeaders
         xhr = null;
         return response;
@@ -1053,7 +1053,7 @@ Ext.define('Ext.data.Connection', {
             request : request,
             requestId : request.id,
             status : request.aborted ? -1 : 0,
-            statusText : request.aborted ? 'transaction aborted' : 'communication failure',
+            statusText : request.aborted ? &#39;transaction aborted&#39; : &#39;communication failure&#39;,
             aborted: request.aborted,
             timedout: request.timedout
         };

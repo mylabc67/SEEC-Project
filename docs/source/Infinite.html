@@ -20,10 +20,10 @@
  * @author Jacky Nguyen &lt;jacky@sencha.com&gt;
  * @private
  *
- * The true infinite implementation of Carousel, private for now until it's stable to be public
+ * The true infinite implementation of Carousel, private for now until it&#39;s stable to be public
  */
-Ext.define('Ext.carousel.Infinite', {
-    extend: 'Ext.carousel.Carousel',
+Ext.define(&#39;Ext.carousel.Infinite&#39;, {
+    extend: &#39;Ext.carousel.Carousel&#39;,
 
     config: {
 <span id='Ext-carousel-Infinite-cfg-indicator'>        indicator: null,
@@ -36,7 +36,7 @@ Ext.define('Ext.carousel.Infinite', {
 <span id='Ext-carousel-Infinite-method-applyIndicator'>    applyIndicator: function(indicator) {
 </span>        //&lt;debug error&gt;
         if (indicator) {
-            Ext.Logger.error(&quot;'indicator' in Infinite Carousel implementation is not currently supported&quot;, this);
+            Ext.Logger.error(&quot;&#39;indicator&#39; in Infinite Carousel implementation is not currently supported&quot;, this);
         }
         //&lt;/debug&gt;
         return;
@@ -97,7 +97,7 @@ Ext.define('Ext.carousel.Infinite', {
                 id = item.getId();
                 idToIndex[id] = i;
                 indexToItem[i] = item;
-                this.fireEvent('itemindexchange', this, item, i, -1);
+                this.fireEvent(&#39;itemindexchange&#39;, this, item, i, -1);
             }
         }
         else {
@@ -121,7 +121,7 @@ Ext.define('Ext.carousel.Infinite', {
 
                 idToIndex[id] = index;
                 indexToItem[index] = item;
-                this.fireEvent('itemindexchange', this, item, index, oldIndex);
+                this.fireEvent(&#39;itemindexchange&#39;, this, item, index, oldIndex);
             }
         }
     },
@@ -139,14 +139,14 @@ Ext.define('Ext.carousel.Infinite', {
         for (i = 0,ln = items.length; i &lt; ln; i++) {
             item = items[i];
             index = idToIndex[item.getId()];
-            this.fireEvent('itemindexchange', this, item, index, -1);
+            this.fireEvent(&#39;itemindexchange&#39;, this, item, index, -1);
         }
     },
 
 <span id='Ext-carousel-Infinite-method-getInnerItemIndex'>    getInnerItemIndex: function(item) {
 </span>        var index = this.innerIdToIndex[item.getId()];
 
-        return (typeof index == 'number') ? index : -1;
+        return (typeof index == &#39;number&#39;) ? index : -1;
     },
 
 <span id='Ext-carousel-Infinite-method-getInnerItemAt'>    getInnerItemAt: function(index) {
@@ -160,7 +160,7 @@ Ext.define('Ext.carousel.Infinite', {
         var maxIndex = this.getMaxItemIndex(),
             currentActiveIndex = this.getActiveIndex();
 
-        if (typeof activeItem == 'number') {
+        if (typeof activeItem == &#39;number&#39;) {
             activeItem = Math.max(0, Math.min(activeItem, maxIndex));
 
             if (activeItem === currentActiveIndex) {

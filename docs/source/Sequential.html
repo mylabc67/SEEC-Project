@@ -20,32 +20,32 @@
  *
  * This class is a sequential id generator. A simple use of this class would be like so:
  *
- *     Ext.define('MyApp.data.MyModel', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;MyApp.data.MyModel&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
- *             identifier: 'sequential'
+ *             identifier: &#39;sequential&#39;
  *         }
  *     });
- *     // assign id's of 1, 2, 3, etc.
+ *     // assign id&#39;s of 1, 2, 3, etc.
  *
  * An example of a configured generator would be:
  *
- *     Ext.define('MyApp.data.MyModel', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;MyApp.data.MyModel&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
  *             identifier: {
- *                 type: 'sequential',
- *                 prefix: 'ID_',
+ *                 type: &#39;sequential&#39;,
+ *                 prefix: &#39;ID_&#39;,
  *                 seed: 1000
  *             }
  *         }
  *     });
- *     // assign id's of ID_1000, ID_1001, ID_1002, etc.
+ *     // assign id&#39;s of ID_1000, ID_1001, ID_1002, etc.
  *
  */
-Ext.define('Ext.data.identifier.Sequential', {
-    extend: 'Ext.data.identifier.Simple',
-    alias: 'data.identifier.sequential',
+Ext.define(&#39;Ext.data.identifier.Sequential&#39;, {
+    extend: &#39;Ext.data.identifier.Simple&#39;,
+    alias: &#39;data.identifier.sequential&#39;,
 
     config: {
 <span id='Ext-data-identifier-Sequential-cfg-prefix'>        /**
@@ -53,11 +53,11 @@ Ext.define('Ext.data.identifier.Sequential', {
          * The string to place in front of the sequential number for each generated id. The
          * default is blank.
          */
-        prefix: '',
+        prefix: &#39;&#39;,
 
 <span id='Ext-data-identifier-Sequential-cfg-seed'>        /**
 </span>         * @cfg {Number} seed
-         * The number at which to start generating sequential id's. The default is 1.
+         * The number at which to start generating sequential id&#39;s. The default is 1.
          */
         seed: 1
     },
@@ -65,7 +65,7 @@ Ext.define('Ext.data.identifier.Sequential', {
 <span id='Ext-data-identifier-Sequential-method-constructor'>    constructor: function() {
 </span>        var me = this;
         me.callParent(arguments);
-        me.parts = [me.getPrefix(), ''];
+        me.parts = [me.getPrefix(), &#39;&#39;];
     },
 
 <span id='Ext-data-identifier-Sequential-method-generate'>    generate: function(record) {
@@ -76,7 +76,7 @@ Ext.define('Ext.data.identifier.Sequential', {
         me.setSeed(seed);
         parts[1] = seed;
 
-        return parts.join('');
+        return parts.join(&#39;&#39;);
     }
 });</pre>
 </body>

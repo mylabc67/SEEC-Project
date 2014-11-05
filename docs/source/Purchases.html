@@ -22,19 +22,19 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.Purchases', {
+Ext.define(&#39;Ext.device.Purchases&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.Communicator',
-        'Ext.device.purchases.Sencha'
+        &#39;Ext.device.Communicator&#39;,
+        &#39;Ext.device.purchases.Sencha&#39;
     ],
 
 <span id='Ext-device-Purchases-method-constructor'>    constructor: function() {
 </span>        var browserEnv = Ext.browser.is;
 
         if (browserEnv.WebView &amp;&amp; browserEnv.Sencha) {
-            return Ext.create('Ext.device.purchases.Sencha');
+            return Ext.create(&#39;Ext.device.purchases.Sencha&#39;);
         }
 
         return {};

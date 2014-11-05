@@ -18,52 +18,39 @@
   <pre class="prettyprint lang-js"><span id='SEEC-view-Main'>/**
 </span> * A main view generate by Sencha Cmd
  */
-Ext.define('SEEC.view.Main', {
-    extend: 'Ext.tab.Panel',
-    xtype: 'main',
+Ext.define(&#39;SEEC.view.Main&#39;, {
+    extend: &#39;Ext.Container&#39;,
+    xtype: &#39;main&#39;,
     requires: [
-        'Ext.TitleBar',
-        'Ext.Video'
+        &#39;Ext.carousel.Carousel&#39;,
+        &#39;Ext.Container&#39;,
+        &#39;SEEC.view.login.Password&#39;,
+        &#39;SEEC.view.login.LockScreen&#39;,
+        &#39;SEEC.view.dashboard.DashBoard&#39;,
+        &#39;SEEC.util.Utils&#39;
     ],
     config: {
-<span id='SEEC-view-Main-cfg-tabBarPosition'>        tabBarPosition: 'bottom',
-</span>
+<span id='SEEC-view-Main-cfg-layout'>        layout: {
+</span>            type: &#39;card&#39;,
+            animation: &#39;pop&#39;
+        },
 <span id='SEEC-view-Main-cfg-items'>        items: [
 </span>            {
-                title: 'Welcome',
-                iconCls: 'home',
-
-                styleHtmlContent: true,
-                scrollable: true,
-
-                items: {
-                    docked: 'top',
-                    xtype: 'titlebar',
-                    title: 'Welcome to Sencha Touch 2'
-                },
-
-                html: [
-                    &quot;You've just generated a new Sencha Touch 2 project. What you're looking at right now is the &quot;,
-                    &quot;contents of &lt;a target='_blank' href=\&quot;app/view/Main.js\&quot;&gt;app/view/Main.js&lt;/a&gt; - edit that file &quot;,
-                    &quot;and refresh to change what's rendered here.&quot;
-                ].join(&quot;&quot;)
-            },
-            {
-                title: 'Get Started',
-                iconCls: 'action',
-
+                xtype: &#39;carousel&#39;,
+                indicator: false,
+                cls: &#39;login&#39;,
+                activeItem: &#39;lockscreen&#39;,
                 items: [
                     {
-                        docked: 'top',
-                        xtype: 'titlebar',
-                        title: 'Getting Started'
+                        xtype: &#39;password&#39;
                     },
                     {
-                        xtype: 'video',
-                        url: 'http://av.vimeo.com/64284/137/87347327.mp4?token=1330978144_f9b698fea38cd408d52a2393240c896c',
-                        posterUrl: 'http://b.vimeocdn.com/ts/261/062/261062119_640.jpg'
+                        xtype: &#39;lockscreen&#39;
                     }
                 ]
+            },
+            {
+                xtype: &#39;dashboard&#39;
             }
         ]
     }

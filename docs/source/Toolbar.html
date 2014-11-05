@@ -29,48 +29,48 @@
  * ## Examples
  *
  *     @example miniphone preview
- *     Ext.create('Ext.Container', {
+ *     Ext.create(&#39;Ext.Container&#39;, {
  *         fullscreen: true,
  *         layout: {
- *             type: 'vbox',
- *             pack: 'center'
+ *             type: &#39;vbox&#39;,
+ *             pack: &#39;center&#39;
  *         },
  *         items: [
  *             {
- *                 xtype : 'toolbar',
- *                 docked: 'top',
- *                 title: 'My Toolbar'
+ *                 xtype : &#39;toolbar&#39;,
+ *                 docked: &#39;top&#39;,
+ *                 title: &#39;My Toolbar&#39;
  *             },
  *             {
- *                 xtype: 'container',
+ *                 xtype: &#39;container&#39;,
  *                 defaults: {
- *                     xtype: 'button',
- *                     margin: '10 10 0 10'
+ *                     xtype: &#39;button&#39;,
+ *                     margin: &#39;10 10 0 10&#39;
  *                 },
  *                 items: [
  *                     {
- *                         text: 'Toggle docked',
+ *                         text: &#39;Toggle docked&#39;,
  *                         handler: function() {
- *                             var toolbar = Ext.ComponentQuery.query('toolbar')[0],
- *                                 newDocked = (toolbar.getDocked() === 'top') ? 'bottom' : 'top';
+ *                             var toolbar = Ext.ComponentQuery.query(&#39;toolbar&#39;)[0],
+ *                                 newDocked = (toolbar.getDocked() === &#39;top&#39;) ? &#39;bottom&#39; : &#39;top&#39;;
  *
  *                             toolbar.setDocked(newDocked);
  *                         }
  *                     },
  *                     {
- *                         text: 'Toggle UI',
+ *                         text: &#39;Toggle UI&#39;,
  *                         handler: function() {
- *                             var toolbar = Ext.ComponentQuery.query('toolbar')[0],
- *                                 newUi = (toolbar.getUi() === 'light') ? 'dark' : 'light';
+ *                             var toolbar = Ext.ComponentQuery.query(&#39;toolbar&#39;)[0],
+ *                                 newUi = (toolbar.getUi() === &#39;light&#39;) ? &#39;dark&#39; : &#39;light&#39;;
  *
  *                             toolbar.setUi(newUi);
  *                         }
  *                     },
  *                     {
- *                         text: 'Change title',
+ *                         text: &#39;Change title&#39;,
  *                         handler: function() {
- *                             var toolbar = Ext.ComponentQuery.query('toolbar')[0],
- *                                 titles = ['My Toolbar', 'Ext.Toolbar', 'Configurations are awesome!', 'Beautiful.'],
+ *                             var toolbar = Ext.ComponentQuery.query(&#39;toolbar&#39;)[0],
+ *                                 titles = [&#39;My Toolbar&#39;, &#39;Ext.Toolbar&#39;, &#39;Configurations are awesome!&#39;, &#39;Beautiful.&#39;],
                                    //internally, the title configuration gets converted into a {@link Ext.Title} component,
                                    //so you must get the title configuration of that component
  *                                 title = toolbar.getTitle().getTitle(),
@@ -99,15 +99,15 @@
  *             ...
  *
  */
-Ext.define('Ext.Toolbar', {
-    extend: 'Ext.Container',
-    xtype : 'toolbar',
+Ext.define(&#39;Ext.Toolbar&#39;, {
+    extend: &#39;Ext.Container&#39;,
+    xtype : &#39;toolbar&#39;,
 
     requires: [
-        'Ext.Button',
-        'Ext.Title',
-        'Ext.Spacer',
-        'Ext.layout.HBox'
+        &#39;Ext.Button&#39;,
+        &#39;Ext.Title&#39;,
+        &#39;Ext.Spacer&#39;,
+        &#39;Ext.layout.HBox&#39;
     ],
 
 <span id='Ext-Toolbar-property-isToolbar'>    // @private
@@ -118,14 +118,14 @@ Ext.define('Ext.Toolbar', {
 </span>         * @cfg baseCls
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'toolbar',
+        baseCls: Ext.baseCSSPrefix + &#39;toolbar&#39;,
 
 <span id='Ext-Toolbar-cfg-ui'>        /**
 </span>         * @cfg {String} ui
-         * The ui for this {@link Ext.Toolbar}. Either 'light' or 'dark'. You can create more UIs by using using the CSS Mixin {@link #sencha-toolbar-ui}
+         * The ui for this {@link Ext.Toolbar}. Either &#39;light&#39; or &#39;dark&#39;. You can create more UIs by using using the CSS Mixin {@link #sencha-toolbar-ui}
          * @accessor
          */
-        ui: 'dark',
+        ui: &#39;dark&#39;,
 
 <span id='Ext-Toolbar-cfg-title'>        /**
 </span>         * @cfg {String/Ext.Title} title
@@ -139,12 +139,12 @@ Ext.define('Ext.Toolbar', {
          * The default xtype to create.
          * @accessor
          */
-        defaultType: 'button',
+        defaultType: &#39;button&#39;,
 
 <span id='Ext-Toolbar-cfg-docked'>        /**
 </span>         * @cfg {String} docked
          * The docked position for this {@link Ext.Toolbar}.
-         * If you specify `left` or `right`, the {@link #layout} configuration will automatically change to a `vbox`. It's also
+         * If you specify `left` or `right`, the {@link #layout} configuration will automatically change to a `vbox`. It&#39;s also
          * recommended to adjust the {@link #width} of the toolbar if you do this.
          * @accessor
          */
@@ -157,23 +157,23 @@ Ext.define('Ext.Toolbar', {
         minHeight: null,
 
 <span id='Ext-Toolbar-cfg-layout'>        /**
-</span>         * @cfg {Object/String} layout Configuration for this Container's layout. Example:
+</span>         * @cfg {Object/String} layout Configuration for this Container&#39;s layout. Example:
          *
-         *     Ext.create('Ext.Container', {
+         *     Ext.create(&#39;Ext.Container&#39;, {
          *         layout: {
-         *             type: 'hbox',
-         *             align: 'middle'
+         *             type: &#39;hbox&#39;,
+         *             align: &#39;middle&#39;
          *         },
          *         items: [
          *             {
-         *                 xtype: 'panel',
+         *                 xtype: &#39;panel&#39;,
          *                 flex: 1,
-         *                 style: 'background-color: red;'
+         *                 style: &#39;background-color: red;&#39;
          *             },
          *             {
-         *                 xtype: 'panel',
+         *                 xtype: &#39;panel&#39;,
          *                 flex: 2,
-         *                 style: 'background-color: green'
+         *                 style: &#39;background-color: green&#39;
          *             }
          *         ]
          *     });
@@ -186,8 +186,8 @@ Ext.define('Ext.Toolbar', {
          * @accessor
          */
         layout: {
-            type: 'hbox',
-            align: 'center'
+            type: &#39;hbox&#39;,
+            align: &#39;center&#39;
         }
     },
 
@@ -198,8 +198,8 @@ Ext.define('Ext.Toolbar', {
 
         if (config.docked == &quot;left&quot; || config.docked == &quot;right&quot;) {
             config.layout = {
-                type: 'vbox',
-                align: 'stretch'
+                type: &#39;vbox&#39;,
+                align: &#39;stretch&#39;
             };
         }
 
@@ -208,7 +208,7 @@ Ext.define('Ext.Toolbar', {
 
 <span id='Ext-Toolbar-method-applyTitle'>    // @private
 </span>    applyTitle: function(title) {
-        if (typeof title == 'string') {
+        if (typeof title == &#39;string&#39;) {
             title = {
                 title: title,
                 centered : Ext.theme.is.Tizen ? false : true
@@ -273,7 +273,7 @@ Ext.define('Ext.Toolbar', {
      * The CSS class to apply to the `titleEl`.
      * @removed 2.0.0 Title class is now a config option of the title
      */
-    Ext.deprecateProperty(this, 'titleCls', null, &quot;Ext.Toolbar.titleCls has been removed. Use #cls config of title instead.&quot;);
+    Ext.deprecateProperty(this, &#39;titleCls&#39;, null, &quot;Ext.Toolbar.titleCls has been removed. Use #cls config of title instead.&quot;);
     //&lt;/deprecated&gt;
 });
 

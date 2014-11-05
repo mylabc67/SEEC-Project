@@ -19,13 +19,13 @@
 </span> * Utility class used by Ext.field.Slider.
  * @private
  */
-Ext.define('Ext.slider.Slider', {
-    extend: 'Ext.Container',
-    xtype: 'slider',
+Ext.define(&#39;Ext.slider.Slider&#39;, {
+    extend: &#39;Ext.Container&#39;,
+    xtype: &#39;slider&#39;,
 
     requires: [
-        'Ext.slider.Thumb',
-        'Ext.fx.easing.EaseOut'
+        &#39;Ext.slider.Thumb&#39;,
+        &#39;Ext.fx.easing.EaseOut&#39;
     ],
 
 <span id='Ext-slider-Slider-event-change'>    /**
@@ -63,7 +63,7 @@ Ext.define('Ext.slider.Slider', {
     * @param {Ext.EventObject} e
     */
     config: {
-<span id='Ext-slider-Slider-cfg-baseCls'>        baseCls: 'x-slider',
+<span id='Ext-slider-Slider-cfg-baseCls'>        baseCls: &#39;x-slider&#39;,
 </span>
 <span id='Ext-slider-Slider-cfg-thumbConfig'>        /**
 </span>         * @cfg {Object} thumbConfig The config object to factory {@link Ext.slider.Thumb} instances
@@ -74,7 +74,7 @@ Ext.define('Ext.slider.Slider', {
                 translatable: {
                     easingX: {
                         duration: 300,
-                        type: 'ease-out'
+                        type: &#39;ease-out&#39;
                     }
                 }
             }
@@ -89,7 +89,7 @@ Ext.define('Ext.slider.Slider', {
         increment : 1,
 
 <span id='Ext-slider-Slider-cfg-value'>        /**
-</span>         * @cfg {Number/Number[]} value The value(s) of this slider's thumbs. If you pass
+</span>         * @cfg {Number/Number[]} value The value(s) of this slider&#39;s thumbs. If you pass
          * a number, it will assume you have just 1 thumb.
          * @accessor
          */
@@ -148,7 +148,7 @@ Ext.define('Ext.slider.Slider', {
 <span id='Ext-slider-Slider-method-constructor'>    constructor: function(config) {
 </span>        config = config || {};
 
-        if (config.hasOwnProperty('values')) {
+        if (config.hasOwnProperty(&#39;values&#39;)) {
             config.value = config.values;
         }
 
@@ -163,22 +163,22 @@ Ext.define('Ext.slider.Slider', {
 
         element.on({
             scope: this,
-            tap: 'onTap',
-            resize: 'onResize'
+            tap: &#39;onTap&#39;,
+            resize: &#39;onResize&#39;
         });
 
         this.on({
             scope: this,
-            delegate: '&gt; thumb',
-            tap: 'onTap',
-            dragstart: 'onThumbDragStart',
-            drag: 'onThumbDrag',
-            dragend: 'onThumbDragEnd'
+            delegate: &#39;&gt; thumb&#39;,
+            tap: &#39;onTap&#39;,
+            dragstart: &#39;onThumbDragStart&#39;,
+            drag: &#39;onThumbDrag&#39;,
+            dragend: &#39;onThumbDragEnd&#39;
         });
 
         var thumb = this.getThumb(0);
         if(thumb) {
-            thumb.on('resize', 'onThumbResize', this);
+            thumb.on(&#39;resize&#39;, &#39;onThumbResize&#39;, this);
         }
     },
 
@@ -203,7 +203,7 @@ Ext.define('Ext.slider.Slider', {
      * @return {Ext.slider.Thumb} The thumb instance
      */
     getThumb: function(index) {
-        if (typeof index != 'number') {
+        if (typeof index != &#39;number&#39;) {
             index = 0;
         }
 
@@ -260,7 +260,7 @@ Ext.define('Ext.slider.Slider', {
         }
 
         this.dragStartValue = this.getValue()[this.getThumbIndex(thumb)];
-        this.fireEvent('dragstart', this, thumb, this.dragStartValue, e);
+        this.fireEvent(&#39;dragstart&#39;, this, thumb, this.dragStartValue, e);
     },
 
 <span id='Ext-slider-Slider-method-onThumbDrag'>    onThumbDrag: function(thumb, e, offsetX) {
@@ -272,7 +272,7 @@ Ext.define('Ext.slider.Slider', {
 
         this.setIndexValue(index, constrainedValue);
 
-        this.fireEvent('drag', this, thumb, this.getValue(), e);
+        this.fireEvent(&#39;drag&#39;, this, thumb, this.getValue(), e);
 
         return false;
     },
@@ -296,9 +296,9 @@ Ext.define('Ext.slider.Slider', {
             newValue = this.getValue()[index],
             oldValue = this.dragStartValue;
 
-        this.fireEvent('dragend', this, thumb, this.getValue(), e);
+        this.fireEvent(&#39;dragend&#39;, this, thumb, this.getValue(), e);
         if (oldValue !== newValue) {
-            this.fireEvent('change', this, thumb, newValue, oldValue);
+            this.fireEvent(&#39;change&#39;, this, thumb, newValue, oldValue);
         }
     },
 
@@ -340,7 +340,7 @@ Ext.define('Ext.slider.Slider', {
 
         var targetElement = Ext.get(e.target);
 
-        if (!targetElement || (Ext.browser.engineName == 'WebKit' &amp;&amp; targetElement.hasCls('x-thumb'))) {
+        if (!targetElement || (Ext.browser.engineName == &#39;WebKit&#39; &amp;&amp; targetElement.hasCls(&#39;x-thumb&#39;))) {
             return;
         }
 
@@ -376,7 +376,7 @@ Ext.define('Ext.slider.Slider', {
         this.refreshThumbConstraints(thumb);
 
         if (oldValue !== value) {
-            this.fireEvent('change', this, thumb, value, oldValue);
+            this.fireEvent(&#39;change&#39;, this, thumb, value, oldValue);
         }
     },
 
@@ -396,7 +396,7 @@ Ext.define('Ext.slider.Slider', {
 
             if (filteredValue &lt; previousFilteredValue) {
                 //&lt;debug warn&gt;
-                Ext.Logger.warn(&quot;Invalid values of '&quot;+Ext.encode(values)+&quot;', values at smaller indexes must &quot; +
+                Ext.Logger.warn(&quot;Invalid values of &#39;&quot;+Ext.encode(values)+&quot;&#39;, values at smaller indexes must &quot; +
                     &quot;be smaller than or equal to values at greater indexes&quot;);
                 //&lt;/debug&gt;
                 filteredValue = previousFilteredValue;
@@ -524,28 +524,28 @@ Ext.define('Ext.slider.Slider', {
 
 <span id='Ext-slider-Slider-method-updateAllowThumbsOverlapping'>    // @private
 </span>    updateAllowThumbsOverlapping: function(newValue, oldValue) {
-        if (typeof oldValue != 'undefined') {
+        if (typeof oldValue != &#39;undefined&#39;) {
             this.refreshValue();
         }
     },
 
 <span id='Ext-slider-Slider-method-updateMinValue'>    // @private
 </span>    updateMinValue: function(newValue, oldValue) {
-        if (typeof oldValue != 'undefined') {
+        if (typeof oldValue != &#39;undefined&#39;) {
             this.refreshValue();
         }
     },
 
 <span id='Ext-slider-Slider-method-updateMaxValue'>    // @private
 </span>    updateMaxValue: function(newValue, oldValue) {
-        if (typeof oldValue != 'undefined') {
+        if (typeof oldValue != &#39;undefined&#39;) {
             this.refreshValue();
         }
     },
 
 <span id='Ext-slider-Slider-method-updateIncrement'>    // @private
 </span>    updateIncrement: function(newValue, oldValue) {
-        if (typeof oldValue != 'undefined') {
+        if (typeof oldValue != &#39;undefined&#39;) {
             this.refreshValue();
         }
     },
@@ -569,7 +569,7 @@ Ext.define('Ext.slider.Slider', {
      * Animation duration in ms.
      * @removed 2.0.0 Use the duration property on the animation config instead.
      */
-    Ext.deprecateProperty(this, 'animationDuration', null, &quot;Ext.slider.Slider.animationDuration has been removed&quot;);
+    Ext.deprecateProperty(this, &#39;animationDuration&#39;, null, &quot;Ext.slider.Slider.animationDuration has been removed&quot;);
     //&lt;/deprecated&gt;
 });
 </pre>

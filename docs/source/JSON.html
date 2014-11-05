@@ -21,7 +21,7 @@
 
 <span id='Ext-JSON'>/**
 </span> * @class Ext.JSON
- * Modified version of Douglas Crockford's json.js that doesn't
+ * Modified version of Douglas Crockford&#39;s json.js that doesn&#39;t
  * mess with the Object prototype.
  * [http://www.json.org/js.html](http://www.json.org/js.html)
  * @singleton
@@ -33,7 +33,7 @@ Ext.JSON = new(function() {
 
         return function() {
             if (useNative === null) {
-                useNative = Ext.USE_NATIVE_JSON &amp;&amp; window.JSON &amp;&amp; JSON.toString() == '[object JSON]';
+                useNative = Ext.USE_NATIVE_JSON &amp;&amp; window.JSON &amp;&amp; JSON.toString() == &#39;[object JSON]&#39;;
             }
 
             return useNative;
@@ -43,7 +43,7 @@ Ext.JSON = new(function() {
         return n &lt; 10 ? &quot;0&quot; + n : n;
     },
     doDecode = function(json) {
-        return eval(&quot;(&quot; + json + ')');
+        return eval(&quot;(&quot; + json + &#39;)&#39;);
     },
     doEncode = function(o) {
         if (!Ext.isDefined(o) || o === null) {
@@ -59,7 +59,7 @@ Ext.JSON = new(function() {
                 return encodeString(o);
             }
         } else if (typeof o == &quot;number&quot;) {
-            //don't use isNumber here, since finite checks happen inside isNumber
+            //don&#39;t use isNumber here, since finite checks happen inside isNumber
             return isFinite(o) ? String(o) : &quot;null&quot;;
         } else if (Ext.isBoolean(o)) {
             return String(o);
@@ -68,24 +68,24 @@ Ext.JSON = new(function() {
         } else if (typeof o === &quot;function&quot;) {
             return &quot;null&quot;;
         }
-        return 'undefined';
+        return &#39;undefined&#39;;
     },
     m = {
-        &quot;\b&quot;: '\\b',
-        &quot;\t&quot;: '\\t',
-        &quot;\n&quot;: '\\n',
-        &quot;\f&quot;: '\\f',
-        &quot;\r&quot;: '\\r',
-        '&quot;': '\\&quot;',
-        &quot;\\&quot;: '\\\\',
-        '\x0b': '\\u000b' //ie doesn't handle \v
+        &quot;\b&quot;: &#39;\\b&#39;,
+        &quot;\t&quot;: &#39;\\t&#39;,
+        &quot;\n&quot;: &#39;\\n&#39;,
+        &quot;\f&quot;: &#39;\\f&#39;,
+        &quot;\r&quot;: &#39;\\r&#39;,
+        &#39;&quot;&#39;: &#39;\\&quot;&#39;,
+        &quot;\\&quot;: &#39;\\\\&#39;,
+        &#39;\x0b&#39;: &#39;\\u000b&#39; //ie doesn&#39;t handle \v
     },
     charToReplace = /[\\\&quot;\x00-\x1f\x7f-\uffff]/g,
     encodeString = function(s) {
-        return '&quot;' + s.replace(charToReplace, function(a) {
+        return &#39;&quot;&#39; + s.replace(charToReplace, function(a) {
             var c = m[a];
-            return typeof c === 'string' ? c : '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
-        }) + '&quot;';
+            return typeof c === &#39;string&#39; ? c : &#39;\\u&#39; + (&#39;0000&#39; + a.charCodeAt(0).toString(16)).slice(-4);
+        }) + &#39;&quot;&#39;;
     },
     encodeArray = function(o) {
         var a = [&quot;[&quot;, &quot;&quot;],
@@ -93,10 +93,10 @@ Ext.JSON = new(function() {
         len = o.length,
         i;
         for (i = 0; i &lt; len; i += 1) {
-            a.push(doEncode(o[i]), ',');
+            a.push(doEncode(o[i]), &#39;,&#39;);
         }
         // Overwrite trailing comma (or empty string)
-        a[a.length - 1] = ']';
+        a[a.length - 1] = &#39;]&#39;;
         return a.join(&quot;&quot;);
     },
     encodeObject = function(o) {
@@ -105,15 +105,15 @@ Ext.JSON = new(function() {
         i;
         for (i in o) {
             if (!useHasOwn || o.hasOwnProperty(i)) {
-                a.push(doEncode(i), &quot;:&quot;, doEncode(o[i]), ',');
+                a.push(doEncode(i), &quot;:&quot;, doEncode(o[i]), &#39;,&#39;);
             }
         }
         // Overwrite trailing comma (or empty string)
-        a[a.length - 1] = '}';
+        a[a.length - 1] = &#39;}&#39;;
         return a.join(&quot;&quot;);
     },
     encodeMSDate = function(o) {
-        return '&quot;' + o + '&quot;';
+        return &#39;&quot;&#39; + o + &#39;&quot;&#39;;
     };
 
 <span id='Ext-JSON-method-encodeDate'>    /**
@@ -125,19 +125,19 @@ Ext.JSON = new(function() {
      * To override this:
      *
      *     Ext.JSON.encodeDate = function(d) {
-     *         return Ext.Date.format(d, '&quot;Y-m-d&quot;');
+     *         return Ext.Date.format(d, &#39;&quot;Y-m-d&quot;&#39;);
      *     };
      *
      * @param {Date} d The Date to encode.
      * @return {String} The string literal to use in a JSON string.
      */
     this.encodeDate = function(o) {
-        return '&quot;' + o.getFullYear() + &quot;-&quot;
+        return &#39;&quot;&#39; + o.getFullYear() + &quot;-&quot;
         + pad(o.getMonth() + 1) + &quot;-&quot;
         + pad(o.getDate()) + &quot;T&quot;
         + pad(o.getHours()) + &quot;:&quot;
         + pad(o.getMinutes()) + &quot;:&quot;
-        + pad(o.getSeconds()) + '&quot;';
+        + pad(o.getSeconds()) + &#39;&quot;&#39;;
     };
 
 <span id='Ext-JSON-method-encode'>    /**
@@ -181,7 +181,7 @@ Ext.JSON = new(function() {
                 Ext.Error.raise({
                     sourceClass: &quot;Ext.JSON&quot;,
                     sourceMethod: &quot;decode&quot;,
-                    msg: &quot;You're trying to decode an invalid JSON String: &quot; + json
+                    msg: &quot;You&#39;re trying to decode an invalid JSON String: &quot; + json
                 });
             }
         };

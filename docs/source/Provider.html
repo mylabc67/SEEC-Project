@@ -30,11 +30,11 @@
  *
  * @abstract
  */
-Ext.define('Ext.direct.Provider', {
-    alias: 'direct.provider',
+Ext.define(&#39;Ext.direct.Provider&#39;, {
+    alias: &#39;direct.provider&#39;,
 
     mixins: {
-        observable: 'Ext.mixin.Observable'
+        observable: &#39;Ext.mixin.Observable&#39;
     },
 
     config: {
@@ -45,11 +45,11 @@ Ext.define('Ext.direct.Provider', {
          * not have an object reference available, for example:
          *
          *     Ext.direct.Manager.addProvider({
-         *         type: 'polling',
-         *         url:  'php/poll.php',
-         *         id:   'poll-provider'
+         *         type: &#39;polling&#39;,
+         *         url:  &#39;php/poll.php&#39;,
+         *         id:   &#39;poll-provider&#39;
          *     });
-         *     var p = {@link Ext.direct.Manager}.{@link Ext.direct.Manager#getProvider getProvider}('poll-provider');
+         *     var p = {@link Ext.direct.Manager}.{@link Ext.direct.Manager#getProvider getProvider}(&#39;poll-provider&#39;);
          *     p.disconnect();
          *
          */

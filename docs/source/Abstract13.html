@@ -18,19 +18,19 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-notification-Abstract'>/**
 </span> * @private
  */
-Ext.define('Ext.device.notification.Abstract', {
+Ext.define(&#39;Ext.device.notification.Abstract&#39;, {
 <span id='Ext-device-notification-Abstract-method-show'>    /**
 </span>     * A simple way to show a notification.
      *
      *     Ext.device.Notification.show({
-     *        title: 'Verification',
-     *        message: 'Is your email address is: test@sencha.com',
+     *        title: &#39;Verification&#39;,
+     *        message: &#39;Is your email address is: test@sencha.com&#39;,
      *        buttons: Ext.MessageBox.OKCANCEL,
      *        callback: function(button) {
      *            if (button == &quot;ok&quot;) {
-     *                console.log('Verified');
+     *                console.log(&#39;Verified&#39;);
      *            } else {
-     *                console.log('Nope.');
+     *                console.log(&#39;Nope.&#39;);
      *            }
      *        }
      *     });
@@ -47,13 +47,13 @@ Ext.define('Ext.device.notification.Abstract', {
      *
      * @param {Function} config.callback
      * A callback function which is called when the notification is dismissed by clicking on the configured buttons.
-     * @param {String} config.callback.buttonId The id of the button pressed, one of: 'ok', 'yes', 'no', 'cancel'.
+     * @param {String} config.callback.buttonId The id of the button pressed, one of: &#39;ok&#39;, &#39;yes&#39;, &#39;no&#39;, &#39;cancel&#39;.
      *
      * @param {Object} config.scope The scope of the callback function
      */
     show: function(config) {
         if (!config.message) {
-            throw('[Ext.device.Notification#show] You passed no message');
+            throw(&#39;[Ext.device.Notification#show] You passed no message&#39;);
         }
 
         if (!config.buttons) {
@@ -73,7 +73,7 @@ Ext.define('Ext.device.notification.Abstract', {
 
 <span id='Ext-device-notification-Abstract-method-alert'>    alert: function(config) {
 </span>        if (!config.message) {
-            throw('[Ext.device.Notification#alert] You passed no message');
+            throw(&#39;[Ext.device.Notification#alert] You passed no message&#39;);
         }
 
         if (!config.scope) {
@@ -85,7 +85,7 @@ Ext.define('Ext.device.notification.Abstract', {
 
 <span id='Ext-device-notification-Abstract-method-confirm'>    confirm: function(config) {
 </span>        if (!config.message) {
-            throw('[Ext.device.Notification#confirm] You passed no message');
+            throw(&#39;[Ext.device.Notification#confirm] You passed no message&#39;);
         }
 
         if (!config.buttons) {
@@ -104,7 +104,7 @@ Ext.define('Ext.device.notification.Abstract', {
     },
 <span id='Ext-device-notification-Abstract-method-prompt'>    prompt: function(config) {
 </span>        if (!config.message) {
-            throw('[Ext.device.Notification#prompt] You passed no message');
+            throw(&#39;[Ext.device.Notification#prompt] You passed no message&#39;);
         }
 
         if (!config.buttons) {

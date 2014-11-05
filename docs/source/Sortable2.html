@@ -18,15 +18,15 @@
   <pre class="prettyprint lang-js"><span id='Ext-mixin-Sortable'>/**
 </span> * @private
  */
-Ext.define('Ext.mixin.Sortable', {
-    extend: 'Ext.mixin.Mixin',
+Ext.define(&#39;Ext.mixin.Sortable&#39;, {
+    extend: &#39;Ext.mixin.Mixin&#39;,
 
     requires: [
-        'Ext.util.Sorter'
+        &#39;Ext.util.Sorter&#39;
     ],
 
 <span id='Ext-mixin-Sortable-property-mixinConfig'>    mixinConfig: {
-</span>        id: 'sortable'
+</span>        id: &#39;sortable&#39;
     },
 
     config: {
@@ -90,7 +90,7 @@ Ext.define('Ext.mixin.Sortable', {
     },
 
 <span id='Ext-mixin-Sortable-method-createSortersCollection'>    createSortersCollection: function() {
-</span>        this._sorters = Ext.create('Ext.util.Collection', function(sorter) {
+</span>        this._sorters = Ext.create(&#39;Ext.util.Collection&#39;, function(sorter) {
             return sorter.getId();
         });
         return this._sorters;
@@ -102,7 +102,7 @@ Ext.define('Ext.mixin.Sortable', {
      * Ext.util.Sorter, a string indicating a property name, an object representing an Ext.util.Sorter
      * configuration, or a sort function.
      * @param {String} defaultDirection The default direction for each sorter in the array. Defaults
-     * to the value of {@link #defaultSortDirection}. Can be either 'ASC' or 'DESC'.
+     * to the value of {@link #defaultSortDirection}. Can be either &#39;ASC&#39; or &#39;DESC&#39;.
      */
     addSorter: function(sorter, defaultDirection) {
         this.addSorters([sorter], defaultDirection);
@@ -114,7 +114,7 @@ Ext.define('Ext.mixin.Sortable', {
      * indicating a property name, an object representing an Ext.util.Sorter configuration,
      * or a sort function.
      * @param {String} defaultDirection The default direction for each sorter in the array. Defaults
-     * to the value of {@link #defaultSortDirection}. Can be either 'ASC' or 'DESC'.
+     * to the value of {@link #defaultSortDirection}. Can be either &#39;ASC&#39; or &#39;DESC&#39;.
      */
     addSorters: function(sorters, defaultDirection) {
         var currentSorters = this.getSorters();
@@ -128,7 +128,7 @@ Ext.define('Ext.mixin.Sortable', {
      * a string indicating a property name, an object representing an Ext.util.Sorter configuration,
      * or a sort function.
      * @param {String} defaultDirection The default direction for each sorter in the array. Defaults
-     * to the value of {@link #defaultSortDirection}. Can be either 'ASC' or 'DESC'.
+     * to the value of {@link #defaultSortDirection}. Can be either &#39;ASC&#39; or &#39;DESC&#39;.
      */
     insertSorter: function(index, sorter, defaultDirection) {
         return this.insertSorters(index, [sorter], defaultDirection);
@@ -140,7 +140,7 @@ Ext.define('Ext.mixin.Sortable', {
      * @param {Array} sorters Can be an instance of Ext.util.Sorter, a string indicating a property name,
      * an object representing an Ext.util.Sorter configuration, or a sort function.
      * @param {String} defaultDirection The default direction for each sorter in the array. Defaults
-     * to the value of {@link #defaultSortDirection}. Can be either 'ASC' or 'DESC'.
+     * to the value of {@link #defaultSortDirection}. Can be either &#39;ASC&#39; or &#39;DESC&#39;.
      */
     insertSorters: function(index, sorters, defaultDirection) {
         // We begin by making sure we are dealing with an array of sorters
@@ -169,7 +169,7 @@ Ext.define('Ext.mixin.Sortable', {
             };
 
             // If we are dealing with a string we assume it is a property they want to sort on.
-            if (typeof sorter === 'string') {
+            if (typeof sorter === &#39;string&#39;) {
                 currentSorter = currentSorters.get(sorter);
 
                 if (!currentSorter) {
@@ -210,12 +210,12 @@ Ext.define('Ext.mixin.Sortable', {
             // Finally we get to the point where it has to be invalid
             // &lt;debug&gt;
             else {
-                Ext.Logger.warn('Invalid sorter specified:', sorter);
+                Ext.Logger.warn(&#39;Invalid sorter specified:&#39;, sorter);
             }
             // &lt;/debug&gt;
 
             // If a sorter config was created, make it an instance
-            sorter = Ext.create('Ext.util.Sorter', sorterConfig);
+            sorter = Ext.create(&#39;Ext.util.Sorter&#39;, sorterConfig);
             newSorters.push(sorter);
         }
 
@@ -260,10 +260,10 @@ Ext.define('Ext.mixin.Sortable', {
         for (i = 0; i &lt; ln; i++) {
             sorter = sorters[i];
 
-            if (typeof sorter === 'string') {
+            if (typeof sorter === &#39;string&#39;) {
                 currentSorters.removeAtKey(sorter);
             }
-            else if (typeof sorter === 'function') {
+            else if (typeof sorter === &#39;function&#39;) {
                 currentSorters.each(function(item) {
                     if (item.getSorterFn() === sorter) {
                         currentSorters.remove(item);

@@ -20,20 +20,20 @@
  *
  * The Url field creates an HTML5 url input and is usually created inside a form. Because it creates an HTML url input
  * field, most browsers will show a specialized virtual keyboard for web address input. Aside from that, the url field
- * is just a normal text field. Here's an example of how to use it in a form:
+ * is just a normal text field. Here&#39;s an example of how to use it in a form:
  *
  *     @example
- *     Ext.create('Ext.form.Panel', {
+ *     Ext.create(&#39;Ext.form.Panel&#39;, {
  *         fullscreen: true,
  *         items: [
  *             {
- *                 xtype: 'fieldset',
- *                 title: 'Add Bookmark',
+ *                 xtype: &#39;fieldset&#39;,
+ *                 title: &#39;Add Bookmark&#39;,
  *                 items: [
  *                     {
- *                         xtype: 'urlfield',
- *                         label: 'Url',
- *                         name: 'url'
+ *                         xtype: &#39;urlfield&#39;,
+ *                         label: &#39;Url&#39;,
+ *                         name: &#39;url&#39;
  *                     }
  *                 ]
  *             }
@@ -42,9 +42,9 @@
  *
  * Or on its own, outside of a form:
  *
- *     Ext.create('Ext.field.Url', {
- *         label: 'Web address',
- *         value: 'http://sencha.com'
+ *     Ext.create(&#39;Ext.field.Url&#39;, {
+ *         label: &#39;Web address&#39;,
+ *         value: &#39;http://sencha.com&#39;
  *     });
  *
  * Because url field inherits from {@link Ext.field.Text textfield} it gains all of the functionality that text fields
@@ -52,10 +52,10 @@
  * user interacts with the component. Check out the {@link Ext.field.Text} docs to see the additional functionality
  * available.
  */
-Ext.define('Ext.field.Url', {
-    extend: 'Ext.field.Text',
-    xtype: 'urlfield',
-    alternateClassName: 'Ext.form.Url',
+Ext.define(&#39;Ext.field.Url&#39;, {
+    extend: &#39;Ext.field.Text&#39;,
+    xtype: &#39;urlfield&#39;,
+    alternateClassName: &#39;Ext.form.Url&#39;,
 
     config: {
 <span id='Ext-field-Url-cfg-autoCapitalize'>        /**
@@ -69,7 +69,7 @@ Ext.define('Ext.field.Url', {
          * @inheritdoc
          */
         component: {
-	        type: 'url'
+	        type: &#39;url&#39;
 	    }
     }
 });

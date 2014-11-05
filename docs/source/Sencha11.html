@@ -18,7 +18,7 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-sqlite-Sencha'>/**
 </span> * @private
  */
-Ext.define('Ext.device.sqlite.Sencha', {
+Ext.define(&#39;Ext.device.sqlite.Sencha&#39;, {
 <span id='Ext-device-sqlite-Sencha-method-openDatabase'>    /**
 </span>     * Returns a {@link Ext.device.sqlite.Database} instance.
      * If the database with specified name does not exist, it will be created.
@@ -54,29 +54,29 @@ Ext.define('Ext.device.sqlite.Sencha', {
      */
     openDatabase: function(config) {
         if (config.name == null) {
-            Ext.Logger.error('Ext.device.SQLite#openDatabase: You must specify a `name` of the database.');
+            Ext.Logger.error(&#39;Ext.device.SQLite#openDatabase: You must specify a `name` of the database.&#39;);
             return null;
         }
 
         if (config.version == null) {
-            Ext.Logger.error('Ext.device.SQLite#openDatabase: You must specify a `version` of the database.');
+            Ext.Logger.error(&#39;Ext.device.SQLite#openDatabase: You must specify a `version` of the database.&#39;);
             return null;
         }
 
         if (config.displayName == null) {
-            Ext.Logger.error('Ext.device.SQLite#openDatabase: You must specify a `displayName` of the database.');
+            Ext.Logger.error(&#39;Ext.device.SQLite#openDatabase: You must specify a `displayName` of the database.&#39;);
             return null;
         }
 
         if (config.estimatedSize == null) {
-            Ext.Logger.error('Ext.device.SQLite#openDatabase: You must specify a `estimatedSize` of the database.');
+            Ext.Logger.error(&#39;Ext.device.SQLite#openDatabase: You must specify a `estimatedSize` of the database.&#39;);
             return null;
         }
 
         var database = null;
 
         var result = Ext.device.Communicator.send({
-            command: 'SQLite#openDatabase',
+            command: &#39;SQLite#openDatabase&#39;,
             sync: true,
             name: config.name,
             version: config.version,
@@ -97,7 +97,7 @@ Ext.define('Ext.device.sqlite.Sencha', {
                 return null;
             }
 
-            database = Ext.create('Ext.device.sqlite.Database', result.id, result.version);
+            database = Ext.create(&#39;Ext.device.sqlite.Database&#39;, result.id, result.version);
 
             return database;
         }
@@ -108,7 +108,7 @@ Ext.define('Ext.device.sqlite.Sencha', {
 <span id='Ext-device-sqlite-Database'>    /**
 </span>     * The Database class which is used to perform transactions.
      */
-    Ext.define('Ext.device.sqlite.Database', {
+    Ext.define(&#39;Ext.device.sqlite.Database&#39;, {
 <span id='Ext-device-sqlite-Database-property-id'>        id: 0,
 </span><span id='Ext-device-sqlite-Database-property-version'>        version: null,
 </span>
@@ -125,7 +125,7 @@ Ext.define('Ext.device.sqlite.Sencha', {
          */
         getVersion: function() {
             return Ext.device.Communicator.send({
-                command: 'SQLite#getVersion',
+                command: &#39;SQLite#getVersion&#39;,
                 sync: true,
                 databaseId: this.id
             });
@@ -157,23 +157,23 @@ Ext.define('Ext.device.sqlite.Sencha', {
          */
         transaction: function(config) {
             if (!config.callback) {
-                Ext.Logger.error('Ext.device.sqlite.Database#transaction: You must specify a `callback` callback.');
+                Ext.Logger.error(&#39;Ext.device.sqlite.Database#transaction: You must specify a `callback` callback.&#39;);
                 return null;
             }
 
             var me = this;
             Ext.device.Communicator.send({
-                command: 'SQLite#createTransaction',
+                command: &#39;SQLite#createTransaction&#39;,
                 databaseId: this.id,
                 readOnly: config.readOnly,
                 callbacks: {
                     success: function(id) {
                         var exception = null;
                         var error = null;
-                        var transaction = Ext.create('Ext.device.sqlite.SQLTransaction', id);
+                        var transaction = Ext.create(&#39;Ext.device.sqlite.SQLTransaction&#39;, id);
 
                         error = Ext.device.Communicator.send({
-                            command: 'SQLite#beginTransaction',
+                            command: &#39;SQLite#beginTransaction&#39;,
                             sync: true,
                             transactionId: transaction.id
                         });
@@ -198,7 +198,7 @@ Ext.define('Ext.device.sqlite.Sencha', {
                         while (!(exception || error) &amp;&amp; statements.length &gt; 0) {
                             var statement = statements.shift();
                             var result = Ext.device.Communicator.send({
-                                command: 'SQLite#executeStatement',
+                                command: &#39;SQLite#executeStatement&#39;,
                                 sync: true,
                                 transactionId: transaction.id,
                                 databaseId: me.id,
@@ -211,7 +211,7 @@ Ext.define('Ext.device.sqlite.Sencha', {
                                 if (result.error) {
                                     error = result.error;
                                 } else if (statement.callback) {
-                                    var resultSet = Ext.create('Ext.device.sqlite.SQLResultSet', result);
+                                    var resultSet = Ext.create(&#39;Ext.device.sqlite.SQLResultSet&#39;, result);
 
                                     try {
                                         transaction.active = true;
@@ -240,7 +240,7 @@ Ext.define('Ext.device.sqlite.Sencha', {
 
                         if (!(exception || error)) {
                             error = Ext.device.Communicator.send({
-                                command: 'SQLite#commitTransaction',
+                                command: &#39;SQLite#commitTransaction&#39;,
                                 sync: true,
                                 transactionId: transaction.id
                             });
@@ -260,7 +260,7 @@ Ext.define('Ext.device.sqlite.Sencha', {
                             statements.splice(0, statements.length);
 
                             Ext.device.Communicator.send({
-                                command: 'SQLite#rollbackTransaction',
+                                command: &#39;SQLite#rollbackTransaction&#39;,
                                 sync: true,
                                 transactionId: transaction.id
                             });
@@ -325,22 +325,22 @@ Ext.define('Ext.device.sqlite.Sencha', {
          */
         changeVersion: function(config) {
             if (config.oldVersion == null) {
-                Ext.Logger.error('Ext.device.SQLite#changeVersion: You must specify an `oldVersion` of the database.');
+                Ext.Logger.error(&#39;Ext.device.SQLite#changeVersion: You must specify an `oldVersion` of the database.&#39;);
                 return null;
             }
 
             if (config.newVersion == null) {
-                Ext.Logger.error('Ext.device.SQLite#changeVersion: You must specify a `newVersion` of the database.');
+                Ext.Logger.error(&#39;Ext.device.SQLite#changeVersion: You must specify a `newVersion` of the database.&#39;);
                 return null;
             }
 
             this.transaction(Ext.apply(config, {
                 preflight: function() {
-                    return config.oldVersion == this.getVersion() ? null : 'Unable to change version: version mismatch';
+                    return config.oldVersion == this.getVersion() ? null : &#39;Unable to change version: version mismatch&#39;;
                 },
                 postflight: function() {
                     var result = Ext.device.Communicator.send({
-                        command: 'SQLite#setVersion',
+                        command: &#39;SQLite#setVersion&#39;,
                         sync: true,
                         databaseId: this.id,
                         version: config.newVersion
@@ -356,7 +356,7 @@ Ext.define('Ext.device.sqlite.Sencha', {
 <span id='Ext-device-sqlite-SQLTransaction'>        /**
 </span>         * The SQLTransaction class which is used to execute SQL statements.
          */
-        Ext.define('Ext.device.sqlite.SQLTransaction', {
+        Ext.define(&#39;Ext.device.sqlite.SQLTransaction&#39;, {
 <span id='Ext-device-sqlite-SQLTransaction-property-id'>            id: 0,
 </span><span id='Ext-device-sqlite-SQLTransaction-property-active'>            active: false,
 </span><span id='Ext-device-sqlite-SQLTransaction-property-statements'>            statements: null,
@@ -376,7 +376,7 @@ Ext.define('Ext.device.sqlite.Sencha', {
              * The SQL statement to execute.
              *
              * @param {Array} config.arguments This is optional.
-             * The arguments array to bind each '?' placeholder in the SQL statement.
+             * The arguments array to bind each &#39;?&#39; placeholder in the SQL statement.
              *
              * @param {Function} config.callback This is optional.
              * The callback to be called when the SQL statement succeeded.
@@ -402,12 +402,12 @@ Ext.define('Ext.device.sqlite.Sencha', {
              */
             executeSql: function(config) {
                 if (!this.active) {
-                    Ext.Logger.error('Ext.device.sqlite.SQLTransaction#executeSql: An attempt was made to use a SQLTransaction that is no longer usable.');
+                    Ext.Logger.error(&#39;Ext.device.sqlite.SQLTransaction#executeSql: An attempt was made to use a SQLTransaction that is no longer usable.&#39;);
                     return null;
                 }
 
                 if (config.sqlStatement == null) {
-                    Ext.Logger.error('Ext.device.sqlite.SQLTransaction#executeSql: You must specify a `sqlStatement` for the transaction.');
+                    Ext.Logger.error(&#39;Ext.device.sqlite.SQLTransaction#executeSql: You must specify a `sqlStatement` for the transaction.&#39;);
                     return null;
                 }
 
@@ -423,7 +423,7 @@ Ext.define('Ext.device.sqlite.Sencha', {
 <span id='Ext-device-sqlite-SQLResultSet'>            /**
 </span>             * The SQLResultSet class which is used to represent SQL statements results.
              */
-            Ext.define('Ext.device.sqlite.SQLResultSet', {
+            Ext.define(&#39;Ext.device.sqlite.SQLResultSet&#39;, {
 <span id='Ext-device-sqlite-SQLResultSet-property-insertId'>                insertId: 0,
 </span><span id='Ext-device-sqlite-SQLResultSet-property-rowsAffected'>                rowsAffected: 0,
 </span><span id='Ext-device-sqlite-SQLResultSet-property-rows'>                rows: null,
@@ -431,7 +431,7 @@ Ext.define('Ext.device.sqlite.Sencha', {
 <span id='Ext-device-sqlite-SQLResultSet-method-constructor'>                constructor: function(data) {
 </span>                    this.insertId = data.insertId;
                     this.rowsAffected = data.rowsAffected;
-                    this.rows = Ext.create('Ext.device.sqlite.SQLResultSetRowList', data);
+                    this.rows = Ext.create(&#39;Ext.device.sqlite.SQLResultSetRowList&#39;, data);
                 },
 
 <span id='Ext-device-sqlite-SQLResultSet-method-getInsertId'>                /**
@@ -446,7 +446,7 @@ Ext.define('Ext.device.sqlite.Sencha', {
                     if (this.insertId != 0) {
                         return this.insertId;
                     } else {
-                        Ext.Logger.error('Ext.device.sqlite.SQLResultSet#getInsertId: An SQLTransaction did not insert a row.');
+                        Ext.Logger.error(&#39;Ext.device.sqlite.SQLResultSet#getInsertId: An SQLTransaction did not insert a row.&#39;);
                         return null;
                     }
                 },
@@ -475,7 +475,7 @@ Ext.define('Ext.device.sqlite.Sencha', {
 <span id='Ext-device-sqlite-SQLResultSetRowList'>                /**
 </span>                 * The SQLResultSetRowList class which is used to represent rows returned by SQL statements.
                  */
-                Ext.define('Ext.device.sqlite.SQLResultSetRowList', {
+                Ext.define(&#39;Ext.device.sqlite.SQLResultSetRowList&#39;, {
 <span id='Ext-device-sqlite-SQLResultSetRowList-property-names'>                    names: null,
 </span><span id='Ext-device-sqlite-SQLResultSetRowList-property-rows'>                    rows: null,
 </span>

@@ -16,16 +16,16 @@
 </head>
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js">
-// this model is used to extend the user's own model.
+// this model is used to extend the user&#39;s own model.
 // it adds the replication state.
 
 Ext.data.SyncModel= {
 
-	STATE: '_state',
-	TOMBSTONE: '_ts',
-	OID: '_oid',
-	REF: '_ref',
-	MODEL: '_model',
+	STATE: &#39;_state&#39;,
+	TOMBSTONE: &#39;_ts&#39;,
+	OID: &#39;_oid&#39;,
+	REF: &#39;_ref&#39;,
+	MODEL: &#39;_model&#39;,
 
 	state: undefined,
 
@@ -33,11 +33,11 @@ Ext.data.SyncModel= {
 
 		var augmented_fields= this.fields.items.slice(0);
 		augmented_fields= augmented_fields.concat([
-			{name: '_state'},
-			{name: '_ts'},
-			{name: '_oid'},
-			{name: '_ref'},
-			{name: '_model'}
+			{name: &#39;_state&#39;},
+			{name: &#39;_ts&#39;},
+			{name: &#39;_oid&#39;},
+			{name: &#39;_ref&#39;},
+			{name: &#39;_model&#39;}
 		]);
 
 		// JCM could the local storage proxy be added to the storage model...?
@@ -114,7 +114,7 @@ Ext.data.SyncModel= {
 	},
 
 	setUpdateStateValue: function(path,before_value,after_value,generator) {
-		//console.log('setUpdateStateValue',path,before_value,after_value)
+		//console.log(&#39;setUpdateStateValue&#39;,path,before_value,after_value)
 		if (this.isComplexValueType(after_value)) {
 			if (before_value) {
 				var added= {};
@@ -139,7 +139,7 @@ Ext.data.SyncModel= {
 				}
 			} else {
 				added= after_value;
-				this.setCS(path,generator()); // value didn't exist before
+				this.setCS(path,generator()); // value didn&#39;t exist before
 			}
 			for(var name2 in added) {
 				if (added.hasOwnProperty(name2)) {
@@ -160,11 +160,11 @@ Ext.data.SyncModel= {
 
 	isNotDestroyed: function() { // test if a record has been deleted
 		var t= this.data[Ext.data.SyncModel.TOMBSTONE]
-		return (t===undefined || t==='');
+		return (t===undefined || t===&#39;&#39;);
 	},
 
 	getUpdates: function(csv) {
-		//console.log('updates',Ext.encode(csv))
+		//console.log(&#39;updates&#39;,Ext.encode(csv))
 		this.setup();
 		var updates= [];
 		var oid= this.oid();
@@ -181,12 +181,12 @@ Ext.data.SyncModel= {
 				}
 			}
 		},this);
-		//console.log('updates =&gt;',Ext.encode(updates))
+		//console.log(&#39;updates =&gt;&#39;,Ext.encode(updates))
 		return updates;
 	},
 
 	putUpdate: function(update) {
-		//console.log('applyUpdate',update)
+		//console.log(&#39;applyUpdate&#39;,update)
 		return this.setPair(update.p,update.v,update.c);
 	},
 
@@ -202,7 +202,7 @@ Ext.data.SyncModel= {
 	},
 
 	forEachPair: function(data,state,path,values,callback,scope) {
-		//console.log('forEachPair',Ext.encode(data),Ext.encode(state),Ext.encode(path),Ext.encode(values));
+		//console.log(&#39;forEachPair&#39;,Ext.encode(data),Ext.encode(state),Ext.encode(path),Ext.encode(values));
 		this.setup();
 		for(var name in state) {
 			if (state.hasOwnProperty(name)) {
@@ -212,10 +212,10 @@ Ext.data.SyncModel= {
 				var new_data_type= this.valueType(new_data);
 				var new_value;
 				switch (new_data_type) {
-					case 'object':
+					case &#39;object&#39;:
 						new_value= {};
 						break;
-					case 'array':
+					case &#39;array&#39;:
 						new_value= [[]];
 						break;
 					default:
@@ -223,17 +223,17 @@ Ext.data.SyncModel= {
 				}
 				var new_values= values.concat(new_value);
 				switch (this.valueType(new_state)) {
-					case 'string':
+					case &#39;string&#39;:
 						callback.call(scope,new_path,new_values,new Ext.data.CS(new_state));
 						break;
-					case 'array':
+					case &#39;array&#39;:
 						switch (new_data_type) {
-							case 'undefined':
-								console.log('Warning - There was no data for the state at path',new_path);
-								console.log('Warning -',Ext.encode(this.data));
+							case &#39;undefined&#39;:
+								console.log(&#39;Warning - There was no data for the state at path&#39;,new_path);
+								console.log(&#39;Warning -&#39;,Ext.encode(this.data));
 								break;
-							case 'object':
-							case 'array':
+							case &#39;object&#39;:
+							case &#39;array&#39;:
 								callback.call(scope,new_path,new_values,new Ext.data.CS(new_state[0])); // [cs,state]
 								this.forEachPair(new_data,new_state[1],new_path,new_values,callback,scope); // [cs,state]
 								break;
@@ -277,11 +277,11 @@ Ext.data.SyncModel= {
 			if (state.hasOwnProperty(name)) {
 				next_state= state[name];
 				switch (this.valueType(next_state)) {
-					case 'string':
+					case &#39;string&#39;:
 						cs= callback.call(scope,new Ext.data.CS(next_state));
 						if (cs) { state[name]= cs.to_s(); }
 						break;
-					case 'array':
+					case &#39;array&#39;:
 						cs= callback.call(scope,new Ext.data.CS(next_state[0]));
 						if (cs) { state[name][0]= cs.to_s(); } // [cs,state]
 						this.forEachCS(next_state[1],callback,scope); // [cs,state]
@@ -315,15 +315,15 @@ Ext.data.SyncModel= {
 		state= state[name];
 		if (state) {
 			switch (this.valueType(state)) {
-				case 'string':
+				case &#39;string&#39;:
 					cs= new Ext.data.CS(state);
 					break;
-				case 'array':
+				case &#39;array&#39;:
 					cs= new Ext.data.CS(state[0]); // [cs,state]
 					break;
 				default:
 					console.log(&quot;Error - SyncModel - do_getCS - unexpected type in state for&quot;,name,&quot;:&quot;,typeof state,state);
-					console.log('state',Ext.encode(this.data));
+					console.log(&#39;state&#39;,Ext.encode(this.data));
 					cs= new Ext.data.CS();
 					break;
 			}
@@ -332,7 +332,7 @@ Ext.data.SyncModel= {
 	},
 
 	setCS: function(path,cs) {
-		//console.log('setCS',Ext.isArray(path) ? path.join() : path,cs.to_s())
+		//console.log(&#39;setCS&#39;,Ext.isArray(path) ? path.join() : path,cs.to_s())
 		this.setup();
 		var state= this.state;
 		if (Ext.isArray(path)) {
@@ -356,22 +356,22 @@ Ext.data.SyncModel= {
 		var state2= state[name];
 		if (state2) {
 			switch (this.valueType(state2)) {
-				case 'string':
+				case &#39;string&#39;:
 					state[name]= cs_s;
 					break;
-				case 'array':
+				case &#39;array&#39;:
 					state2[0]= cs_s; // [cs,state]
 					break;
 				default:
 					console.log(&quot;Error - SyncModel - do_setCS - unexpected type in state for&quot;,name,&quot;:&quot;,typeof state2,state2);
-					console.log('state',Ext.encode(state));
-					console.log('name',name,'cs',cs_s);
+					console.log(&#39;state&#39;,Ext.encode(state));
+					console.log(&#39;name&#39;,name,&#39;cs&#39;,cs_s);
 					state[name]= cs_s;
 			}
 		} else {
 			state[name]= cs_s;
 		}
-		//console.log('do_setCS',name,cs_s,Ext.encode(state))
+		//console.log(&#39;do_setCS&#39;,name,cs_s,Ext.encode(state))
 	},
 
 	getPair: function(path) {
@@ -402,8 +402,8 @@ Ext.data.SyncModel= {
 	},
 
 	setPair: function(path,values,new_cs) {
-		//console.log('setPair',Ext.encode(path),Ext.encode(values),Ext.encode(new_cs));
-		//console.log('setPair',Ext.encode(this.data));
+		//console.log(&#39;setPair&#39;,Ext.encode(path),Ext.encode(values),Ext.encode(new_cs));
+		//console.log(&#39;setPair&#39;,Ext.encode(this.data));
 		var changed= false;
 		this.setup();
 		if (!Ext.isArray(path)) {
@@ -422,12 +422,12 @@ Ext.data.SyncModel= {
 			var old_value_type= this.valueType(old_value);
 			var new_value_type= this.valueType(new_value);
 			var sameComplexType=
-				((old_value_type==='object' &amp;&amp; new_value_type==='object') ||
-				(old_value_type==='array' &amp;&amp; new_value_type==='array'));
+				((old_value_type===&#39;object&#39; &amp;&amp; new_value_type===&#39;object&#39;) ||
+				(old_value_type===&#39;array&#39; &amp;&amp; new_value_type===&#39;array&#39;));
 			if (old_cs) {
 				if (new_cs.greaterThan(old_cs)) {
 					if (sameComplexType) {
-						new_value= undefined; // re-assert, don't overwrite
+						new_value= undefined; // re-assert, don&#39;t overwrite
 					}
 					// new_cs is gt old_cs, so accept update
 					if (this.do_setPair(data,state,name,new_value,new_cs)) {
@@ -453,24 +453,24 @@ Ext.data.SyncModel= {
 				state= this.do_getState(state,name,new_cs);
 			}
 		}
-		//console.log('setPair =&gt; ',Ext.encode(this.data));
+		//console.log(&#39;setPair =&gt; &#39;,Ext.encode(this.data));
 		return changed;
 	},
 
 	do_getState: function(state,name,cs) {
 		var next_state= state[name];
 		switch (this.valueType(next_state)) {
-			case 'undefined':
+			case &#39;undefined&#39;:
 				var new_state= {};
 				state[name]= [cs,new_state];
 				state= new_state;
 				break;
-			case 'string':
+			case &#39;string&#39;:
 				var new_state= {};
 				state[name]= [next_state,new_state];
 				state= new_state;
 				break;
-			case 'array':
+			case &#39;array&#39;:
 				state= next_state[1];
 				break;
 			default:
@@ -503,8 +503,8 @@ Ext.data.SyncModel= {
 
 	valueType: function(value) { // returns undefined, number, boolean, string, object, array
 		var t= typeof value;
-		if (t==='object' &amp;&amp; (value instanceof Array)) {
-			t= 'array';
+		if (t===&#39;object&#39; &amp;&amp; (value instanceof Array)) {
+			t= &#39;array&#39;;
 		}
 		return t;
 	},
@@ -515,9 +515,9 @@ Ext.data.SyncModel= {
 		var t2= this.valueType(v2);
 		if (t1===t2) {
 			switch (t1) {
-			case 'object':
-			case 'array':
-				r= Ext.encode(v1)===Ext.encode(v2); // JCM I'm sure there's a better way to do this...
+			case &#39;object&#39;:
+			case &#39;array&#39;:
+				r= Ext.encode(v1)===Ext.encode(v2); // JCM I&#39;m sure there&#39;s a better way to do this...
 				break;
 			default:
 				r= v1===v2;
@@ -527,7 +527,7 @@ Ext.data.SyncModel= {
 	},
 
 	isComplexValueType: function(value) { // return true for an object or an array
-		return (typeof value==='object');
+		return (typeof value===&#39;object&#39;);
 	},
 
 	setup: function() {

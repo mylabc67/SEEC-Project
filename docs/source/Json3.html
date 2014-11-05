@@ -20,20 +20,20 @@
  * The {@link #allowSingle} configuration can be set to false to force the records to always be
  * encoded in an array, even if there is only a single record being sent.
  */
-Ext.define('Ext.data.writer.Json', {
-    extend: 'Ext.data.writer.Writer',
-    alternateClassName: 'Ext.data.JsonWriter',
-    alias: 'writer.json',
+Ext.define(&#39;Ext.data.writer.Json&#39;, {
+    extend: &#39;Ext.data.writer.Writer&#39;,
+    alternateClassName: &#39;Ext.data.JsonWriter&#39;,
+    alias: &#39;writer.json&#39;,
 
     config: {
 <span id='Ext-data-writer-Json-cfg-rootProperty'>        /**
 </span>         * @cfg {String} rootProperty
          * The key under which the records in this Writer will be placed. If you specify {@link #encode} to be true,
-         * we default this to 'records'.
+         * we default this to &#39;records&#39;.
          *
-         * Example generated request, using root: 'records':
+         * Example generated request, using root: &#39;records&#39;:
          *
-         *     {'records': [{name: 'my record'}, {name: 'another record'}]}
+         *     {&#39;records&#39;: [{name: &#39;my record&#39;}, {name: &#39;another record&#39;}]}
          *
          */
         rootProperty: undefined,
@@ -72,7 +72,7 @@ Ext.define('Ext.data.writer.Json', {
 
 <span id='Ext-data-writer-Json-method-applyRootProperty'>    applyRootProperty: function(root) {
 </span>        if (!root &amp;&amp; (this.getEncode() || this.getEncodeRequest())) {
-            root = 'data';
+            root = &#39;data&#39;;
         }
         return root;
     },
@@ -96,7 +96,7 @@ Ext.define('Ext.data.writer.Json', {
             }
             request.setJsonData(Ext.apply(jsonData, params || {}));
             request.setParams(null);
-            request.setMethod('POST');
+            request.setMethod(&#39;POST&#39;);
             return request;
         }
 
@@ -110,7 +110,7 @@ Ext.define('Ext.data.writer.Json', {
                 params[root] = Ext.encode(data);
             } else {
                 //&lt;debug&gt;
-                Ext.Logger.error('Must specify a root when using encode');
+                Ext.Logger.error(&#39;Must specify a root when using encode&#39;);
                 //&lt;/debug&gt;
             }
         } else {
@@ -131,11 +131,11 @@ Ext.define('Ext.data.writer.Json', {
 <span id='Ext-data-writer-Json-cfg-root'>    /**
 </span>     * @cfg {String} root
      * The key under which the records in this Writer will be placed. If you specify {@link #encode} to be true,
-     * we default this to 'records'.
+     * we default this to &#39;records&#39;.
      *
-     * Example generated request, using root: 'records':
+     * Example generated request, using root: &#39;records&#39;:
      *
-     *     {'records': [{name: 'my record'}, {name: 'another record'}]}
+     *     {&#39;records&#39;: [{name: &#39;my record&#39;}, {name: &#39;another record&#39;}]}
      *
      * @deprecated 2.0.1 Please use the {@link #rootProperty} configuration instead.
      */
@@ -145,7 +145,7 @@ Ext.define('Ext.data.writer.Json', {
 
             if (config.root) {
                 // &lt;debug&gt;
-                Ext.Logger.deprecate('root has been deprecated as a configuration on Writer. Please use rootProperty instead.');
+                Ext.Logger.deprecate(&#39;root has been deprecated as a configuration on Writer. Please use rootProperty instead.&#39;);
                 // &lt;/debug&gt;
 
                 config.rootProperty = config.root;
@@ -163,53 +163,53 @@ Ext.define('Ext.data.writer.Json', {
  * @allowSingle: true
  * @encodeRequest: false
  * Url: update.json?param1=test
- * {'field1': 'test': 'field2': 'test'}
+ * {&#39;field1&#39;: &#39;test&#39;: &#39;field2&#39;: &#39;test&#39;}
  *
  * @allowSingle: false
  * @encodeRequest: false
  * Url: update.json?param1=test
- * [{'field1': 'test', 'field2': 'test'}]
+ * [{&#39;field1&#39;: &#39;test&#39;, &#39;field2&#39;: &#39;test&#39;}]
  *
  * @allowSingle: true
- * @root: 'data'
+ * @root: &#39;data&#39;
  * @encodeRequest: true
  * Url: update.json
  * {
- *    'param1': 'test',
- *    'data': {'field1': 'test', 'field2': 'test'}
+ *    &#39;param1&#39;: &#39;test&#39;,
+ *    &#39;data&#39;: {&#39;field1&#39;: &#39;test&#39;, &#39;field2&#39;: &#39;test&#39;}
  * }
  *
  * @allowSingle: false
- * @root: 'data'
+ * @root: &#39;data&#39;
  * @encodeRequest: true
  * Url: update.json
  * {
- *     'param1': 'test',
- *     'data': [{'field1': 'test', 'field2': 'test'}]
+ *     &#39;param1&#39;: &#39;test&#39;,
+ *     &#39;data&#39;: [{&#39;field1&#39;: &#39;test&#39;, &#39;field2&#39;: &#39;test&#39;}]
  * }
  *
  * @allowSingle: true
  * @root: data
  * @encodeRequest: false
  * Url: update.json
- * param1=test&amp;data={'field1': 'test', 'field2': 'test'}
+ * param1=test&amp;data={&#39;field1&#39;: &#39;test&#39;, &#39;field2&#39;: &#39;test&#39;}
  *
  * @allowSingle: false
  * @root: data
  * @encodeRequest: false
  * @ncode: true
  * Url: update.json
- * param1=test&amp;data=[{'field1': 'test', 'field2': 'test'}]
+ * param1=test&amp;data=[{&#39;field1&#39;: &#39;test&#39;, &#39;field2&#39;: &#39;test&#39;}]
  *
  * @allowSingle: true
  * @root: data
  * @encodeRequest: false
- * Url: update.json?param1=test&amp;data={'field1': 'test', 'field2': 'test'}
+ * Url: update.json?param1=test&amp;data={&#39;field1&#39;: &#39;test&#39;, &#39;field2&#39;: &#39;test&#39;}
  *
  * @allowSingle: false
  * @root: data
  * @encodeRequest: false
- * Url: update.json?param1=test&amp;data=[{'field1': 'test', 'field2': 'test'}]
+ * Url: update.json?param1=test&amp;data=[{&#39;field1&#39;: &#39;test&#39;, &#39;field2&#39;: &#39;test&#39;}]
  */
 </pre>
 </body>

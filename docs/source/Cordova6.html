@@ -18,19 +18,19 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-connection-Cordova'>/**
 </span> * @private
  */
-Ext.define('Ext.device.connection.Cordova', {
-    alternateClassName: 'Ext.device.connection.PhoneGap',
-    extend: 'Ext.device.connection.Abstract',
+Ext.define(&#39;Ext.device.connection.Cordova&#39;, {
+    alternateClassName: &#39;Ext.device.connection.PhoneGap&#39;,
+    extend: &#39;Ext.device.connection.Abstract&#39;,
 
 <span id='Ext-device-connection-Cordova-method-constructor'>    constructor: function() {
 </span>        var me = this;
         
-        document.addEventListener('online', function() {
-            me.fireEvent('online', me);
+        document.addEventListener(&#39;online&#39;, function() {
+            me.fireEvent(&#39;online&#39;, me);
         });
 
-        document.addEventListener('offline', function() {
-            me.fireEvent('offline', me);
+        document.addEventListener(&#39;offline&#39;, function() {
+            me.fireEvent(&#39;offline&#39;, me);
         });
     },
 

@@ -18,7 +18,7 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-accelerometer-Abstract'>/**
 </span> * @private
  */
-Ext.define('Ext.device.accelerometer.Abstract', {
+Ext.define(&#39;Ext.device.accelerometer.Abstract&#39;, {
     config: {
 <span id='Ext-device-accelerometer-Abstract-cfg-frequency'>        /**
 </span>         * @cfg {Number} frequency The default frequency to get the current acceleration when using {@link Ext.device.Accelerometer#watchAcceleration}.
@@ -29,7 +29,7 @@ Ext.define('Ext.device.accelerometer.Abstract', {
 <span id='Ext-device-accelerometer-Abstract-method-getCurrentAcceleration'>    getCurrentAcceleration: function(config) {
 </span>        // &lt;debug&gt;
         if (!config.success) {
-            Ext.Logger.warn('You need to specify a `success` function for #getCurrentAcceleration');
+            Ext.Logger.warn(&#39;You need to specify a `success` function for #getCurrentAcceleration&#39;);
         }
         // &lt;/debug&gt;
 
@@ -45,7 +45,7 @@ Ext.define('Ext.device.accelerometer.Abstract', {
 
         // &lt;debug&gt;
         if (!config.callback) {
-            Ext.Logger.warn('You need to specify a `callback` function for #watchAcceleration');
+            Ext.Logger.warn(&#39;You need to specify a `callback` function for #watchAcceleration&#39;);
         }
         // &lt;/debug&gt;
 

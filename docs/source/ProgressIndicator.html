@@ -18,15 +18,15 @@
   <pre class="prettyprint lang-js"><span id='Ext-ProgressIndicator'>/**
 </span> * {@link Ext.ProgressIndicator} provides a progress indicator for file uploads.
  */
-Ext.define('Ext.ProgressIndicator', {
-    extend: 'Ext.Container',
+Ext.define(&#39;Ext.ProgressIndicator&#39;, {
+    extend: &#39;Ext.Container&#39;,
 
-    mixins: ['Ext.mixin.Progressable'],
+    mixins: [&#39;Ext.mixin.Progressable&#39;],
 
-    xtype: 'progressindicator',
+    xtype: &#39;progressindicator&#39;,
 
     config: {
-<span id='Ext-ProgressIndicator-cfg-baseCls'>        baseCls: Ext.baseCSSPrefix + 'progressindicator',
+<span id='Ext-ProgressIndicator-cfg-baseCls'>        baseCls: Ext.baseCSSPrefix + &#39;progressindicator&#39;,
 </span><span id='Ext-ProgressIndicator-cfg-hidden'>        hidden: true,
 </span><span id='Ext-ProgressIndicator-cfg-modal'>        modal: true,
 </span><span id='Ext-ProgressIndicator-cfg-centered'>        centered: true,
@@ -37,15 +37,15 @@ Ext.define('Ext.ProgressIndicator', {
          * and object with properties percent and state.
          *
          * If a String or XTemplate is given that text will be used for all states of loading. One can optionally pass in an object
-         * with the properties 'upload' and/or 'download' with custom state templates.
+         * with the properties &#39;upload&#39; and/or &#39;download&#39; with custom state templates.
          *
          *
          * @accessor
          */
         loadingText: {
-            any: 'Loading: {percent}%',
-            upload: 'Uploading: {percent}%',
-            download: 'Downloading: {percent}%'
+            any: &#39;Loading: {percent}%&#39;,
+            upload: &#39;Uploading: {percent}%&#39;,
+            download: &#39;Downloading: {percent}%&#39;
         },
 
 <span id='Ext-ProgressIndicator-cfg-fallbackText'>        /**
@@ -53,19 +53,19 @@ Ext.define('Ext.ProgressIndicator', {
          * This String is used when progress is not dynamic (only start and end events will be received).
          *
          * If a String is given that text will be used for all states of loading. One can optionally pass in an object
-         * with the properties 'upload' and/or 'download' with custom state strings.
+         * with the properties &#39;upload&#39; and/or &#39;download&#39; with custom state strings.
          *
          * @accessor
          */
         fallbackText: {
-            any: 'Loading',
-            upload: 'Uploading',
-            download: 'Downloading'
+            any: &#39;Loading&#39;,
+            upload: &#39;Uploading&#39;,
+            download: &#39;Downloading&#39;
         },
 
 <span id='Ext-ProgressIndicator-cfg-monitoredStates'>        /**
 </span>         * @cfg {Object} monitoredStates
-         * Object with the properties of 'upload' and 'download'. To disable progress monitoring of any state simply set
+         * Object with the properties of &#39;upload&#39; and &#39;download&#39;. To disable progress monitoring of any state simply set
          * it to false. For example:
          *
          *  monitoredStates: {
@@ -80,17 +80,17 @@ Ext.define('Ext.ProgressIndicator', {
         },
 
 <span id='Ext-ProgressIndicator-cfg-showAnimation'>        showAnimation: !Ext.browser.is.AndroidStock ? {
-</span>            type: 'slideIn',
+</span>            type: &#39;slideIn&#39;,
             direction: &quot;left&quot;,
             duration: 250,
-            easing: 'ease-out'
+            easing: &#39;ease-out&#39;
         } : null,
 
 <span id='Ext-ProgressIndicator-cfg-hideAnimation'>        hideAnimation: !Ext.browser.is.AndroidStock ? {
-</span>            type: 'slideOut',
+</span>            type: &#39;slideOut&#39;,
             direction: &quot;left&quot;,
             duration: 250,
-            easing: 'ease-in'
+            easing: &#39;ease-in&#39;
         } : null,
 
 <span id='Ext-ProgressIndicator-cfg-minProgressOutput'>        // @private
@@ -108,24 +108,24 @@ Ext.define('Ext.ProgressIndicator', {
 
 <span id='Ext-ProgressIndicator-method-getElementConfig'>    getElementConfig: function() {
 </span>        return {
-            reference: 'element',
-            classList: ['x-container', 'x-unsized'],
+            reference: &#39;element&#39;,
+            classList: [&#39;x-container&#39;, &#39;x-unsized&#39;],
             children: [
                 {
-                    reference: 'innerElement',
-                    className: Ext.baseCSSPrefix + 'progressindicator-inner',
+                    reference: &#39;innerElement&#39;,
+                    className: Ext.baseCSSPrefix + &#39;progressindicator-inner&#39;,
                     children: [
                         {
-                            reference: 'progressBarText',
-                            className: Ext.baseCSSPrefix + 'progressindicator-text'
+                            reference: &#39;progressBarText&#39;,
+                            className: Ext.baseCSSPrefix + &#39;progressindicator-text&#39;
                         },
                         {
-                            reference: 'progressBar',
-                            className: Ext.baseCSSPrefix + 'progressindicator-bar',
+                            reference: &#39;progressBar&#39;,
+                            className: Ext.baseCSSPrefix + &#39;progressindicator-bar&#39;,
                             children: [
                                 {
-                                    reference: 'progressBarFill',
-                                    className: Ext.baseCSSPrefix + 'progressindicator-bar-fill'
+                                    reference: &#39;progressBarFill&#39;,
+                                    className: Ext.baseCSSPrefix + &#39;progressindicator-bar-fill&#39;
                                 }
                             ]
                         }
@@ -242,7 +242,7 @@ Ext.define('Ext.ProgressIndicator', {
         if (loadingText) {
             this.progressBarText.setHtml(this.getLoadingText().apply({state:state, percent: Math.ceil(percent) || 0}));
         } else {
-            this.progressBarText.setHtml('');
+            this.progressBarText.setHtml(&#39;&#39;);
         }
     }
 })

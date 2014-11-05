@@ -21,28 +21,28 @@
  * Wraps an HTML5 number field. Example usage:
  *
  *     @example miniphone
- *     var spinner = Ext.create('Ext.field.Spinner', {
- *         label: 'Spinner Field',
+ *     var spinner = Ext.create(&#39;Ext.field.Spinner&#39;, {
+ *         label: &#39;Spinner Field&#39;,
  *         minValue: 0,
  *         maxValue: 100,
  *         increment: 2,
  *         cycle: true
  *     });
- *     Ext.Viewport.add({ xtype: 'container', items: [spinner] });
+ *     Ext.Viewport.add({ xtype: &#39;container&#39;, items: [spinner] });
  *
  */
-Ext.define('Ext.field.Spinner', {
-    extend: 'Ext.field.Number',
-    xtype: 'spinnerfield',
-    alternateClassName: 'Ext.form.Spinner',
-    requires: ['Ext.util.TapRepeater'],
+Ext.define(&#39;Ext.field.Spinner&#39;, {
+    extend: &#39;Ext.field.Number&#39;,
+    xtype: &#39;spinnerfield&#39;,
+    alternateClassName: &#39;Ext.form.Spinner&#39;,
+    requires: [&#39;Ext.util.TapRepeater&#39;],
 
 <span id='Ext-field-Spinner-event-spin'>    /**
 </span>     * @event spin
      * Fires when the value is changed via either spinner buttons.
      * @param {Ext.field.Spinner} this
      * @param {Number} value
-     * @param {String} direction 'up' or 'down'.
+     * @param {String} direction &#39;up&#39; or &#39;down&#39;.
      */
 
 <span id='Ext-field-Spinner-event-spindown'>    /**
@@ -82,7 +82,7 @@ Ext.define('Ext.field.Spinner', {
 </span>         * @cfg
          * @inheritdoc
          */
-        cls: Ext.baseCSSPrefix + 'spinner',
+        cls: Ext.baseCSSPrefix + &#39;spinner&#39;,
 
 <span id='Ext-field-Spinner-cfg-minValue'>        /**
 </span>         * @cfg {Number} [minValue=-infinity] The minimum allowed value.
@@ -151,7 +151,7 @@ Ext.define('Ext.field.Spinner', {
     },
 
 <span id='Ext-field-Spinner-property-platformConfig'>    platformConfig: [{
-</span>        platform: 'android',
+</span>        platform: &#39;android&#39;,
         component: {
             disabled: false,
             readOnly: true
@@ -182,13 +182,13 @@ Ext.define('Ext.field.Spinner', {
 
         if (newComponent) {
             this.spinDownButton = Ext.Element.create({
-                cls : cls + '-button ' + cls + '-button-down',
-                html: '-'
+                cls : cls + &#39;-button &#39; + cls + &#39;-button-down&#39;,
+                html: &#39;-&#39;
             });
 
             this.spinUpButton = Ext.Element.create({
-                cls : cls + '-button ' + cls + '-button-up',
-                html: '+'
+                cls : cls + &#39;-button &#39; + cls + &#39;-button-up&#39;,
+                html: &#39;+&#39;
             });
 
             this.downRepeater = this.createRepeater(this.spinDownButton, this.onSpinDown);
@@ -199,7 +199,7 @@ Ext.define('Ext.field.Spinner', {
 <span id='Ext-field-Spinner-method-updateGroupButtons'>    updateGroupButtons: function(newGroupButtons, oldGroupButtons) {
 </span>        var me = this,
             innerElement = me.innerElement,
-            cls = me.getBaseCls() + '-grouped-buttons';
+            cls = me.getBaseCls() + &#39;-grouped-buttons&#39;;
 
         me.getComponent();
 
@@ -231,15 +231,15 @@ Ext.define('Ext.field.Spinner', {
 <span id='Ext-field-Spinner-method-createRepeater'>    // @private
 </span>    createRepeater: function(el, fn) {
         var me = this,
-            repeater = Ext.create('Ext.util.TapRepeater', {
+            repeater = Ext.create(&#39;Ext.util.TapRepeater&#39;, {
                 el: el,
                 accelerate: me.getAccelerateOnTapHold()
             });
 
         repeater.on({
             tap: fn,
-            touchstart: 'onTouchStart',
-            touchend: 'onTouchEnd',
+            touchstart: &#39;onTouchStart&#39;,
+            touchend: &#39;onTouchEnd&#39;,
             scope: me
         });
 
@@ -263,13 +263,13 @@ Ext.define('Ext.field.Spinner', {
 <span id='Ext-field-Spinner-method-onTouchStart'>    // @private
 </span>    onTouchStart: function(repeater) {
         if (!this.getDisabled() &amp;&amp; !this.getReadOnly()) {
-            repeater.getEl().addCls(Ext.baseCSSPrefix + 'button-pressed');
+            repeater.getEl().addCls(Ext.baseCSSPrefix + &#39;button-pressed&#39;);
         }
     },
 
 <span id='Ext-field-Spinner-method-onTouchEnd'>    // @private
 </span>    onTouchEnd: function(repeater) {
-        repeater.getEl().removeCls(Ext.baseCSSPrefix + 'button-pressed');
+        repeater.getEl().removeCls(Ext.baseCSSPrefix + &#39;button-pressed&#39;);
     },
 
 <span id='Ext-field-Spinner-method-spin'>    // @private
@@ -277,7 +277,7 @@ Ext.define('Ext.field.Spinner', {
         var me = this,
             originalValue = me.getValue(),
             stepValue = me.getStepValue(),
-            direction = down ? 'down' : 'up',
+            direction = down ? &#39;down&#39; : &#39;up&#39;,
             minValue = me.getMinValue(),
             maxValue = me.getMaxValue(),
             value;
@@ -289,7 +289,7 @@ Ext.define('Ext.field.Spinner', {
             value = originalValue + stepValue;
         }
 
-        //if cycle is true, then we need to check fi the value hasn't changed and we cycle the value
+        //if cycle is true, then we need to check fi the value hasn&#39;t changed and we cycle the value
         if (me.getCycle()) {
             if (originalValue == minValue &amp;&amp; value &lt; minValue) {
                 value = maxValue;
@@ -303,8 +303,8 @@ Ext.define('Ext.field.Spinner', {
         me.setValue(value);
         value = me.getValue();
 
-        me.fireEvent('spin', me, value, direction);
-        me.fireEvent('spin' + direction, me, value);
+        me.fireEvent(&#39;spin&#39;, me, value, direction);
+        me.fireEvent(&#39;spin&#39; + direction, me, value);
     },
 
 <span id='Ext-field-Spinner-method-doSetDisabled'>    /**
@@ -328,9 +328,9 @@ Ext.define('Ext.field.Spinner', {
 //    setValue: function(value){
 //        this.callSuper(arguments);
 
-        // @TODO: Isn't this already done by the framework by default?
-//        if(Ext.getThemeName() == 'WP'){
-//            this.getComponent().element.dom.setAttribute('value',value);
+        // @TODO: Isn&#39;t this already done by the framework by default?
+//        if(Ext.getThemeName() == &#39;WP&#39;){
+//            this.getComponent().element.dom.setAttribute(&#39;value&#39;,value);
 //        }
 //    },
 
@@ -350,9 +350,9 @@ Ext.define('Ext.field.Spinner', {
                  * The increment value of this spinner field.
                  * @deprecated 2.0.0 Please use {@link #increment} instead
                  */
-                if (config.hasOwnProperty('incrementValue')) {
+                if (config.hasOwnProperty(&#39;incrementValue&#39;)) {
                     //&lt;debug warn&gt;
-                    Ext.Logger.deprecate(&quot;'incrementValue' config is deprecated, please use 'stepValue' config instead&quot;, this);
+                    Ext.Logger.deprecate(&quot;&#39;incrementValue&#39; config is deprecated, please use &#39;stepValue&#39; config instead&quot;, this);
                     //&lt;/debug&gt;
                     config.stepValue = config.incrementValue;
                     delete config.incrementValue;
@@ -363,9 +363,9 @@ Ext.define('Ext.field.Spinner', {
                  * The increment value of this spinner field.
                  * @deprecated 2.0.0 Please use {@link #stepValue} instead
                  */
-                if (config.hasOwnProperty('increment')) {
+                if (config.hasOwnProperty(&#39;increment&#39;)) {
                     //&lt;debug warn&gt;
-                    Ext.Logger.deprecate(&quot;'increment' config is deprecated, please use 'stepValue' config instead&quot;, this);
+                    Ext.Logger.deprecate(&quot;&#39;increment&#39; config is deprecated, please use &#39;stepValue&#39; config instead&quot;, this);
                     //&lt;/debug&gt;
                     config.stepValue = config.increment;
                     delete config.increment;

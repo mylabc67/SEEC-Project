@@ -25,7 +25,7 @@
  *     @example miniphone
  *     Ext.Viewport.add({
  *         masked: {
- *            xtype: 'loadmask'
+ *            xtype: &#39;loadmask&#39;
  *         }
  *     });
  *
@@ -34,16 +34,16 @@
  *     @example miniphone
  *     Ext.Viewport.add({
  *         masked: {
- *            xtype: 'loadmask',
- *            message: 'A message..',
+ *            xtype: &#39;loadmask&#39;,
+ *            message: &#39;A message..&#39;,
  *            indicator: false
  *         }
  *     });
  *
  */
-Ext.define('Ext.LoadMask', {
-    extend: 'Ext.Mask',
-    xtype: 'loadmask',
+Ext.define(&#39;Ext.LoadMask&#39;, {
+    extend: &#39;Ext.Mask&#39;,
+    xtype: &#39;loadmask&#39;,
 
     config: {
 <span id='Ext-LoadMask-cfg-message'>        /**
@@ -51,21 +51,21 @@ Ext.define('Ext.LoadMask', {
          * The text to display in a centered loading message box.
          * @accessor
          */
-        message: 'Loading...',
+        message: &#39;Loading...&#39;,
 
 <span id='Ext-LoadMask-cfg-cls'>        /**
 </span>         * @cfg {String} cls
          * The CSS Class for this component
          * @accessor
          */
-        cls: Ext.baseCSSPrefix + 'loading-mask',
+        cls: Ext.baseCSSPrefix + &#39;loading-mask&#39;,
 
 <span id='Ext-LoadMask-cfg-messageCls'>        /**
 </span>         * @cfg {String} messageCls
          * The CSS class to apply to the loading message element.
          * @accessor
          */
-        messageCls: Ext.baseCSSPrefix + 'mask-message',
+        messageCls: Ext.baseCSSPrefix + &#39;mask-message&#39;,
 
 <span id='Ext-LoadMask-cfg-indicator'>        /**
 </span>         * @cfg {Boolean} indicator
@@ -81,28 +81,28 @@ Ext.define('Ext.LoadMask', {
         return [
             {
                 //it needs an inner so it can be centered within the mask, and have a background
-                reference: 'innerElement',
-                cls: prefix + 'mask-inner',
+                reference: &#39;innerElement&#39;,
+                cls: prefix + &#39;mask-inner&#39;,
                 children: [
                     //the elements required for the CSS loading {@link #indicator}
                     {
-                        reference: 'indicatorElement',
-                        cls: prefix + 'loading-spinner-outer',
+                        reference: &#39;indicatorElement&#39;,
+                        cls: prefix + &#39;loading-spinner-outer&#39;,
                         children: [
                             {
-                                cls: prefix + 'loading-spinner',
+                                cls: prefix + &#39;loading-spinner&#39;,
                                 children: [
-                                    { tag: 'span', cls: prefix + 'loading-top' },
-                                    { tag: 'span', cls: prefix + 'loading-right' },
-                                    { tag: 'span', cls: prefix + 'loading-bottom' },
-                                    { tag: 'span', cls: prefix + 'loading-left' }
+                                    { tag: &#39;span&#39;, cls: prefix + &#39;loading-top&#39; },
+                                    { tag: &#39;span&#39;, cls: prefix + &#39;loading-right&#39; },
+                                    { tag: &#39;span&#39;, cls: prefix + &#39;loading-bottom&#39; },
+                                    { tag: &#39;span&#39;, cls: prefix + &#39;loading-left&#39; }
                                 ]
                             }
                         ]
                     },
                     //the element used to display the {@link #message}
                     {
-                        reference: 'messageElement'
+                        reference: &#39;messageElement&#39;
                     }
                 ]
             }
@@ -114,7 +114,7 @@ Ext.define('Ext.LoadMask', {
      * @private
      */
     updateMessage: function(newMessage) {
-        var cls = Ext.baseCSSPrefix + 'has-message';
+        var cls = Ext.baseCSSPrefix + &#39;has-message&#39;;
 
         if (newMessage) {
             this.addCls(cls);
@@ -138,7 +138,7 @@ Ext.define('Ext.LoadMask', {
      * @private
      */
     updateIndicator: function(newIndicator) {
-        this[newIndicator ? 'removeCls' : 'addCls'](Ext.baseCSSPrefix + 'indicator-hidden');
+        this[newIndicator ? &#39;removeCls&#39; : &#39;addCls&#39;](Ext.baseCSSPrefix + &#39;indicator-hidden&#39;);
     }
 
 }, function() {
@@ -158,9 +158,9 @@ Ext.define('Ext.LoadMask', {
                  * @cfg {String} msg The message to display on the {@link Ext.LoadMask}
                  * @deprecated 2.0.0 Please use the {@link #message} configuration
                  */
-                if (config.hasOwnProperty('msg')) {
+                if (config.hasOwnProperty(&#39;msg&#39;)) {
                     config.message = config.msg;
-                    Ext.Logger.deprecate(&quot;'msg' config is deprecated, please use 'message' config instead&quot;, this);
+                    Ext.Logger.deprecate(&quot;&#39;msg&#39; config is deprecated, please use &#39;message&#39; config instead&quot;, this);
                     delete config.msg;
                 }
 
@@ -169,9 +169,9 @@ Ext.define('Ext.LoadMask', {
                  * @cfg {String} msgCls The message cls used on the element which displays the {@link #message}
                  * @deprecated 2.0.0 Please use the {@link #messageCls} configuration
                  */
-                if (config.hasOwnProperty('msgCls')) {
+                if (config.hasOwnProperty(&#39;msgCls&#39;)) {
                     config.messageCls = config.msgCls;
-                    Ext.Logger.deprecate(&quot;'msgCls' config is deprecated, please use 'messageCls' config instead&quot;, this);
+                    Ext.Logger.deprecate(&quot;&#39;msgCls&#39; config is deprecated, please use &#39;messageCls&#39; config instead&quot;, this);
                     delete config.msgCls;
                 }
 
@@ -181,8 +181,8 @@ Ext.define('Ext.LoadMask', {
                  * hidden on either load success, or load fail.
                  * @removed 2.0.0 You can no longer bind a store to a {@link Ext.LoadMask}
                  */
-                if (config.hasOwnProperty('store')) {
-                    Ext.Logger.deprecate(&quot;'store' config has been removed. You can no longer bind a store to a Ext.LoadMask&quot;, this);
+                if (config.hasOwnProperty(&#39;store&#39;)) {
+                    Ext.Logger.deprecate(&quot;&#39;store&#39; config has been removed. You can no longer bind a store to a Ext.LoadMask&quot;, this);
                     delete config.store;
                 }
             }

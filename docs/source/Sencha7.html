@@ -18,28 +18,28 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-notification-Sencha'>/**
 </span> * @private
  */
-Ext.define('Ext.device.notification.Sencha', {
-    extend: 'Ext.device.notification.Abstract',
-    requires: ['Ext.device.Communicator'],
+Ext.define(&#39;Ext.device.notification.Sencha&#39;, {
+    extend: &#39;Ext.device.notification.Abstract&#39;,
+    requires: [&#39;Ext.device.Communicator&#39;],
 
 <span id='Ext-device-notification-Sencha-method-show'>    show: function() {
 </span>        var config = this.callParent(arguments);
 
         Ext.device.Communicator.send({
-            command: 'Notification#show',
+            command: &#39;Notification#show&#39;,
             callbacks: {
                 callback: config.callback
             },
             scope  : config.scope,
             title  : config.title,
             message: config.message,
-            buttons: config.buttons.join(',') //@todo fix this
+            buttons: config.buttons.join(&#39;,&#39;) //@todo fix this
         });
     },
 
 <span id='Ext-device-notification-Sencha-method-vibrate'>    vibrate: function() {
 </span>        Ext.device.Communicator.send({
-            command: 'Notification#vibrate'
+            command: &#39;Notification#vibrate&#39;
         });
     }
 });

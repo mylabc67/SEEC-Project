@@ -26,8 +26,8 @@
  * 
  * @private
  */
-Ext.define('Ext.event.recognizer.VerticalSwipe', {
-    extend: 'Ext.event.recognizer.Swipe',
+Ext.define(&#39;Ext.event.recognizer.VerticalSwipe&#39;, {
+    extend: &#39;Ext.event.recognizer.Swipe&#39;,
 
 <span id='Ext-event-recognizer-VerticalSwipe-method-onTouchStart'>    onTouchStart: function(e) {
 </span>        if (this.callParent(arguments) === false) {
@@ -73,9 +73,9 @@ Ext.define('Ext.event.recognizer.VerticalSwipe', {
                 return this.fail(this.self.DISTANCE_NOT_ENOUGH);
             }
 
-            direction = (deltaY &lt; 0) ? 'up' : 'down';
+            direction = (deltaY &lt; 0) ? &#39;up&#39; : &#39;down&#39;;
 
-            this.fire('swipe', e, [touch], {
+            this.fire(&#39;swipe&#39;, e, [touch], {
                 touch     : touch,
                 distance  : distance,
                 duration  : duration,

@@ -18,8 +18,8 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-filesystem-Sencha'>/**
 </span> * @private
  */
-Ext.define('Ext.device.filesystem.Sencha', {
-    extend: 'Ext.device.filesystem.Abstract',
+Ext.define(&#39;Ext.device.filesystem.Sencha&#39;, {
+    extend: &#39;Ext.device.filesystem.Abstract&#39;,
 
 <span id='Ext-device-filesystem-Sencha-method-requestFileSystem'>    /**
 </span>     * Requests a {@link Ext.device.filesystem.FileSystem} instance.
@@ -44,15 +44,15 @@ Ext.define('Ext.device.filesystem.Sencha', {
      */
     requestFileSystem: function(config) {
         if (!config.success) {
-            Ext.Logger.error('Ext.device.filesystem#requestFileSystem: You must specify a `success` callback.');
+            Ext.Logger.error(&#39;Ext.device.filesystem#requestFileSystem: You must specify a `success` callback.&#39;);
             return null;
         }
 
         Ext.device.Communicator.send({
-            command: 'FileSystem#requestFileSystem',
+            command: &#39;FileSystem#requestFileSystem&#39;,
             callbacks: {
                 success: function(id) {
-                    var fileSystem = Ext.create('Ext.device.filesystem.FileSystem', id);
+                    var fileSystem = Ext.create(&#39;Ext.device.filesystem.FileSystem&#39;, id);
 
                     config.success.call(config.scope || this, fileSystem);
                 },
@@ -69,13 +69,13 @@ Ext.define('Ext.device.filesystem.Sencha', {
 <span id='Ext-device-filesystem-FileSystem'>    /**
 </span>     * The FileSystem class which is used to represent a file system.
      */
-    Ext.define('Ext.device.filesystem.FileSystem', {
+    Ext.define(&#39;Ext.device.filesystem.FileSystem&#39;, {
 <span id='Ext-device-filesystem-FileSystem-property-id'>        id: 0,
 </span><span id='Ext-device-filesystem-FileSystem-property-root'>        root: null,
 </span>
 <span id='Ext-device-filesystem-FileSystem-method-constructor'>        constructor: function(id) {
 </span>            this.id = id;
-            this.root = Ext.create('Ext.device.filesystem.DirectoryEntry', '/', this);
+            this.root = Ext.create(&#39;Ext.device.filesystem.DirectoryEntry&#39;, &#39;/&#39;, this);
         },
 
 <span id='Ext-device-filesystem-FileSystem-method-getRoot'>        /**
@@ -95,7 +95,7 @@ Ext.define('Ext.device.filesystem.Sencha', {
          * This is an abstract class.
          * @abstract
          */
-        Ext.define('Ext.device.filesystem.Entry', {
+        Ext.define(&#39;Ext.device.filesystem.Entry&#39;, {
 <span id='Ext-device-filesystem-Entry-property-directory'>            directory: false,
 </span><span id='Ext-device-filesystem-Entry-property-path'>            path: 0,
 </span><span id='Ext-device-filesystem-Entry-property-fileSystem'>            fileSystem: null,
@@ -133,14 +133,14 @@ Ext.define('Ext.device.filesystem.Sencha', {
              * The entry name.
              */
             getName: function() {
-                var components = this.path.split('/');
+                var components = this.path.split(&#39;/&#39;);
                 for (var i = components.length - 1; i &gt;= 0; --i) {
                     if (components[i].length &gt; 0) {
                         return components[i];
                     }
                 }
 
-                return '/';
+                return &#39;/&#39;;
             },
 
 <span id='Ext-device-filesystem-Entry-method-getFullPath'>            /**
@@ -173,7 +173,7 @@ Ext.define('Ext.device.filesystem.Sencha', {
              * The directory to which to move the entry.
              *
              * @param {String} config.newName This is optional.
-             * The new name of the entry to move. Defaults to the entry's current name if unspecified.
+             * The new name of the entry to move. Defaults to the entry&#39;s current name if unspecified.
              *
              * @param {Function} config.success This is optional.
              * The callback to be called when the entry has been successfully moved.
@@ -192,13 +192,13 @@ Ext.define('Ext.device.filesystem.Sencha', {
              */
             moveTo: function(config) {
                 if (config.parent == null) {
-                    Ext.Logger.error('Ext.device.filesystem.Entry#moveTo: You must specify a new `parent` of the entry.');
+                    Ext.Logger.error(&#39;Ext.device.filesystem.Entry#moveTo: You must specify a new `parent` of the entry.&#39;);
                     return null;
                 }
 
                 var me = this;
                 Ext.device.Communicator.send({
-                    command: 'FileSystem#moveTo',
+                    command: &#39;FileSystem#moveTo&#39;,
                     path: this.path,
                     fileSystemId: this.fileSystem.id,
                     parentPath: config.parent.path,
@@ -208,8 +208,8 @@ Ext.define('Ext.device.filesystem.Sencha', {
                         success: function(path) {
                             if (config.success) {
                                 var entry = me.directory
-                                    ? Ext.create('Ext.device.filesystem.DirectoryEntry', path, me.fileSystem)
-                                    : Ext.create('Ext.device.filesystem.FileEntry', path, me.fileSystem);
+                                    ? Ext.create(&#39;Ext.device.filesystem.DirectoryEntry&#39;, path, me.fileSystem)
+                                    : Ext.create(&#39;Ext.device.filesystem.FileEntry&#39;, path, me.fileSystem);
 
                                 config.success.call(config.scope || this, entry);
                             }
@@ -253,7 +253,7 @@ Ext.define('Ext.device.filesystem.Sencha', {
              */
             remove: function(config) {
                 Ext.device.Communicator.send({
-                    command: 'FileSystem#remove',
+                    command: &#39;FileSystem#remove&#39;,
                     path: this.path,
                     fileSystemId: this.fileSystem.id,
                     recursively: config.recursively,
@@ -296,20 +296,20 @@ Ext.define('Ext.device.filesystem.Sencha', {
              */
             getParent: function(config) {
                 if (!config.success) {
-                    Ext.Logger.error('Ext.device.filesystem.Entry#getParent: You must specify a `success` callback.');
+                    Ext.Logger.error(&#39;Ext.device.filesystem.Entry#getParent: You must specify a `success` callback.&#39;);
                     return null;
                 }
 
                 var me = this;
                 Ext.device.Communicator.send({
-                    command: 'FileSystem#getParent',
+                    command: &#39;FileSystem#getParent&#39;,
                     path: this.path,
                     fileSystemId: this.fileSystem.id,
                     callbacks: {
                         success: function(path) {
                             var entry = me.directory
-                                ? Ext.create('Ext.device.filesystem.DirectoryEntry', path, me.fileSystem)
-                                : Ext.create('Ext.device.filesystem.FileEntry', path, me.fileSystem);
+                                ? Ext.create(&#39;Ext.device.filesystem.DirectoryEntry&#39;, path, me.fileSystem)
+                                : Ext.create(&#39;Ext.device.filesystem.FileEntry&#39;, path, me.fileSystem);
 
                             config.success.call(config.scope || this, entry);
                         },
@@ -327,8 +327,8 @@ Ext.define('Ext.device.filesystem.Sencha', {
 <span id='Ext-device-filesystem-DirectoryEntry'>        /**
 </span>         * The DirectoryEntry class which is used to represent a directory on a file system.
          */
-        Ext.define('Ext.device.filesystem.DirectoryEntry', {
-            extend: 'Ext.device.filesystem.Entry',
+        Ext.define(&#39;Ext.device.filesystem.DirectoryEntry&#39;, {
+            extend: &#39;Ext.device.filesystem.Entry&#39;,
 
 <span id='Ext-device-filesystem-DirectoryEntry-method-constructor'>            constructor: function(path, fileSystem) {
 </span>                this.callParent([true, path, fileSystem]);
@@ -357,21 +357,21 @@ Ext.define('Ext.device.filesystem.Sencha', {
              */
             readEntries: function(config) {
                 if (!config.success) {
-                    Ext.Logger.error('Ext.device.filesystem.DirectoryEntry#readEntries: You must specify a `success` callback.');
+                    Ext.Logger.error(&#39;Ext.device.filesystem.DirectoryEntry#readEntries: You must specify a `success` callback.&#39;);
                     return null;
                 }
 
                 var me = this;
                 Ext.device.Communicator.send({
-                    command: 'FileSystem#readEntries',
+                    command: &#39;FileSystem#readEntries&#39;,
                     path: this.path,
                     fileSystemId: this.fileSystem.id,
                     callbacks: {
                         success: function(entryInfos) {
                             var entries = entryInfos.map(function(entryInfo) {
                                 return entryInfo.directory
-                                    ? Ext.create('Ext.device.filesystem.DirectoryEntry', entryInfo.path, me.fileSystem)
-                                    : Ext.create('Ext.device.filesystem.FileEntry', entryInfo.path, me.fileSystem);
+                                    ? Ext.create(&#39;Ext.device.filesystem.DirectoryEntry&#39;, entryInfo.path, me.fileSystem)
+                                    : Ext.create(&#39;Ext.device.filesystem.FileEntry&#39;, entryInfo.path, me.fileSystem);
                             });
 
                             config.success.call(config.scope || this, entries);
@@ -401,7 +401,7 @@ Ext.define('Ext.device.filesystem.Sencha', {
              * @param {Boolean} config.options.create This is optional.
              * Indicates whether to create a file, if path does not exist.
              *
-             * @param {Boolean} config.options.exclusive This is optional. Used with 'create', by itself has no effect.
+             * @param {Boolean} config.options.exclusive This is optional. Used with &#39;create&#39;, by itself has no effect.
              * Indicates that method should fail, if path already exists.
              *
              * @param {Function} config.success This is optional.
@@ -421,7 +421,7 @@ Ext.define('Ext.device.filesystem.Sencha', {
              */
             getFile: function(config) {
                 if (config.path == null) {
-                    Ext.Logger.error('Ext.device.filesystem.DirectoryEntry#getFile: You must specify a `path` of the file.');
+                    Ext.Logger.error(&#39;Ext.device.filesystem.DirectoryEntry#getFile: You must specify a `path` of the file.&#39;);
                     return null;
                 }
 
@@ -431,7 +431,7 @@ Ext.define('Ext.device.filesystem.Sencha', {
 
                 var me = this;
                 Ext.device.Communicator.send({
-                    command: 'FileSystem#getEntry',
+                    command: &#39;FileSystem#getEntry&#39;,
                     path: this.path,
                     fileSystemId: this.fileSystem.id,
                     newPath: config.path,
@@ -442,8 +442,8 @@ Ext.define('Ext.device.filesystem.Sencha', {
                         success: function(path) {
                             if (config.success) {
                                 var entry = config.directory
-                                    ? Ext.create('Ext.device.filesystem.DirectoryEntry', path, me.fileSystem)
-                                    : Ext.create('Ext.device.filesystem.FileEntry', path, me.fileSystem);
+                                    ? Ext.create(&#39;Ext.device.filesystem.DirectoryEntry&#39;, path, me.fileSystem)
+                                    : Ext.create(&#39;Ext.device.filesystem.FileEntry&#39;, path, me.fileSystem);
 
                                 config.success.call(config.scope || this, entry);
                             }
@@ -482,8 +482,8 @@ Ext.define('Ext.device.filesystem.Sencha', {
 <span id='Ext-device-filesystem-FileEntry'>        /**
 </span>         * The FileEntry class which is used to represent a file on a file system.
          */
-        Ext.define('Ext.device.filesystem.FileEntry', {
-            extend: 'Ext.device.filesystem.Entry',
+        Ext.define(&#39;Ext.device.filesystem.FileEntry&#39;, {
+            extend: &#39;Ext.device.filesystem.Entry&#39;,
 
 <span id='Ext-device-filesystem-FileEntry-property-offset'>            offset: 0,
 </span>
@@ -526,13 +526,13 @@ Ext.define('Ext.device.filesystem.Sencha', {
              */
             seek: function(config) {
                 if (config.offset == null) {
-                    Ext.Logger.error('Ext.device.filesystem.FileEntry#seek: You must specify an `offset` in the file.');
+                    Ext.Logger.error(&#39;Ext.device.filesystem.FileEntry#seek: You must specify an `offset` in the file.&#39;);
                     return null;
                 }
 
                 var me = this;
                 Ext.device.Communicator.send({
-                    command: 'FileSystem#seek',
+                    command: &#39;FileSystem#seek&#39;,
                     path: this.path,
                     fileSystemId: this.fileSystem.id,
                     offset: config.offset,
@@ -561,7 +561,7 @@ Ext.define('Ext.device.filesystem.Sencha', {
              * The object which contains the following config options:
              *
              * @param {Number} config.length This is optional.
-             * The length of bytes to read from the file. Defaults to the file's current size if unspecified.
+             * The length of bytes to read from the file. Defaults to the file&#39;s current size if unspecified.
              *
              * @param {Function} config.success This is optional.
              * The callback to be called when the data has been successfully read.
@@ -581,7 +581,7 @@ Ext.define('Ext.device.filesystem.Sencha', {
             read: function(config) {
                 var me = this;
                 Ext.device.Communicator.send({
-                    command: 'FileSystem#read',
+                    command: &#39;FileSystem#read&#39;,
                     path: this.path,
                     fileSystemId: this.fileSystem.id,
                     offset: this.offset,
@@ -627,13 +627,13 @@ Ext.define('Ext.device.filesystem.Sencha', {
              */
             write: function(config) {
                 if (config.data == null) {
-                    Ext.Logger.error('Ext.device.filesystem.FileEntry#write: You must specify a `data` for the file.');
+                    Ext.Logger.error(&#39;Ext.device.filesystem.FileEntry#write: You must specify a `data` for the file.&#39;);
                     return null;
                 }
 
                 var me = this;
                 Ext.device.Communicator.send({
-                    command: 'FileSystem#write',
+                    command: &#39;FileSystem#write&#39;,
                     path: this.path,
                     fileSystemId: this.fileSystem.id,
                     offset: this.offset,
@@ -680,13 +680,13 @@ Ext.define('Ext.device.filesystem.Sencha', {
              */
             truncate: function(config) {
                 if (config.size == null) {
-                    Ext.Logger.error('Ext.device.filesystem.FileEntry#truncate: You must specify a `size` of the file.');
+                    Ext.Logger.error(&#39;Ext.device.filesystem.FileEntry#truncate: You must specify a `size` of the file.&#39;);
                     return null;
                 }
 
                 var me = this;
                 Ext.device.Communicator.send({
-                    command: 'FileSystem#truncate',
+                    command: &#39;FileSystem#truncate&#39;,
                     path: this.path,
                     fileSystemId: this.fileSystem.id,
                     offset: this.offset,

@@ -24,31 +24,31 @@
  * # Usage example
  *
  *       var t = new Ext.Template(
- *           '&lt;div name=&quot;{id}&quot;&gt;',
- *               '&lt;span class=&quot;{cls}&quot;&gt;{name:trim} {value:ellipsis(10)}&lt;/span&gt;',
- *           '&lt;/div&gt;',
+ *           &#39;&lt;div name=&quot;{id}&quot;&gt;&#39;,
+ *               &#39;&lt;span class=&quot;{cls}&quot;&gt;{name:trim} {value:ellipsis(10)}&lt;/span&gt;&#39;,
+ *           &#39;&lt;/div&gt;&#39;,
  *           // a configuration object:
  *           {
  *               compiled: true      // compile immediately
  *           }
  *       );
  *       t.compile();
- *       t.append('some-element', {id: 'myid', cls: 'myclass', name: 'foo', value: 'bar'});
+ *       t.append(&#39;some-element&#39;, {id: &#39;myid&#39;, cls: &#39;myclass&#39;, name: &#39;foo&#39;, value: &#39;bar&#39;});
  *
  * # Notes
  *
  * - For a list of available format functions, see {@link Ext.util.Format}.
  * - `disableFormats` reduces `{@link #apply}` time when no formatting is required.
  */
-Ext.define('Ext.Template', {
+Ext.define(&#39;Ext.Template&#39;, {
 
     /* Begin Definitions */
 
-    requires: ['Ext.dom.Helper', 'Ext.util.Format'],
+    requires: [&#39;Ext.dom.Helper&#39;, &#39;Ext.util.Format&#39;],
 
     inheritableStatics: {
 <span id='Ext-Template-static-method-from'>        /**
-</span>         * Creates a template from the passed element's value (_display:none_ textarea, preferred) or `innerHTML`.
+</span>         * Creates a template from the passed element&#39;s value (_display:none_ textarea, preferred) or `innerHTML`.
          * @param {String/HTMLElement} el A DOM element or its `id`.
          * @param {Object} config (optional) Config object.
          * @return {Ext.Template} The created template.
@@ -57,7 +57,7 @@ Ext.define('Ext.Template', {
          */
         from: function(el, config) {
             el = Ext.getDom(el);
-            return new this(el.value || el.innerHTML, config || '');
+            return new this(el.value || el.innerHTML, config || &#39;&#39;);
         }
     },
 
@@ -70,24 +70,24 @@ Ext.define('Ext.Template', {
      * optional config object.  One can either pass multiple arguments:
      *
      *     new Ext.Template(
-     *         '&lt;div name=&quot;{id}&quot;&gt;',
-     *             '&lt;span class=&quot;{cls}&quot;&gt;{name} {value}&lt;/span&gt;',
-     *         '&lt;/div&gt;',
+     *         &#39;&lt;div name=&quot;{id}&quot;&gt;&#39;,
+     *             &#39;&lt;span class=&quot;{cls}&quot;&gt;{name} {value}&lt;/span&gt;&#39;,
+     *         &#39;&lt;/div&gt;&#39;,
      *         { compiled: true }
      *     );
      *
      * or an array of these same things:
      *
      *     new Ext.Template([
-     *         '&lt;div name=&quot;{id}&quot;&gt;',
-     *             '&lt;span class=&quot;{cls}&quot;&gt;{name} {value}&lt;/span&gt;',
-     *         '&lt;/div&gt;',
+     *         &#39;&lt;div name=&quot;{id}&quot;&gt;&#39;,
+     *             &#39;&lt;span class=&quot;{cls}&quot;&gt;{name} {value}&lt;/span&gt;&#39;,
+     *         &#39;&lt;/div&gt;&#39;,
      *         { compiled: true }
      *     ]);
      *
      * Just a single string will also do for a simple template:
      *
-     *     new Ext.Template('&lt;div name=&quot;{id}&quot;&gt;{name}&lt;/div&gt;');
+     *     new Ext.Template(&#39;&lt;div name=&quot;{id}&quot;&gt;{name}&lt;/div&gt;&#39;);
      *
      */
     constructor: function(html) {
@@ -111,7 +111,7 @@ Ext.define('Ext.Template', {
         if (length &gt; 1) {
             for (; i &lt; length; i++) {
                 value = args[i];
-                if (typeof value == 'object') {
+                if (typeof value == &#39;object&#39;) {
                     Ext.apply(me.initialConfig, value);
                     Ext.apply(me, value);
                 } else {
@@ -123,7 +123,7 @@ Ext.define('Ext.Template', {
         }
 
         // @private
-        me.html = buffer.join('');
+        me.html = buffer.join(&#39;&#39;);
 
         if (me.compiled) {
             me.compile();
@@ -143,7 +143,7 @@ Ext.define('Ext.Template', {
 
 <span id='Ext-Template-cfg-disableFormats'>    /**
 </span>     * @cfg {Boolean} [disableFormats=false]
-     * `true` to disable format functions in the template. If the template doesn't contain
+     * `true` to disable format functions in the template. If the template doesn&#39;t contain
      * format functions, setting `disableFormats` to `true` will reduce apply time.
      */
     disableFormats: false,
@@ -155,13 +155,13 @@ Ext.define('Ext.Template', {
      *
      * @param {Object/Array} values The template values. Can be an array if your params are numeric:
      *
-     *     var tpl = new Ext.Template('Name: {0}, Age: {1}');
-     *     tpl.apply(['John', 25]);
+     *     var tpl = new Ext.Template(&#39;Name: {0}, Age: {1}&#39;);
+     *     tpl.apply([&#39;John&#39;, 25]);
      *
      * or an object:
      *
-     *     var tpl = new Ext.Template('Name: {name}, Age: {age}');
-     *     tpl.apply({name: 'John', age: 25});
+     *     var tpl = new Ext.Template(&#39;Name: {name}, Age: {age}&#39;);
+     *     tpl.apply({name: &#39;John&#39;, age: 25});
      *
      * @return {String} The HTML fragment.
      */
@@ -173,13 +173,13 @@ Ext.define('Ext.Template', {
             ret;
 
         if (me.compiled) {
-            return me.compiled(values).join('');
+            return me.compiled(values).join(&#39;&#39;);
         }
 
         function fn(m, name, format, args) {
             if (format &amp;&amp; useFormat) {
                 if (args) {
-                    args = [values[name]].concat(Ext.functionFactory('return ['+ args +'];')());
+                    args = [values[name]].concat(Ext.functionFactory(&#39;return [&#39;+ args +&#39;];&#39;)());
                 } else {
                     args = [values[name]];
                 }
@@ -242,7 +242,7 @@ Ext.define('Ext.Template', {
 
 <span id='Ext-Template-property-compileARe'>    compileARe: /\\/g,
 </span><span id='Ext-Template-property-compileBRe'>    compileBRe: /(\r\n|\n)/g,
-</span><span id='Ext-Template-property-compileCRe'>    compileCRe: /'/g,
+</span><span id='Ext-Template-property-compileCRe'>    compileCRe: /&#39;/g,
 </span>
 <span id='Ext-Template-method-compile'>    /**
 </span>     * Compiles the template into an internal function, eliminating the RegEx overhead.
@@ -256,23 +256,23 @@ Ext.define('Ext.Template', {
 
         function fn(m, name, format, args) {
             if (format &amp;&amp; useFormat) {
-                args = args ? ',' + args: &quot;&quot;;
+                args = args ? &#39;,&#39; + args: &quot;&quot;;
                 if (format.substr(0, 5) != &quot;this.&quot;) {
-                    format = &quot;fm.&quot; + format + '(';
+                    format = &quot;fm.&quot; + format + &#39;(&#39;;
                 }
                 else {
-                    format = 'this.' + format.substr(5) + '(';
+                    format = &#39;this.&#39; + format.substr(5) + &#39;(&#39;;
                 }
             }
             else {
-                args = '';
-                format = &quot;(values['&quot; + name + &quot;'] == undefined ? '' : &quot;;
+                args = &#39;&#39;;
+                format = &quot;(values[&#39;&quot; + name + &quot;&#39;] == undefined ? &#39;&#39; : &quot;;
             }
-            return &quot;',&quot; + format + &quot;values['&quot; + name + &quot;']&quot; + args + &quot;) ,'&quot;;
+            return &quot;&#39;,&quot; + format + &quot;values[&#39;&quot; + name + &quot;&#39;]&quot; + args + &quot;) ,&#39;&quot;;
         }
 
-        bodyReturn = me.html.replace(me.compileARe, '\\\\').replace(me.compileBRe, '\\n').replace(me.compileCRe, &quot;\\'&quot;).replace(me.re, fn);
-        body = &quot;this.compiled = function(values){ return ['&quot; + bodyReturn + &quot;'];};&quot;;
+        bodyReturn = me.html.replace(me.compileARe, &#39;\\\\&#39;).replace(me.compileBRe, &#39;\\n&#39;).replace(me.compileCRe, &quot;\\&#39;&quot;).replace(me.re, fn);
+        body = &quot;this.compiled = function(values){ return [&#39;&quot; + bodyReturn + &quot;&#39;];};&quot;;
         eval(body);
         return me;
     },
@@ -286,7 +286,7 @@ Ext.define('Ext.Template', {
      * @return {HTMLElement/Ext.Element} The new node or Element.
      */
     insertFirst: function(el, values, returnElement) {
-        return this.doInsert('afterBegin', el, values, returnElement);
+        return this.doInsert(&#39;afterBegin&#39;, el, values, returnElement);
     },
 
 <span id='Ext-Template-method-insertBefore'>    /**
@@ -298,7 +298,7 @@ Ext.define('Ext.Template', {
      * @return {HTMLElement/Ext.Element} The new node or Element
      */
     insertBefore: function(el, values, returnElement) {
-        return this.doInsert('beforeBegin', el, values, returnElement);
+        return this.doInsert(&#39;beforeBegin&#39;, el, values, returnElement);
     },
 
 <span id='Ext-Template-method-insertAfter'>    /**
@@ -310,7 +310,7 @@ Ext.define('Ext.Template', {
      * @return {HTMLElement/Ext.Element} The new node or Element.
      */
     insertAfter: function(el, values, returnElement) {
-        return this.doInsert('afterEnd', el, values, returnElement);
+        return this.doInsert(&#39;afterEnd&#39;, el, values, returnElement);
     },
 
 <span id='Ext-Template-method-append'>    /**
@@ -324,7 +324,7 @@ Ext.define('Ext.Template', {
      * @return {HTMLElement/Ext.Element} The new node or Element.
      */
     append: function(el, values, returnElement) {
-        return this.doInsert('beforeEnd', el, values, returnElement);
+        return this.doInsert(&#39;beforeEnd&#39;, el, values, returnElement);
     },
 
 <span id='Ext-Template-method-doInsert'>    doInsert: function(where, el, values, returnElement) {

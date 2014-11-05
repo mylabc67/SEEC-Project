@@ -21,58 +21,58 @@
  * A common place for Sorters to be used are {@link Ext.data.Store Stores}. For example:
  *
  *     @example miniphone
- *     var store = Ext.create('Ext.data.Store', {
- *        fields: ['firstName', 'lastName'],
- *        sorters: 'lastName',
+ *     var store = Ext.create(&#39;Ext.data.Store&#39;, {
+ *        fields: [&#39;firstName&#39;, &#39;lastName&#39;],
+ *        sorters: &#39;lastName&#39;,
  *
  *        data: [
- *            { firstName: 'Tommy',   lastName: 'Maintz' },
- *            { firstName: 'Rob',     lastName: 'Dougan' },
- *            { firstName: 'Ed',      lastName: 'Spencer'},
- *            { firstName: 'Jamie',   lastName: 'Avins'  },
- *            { firstName: 'Nick',    lastName: 'Poulden'}
+ *            { firstName: &#39;Tommy&#39;,   lastName: &#39;Maintz&#39; },
+ *            { firstName: &#39;Rob&#39;,     lastName: &#39;Dougan&#39; },
+ *            { firstName: &#39;Ed&#39;,      lastName: &#39;Spencer&#39;},
+ *            { firstName: &#39;Jamie&#39;,   lastName: &#39;Avins&#39;  },
+ *            { firstName: &#39;Nick&#39;,    lastName: &#39;Poulden&#39;}
  *        ]
  *     });
  *
- *     Ext.create('Ext.List', {
+ *     Ext.create(&#39;Ext.List&#39;, {
  *        fullscreen: true,
- *        itemTpl: '&lt;div class=&quot;contact&quot;&gt;{firstName} &lt;strong&gt;{lastName}&lt;/strong&gt;&lt;/div&gt;',
+ *        itemTpl: &#39;&lt;div class=&quot;contact&quot;&gt;{firstName} &lt;strong&gt;{lastName}&lt;/strong&gt;&lt;/div&gt;&#39;,
  *        store: store
  *     });
  *
  * In the next example, we specify a custom sorter function:
  *
  *     @example miniphone
- *     var store = Ext.create('Ext.data.Store', {
- *         fields: ['person'],
+ *     var store = Ext.create(&#39;Ext.data.Store&#39;, {
+ *         fields: [&#39;person&#39;],
  *         sorters: [
  *             {
  *                 // Sort by first letter of last name, in descending order
  *                 sorterFn: function(record1, record2) {
- *                     var name1 = record1.data.person.name.split('-')[1].substr(0, 1),
- *                         name2 = record2.data.person.name.split('-')[1].substr(0, 1);
+ *                     var name1 = record1.data.person.name.split(&#39;-&#39;)[1].substr(0, 1),
+ *                         name2 = record2.data.person.name.split(&#39;-&#39;)[1].substr(0, 1);
  *
  *                     return name1 &gt; name2 ? 1 : (name1 === name2 ? 0 : -1);
  *                 },
- *                 direction: 'DESC'
+ *                 direction: &#39;DESC&#39;
  *             }
  *         ],
  *         data: [
- *             { person: { name: 'Tommy-Maintz' } },
- *             { person: { name: 'Rob-Dougan'   } },
- *             { person: { name: 'Ed-Spencer'   } },
- *             { person: { name: 'Nick-Poulden' } },
- *             { person: { name: 'Jamie-Avins'  } }
+ *             { person: { name: &#39;Tommy-Maintz&#39; } },
+ *             { person: { name: &#39;Rob-Dougan&#39;   } },
+ *             { person: { name: &#39;Ed-Spencer&#39;   } },
+ *             { person: { name: &#39;Nick-Poulden&#39; } },
+ *             { person: { name: &#39;Jamie-Avins&#39;  } }
  *         ]
  *     });
  *
- *     Ext.create('Ext.List', {
+ *     Ext.create(&#39;Ext.List&#39;, {
  *         fullscreen: true,
- *         itemTpl: '{person.name}',
+ *         itemTpl: &#39;{person.name}&#39;,
  *         store: store
  *     });
  */
-Ext.define('Ext.util.Sorter', {
+Ext.define(&#39;Ext.util.Sorter&#39;, {
 <span id='Ext-util-Sorter-property-isSorter'>    isSorter: true,
 </span>
     config: {
@@ -94,7 +94,7 @@ Ext.define('Ext.util.Sorter', {
 
 <span id='Ext-util-Sorter-cfg-root'>        /**
 </span>         * @cfg {String} root Optional root property. This is mostly useful when sorting a Store, in which case we set the
-         * root to 'data' to make the filter pull the {@link #property} out of the data object of each item
+         * root to &#39;data&#39; to make the filter pull the {@link #property} out of the data object of each item
          */
         root: null,
 
@@ -143,7 +143,7 @@ Ext.define('Ext.util.Sorter', {
         if (!id) {
             id = this.getProperty();
             if (!id) {
-                id = Ext.id(null, 'ext-sorter-');
+                id = Ext.id(null, &#39;ext-sorter-&#39;);
             }
         }
 

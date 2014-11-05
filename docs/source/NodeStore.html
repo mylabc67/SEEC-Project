@@ -18,10 +18,10 @@
   <pre class="prettyprint lang-js"><span id='Ext-data-NodeStore'>/**
 </span> * @private
  */
-Ext.define('Ext.data.NodeStore', {
-    extend: 'Ext.data.Store',
-    alias: 'store.node',
-    requires: ['Ext.data.NodeInterface'],
+Ext.define(&#39;Ext.data.NodeStore&#39;, {
+    extend: &#39;Ext.data.Store&#39;,
+    alias: &#39;store.node&#39;,
+    requires: [&#39;Ext.data.NodeInterface&#39;],
 
     config: {
 <span id='Ext-data-NodeStore-cfg-node'>        /**
@@ -38,7 +38,7 @@ Ext.define('Ext.data.NodeStore', {
          * rendering a tree structure to a DataView and is being used internally by
          * the TreeView. Any records that are moved, removed, inserted or appended to the
          * node at any depth below the node this store is bound to will be automatically
-         * updated in this Store's internal flat data structure.
+         * updated in this Store&#39;s internal flat data structure.
          * @accessor
          */
         recursive: false,
@@ -61,13 +61,13 @@ Ext.define('Ext.data.NodeStore', {
 
 <span id='Ext-data-NodeStore-method-afterEdit'>    afterEdit: function(record, modifiedFields) {
 </span>        if (modifiedFields) {
-            if (modifiedFields.indexOf('loaded') !== -1) {
+            if (modifiedFields.indexOf(&#39;loaded&#39;) !== -1) {
                 return this.add(this.retrieveChildNodes(record));
             }
-            if (modifiedFields.indexOf('expanded') !== -1) {
+            if (modifiedFields.indexOf(&#39;expanded&#39;) !== -1) {
                 return this.filter();
             }
-            if (modifiedFields.indexOf('sorted') !== -1) {
+            if (modifiedFields.indexOf(&#39;sorted&#39;) !== -1) {
                 return this.sort();
             }
         }
@@ -186,10 +186,10 @@ Ext.define('Ext.data.NodeStore', {
 <span id='Ext-data-NodeStore-method-updateNode'>    updateNode: function(node, oldNode) {
 </span>        if (oldNode &amp;&amp; !oldNode.isDestroyed) {
             oldNode.un({
-                append  : 'onNodeAppend',
-                insert  : 'onNodeInsert',
-                remove  : 'onNodeRemove',
-                load    : 'onNodeLoad',
+                append  : &#39;onNodeAppend&#39;,
+                insert  : &#39;onNodeInsert&#39;,
+                remove  : &#39;onNodeRemove&#39;,
+                load    : &#39;onNodeLoad&#39;,
                 scope: this
             });
             oldNode.unjoin(this);
@@ -198,10 +198,10 @@ Ext.define('Ext.data.NodeStore', {
         if (node) {
             node.on({
                 scope   : this,
-                append  : 'onNodeAppend',
-                insert  : 'onNodeInsert',
-                remove  : 'onNodeRemove',
-                load    : 'onNodeLoad'
+                append  : &#39;onNodeAppend&#39;,
+                insert  : &#39;onNodeInsert&#39;,
+                remove  : &#39;onNodeRemove&#39;,
+                load    : &#39;onNodeLoad&#39;
             });
 
             node.join(this);
@@ -213,11 +213,11 @@ Ext.define('Ext.data.NodeStore', {
             if (this.getRootVisible()) {
                 data.push(node);
             } else if (node.isLoaded() || node.isLoading()) {
-                node.set('expanded', true);
+                node.set(&#39;expanded&#39;, true);
             }
 
             this.data.clear();
-            this.fireEvent('clear', this);
+            this.fireEvent(&#39;clear&#39;, this);
 
             this.suspendEvents();
             this.add(data);
@@ -227,7 +227,7 @@ Ext.define('Ext.data.NodeStore', {
                 this.loaded = node.loaded = true;
             }
 
-            this.fireEvent('refresh', this, this.data);
+            this.fireEvent(&#39;refresh&#39;, this, this.data);
         }
     },
 
@@ -292,7 +292,7 @@ Ext.define('Ext.data.NodeStore', {
             }
 
             //we need to check this because for a nodestore the node is not likely to be the root
-            //so we stop going up the chain when we hit the original node as we don't care about any
+            //so we stop going up the chain when we hit the original node as we don&#39;t care about any
             //ancestors above the configured node
             if (parent === this.getNode()) {
                 break;

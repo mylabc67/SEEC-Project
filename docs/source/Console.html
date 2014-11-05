@@ -16,9 +16,9 @@
 </head>
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js">//&lt;feature logger&gt;
-Ext.define('Ext.log.writer.Console', {
+Ext.define(&#39;Ext.log.writer.Console&#39;, {
 
-    extend: 'Ext.log.writer.Writer',
+    extend: &#39;Ext.log.writer.Writer&#39;,
 
     config: {
         throwOnErrors: true,
@@ -30,23 +30,23 @@ Ext.define('Ext.log.writer.Console', {
             priority = event.priorityName,
             consoleMethod;
 
-        if (priority === 'error' &amp;&amp; this.getThrowOnErrors()) {
+        if (priority === &#39;error&#39; &amp;&amp; this.getThrowOnErrors()) {
             throw new Error(message);
         }
 
-        if (typeof console !== 'undefined') {
+        if (typeof console !== &#39;undefined&#39;) {
             consoleMethod = priority;
 
-            if (consoleMethod === 'deprecate') {
-                consoleMethod = 'warn';
+            if (consoleMethod === &#39;deprecate&#39;) {
+                consoleMethod = &#39;warn&#39;;
             }
 
-            if (consoleMethod === 'warn' &amp;&amp; this.getThrowOnWarnings()) {
+            if (consoleMethod === &#39;warn&#39; &amp;&amp; this.getThrowOnWarnings()) {
                 throw new Error(message);
             }
 
             if (!(consoleMethod in console)) {
-                consoleMethod = 'log';
+                consoleMethod = &#39;log&#39;;
             }
 
             console[consoleMethod](message);

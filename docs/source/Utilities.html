@@ -19,10 +19,10 @@
 Ext.data.utilities= {
 
 	delegate: function(from_instance, to_instance, methods) {
-		if (to_instance===undefined) { throw &quot;Error - Tried to delegate '&quot;+methods+&quot;' to undefined instance.&quot;; }
+		if (to_instance===undefined) { throw &quot;Error - Tried to delegate &#39;&quot;+methods+&quot;&#39; to undefined instance.&quot;; }
 		methods.forEach(function(method){
 			var to_method= to_instance[method];
-			if (to_method===undefined) { throw &quot;Error - Tried to delegate undefined method '&quot;+method+&quot;' to &quot;+to_instance; }
+			if (to_method===undefined) { throw &quot;Error - Tried to delegate undefined method &#39;&quot;+method+&quot;&#39; to &quot;+to_instance; }
 			from_instance[method]= function() {
 				return to_method.apply(to_instance, arguments);
 			};

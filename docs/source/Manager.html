@@ -50,31 +50,31 @@
  *
  *     {&quot;type&quot;:&quot;event&quot;,&quot;name&quot;:&quot;message&quot;,&quot;data&quot;:&quot;Successfully polled at: 11:19:30 am&quot;}
  *
- *     // add a handler for a 'message' event sent by the server
- *     Ext.direct.Manager.on('message', function(e){
- *         out.append(String.format('&lt;p&gt;&lt;i&gt;{0}&lt;/i&gt;&lt;/p&gt;', e.data));
- *         out.el.scrollTo('t', 100000, true);
+ *     // add a handler for a &#39;message&#39; event sent by the server
+ *     Ext.direct.Manager.on(&#39;message&#39;, function(e){
+ *         out.append(String.format(&#39;&lt;p&gt;&lt;i&gt;{0}&lt;/i&gt;&lt;/p&gt;&#39;, e.data));
+ *         out.el.scrollTo(&#39;t&#39;, 100000, true);
  *     });
  *
  * @singleton
  * @alternateClassName Ext.Direct
  */
-Ext.define('Ext.direct.Manager', {
+Ext.define(&#39;Ext.direct.Manager&#39;, {
     singleton: true,
 
     mixins: {
-        observable: 'Ext.mixin.Observable'
+        observable: &#39;Ext.mixin.Observable&#39;
     },
 
-    requires: ['Ext.util.Collection'],
+    requires: [&#39;Ext.util.Collection&#39;],
 
-    alternateClassName: 'Ext.Direct',
+    alternateClassName: &#39;Ext.Direct&#39;,
 
 <span id='Ext-direct-Manager-property-exceptions'>    exceptions: {
-</span>        TRANSPORT: 'xhr',
-        PARSE: 'parse',
-        LOGIN: 'login',
-        SERVER: 'exception'
+</span>        TRANSPORT: &#39;xhr&#39;,
+        PARSE: &#39;parse&#39;,
+        LOGIN: &#39;login&#39;,
+        SERVER: &#39;exception&#39;
     },
 
 <span id='Ext-direct-Manager-event-event'>    /**
@@ -93,8 +93,8 @@ Ext.define('Ext.direct.Manager', {
     constructor: function() {
         var me = this;
 
-        me.transactions = Ext.create('Ext.util.Collection', this.getKey);
-        me.providers = Ext.create('Ext.util.Collection', this.getKey);
+        me.transactions = Ext.create(&#39;Ext.util.Collection&#39;, this.getKey);
+        me.providers = Ext.create(&#39;Ext.util.Collection&#39;, this.getKey);
     },
 
 <span id='Ext-direct-Manager-method-getKey'>    getKey: function(item) {
@@ -145,10 +145,10 @@ Ext.define('Ext.direct.Manager', {
 
         // if provider has not already been instantiated
         if (!provider.isProvider) {
-            provider = Ext.create('direct.' + provider.type + 'provider', provider);
+            provider = Ext.create(&#39;direct.&#39; + provider.type + &#39;provider&#39;, provider);
         }
         me.providers.add(provider);
-        provider.on('data', me.onProviderData, me);
+        provider.on(&#39;data&#39;, me.onProviderData, me);
 
         if (!provider.isConnected()) {
             provider.connect();
@@ -179,7 +179,7 @@ Ext.define('Ext.direct.Manager', {
         provider = provider.isProvider ? provider : providers.get(provider);
 
         if (provider) {
-            provider.un('data', me.onProviderData, me);
+            provider.un(&#39;data&#39;, me.onProviderData, me);
             providers.remove(provider);
             return provider;
         }
@@ -233,13 +233,13 @@ Ext.define('Ext.direct.Manager', {
 
         name = event.getName();
 
-        if (name &amp;&amp; name != 'event' &amp;&amp; name != 'exception') {
+        if (name &amp;&amp; name != &#39;event&#39; &amp;&amp; name != &#39;exception&#39;) {
             me.fireEvent(name, event);
         } else if (event.getStatus() === false) {
-            me.fireEvent('exception', event);
+            me.fireEvent(&#39;exception&#39;, event);
         }
 
-        me.fireEvent('event', event, provider);
+        me.fireEvent(&#39;event&#39;, event, provider);
     },
 
 <span id='Ext-direct-Manager-method-parseMethod'>    /**
@@ -251,7 +251,7 @@ Ext.define('Ext.direct.Manager', {
      */
     parseMethod: function(fn) {
         if (Ext.isString(fn)) {
-            var parts = fn.split('.'),
+            var parts = fn.split(&#39;.&#39;),
                 i = 0,
                 ln = parts.length,
                 current = window;

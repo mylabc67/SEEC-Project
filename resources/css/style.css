@@ -16,7 +16,7 @@
     width: 100%;
     text-align: center;
     background: -moz-linear-gradient(left, #4d4d4d, 0.4, #4d4d4d, 0.5, white, 0.6, #4d4d4d, #4d4d4d);
-    background: -webkit-gradient(linear,left top,right top,color-stop(0, #4d4d4d),color-stop(0.4, #4d4d4d),color-stop(0.5, white),color-stop(0.6, #4d4d4d),color-stop(1, #4d4d4d));
+    background: -webkit-gradient(linear, left top, right top, color-stop(0, #4d4d4d), color-stop(0.4, #4d4d4d), color-stop(0.5, white), color-stop(0.6, #4d4d4d), color-stop(1, #4d4d4d));
     -moz-background-clip: text;
     -webkit-background-clip: text;
     -moz-text-fill-color: transparent;
@@ -30,11 +30,10 @@
     0% {
         background-position: -720px 0;
     }
-    100%{
+    100% {
         background-position: 720px 0;
     }
 }
-
 
 .lock-screen .time-container {
     position: absolute;
@@ -58,4 +57,51 @@
 
 .password {
     opacity: 0;
+}
+
+.password .title {
+    font-size: 22px;
+    text-align: center;
+}
+
+.password .input-div {
+    font-size: 50px;
+    margin: 10px 0px 0px 0px;
+    text-align: center;
+}
+
+.password .input-num {
+    margin: 0px 15px;
+}
+
+.password .num-row {
+    text-align: center;
+}
+
+.password .num {
+    font-size: 25px;
+    color: #ffffff;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: 100;
+    margin: 6px 12px;
+    border: 1px solid #ffffff;
+    padding: 10px 19px;
+    border-radius: 999px;
+    background-color: rgba(255, 0, 0, 0);
+    cursor: pointer;
+}
+
+.password .num:hover {
+    color: #244b6b;
+    border-color: #244b6b;
+}
+
+.password #num-10 {
+    /*background-color: rgba(0,0,0,0.3);*/
+    padding: 10px 13px;
+}
+
+.password #num-11 {
+    /*background-color: rgba(255,255,255,0.3);*/
+    padding: 10px 9px;
 }

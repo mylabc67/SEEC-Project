@@ -32,14 +32,14 @@
  * To show a simple notification:
  *
  *     Ext.device.Notification.show({
- *         title: 'Verification',
- *         message: 'Is your email address: test@sencha.com',
+ *         title: &#39;Verification&#39;,
+ *         message: &#39;Is your email address: test@sencha.com&#39;,
  *         buttons: Ext.MessageBox.OKCANCEL,
  *         callback: function(button) {
  *             if (button === &quot;ok&quot;) {
- *                 console.log('Verified');
+ *                 console.log(&#39;Verified&#39;);
  *             } else {
- *                 console.log('Nope');
+ *                 console.log(&#39;Nope&#39;);
  *             }
  *         }
  *     });
@@ -52,14 +52,14 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.Notification', {
+Ext.define(&#39;Ext.device.Notification&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.Communicator',
-        'Ext.device.notification.Cordova',
-        'Ext.device.notification.Sencha',
-        'Ext.device.notification.Simulator'
+        &#39;Ext.device.Communicator&#39;,
+        &#39;Ext.device.notification.Cordova&#39;,
+        &#39;Ext.device.notification.Sencha&#39;,
+        &#39;Ext.device.notification.Simulator&#39;
     ],
 
 <span id='Ext-device-Notification-method-constructor'>    constructor: function() {
@@ -67,13 +67,13 @@ Ext.define('Ext.device.Notification', {
 
         if (browserEnv.WebView) {
             if (browserEnv.Cordova) {
-                return Ext.create('Ext.device.notification.Cordova');
+                return Ext.create(&#39;Ext.device.notification.Cordova&#39;);
             } else if (browserEnv.Sencha) {
-                return Ext.create('Ext.device.notification.Sencha');
+                return Ext.create(&#39;Ext.device.notification.Sencha&#39;);
             }
         }
 
-        return Ext.create('Ext.device.notification.Simulator');
+        return Ext.create(&#39;Ext.device.notification.Simulator&#39;);
     }
 });
 </pre>

@@ -18,8 +18,8 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-contacts-Sencha'>/**
 </span> * @private
  */
-Ext.define('Ext.device.contacts.Sencha', {
-    extend: 'Ext.device.contacts.Abstract',
+Ext.define(&#39;Ext.device.contacts.Sencha&#39;, {
+    extend: &#39;Ext.device.contacts.Abstract&#39;,
 
 <span id='Ext-device-contacts-Sencha-method-getContacts'>    getContacts: function(config) {
 </span>        var includeImages = this.getIncludeImages();
@@ -28,17 +28,17 @@ Ext.define('Ext.device.contacts.Sencha', {
         }
 
         if (!config) {
-            Ext.Logger.warn('Ext.device.Contacts#getContacts: You must specify a `config` object.');
+            Ext.Logger.warn(&#39;Ext.device.Contacts#getContacts: You must specify a `config` object.&#39;);
             return false;
         }
 
         if (!config.success) {
-            Ext.Logger.warn('Ext.device.Contacts#getContacts: You must specify a `success` method.');
+            Ext.Logger.warn(&#39;Ext.device.Contacts#getContacts: You must specify a `success` method.&#39;);
             return false;
         }
 
         Ext.device.Communicator.send({
-            command: 'Contacts#all',
+            command: &#39;Contacts#all&#39;,
             callbacks: {
                 success: function(contacts) {
                     config.success.call(config.scope || this, contacts);
@@ -56,20 +56,20 @@ Ext.define('Ext.device.contacts.Sencha', {
 
 <span id='Ext-device-contacts-Sencha-method-getThumbnail'>    getThumbnail: function(config) {
 </span>        if (!config || typeof config.id == &quot;undefined&quot;) {
-            Ext.Logger.warn('Ext.device.Contacts#getThumbnail: You must specify an `id` of the contact.');
+            Ext.Logger.warn(&#39;Ext.device.Contacts#getThumbnail: You must specify an `id` of the contact.&#39;);
             return false;
         }
 
         if (!config || !config.callback) {
-            Ext.Logger.warn('Ext.device.Contacts#getThumbnail: You must specify a `callback`.');
+            Ext.Logger.warn(&#39;Ext.device.Contacts#getThumbnail: You must specify a `callback`.&#39;);
             return false;
         }
 
         Ext.device.Communicator.send({
-            command: 'Contacts#getThumbnail',
+            command: &#39;Contacts#getThumbnail&#39;,
             callbacks: {
                 success: function(src) {
-                    this.set('thumbnail', src);
+                    this.set(&#39;thumbnail&#39;, src);
 
                     if (config.callback) {
                         config.callback.call(config.scope || this, this);
@@ -83,17 +83,17 @@ Ext.define('Ext.device.contacts.Sencha', {
 
 <span id='Ext-device-contacts-Sencha-method-getLocalizedLabel'>    getLocalizedLabel: function(config) {
 </span>        if (!config || typeof config.label == &quot;undefined&quot;) {
-            Ext.Logger.warn('Ext.device.Contacts#getLocalizedLabel: You must specify an `label` to be localized.');
+            Ext.Logger.warn(&#39;Ext.device.Contacts#getLocalizedLabel: You must specify an `label` to be localized.&#39;);
             return false;
         }
 
         if (!config || !config.callback) {
-            Ext.Logger.warn('Ext.device.Contacts#getLocalizedLabel: You must specify a `callback`.');
+            Ext.Logger.warn(&#39;Ext.device.Contacts#getLocalizedLabel: You must specify a `callback`.&#39;);
             return false;
         }
 
         Ext.device.Communicator.send({
-            command: 'Contacts#getLocalizedLabel',
+            command: &#39;Contacts#getLocalizedLabel&#39;,
             callbacks: {
                 callback: function(label) {
                     config.callback.call(config.scope || this, label, config.label);

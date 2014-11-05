@@ -18,16 +18,16 @@
   <pre class="prettyprint lang-js"><span id='Ext-layout-Fit'>/**
 </span> *
  */
-Ext.define('Ext.layout.Fit', {
-    extend: 'Ext.layout.Default',
+Ext.define(&#39;Ext.layout.Fit&#39;, {
+    extend: &#39;Ext.layout.Default&#39;,
 
 <span id='Ext-layout-Fit-property-isFit'>    isFit: true,
 </span>
-    alias: 'layout.fit',
+    alias: &#39;layout.fit&#39;,
 
-<span id='Ext-layout-Fit-property-layoutClass'>    layoutClass: 'x-layout-fit',
+<span id='Ext-layout-Fit-property-layoutClass'>    layoutClass: &#39;x-layout-fit&#39;,
 </span>
-<span id='Ext-layout-Fit-property-itemClass'>    itemClass: 'x-layout-fit-item',
+<span id='Ext-layout-Fit-property-itemClass'>    itemClass: &#39;x-layout-fit-item&#39;,
 </span>
 <span id='Ext-layout-Fit-method-setContainer'>    setContainer: function(container) {
 </span>        this.callSuper(arguments);
@@ -51,7 +51,7 @@ Ext.define('Ext.layout.Fit', {
             item.setLayoutSizeFlags(sizeFlags);
         }
 
-        container.innerElement.toggleCls('x-stretched', stretched);
+        container.innerElement.toggleCls(&#39;x-stretched&#39;, stretched);
     },
 
 <span id='Ext-layout-Fit-method-onItemInnerStateChange'>    onItemInnerStateChange: function(item, isInner) {

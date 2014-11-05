@@ -18,18 +18,18 @@
   <pre class="prettyprint lang-js"><span id='Ext-event-publisher-ElementPaint'>/**
 </span> * @private
  */
-Ext.define('Ext.event.publisher.ElementPaint', {
+Ext.define(&#39;Ext.event.publisher.ElementPaint&#39;, {
 
-    extend: 'Ext.event.publisher.Publisher',
+    extend: &#39;Ext.event.publisher.Publisher&#39;,
 
     requires: [
-        'Ext.util.PaintMonitor',
-        'Ext.TaskQueue'
+        &#39;Ext.util.PaintMonitor&#39;,
+        &#39;Ext.TaskQueue&#39;
     ],
 
-<span id='Ext-event-publisher-ElementPaint-property-targetType'>    targetType: 'element',
+<span id='Ext-event-publisher-ElementPaint-property-targetType'>    targetType: &#39;element&#39;,
 </span>
-<span id='Ext-event-publisher-ElementPaint-property-handledEvents'>    handledEvents: ['painted'],
+<span id='Ext-event-publisher-ElementPaint-property-handledEvents'>    handledEvents: [&#39;painted&#39;],
 </span>
 <span id='Ext-event-publisher-ElementPaint-method-constructor'>    constructor: function() {
 </span>        this.monitors = {};
@@ -91,7 +91,7 @@ Ext.define('Ext.event.publisher.ElementPaint', {
     },
 
 <span id='Ext-event-publisher-ElementPaint-method-onElementPainted'>    onElementPainted: function(target, element) {
-</span>        Ext.TaskQueue.requestRead('dispatch', this, [target, 'painted', [element]]);
+</span>        Ext.TaskQueue.requestRead(&#39;dispatch&#39;, this, [target, &#39;painted&#39;, [element]]);
     }
 });
 </pre>

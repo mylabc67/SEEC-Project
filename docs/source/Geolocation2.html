@@ -31,26 +31,26 @@
  *
  * The below code shows a GeoLocation making a single retrieval of location information.
  *
- *     var geo = Ext.create('Ext.util.Geolocation', {
+ *     var geo = Ext.create(&#39;Ext.util.Geolocation&#39;, {
  *         autoUpdate: false,
  *         listeners: {
  *             locationupdate: function(geo) {
- *                 alert('New latitude: ' + geo.getLatitude());
+ *                 alert(&#39;New latitude: &#39; + geo.getLatitude());
  *             },
  *             locationerror: function(geo, bTimeout, bPermissionDenied, bLocationUnavailable, message) {
  *                 if(bTimeout){
- *                     alert('Timeout occurred.');
+ *                     alert(&#39;Timeout occurred.&#39;);
  *                 } else {
- *                     alert('Error occurred.');
+ *                     alert(&#39;Error occurred.&#39;);
  *                 }
  *             }
  *         }
  *     });
  *     geo.updateLocation();
  */
-Ext.define('Ext.util.Geolocation', {
-    extend: 'Ext.Evented',
-    alternateClassName: ['Ext.util.GeoLocation'],
+Ext.define(&#39;Ext.util.Geolocation&#39;, {
+    extend: &#39;Ext.Evented&#39;,
+    alternateClassName: [&#39;Ext.util.GeoLocation&#39;],
 
     config: {
 <span id='Ext-util-Geolocation-event-locationerror'>        /**
@@ -62,7 +62,7 @@ Ext.define('Ext.util.Geolocation', {
          * If {@link #autoUpdate} is set to `true`, this event could be raised repeatedly.
          * The first error is relative to the moment {@link #autoUpdate} was set to `true`
          * (or this {@link Ext.util.Geolocation} was initialized with the {@link #autoUpdate} config option set to `true`).
-         * Subsequent errors are relative to the moment when the device determines that it's position has changed.
+         * Subsequent errors are relative to the moment when the device determines that it&#39;s position has changed.
          * @param {Ext.util.Geolocation} this
          * @param {Boolean} timeout
          * Boolean indicating a timeout occurred
@@ -208,7 +208,7 @@ Ext.define('Ext.util.Geolocation', {
          * If {@link #autoUpdate} is set to `true`, the {@link #locationerror} event could be raised repeatedly.
          * The first timeout is relative to the moment {@link #autoUpdate} was set to `true`
          * (or this {@link Ext.util.Geolocation} was initialized with the {@link #autoUpdate} config option set to `true`).
-         * Subsequent timeouts are relative to the moment when the device determines that it's position has changed.
+         * Subsequent timeouts are relative to the moment when the device determines that it&#39;s position has changed.
          */
 
         timeout: Infinity,
@@ -257,12 +257,12 @@ Ext.define('Ext.util.Geolocation', {
                     config = navigator.geolocation;
                 }
                 else if (window.google) {
-                    config = google.gears.factory.create('beta.geolocation');
+                    config = google.gears.factory.create(&#39;beta.geolocation&#39;);
                 }
             }
         }
         else {
-            this.fireEvent('locationerror', this, false, false, true, 'This device does not support Geolocation.');
+            this.fireEvent(&#39;locationerror&#39;, this, false, false, true, &#39;This device does not support Geolocation.&#39;);
         }
         return config;
     },
@@ -278,7 +278,7 @@ Ext.define('Ext.util.Geolocation', {
 
         if (newAutoUpdate) {
             if (!provider) {
-                me.fireEvent('locationerror', me, false, false, true, null);
+                me.fireEvent(&#39;locationerror&#39;, me, false, false, true, null);
                 return;
             }
 
@@ -286,7 +286,7 @@ Ext.define('Ext.util.Geolocation', {
                 me.updateWatchOperation();
             }
             catch(e) {
-                me.fireEvent('locationerror', me, false, false, true, e.message);
+                me.fireEvent(&#39;locationerror&#39;, me, false, false, true, e.message);
             }
         }
     },
@@ -328,7 +328,7 @@ Ext.define('Ext.util.Geolocation', {
      * (**this** reference), set to `null` on failure.
      *
      *     geo.updateLocation(function (geo) {
-     *         alert('Latitude: ' + (geo !== null ? geo.latitude : 'failed'));
+     *         alert(&#39;Latitude: &#39; + (geo !== null ? geo.latitude : &#39;failed&#39;));
      *     });
      *
      * @param {Object} [scope]
@@ -347,7 +347,7 @@ Ext.define('Ext.util.Geolocation', {
                 me.fireError(error);
             }
             else {
-                me.fireEvent('locationerror', me, false, false, true, message);
+                me.fireEvent(&#39;locationerror&#39;, me, false, false, true, message);
             }
             if (callback) {
                 callback.call(scope || me, null, me); //last parameter for legacy purposes
@@ -398,13 +398,13 @@ Ext.define('Ext.util.Geolocation', {
             speed: coords.speed
         });
 
-        me.fireEvent('locationupdate', me);
+        me.fireEvent(&#39;locationupdate&#39;, me);
     },
 
 <span id='Ext-util-Geolocation-method-fireError'>    // @private
 </span>    fireError: function(error) {
         var errorCode = error.code;
-        this.fireEvent('locationerror', this,
+        this.fireEvent(&#39;locationerror&#39;, this,
             errorCode == error.TIMEOUT,
             errorCode == error.PERMISSION_DENIED,
             errorCode == error.POSITION_UNAVAILABLE,
@@ -420,7 +420,7 @@ Ext.define('Ext.util.Geolocation', {
                 enableHighAccuracy: this.getAllowHighAccuracy()
             };
 
-        //Google doesn't like Infinity
+        //Google doesn&#39;t like Infinity
         if (timeout !== Infinity) {
             ret.timeout = timeout;
         }

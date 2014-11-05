@@ -18,27 +18,27 @@
   <pre class="prettyprint lang-js"><span id='Ext-data-identifier-Uuid'>/**
 </span> * @author Tommy Maintz
  *
- * This class generates UUID's according to RFC 4122. This class has a default id property.
+ * This class generates UUID&#39;s according to RFC 4122. This class has a default id property.
  * This means that a single instance is shared unless the id property is overridden. Thus,
  * two {@link Ext.data.Model} instances configured like the following share one generator:
  *
- *     Ext.define('MyApp.data.MyModelX', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;MyApp.data.MyModelX&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
- *             identifier: 'uuid'
+ *             identifier: &#39;uuid&#39;
  *         }
  *     });
  *
- *     Ext.define('MyApp.data.MyModelY', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;MyApp.data.MyModelY&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
- *             identifier: 'uuid'
+ *             identifier: &#39;uuid&#39;
  *         }
  *     });
  *
  * This allows all models using this class to share a commonly configured instance.
  *
- * # Using Version 1 (&quot;Sequential&quot;) UUID's
+ * # Using Version 1 (&quot;Sequential&quot;) UUID&#39;s
  *
  * If a server can provide a proper timestamp and a &quot;cryptographic quality random number&quot;
  * (as described in RFC 4122), the shared instance can be configured as follows:
@@ -59,15 +59,15 @@
  *         timestamp: { lo: timestampLow32, hi: timestamptHigh32 }
  *     });
  *
- * This approach improves the generator's uniqueness by providing a valid timestamp and
- * higher quality random data. Version 1 UUID's should not be used unless this information
+ * This approach improves the generator&#39;s uniqueness by providing a valid timestamp and
+ * higher quality random data. Version 1 UUID&#39;s should not be used unless this information
  * can be provided by a server and care should be taken to avoid caching of this data.
  *
  * See [http://www.ietf.org/rfc/rfc4122.txt](http://www.ietf.org/rfc/rfc4122.txt) for details.
  */
-Ext.define('Ext.data.identifier.Uuid', {
-    extend: 'Ext.data.identifier.Simple',
-    alias: 'data.identifier.uuid',
+Ext.define(&#39;Ext.data.identifier.Uuid&#39;, {
+    extend: &#39;Ext.data.identifier.Simple&#39;,
+    alias: &#39;data.identifier.uuid&#39;,
 
 <span id='Ext-data-identifier-Uuid-property-isUnique'>    /**
 </span>     * Provides a way to determine if this identifier supports creating unique IDs. Proxies like {@link Ext.data.proxy.LocalStorage}
@@ -81,7 +81,7 @@ Ext.define('Ext.data.identifier.Uuid', {
     config: {
 <span id='Ext-data-identifier-Uuid-cfg-id'>        /**
 </span>         * The id for this generator instance. By default all model instances share the same
-         * UUID generator instance. By specifying an id other then 'uuid', a unique generator instance
+         * UUID generator instance. By specifying an id other then &#39;uuid&#39;, a unique generator instance
          * will be created for the Model.
          */
         id: undefined,
@@ -183,7 +183,7 @@ Ext.define('Ext.data.identifier.Uuid', {
             }
         }
 
-        return parts.join('-').toLowerCase();
+        return parts.join(&#39;-&#39;).toLowerCase();
     },
 
 <span id='Ext-data-identifier-Uuid-method-init'>    /**
@@ -248,7 +248,7 @@ Ext.define('Ext.data.identifier.Uuid', {
         if (ret.length &gt; length) {
             ret = ret.substring(ret.length - length); // right-most digits
         } else if (ret.length &lt; length) {
-            ret = Ext.String.leftPad(ret, length, '0');
+            ret = Ext.String.leftPad(ret, length, &#39;0&#39;);
         }
         return ret;
     },
@@ -270,7 +270,7 @@ Ext.define('Ext.data.identifier.Uuid', {
      * @private
      */
     split: function(bignum) {
-        if (typeof(bignum) == 'number') {
+        if (typeof(bignum) == &#39;number&#39;) {
             var hi = Math.floor(bignum / this.twoPow32);
             return {
                 lo: Math.floor(bignum - hi * this.twoPow32),
@@ -281,7 +281,7 @@ Ext.define('Ext.data.identifier.Uuid', {
     }
 }, function() {
     this.Global = new this({
-        id: 'uuid'
+        id: &#39;uuid&#39;
     });
 });
 </pre>

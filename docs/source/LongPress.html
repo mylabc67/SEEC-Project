@@ -20,8 +20,8 @@
  *
  * @private
  */
-Ext.define('Ext.event.recognizer.LongPress', {
-    extend: 'Ext.event.recognizer.SingleTouch',
+Ext.define(&#39;Ext.event.recognizer.LongPress&#39;, {
+    extend: &#39;Ext.event.recognizer.SingleTouch&#39;,
 
     inheritableStatics: {
 <span id='Ext-event-recognizer-LongPress-static-property-DURATION_NOT_ENOUGH'>        DURATION_NOT_ENOUGH: 0x20
@@ -31,7 +31,7 @@ Ext.define('Ext.event.recognizer.LongPress', {
 <span id='Ext-event-recognizer-LongPress-cfg-minDuration'>        minDuration: 1000
 </span>    },
 
-<span id='Ext-event-recognizer-LongPress-property-handledEvents'>    handledEvents: ['longpress'],
+<span id='Ext-event-recognizer-LongPress-property-handledEvents'>    handledEvents: [&#39;longpress&#39;],
 </span>
 <span id='Ext-dom-Element-event-longpress'>    /**
 </span>     * @member Ext.dom.Element
@@ -51,7 +51,7 @@ Ext.define('Ext.event.recognizer.LongPress', {
     fireLongPress: function(e) {
         var touch = e.changedTouches[0];
 
-        this.fire('longpress', e, [touch], {
+        this.fire(&#39;longpress&#39;, e, [touch], {
             touch: touch,
             duration: this.getMinDuration()
         });
@@ -91,12 +91,12 @@ Ext.define('Ext.event.recognizer.LongPress', {
 
 }, function() {
     this.override({
-        handledEvents: ['longpress', 'taphold'],
+        handledEvents: [&#39;longpress&#39;, &#39;taphold&#39;],
 
         fire: function(eventName) {
-            if (eventName === 'longpress') {
+            if (eventName === &#39;longpress&#39;) {
                 var args = Array.prototype.slice.call(arguments);
-                args[0] = 'taphold';
+                args[0] = &#39;taphold&#39;;
 
                 this.fire.apply(this, args);
             }

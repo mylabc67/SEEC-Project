@@ -47,28 +47,28 @@
  * Proxies also support batching of Operations via a {@link Ext.data.Batch batch} object, invoked by the {@link #batch}
  * method.
  */
-Ext.define('Ext.data.proxy.Proxy', {
-    extend: 'Ext.Evented',
+Ext.define(&#39;Ext.data.proxy.Proxy&#39;, {
+    extend: &#39;Ext.Evented&#39;,
 
-    alias: 'proxy.proxy',
+    alias: &#39;proxy.proxy&#39;,
 
-    alternateClassName: ['Ext.data.DataProxy', 'Ext.data.Proxy'],
+    alternateClassName: [&#39;Ext.data.DataProxy&#39;, &#39;Ext.data.Proxy&#39;],
 
     requires: [
-        'Ext.data.reader.Json',
-        'Ext.data.writer.Json',
-        'Ext.data.Batch',
-        'Ext.data.Operation'
+        &#39;Ext.data.reader.Json&#39;,
+        &#39;Ext.data.writer.Json&#39;,
+        &#39;Ext.data.Batch&#39;,
+        &#39;Ext.data.Operation&#39;
     ],
 
     config: {
 <span id='Ext-data-proxy-Proxy-cfg-batchOrder'>        /**
 </span>         * @cfg {String} batchOrder
-         * Comma-separated ordering 'create', 'update' and 'destroy' actions when batching. Override this to set a different
+         * Comma-separated ordering &#39;create&#39;, &#39;update&#39; and &#39;destroy&#39; actions when batching. Override this to set a different
          * order for the batched CRUD actions to be executed in.
          * @accessor
          */
-        batchOrder: 'create,update,destroy',
+        batchOrder: &#39;create,update,destroy&#39;,
 
 <span id='Ext-data-proxy-Proxy-cfg-batchActions'>        /**
 </span>         * @cfg {Boolean} batchActions
@@ -87,33 +87,33 @@ Ext.define('Ext.data.proxy.Proxy', {
 
 <span id='Ext-data-proxy-Proxy-cfg-reader'>        /**
 </span>         * @cfg {Object/String/Ext.data.reader.Reader} reader
-         * The Ext.data.reader.Reader to use to decode the server's response or data read from client. This can either be a
-         * Reader instance, a config object or just a valid Reader type name (e.g. 'json', 'xml').
+         * The Ext.data.reader.Reader to use to decode the server&#39;s response or data read from client. This can either be a
+         * Reader instance, a config object or just a valid Reader type name (e.g. &#39;json&#39;, &#39;xml&#39;).
          * @accessor
          */
         reader: {
-            type: 'json'
+            type: &#39;json&#39;
         },
 
 <span id='Ext-data-proxy-Proxy-cfg-writer'>        /**
 </span>         * @cfg {Object/String/Ext.data.writer.Writer} writer
          * The Ext.data.writer.Writer to use to encode any request sent to the server or saved to client. This can either be
-         * a Writer instance, a config object or just a valid Writer type name (e.g. 'json', 'xml').
+         * a Writer instance, a config object or just a valid Writer type name (e.g. &#39;json&#39;, &#39;xml&#39;).
          * @accessor
          */
         writer: {
-            type: 'json'
+            type: &#39;json&#39;
         }
     },
 
 <span id='Ext-data-proxy-Proxy-property-isProxy'>    isProxy: true,
 </span>
 <span id='Ext-data-proxy-Proxy-method-applyModel'>    applyModel: function(model) {
-</span>        if (typeof model == 'string') {
+</span>        if (typeof model == &#39;string&#39;) {
             model = Ext.data.ModelManager.getModel(model);
 
             if (!model) {
-                Ext.Logger.error('Model with name ' + arguments[0] + ' doesnt exist.');
+                Ext.Logger.error(&#39;Model with name &#39; + arguments[0] + &#39; doesnt exist.&#39;);
             }
         }
 
@@ -134,7 +134,7 @@ Ext.define('Ext.data.proxy.Proxy', {
     },
 
 <span id='Ext-data-proxy-Proxy-method-applyReader'>    applyReader: function(reader, currentReader) {
-</span>        return Ext.factory(reader, Ext.data.Reader, currentReader, 'reader');
+</span>        return Ext.factory(reader, Ext.data.Reader, currentReader, &#39;reader&#39;);
     },
 
 <span id='Ext-data-proxy-Proxy-method-updateReader'>    updateReader: function(reader) {
@@ -167,11 +167,11 @@ Ext.define('Ext.data.proxy.Proxy', {
          * @param {Ext.data.Proxy} this
          * @param {Object} data The metadata sent back from the server
          */
-        this.fireEvent('metachange', this, data);
+        this.fireEvent(&#39;metachange&#39;, this, data);
     },
 
 <span id='Ext-data-proxy-Proxy-method-applyWriter'>    applyWriter: function(writer, currentWriter) {
-</span>        return Ext.factory(writer, Ext.data.Writer, currentWriter, 'writer');
+</span>        return Ext.factory(writer, Ext.data.Writer, currentWriter, &#39;writer&#39;);
     },
 
 <span id='Ext-data-proxy-Proxy-method-create'>    /**
@@ -221,7 +221,7 @@ Ext.define('Ext.data.proxy.Proxy', {
 
 <span id='Ext-data-proxy-Proxy-method-batch'>    /**
 </span>     * Performs a batch of {@link Ext.data.Operation Operations}, in the order specified by {@link #batchOrder}. Used
-     * internally by {@link Ext.data.Store}'s {@link Ext.data.Store#sync sync} method. Example usage:
+     * internally by {@link Ext.data.Store}&#39;s {@link Ext.data.Store#sync sync} method. Example usage:
      *
      *     myProxy.batch({
      *         create : [myModel1, myModel2],
@@ -285,7 +285,7 @@ Ext.define('Ext.data.proxy.Proxy', {
             };
 
             // &lt;debug warn&gt;
-            Ext.Logger.deprecate('Passes old-style signature to Proxy.batch (operations, listeners). Please convert to single options argument syntax.');
+            Ext.Logger.deprecate(&#39;Passes old-style signature to Proxy.batch (operations, listeners). Please convert to single options argument syntax.&#39;);
             // &lt;/debug&gt;
         }
 
@@ -297,12 +297,12 @@ Ext.define('Ext.data.proxy.Proxy', {
 
         batch.setProxy(me);
 
-        batch.on('complete', Ext.bind(me.onBatchComplete, me, [options], 0));
+        batch.on(&#39;complete&#39;, Ext.bind(me.onBatchComplete, me, [options], 0));
         if (options.listeners) {
             batch.on(options.listeners);
         }
 
-        Ext.each(me.getBatchOrder().split(','), function(action) {
+        Ext.each(me.getBatchOrder().split(&#39;,&#39;), function(action) {
              records = options.operations[action];
              if (records) {
                  if (useBatch) {
@@ -362,7 +362,7 @@ Ext.define('Ext.data.proxy.Proxy', {
                 config[key] = data[key];
                 delete data[key];
                 // &lt;debug warn&gt;
-                Ext.Logger.warn(key + ' is deprecated as a property directly on the ' + this.$className + ' prototype. Please put it inside the config object.');
+                Ext.Logger.warn(key + &#39; is deprecated as a property directly on the &#39; + this.$className + &#39; prototype. Please put it inside the config object.&#39;);
                 // &lt;/debug&gt;
             }
         }
@@ -370,11 +370,11 @@ Ext.define('Ext.data.proxy.Proxy', {
     }
     // &lt;/deprecated&gt;
 }, function() {
-    // Ext.data2.proxy.ProxyMgr.registerType('proxy', this);
+    // Ext.data2.proxy.ProxyMgr.registerType(&#39;proxy&#39;, this);
 
     //backwards compatibility
     // Ext.data.DataProxy = this;
-    // Ext.deprecate('platform', '2.0', function() {
+    // Ext.deprecate(&#39;platform&#39;, &#39;2.0&#39;, function() {
     //     Ext.data2.DataProxy = this;
     // }, this);
 });

@@ -18,8 +18,8 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-communicator-Android'>/**
 </span> * @private
  */
-Ext.define('Ext.device.communicator.Android', {
-    extend: 'Ext.device.communicator.Default',
+Ext.define(&#39;Ext.device.communicator.Android&#39;, {
+    extend: &#39;Ext.device.communicator.Default&#39;,
 
 <span id='Ext-device-communicator-Android-method-doSend'>    doSend: function(args) {
 </span>        return window.Sencha.action(JSON.stringify(args));

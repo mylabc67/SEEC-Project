@@ -21,7 +21,7 @@
  *
  *     var point = Ext.util.Point.fromEvent(e);
  */
-Ext.define('Ext.util.Point', {
+Ext.define(&#39;Ext.util.Point&#39;, {
 
 <span id='Ext-util-Point-property-radianToDegreeConstant'>    radianToDegreeConstant: 180 / Math.PI,
 </span>
@@ -74,11 +74,11 @@ Ext.define('Ext.util.Point', {
      * @param {Number} [y=0] Y coordinate.
      */
     constructor: function(x, y) {
-        if (typeof x == 'undefined') {
+        if (typeof x == &#39;undefined&#39;) {
             x = 0;
         }
 
-        if (typeof y == 'undefined') {
+        if (typeof y == &#39;undefined&#39;) {
             y = 0;
         }
 
@@ -144,7 +144,7 @@ Ext.define('Ext.util.Point', {
      * @return {Boolean}
      */
     isCloseTo: function(point, threshold) {
-        if (typeof threshold == 'number') {
+        if (typeof threshold == &#39;number&#39;) {
             threshold = {x: threshold};
             threshold.y = threshold.x;
         }
@@ -188,7 +188,7 @@ Ext.define('Ext.util.Point', {
      * @return {Boolean}
      */
     roundedEquals: function(point) {
-        if (typeof point != 'object') {
+        if (typeof point != &#39;object&#39;) {
             point = { x: 0, y: 0};
         }
 
@@ -197,7 +197,7 @@ Ext.define('Ext.util.Point', {
     },
 
 <span id='Ext-util-Point-method-getDistanceTo'>    getDistanceTo: function(point) {
-</span>        if (typeof point != 'object') {
+</span>        if (typeof point != &#39;object&#39;) {
             point = { x: 0, y: 0};
         }
 
@@ -208,7 +208,7 @@ Ext.define('Ext.util.Point', {
     },
 
 <span id='Ext-util-Point-method-getAngleTo'>    getAngleTo: function(point) {
-</span>        if (typeof point != 'object') {
+</span>        if (typeof point != &#39;object&#39;) {
             point = { x: 0, y: 0};
         }
 

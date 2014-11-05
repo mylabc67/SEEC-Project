@@ -18,11 +18,11 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-orientation-Sencha'>/**
 </span> * @private
  */
-Ext.define('Ext.device.orientation.Sencha', {
-    extend: 'Ext.device.orientation.Abstract',
+Ext.define(&#39;Ext.device.orientation.Sencha&#39;, {
+    extend: &#39;Ext.device.orientation.Abstract&#39;,
 
     requires: [
-        'Ext.device.Communicator'
+        &#39;Ext.device.Communicator&#39;
     ],
 
 <span id='Ext-device-orientation-Sencha-method-constructor'>    /**
@@ -43,7 +43,7 @@ Ext.define('Ext.device.orientation.Sencha', {
         this.callSuper(arguments);
 
         Ext.device.Communicator.send({
-            command: 'Orientation#watch',
+            command: &#39;Orientation#watch&#39;,
             callbacks: {
                 callback: this.onDeviceOrientation
             },

@@ -20,8 +20,8 @@ Ext.data.Protocol = Ext.extend(Object, {
 
 	constructor: function(config) {
 			this.remote = config.remoteStorageProxy;
-			this.remote.on('exception',function(proxy,request,operation){
-				console.log('EXCEPTION'); // JCM should handle this properly...
+			this.remote.on(&#39;exception&#39;,function(proxy,request,operation){
+				console.log(&#39;EXCEPTION&#39;); // JCM should handle this properly...
 				console.log(request);
 				console.log(operation);
 			});
@@ -37,7 +37,7 @@ Ext.data.Protocol = Ext.extend(Object, {
 	  this.send_create_database(local.definition,function(operation) {
 			var response= operation.response;
 			switch (response.r) {
-			case 'ok':
+			case &#39;ok&#39;:
 				//
 				// The remote CSV describes the state of updated-ness of the
 				// server this client is talking to. We add any replica numbers
@@ -47,7 +47,7 @@ Ext.data.Protocol = Ext.extend(Object, {
 			  local.addReplicaNumbers(remote_csv);
 				this.sync_datastore(local,remote_csv,callback,scope);
 				break;
-			case 'new_replica_number':
+			case &#39;new_replica_number&#39;:
 				//
 				// A replica number collision, or re-initialization, has occured. 
 				// In either case we must change our local replica number.
@@ -56,7 +56,7 @@ Ext.data.Protocol = Ext.extend(Object, {
 					this.sync(local,callback,scope); // JCM beware of infinite loop
 				},this);
 				break;
-			case 'new_generation_number':
+			case &#39;new_generation_number&#39;:
 				//
 				// The database generation has changed. We clear out the database,
 				// and update the definition. 
@@ -96,7 +96,7 @@ Ext.data.Protocol = Ext.extend(Object, {
 
 	send_create_database: function(definition,callback,scope) {
 	  var request= definition.encode();
-	  this.sendRequest(definition.database_name,'edit',request,function(operation){
+	  this.sendRequest(definition.database_name,&#39;edit&#39;,request,function(operation){
 			var response= operation.response;
 			if (response.csv) {
 				response.csv= new Ext.data.CSV().decode(response.csv);
@@ -109,13 +109,13 @@ Ext.data.Protocol = Ext.extend(Object, {
 		//
 		// When sending updates through the ScriptTagProxy the data is
 		// encoded as a URL, so there is a browser imposed limit on the
-		// length of that URL. So, let's be prudent and limit the amount
+		// length of that URL. So, let&#39;s be prudent and limit the amount
 		// of data sent at a time.  
 		//
 		var chunks= updates.chunks(1000); // JCM count of updates... should be K?
 		Ext.data.array.forEachYielding(chunks,function(chunk,next_callback,next_scope){
 			this.send_put_database_updates(definition,chunk,function(operation){
-				//if (operation.response.r=='ok') {
+				//if (operation.response.r==&#39;ok&#39;) {
 				//   keep going
 				//} else {
 				//   JCM abort... but how?
@@ -130,7 +130,7 @@ Ext.data.Protocol = Ext.extend(Object, {
 	    var request= {
 	      updates: Ext.encode(updates.encode())
 	    };
-	    this.sendRequest(definition.database_name,'put_updates',request,callback,scope);
+	    this.sendRequest(definition.database_name,&#39;put_updates&#39;,request,callback,scope);
 	  } else {
 			var operation= this.encodeRequest({});
 			operation.response= {r:&quot;ok&quot;};
@@ -141,11 +141,11 @@ Ext.data.Protocol = Ext.extend(Object, {
 	get_database_updates: function(local,callback,scope) {
 		this.send_get_database_updates(local.definition,local.csv,function(operation){
 			//
-			// JCM perhaps an 'event' should be fired for each object changed
+			// JCM perhaps an &#39;event&#39; should be fired for each object changed
 			// JCM which serves as a trigger for the UI to update
 			//
 			var response= operation.response;
-			if (response.r=='ok') {
+			if (response.r==&#39;ok&#39;) {
 			  local.putUpdates(response.updates,function() {
 					if (response.remaining&gt;0 &amp;&amp; !response.updates.isEmpty()) {
 						this.get_database_updates(local,callback,scope);
@@ -163,7 +163,7 @@ Ext.data.Protocol = Ext.extend(Object, {
 	  var request= {
 	    csv: csv.encode()
 	  };
-	  this.sendRequest(definition.database_name,'get_updates',request,function(operation){
+	  this.sendRequest(definition.database_name,&#39;get_updates&#39;,request,function(operation){
 			var response= operation.response;
 			response.updates= new Ext.data.Updates().decode(response.updates);
 			callback.call(scope, operation);
@@ -190,7 +190,7 @@ Ext.data.Protocol = Ext.extend(Object, {
 		var url= this.remote.url+&quot;database/&quot;+database_name+&quot;/&quot;+method;
 		return new Ext.data.Operation({
 			filters: [],
-			action: 'read',
+			action: &#39;read&#39;,
 			url: url,
 			params: request
 		});

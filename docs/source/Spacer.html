@@ -23,23 +23,23 @@
 By default the {@link #flex} configuration is set to 1:
 
     @example miniphone preview
-    Ext.create('Ext.Container', {
+    Ext.create(&#39;Ext.Container&#39;, {
         fullscreen: true,
         items: [
             {
-                xtype : 'toolbar',
-                docked: 'top',
+                xtype : &#39;toolbar&#39;,
+                docked: &#39;top&#39;,
                 items: [
                     {
-                        xtype: 'button',
-                        text : 'Button One'
+                        xtype: &#39;button&#39;,
+                        text : &#39;Button One&#39;
                     },
                     {
-                        xtype: 'spacer'
+                        xtype: &#39;spacer&#39;
                     },
                     {
-                        xtype: 'button',
-                        text : 'Button Two'
+                        xtype: &#39;button&#39;,
+                        text : &#39;Button Two&#39;
                     }
                 ]
             }
@@ -49,41 +49,41 @@ By default the {@link #flex} configuration is set to 1:
 Alternatively you can just set the {@link #width} configuration which will get the {@link Ext.Spacer} a fixed width:
 
     @example preview
-    Ext.create('Ext.Container', {
+    Ext.create(&#39;Ext.Container&#39;, {
         fullscreen: true,
         layout: {
-            type: 'vbox',
-            pack: 'center',
-            align: 'stretch'
+            type: &#39;vbox&#39;,
+            pack: &#39;center&#39;,
+            align: &#39;stretch&#39;
         },
         items: [
             {
-                xtype : 'toolbar',
-                docked: 'top',
+                xtype : &#39;toolbar&#39;,
+                docked: &#39;top&#39;,
                 items: [
                     {
-                        xtype: 'button',
-                        text : 'Button One'
+                        xtype: &#39;button&#39;,
+                        text : &#39;Button One&#39;
                     },
                     {
-                        xtype: 'spacer',
+                        xtype: &#39;spacer&#39;,
                         width: 50
                     },
                     {
-                        xtype: 'button',
-                        text : 'Button Two'
+                        xtype: &#39;button&#39;,
+                        text : &#39;Button Two&#39;
                     }
                 ]
             },
             {
-                xtype: 'container',
+                xtype: &#39;container&#39;,
                 items: [
                     {
-                        xtype: 'button',
-                        text : 'Change Ext.Spacer width',
+                        xtype: &#39;button&#39;,
+                        text : &#39;Change Ext.Spacer width&#39;,
                         handler: function() {
                             //get the spacer using ComponentQuery
-                            var spacer = Ext.ComponentQuery.query('spacer')[0],
+                            var spacer = Ext.ComponentQuery.query(&#39;spacer&#39;)[0],
                                 from = 10,
                                 to = 250;
 
@@ -96,43 +96,43 @@ Alternatively you can just set the {@link #width} configuration which will get t
         ]
     });
 
-You can also insert multiple {@link Ext.Spacer}'s:
+You can also insert multiple {@link Ext.Spacer}&#39;s:
 
     @example preview
-    Ext.create('Ext.Container', {
+    Ext.create(&#39;Ext.Container&#39;, {
         fullscreen: true,
         items: [
             {
-                xtype : 'toolbar',
-                docked: 'top',
+                xtype : &#39;toolbar&#39;,
+                docked: &#39;top&#39;,
                 items: [
                     {
-                        xtype: 'button',
-                        text : 'Button One'
+                        xtype: &#39;button&#39;,
+                        text : &#39;Button One&#39;
                     },
                     {
-                        xtype: 'spacer'
+                        xtype: &#39;spacer&#39;
                     },
                     {
-                        xtype: 'button',
-                        text : 'Button Two'
+                        xtype: &#39;button&#39;,
+                        text : &#39;Button Two&#39;
                     },
                     {
-                        xtype: 'spacer',
+                        xtype: &#39;spacer&#39;,
                         width: 20
                     },
                     {
-                        xtype: 'button',
-                        text : 'Button Three'
+                        xtype: &#39;button&#39;,
+                        text : &#39;Button Three&#39;
                     }
                 ]
             }
         ]
     });
  */
-Ext.define('Ext.Spacer', {
-    extend: 'Ext.Component',
-    alias : 'widget.spacer',
+Ext.define(&#39;Ext.Spacer&#39;, {
+    extend: &#39;Ext.Component&#39;,
+    alias : &#39;widget.spacer&#39;,
 
     config: {
 <span id='Ext-Spacer-cfg-flex'>        /**

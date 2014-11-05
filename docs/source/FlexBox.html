@@ -48,18 +48,18 @@
  *
  * See the {@link Ext.layout.VBox VBox layout docs} for more information on using vboxes.
  */
-Ext.define('Ext.layout.FlexBox', {
-    extend: 'Ext.layout.Box',
+Ext.define(&#39;Ext.layout.FlexBox&#39;, {
+    extend: &#39;Ext.layout.Box&#39;,
 
-    alias: 'layout.box',
+    alias: &#39;layout.box&#39;,
 
     config: {
-<span id='Ext-layout-FlexBox-cfg-align'>        align: 'stretch'
+<span id='Ext-layout-FlexBox-cfg-align'>        align: &#39;stretch&#39;
 </span>    },
 
-<span id='Ext-layout-FlexBox-property-layoutBaseClass'>    layoutBaseClass: 'x-layout-box',
+<span id='Ext-layout-FlexBox-property-layoutBaseClass'>    layoutBaseClass: &#39;x-layout-box&#39;,
 </span>
-<span id='Ext-layout-FlexBox-property-itemClass'>    itemClass: 'x-layout-box-item',
+<span id='Ext-layout-FlexBox-property-itemClass'>    itemClass: &#39;x-layout-box-item&#39;,
 </span>
 <span id='Ext-layout-FlexBox-method-setContainer'>    setContainer: function(container) {
 </span>        this.callSuper(arguments);
@@ -69,8 +69,8 @@ Ext.define('Ext.layout.FlexBox', {
 
 <span id='Ext-layout-FlexBox-method-applyOrient'>    applyOrient: function(orient) {
 </span>        //&lt;debug error&gt;
-        if (orient !== 'horizontal' &amp;&amp; orient !== 'vertical') {
-            Ext.Logger.error(&quot;Invalid box orient of: '&quot; + orient + &quot;', must be either 'horizontal' or 'vertical'&quot;);
+        if (orient !== &#39;horizontal&#39; &amp;&amp; orient !== &#39;vertical&#39;) {
+            Ext.Logger.error(&quot;Invalid box orient of: &#39;&quot; + orient + &quot;&#39;, must be either &#39;horizontal&#39; or &#39;vertical&#39;&quot;);
         }
         //&lt;/debug&gt;
 
@@ -80,24 +80,24 @@ Ext.define('Ext.layout.FlexBox', {
 <span id='Ext-layout-FlexBox-method-updateOrient'>    updateOrient: function(orient, oldOrient) {
 </span>        var container = this.container,
             delegation = {
-                delegate: '&gt; component'
+                delegate: &#39;&gt; component&#39;
             };
 
-        if (orient === 'horizontal') {
-            this.sizePropertyName = 'width';
+        if (orient === &#39;horizontal&#39;) {
+            this.sizePropertyName = &#39;width&#39;;
         }
         else {
-            this.sizePropertyName = 'height';
+            this.sizePropertyName = &#39;height&#39;;
         }
 
-        container.innerElement.swapCls('x-' + orient, 'x-' + oldOrient);
+        container.innerElement.swapCls(&#39;x-&#39; + orient, &#39;x-&#39; + oldOrient);
 
         if (oldOrient) {
-            container.un(oldOrient === 'horizontal' ? 'widthchange' : 'heightchange', 'onItemSizeChange', this, delegation);
+            container.un(oldOrient === &#39;horizontal&#39; ? &#39;widthchange&#39; : &#39;heightchange&#39;, &#39;onItemSizeChange&#39;, this, delegation);
             this.redrawContainer();
         }
 
-        container.on(orient === 'horizontal' ? 'widthchange' : 'heightchange', 'onItemSizeChange', this, delegation);
+        container.on(orient === &#39;horizontal&#39; ? &#39;widthchange&#39; : &#39;heightchange&#39;, &#39;onItemSizeChange&#39;, this, delegation);
     },
 
 <span id='Ext-layout-FlexBox-method-onItemInnerStateChange'>    onItemInnerStateChange: function(item, isInner) {
@@ -134,12 +134,12 @@ Ext.define('Ext.layout.FlexBox', {
         if (isInner) {
             layoutSizeFlags |= container.LAYOUT_STRETCHED;
 
-            if (this.getAlign() === 'stretch') {
-                layoutSizeFlags |= containerSizeFlags &amp; (dimension === 'width' ? LAYOUT_HEIGHT : LAYOUT_WIDTH);
+            if (this.getAlign() === &#39;stretch&#39;) {
+                layoutSizeFlags |= containerSizeFlags &amp; (dimension === &#39;width&#39; ? LAYOUT_HEIGHT : LAYOUT_WIDTH);
             }
 
             if (item.getFlex()) {
-                layoutSizeFlags |= containerSizeFlags &amp; (dimension === 'width' ? LAYOUT_WIDTH : LAYOUT_HEIGHT);
+                layoutSizeFlags |= containerSizeFlags &amp; (dimension === &#39;width&#39; ? LAYOUT_WIDTH : LAYOUT_HEIGHT);
             }
         }
 
@@ -210,23 +210,23 @@ Ext.define('Ext.layout.FlexBox', {
     setItemFlex: function(item, flex) {
         var element = item.element;
 
-        element.toggleCls('x-flexed', !!flex);
+        element.toggleCls(&#39;x-flexed&#39;, !!flex);
 
         if (!flex) {
-            flex = '';
+            flex = &#39;&#39;;
         }
         else {
             flex = String(flex);
         }
 
         if (Ext.browser.is.WebKit) {
-            element.dom.style.setProperty('-webkit-box-flex', flex, null);
+            element.dom.style.setProperty(&#39;-webkit-box-flex&#39;, flex, null);
         }
         else if (Ext.browser.is.IE) {
-            element.dom.style.setProperty('-ms-flex', flex + ' 0 0px', null);
+            element.dom.style.setProperty(&#39;-ms-flex&#39;, flex + &#39; 0 0px&#39;, null);
         }
         else {
-            element.dom.style.setProperty('flex', flex + ' 0 0px', null);
+            element.dom.style.setProperty(&#39;flex&#39;, flex + &#39; 0 0px&#39;, null);
         }
     },
 
@@ -247,7 +247,7 @@ Ext.define('Ext.layout.FlexBox', {
 <span id='Ext-layout-FlexBox-method-updateAlign'>    updateAlign: function(align, oldAlign) {
 </span>        var container = this.container;
 
-        container.innerElement.swapCls(align, oldAlign, true, 'x-align');
+        container.innerElement.swapCls(align, oldAlign, true, &#39;x-align&#39;);
 
         if (oldAlign !== undefined) {
             this.refreshAllItemSizedStates();
@@ -259,7 +259,7 @@ Ext.define('Ext.layout.FlexBox', {
     },
 
 <span id='Ext-layout-FlexBox-method-updatePack'>    updatePack: function(pack, oldPack) {
-</span>        this.container.innerElement.swapCls(pack, oldPack, true, 'x-pack');
+</span>        this.container.innerElement.swapCls(pack, oldPack, true, &#39;x-pack&#39;);
     }
 });
 </pre>

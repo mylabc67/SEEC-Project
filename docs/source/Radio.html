@@ -22,27 +22,27 @@
  * to choose one option out of a selection of several (for example, choosing a favorite color):
  *
  *     @example
- *     var form = Ext.create('Ext.form.Panel', {
+ *     var form = Ext.create(&#39;Ext.form.Panel&#39;, {
  *         fullscreen: true,
  *         items: [
  *             {
- *                 xtype: 'radiofield',
- *                 name : 'color',
- *                 value: 'red',
- *                 label: 'Red',
+ *                 xtype: &#39;radiofield&#39;,
+ *                 name : &#39;color&#39;,
+ *                 value: &#39;red&#39;,
+ *                 label: &#39;Red&#39;,
  *                 checked: true
  *             },
  *             {
- *                 xtype: 'radiofield',
- *                 name : 'color',
- *                 value: 'green',
- *                 label: 'Green'
+ *                 xtype: &#39;radiofield&#39;,
+ *                 name : &#39;color&#39;,
+ *                 value: &#39;green&#39;,
+ *                 label: &#39;Green&#39;
  *             },
  *             {
- *                 xtype: 'radiofield',
- *                 name : 'color',
- *                 value: 'blue',
- *                 label: 'Blue'
+ *                 xtype: &#39;radiofield&#39;,
+ *                 name : &#39;color&#39;,
+ *                 value: &#39;blue&#39;,
+ *                 label: &#39;Blue&#39;
  *             }
  *         ]
  *     });
@@ -52,14 +52,14 @@
  * checked at a time. When we come to get the values out of the form again or submit it to the server, only 1 value
  * will be sent for each group of radio fields with the same name:
  *
- *     form.getValues(); //looks like {color: 'red'}
+ *     form.getValues(); //looks like {color: &#39;red&#39;}
  *     form.submit(); //sends a single field back to the server (in this case color: red)
  *
  */
-Ext.define('Ext.field.Radio', {
-    extend: 'Ext.field.Checkbox',
-    xtype: 'radiofield',
-    alternateClassName: 'Ext.form.Radio',
+Ext.define(&#39;Ext.field.Radio&#39;, {
+    extend: &#39;Ext.field.Checkbox&#39;,
+    xtype: &#39;radiofield&#39;,
+    alternateClassName: &#39;Ext.form.Radio&#39;,
 
 <span id='Ext-field-Radio-property-isRadio'>    isRadio: true,
 </span>
@@ -68,20 +68,20 @@ Ext.define('Ext.field.Radio', {
 </span>         * @cfg
          * @inheritdoc
          */
-        ui: 'radio',
+        ui: &#39;radio&#39;,
 
 <span id='Ext-field-Radio-cfg-component'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
         component: {
-            type: 'radio',
-            cls: Ext.baseCSSPrefix + 'input-radio'
+            type: &#39;radio&#39;,
+            cls: Ext.baseCSSPrefix + &#39;input-radio&#39;
         }
     },
 
 <span id='Ext-field-Radio-method-getValue'>    getValue: function() {
-</span>        return (typeof this._value === 'undefined') ? null : this._value;
+</span>        return (typeof this._value === &#39;undefined&#39;) ? null : this._value;
     },
 
 <span id='Ext-field-Radio-method-setValue'>    setValue: function(value) {
@@ -145,7 +145,7 @@ Ext.define('Ext.field.Radio', {
     },
 
 <span id='Ext-field-Radio-method-setGroupValue'>    /**
-</span>     * Set the matched radio field's status (that has the same value as the given string) to checked.
+</span>     * Set the matched radio field&#39;s status (that has the same value as the given string) to checked.
      * @param {String} value The value of the radio field to check.
      * @return {Ext.field.Radio} The field that is checked.
      */

@@ -18,8 +18,8 @@
   <pre class="prettyprint lang-js"><span id='Ext-event-recognizer-Drag'>/**
 </span> * @private
  */
-Ext.define('Ext.event.recognizer.Drag', {
-    extend: 'Ext.event.recognizer.SingleTouch',
+Ext.define(&#39;Ext.event.recognizer.Drag&#39;, {
+    extend: &#39;Ext.event.recognizer.SingleTouch&#39;,
 
 <span id='Ext-event-recognizer-Drag-property-isStarted'>    isStarted: false,
 </span>
@@ -29,7 +29,7 @@ Ext.define('Ext.event.recognizer.Drag', {
 </span>
 <span id='Ext-event-recognizer-Drag-property-lastPoint'>    lastPoint: null,
 </span>
-<span id='Ext-event-recognizer-Drag-property-handledEvents'>    handledEvents: ['dragstart', 'drag', 'dragend'],
+<span id='Ext-event-recognizer-Drag-property-handledEvents'>    handledEvents: [&#39;dragstart&#39;, &#39;drag&#39;, &#39;dragend&#39;],
 </span>
     config: {
 <span id='Ext-event-recognizer-Drag-cfg-minDistance'>        /**
@@ -102,12 +102,12 @@ Ext.define('Ext.event.recognizer.Drag', {
 
             this.previousPoint = this.lastPoint = point;
 
-            this.resetInfo('x', e, touch);
-            this.resetInfo('y', e, touch);
+            this.resetInfo(&#39;x&#39;, e, touch);
+            this.resetInfo(&#39;y&#39;, e, touch);
 
             info.time = e.time;
 
-            this.fire('dragstart', e, touches, info);
+            this.fire(&#39;dragstart&#39;, e, touches, info);
         }
     },
 
@@ -131,12 +131,12 @@ Ext.define('Ext.event.recognizer.Drag', {
         this.lastPoint = point;
         this.lastMoveEvent = e;
 
-        this.updateInfo('x', e, touch, true);
-        this.updateInfo('y', e, touch, true);
+        this.updateInfo(&#39;x&#39;, e, touch, true);
+        this.updateInfo(&#39;y&#39;, e, touch, true);
 
         this.info.time = e.time;
 
-        this.fire('drag', e, touches, this.info);
+        this.fire(&#39;drag&#39;, e, touches, this.info);
     },
 
 <span id='Ext-event-recognizer-Drag-method-onAxisDragEnd'>    onAxisDragEnd: function(axis, info) {
@@ -164,12 +164,12 @@ Ext.define('Ext.event.recognizer.Drag', {
         info[axis] = value;
         info.direction[axis] = 0;
 
-        info['start' + capAxis] = this.startPoint[axis];
-        info['previous' + capAxis] = info.previous[axis];
-        info['page' + capAxis] = info[axis];
-        info['delta' + capAxis] = info.delta[axis];
-        info['absDelta' + capAxis] = info.absDelta[axis];
-        info['previousDelta' + capAxis] = 0;
+        info[&#39;start&#39; + capAxis] = this.startPoint[axis];
+        info[&#39;previous&#39; + capAxis] = info.previous[axis];
+        info[&#39;page&#39; + capAxis] = info[axis];
+        info[&#39;delta&#39; + capAxis] = info.delta[axis];
+        info[&#39;absDelta&#39; + capAxis] = info.absDelta[axis];
+        info[&#39;previousDelta&#39; + capAxis] = 0;
         info.startTime = this.startTime;
     },
 
@@ -205,12 +205,12 @@ Ext.define('Ext.event.recognizer.Drag', {
             direction[axis] = -1;
         }
 
-        info['start' + capAxis] = this.startPoint[axis];
-        info['previous' + capAxis] = info.previous[axis];
-        info['page' + capAxis] = info[axis];
-        info['delta' + capAxis] = info.delta[axis];
-        info['absDelta' + capAxis] = info.absDelta[axis];
-        info['previousDelta' + capAxis] = previousDelta;
+        info[&#39;start&#39; + capAxis] = this.startPoint[axis];
+        info[&#39;previous&#39; + capAxis] = info.previous[axis];
+        info[&#39;page&#39; + capAxis] = info[axis];
+        info[&#39;delta&#39; + capAxis] = info.delta[axis];
+        info[&#39;absDelta&#39; + capAxis] = info.absDelta[axis];
+        info[&#39;previousDelta&#39; + capAxis] = previousDelta;
         info.startTime = this.startTime;
     },
 
@@ -228,15 +228,15 @@ Ext.define('Ext.event.recognizer.Drag', {
             this.isStarted = false;
             this.lastPoint = point;
 
-            this.updateInfo('x', e, touch);
-            this.updateInfo('y', e, touch);
+            this.updateInfo(&#39;x&#39;, e, touch);
+            this.updateInfo(&#39;y&#39;, e, touch);
 
             info.time = e.time;
 
-            this.onAxisDragEnd('x', info);
-            this.onAxisDragEnd('y', info);
+            this.onAxisDragEnd(&#39;x&#39;, info);
+            this.onAxisDragEnd(&#39;y&#39;, info);
 
-            this.fire('dragend', e, touches, info);
+            this.fire(&#39;dragend&#39;, e, touches, info);
 
             this.startPoint = null;
             this.previousPoint = null;

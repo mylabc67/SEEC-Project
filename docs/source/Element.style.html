@@ -25,16 +25,16 @@
  */
 
 Ext.dom.Element.addMembers({
-    WIDTH: 'width',
-    HEIGHT: 'height',
-    MIN_WIDTH: 'min-width',
-    MIN_HEIGHT: 'min-height',
-    MAX_WIDTH: 'max-width',
-    MAX_HEIGHT: 'max-height',
-    TOP: 'top',
-    RIGHT: 'right',
-    BOTTOM: 'bottom',
-    LEFT: 'left',
+    WIDTH: &#39;width&#39;,
+    HEIGHT: &#39;height&#39;,
+    MIN_WIDTH: &#39;min-width&#39;,
+    MIN_HEIGHT: &#39;min-height&#39;,
+    MAX_WIDTH: &#39;max-width&#39;,
+    MAX_HEIGHT: &#39;max-height&#39;,
+    TOP: &#39;top&#39;,
+    RIGHT: &#39;right&#39;,
+    BOTTOM: &#39;bottom&#39;,
+    LEFT: &#39;left&#39;,
 <span id='Ext-dom-Element-property-VISIBILITY'>    /**
 </span>     * @property VISIBILITY
      * Visibility mode constant for use with {@link #setVisibilityMode}. Use `visibility` to hide element.
@@ -53,7 +53,7 @@ Ext.dom.Element.addMembers({
      */
     OFFSETS: 3,
 
-    SEPARATOR: '-',
+    SEPARATOR: &#39;-&#39;,
 
     trimRe: /^\s+|\s+$/g,
     wordsRe: /\w/g,
@@ -63,29 +63,29 @@ Ext.dom.Element.addMembers({
     classNameSplitRegex: /[\s]+/,
 
     borders: {
-        t: 'border-top-width',
-        r: 'border-right-width',
-        b: 'border-bottom-width',
-        l: 'border-left-width'
+        t: &#39;border-top-width&#39;,
+        r: &#39;border-right-width&#39;,
+        b: &#39;border-bottom-width&#39;,
+        l: &#39;border-left-width&#39;
     },
 
     paddings: {
-        t: 'padding-top',
-        r: 'padding-right',
-        b: 'padding-bottom',
-        l: 'padding-left'
+        t: &#39;padding-top&#39;,
+        r: &#39;padding-right&#39;,
+        b: &#39;padding-bottom&#39;,
+        l: &#39;padding-left&#39;
     },
 
     margins: {
-        t: 'margin-top',
-        r: 'margin-right',
-        b: 'margin-bottom',
-        l: 'margin-left'
+        t: &#39;margin-top&#39;,
+        r: &#39;margin-right&#39;,
+        b: &#39;margin-bottom&#39;,
+        l: &#39;margin-left&#39;
     },
 
 <span id='Ext-dom-Element-property-defaultUnit'>    /**
 </span>     * @property {String} defaultUnit
-     * The default unit to append to CSS values where a unit isn't provided.
+     * The default unit to append to CSS values where a unit isn&#39;t provided.
      */
     defaultUnit: &quot;px&quot;,
 
@@ -142,10 +142,10 @@ Ext.dom.Element.addMembers({
             SEPARATOR = this.SEPARATOR,
             i, ln, name;
 
-        prefix = prefix ? prefix + SEPARATOR : '';
-        suffix = suffix ? SEPARATOR + suffix : '';
+        prefix = prefix ? prefix + SEPARATOR : &#39;&#39;;
+        suffix = suffix ? SEPARATOR + suffix : &#39;&#39;;
 
-        if (typeof names == 'string') {
+        if (typeof names == &#39;string&#39;) {
             names = names.split(this.spacesRe);
         }
 
@@ -158,7 +158,7 @@ Ext.dom.Element.addMembers({
             }
         }
 
-        dom.className = classList.join(' ');
+        dom.className = classList.join(&#39; &#39;);
 
         return this;
     },
@@ -166,8 +166,8 @@ Ext.dom.Element.addMembers({
 <span id='Ext-dom-Element-method-removeCls'>    /**
 </span>     * Removes the given CSS class(es) from this Element.
      * @param {String} names The CSS class(es) to remove from this element.
-     * @param {String} [prefix=''] Prefix to prepend to each class to be removed.
-     * @param {String} [suffix=''] Suffix to append to each class to be removed.
+     * @param {String} [prefix=&#39;&#39;] Prefix to prepend to each class to be removed.
+     * @param {String} [suffix=&#39;&#39;] Suffix to append to each class to be removed.
      */
     removeCls: function(names, prefix, suffix) {
         if (!names) {
@@ -179,7 +179,7 @@ Ext.dom.Element.addMembers({
         }
 
         if (!suffix) {
-            suffix = '';
+            suffix = &#39;&#39;;
         }
 
         var dom = this.dom,
@@ -188,10 +188,10 @@ Ext.dom.Element.addMembers({
             SEPARATOR = this.SEPARATOR,
             i, ln, name;
 
-        prefix = prefix ? prefix + SEPARATOR : '';
-        suffix = suffix ? SEPARATOR + suffix : '';
+        prefix = prefix ? prefix + SEPARATOR : &#39;&#39;;
+        suffix = suffix ? SEPARATOR + suffix : &#39;&#39;;
 
-        if (typeof names == 'string') {
+        if (typeof names == &#39;string&#39;) {
             names = names.split(this.spacesRe);
         }
 
@@ -204,7 +204,7 @@ Ext.dom.Element.addMembers({
             }
         }
 
-        dom.className = classList.join(' ');
+        dom.className = classList.join(&#39; &#39;);
 
         return this;
     },
@@ -214,8 +214,8 @@ Ext.dom.Element.addMembers({
      * If the old name does not exist, the new name will simply be added.
      * @param {String} oldName The CSS class to replace.
      * @param {String} newName The replacement CSS class.
-     * @param {String} [prefix=''] Prefix to prepend to each class to be replaced.
-     * @param {String} [suffix=''] Suffix to append to each class to be replaced.
+     * @param {String} [prefix=&#39;&#39;] Prefix to prepend to each class to be replaced.
+     * @param {String} [suffix=&#39;&#39;] Suffix to append to each class to be replaced.
      * @return {Ext.dom.Element} this
      */
     replaceCls: function(oldName, newName, prefix, suffix) {
@@ -231,7 +231,7 @@ Ext.dom.Element.addMembers({
         }
 
         if (!suffix) {
-            suffix = '';
+            suffix = &#39;&#39;;
         }
 
         var dom = this.dom,
@@ -240,13 +240,13 @@ Ext.dom.Element.addMembers({
             SEPARATOR = this.SEPARATOR,
             i, ln, name;
 
-        prefix = prefix ? prefix + SEPARATOR : '';
-        suffix = suffix ? SEPARATOR + suffix : '';
+        prefix = prefix ? prefix + SEPARATOR : &#39;&#39;;
+        suffix = suffix ? SEPARATOR + suffix : &#39;&#39;;
 
-        if (typeof oldName == 'string') {
+        if (typeof oldName == &#39;string&#39;) {
             oldName = oldName.split(this.spacesRe);
         }
-        if (typeof newName == 'string') {
+        if (typeof newName == &#39;string&#39;) {
             newName = newName.split(this.spacesRe);
         }
 
@@ -268,13 +268,13 @@ Ext.dom.Element.addMembers({
             }
         }
 
-        dom.className = classList.join(' ');
+        dom.className = classList.join(&#39; &#39;);
 
         return this;
     },
 
 <span id='Ext-dom-Element-method-hasCls'>    /**
-</span>     * Checks if the specified CSS class exists on this element's DOM node.
+</span>     * Checks if the specified CSS class exists on this element&#39;s DOM node.
      * @param {String} name The CSS class to check for.
      * @return {Boolean} `true` if the class exists, else `false`.
      */
@@ -287,14 +287,14 @@ Ext.dom.Element.addMembers({
     },
 
 <span id='Ext-dom-Element-method-setCls'>    /**
-</span>     * Sets the specified CSS class on this element's DOM node.
+</span>     * Sets the specified CSS class on this element&#39;s DOM node.
      * @param {String/Array} className The CSS class to set on this element.
      */
     setCls: function(className) {
         var map = this.hasClassMap,
             i, ln, name;
 
-        if (typeof className == 'string') {
+        if (typeof className == &#39;string&#39;) {
             className = className.split(this.spacesRe);
         }
 
@@ -306,7 +306,7 @@ Ext.dom.Element.addMembers({
         }
 
         this.classList = className.slice();
-        this.dom.className = className.join(' ');
+        this.dom.className = className.join(&#39; &#39;);
     },
 
 <span id='Ext-dom-Element-method-toggleCls'>    /**
@@ -315,7 +315,7 @@ Ext.dom.Element.addMembers({
      * @return {Ext.dom.Element} this
      */
     toggleCls: function(className, force){
-        if (typeof force !== 'boolean') {
+        if (typeof force !== &#39;boolean&#39;) {
             force = !this.hasCls(className);
         }
 
@@ -339,11 +339,11 @@ Ext.dom.Element.addMembers({
             removedClass = flag ? secondClass : firstClass;
 
         if (removedClass) {
-            this.removeCls(prefix ? prefix + '-' + removedClass : removedClass);
+            this.removeCls(prefix ? prefix + &#39;-&#39; + removedClass : removedClass);
         }
 
         if (addedClass) {
-            this.addCls(prefix ? prefix + '-' + addedClass : addedClass);
+            this.addCls(prefix ? prefix + &#39;-&#39; + addedClass : addedClass);
         }
 
         return this;
@@ -372,13 +372,13 @@ Ext.dom.Element.addMembers({
      *
      * @param {Number/String} width The new width. This may be one of:
      *
-     * - A Number specifying the new width in this Element's {@link #defaultUnit}s (by default, pixels).
+     * - A Number specifying the new width in this Element&#39;s {@link #defaultUnit}s (by default, pixels).
      * - A String used to set the CSS width style. Animation may **not** be used.
      * - A size object in the format `{width: widthValue, height: heightValue}`.
      *
      * @param {Number/String} height The new height. This may be one of:
      *
-     * - A Number specifying the new height in this Element's {@link #defaultUnit}s (by default, pixels).
+     * - A Number specifying the new height in this Element&#39;s {@link #defaultUnit}s (by default, pixels).
      * - A String used to set the CSS height style. Animation may **not** be used.
      * @return {Ext.dom.Element} this
      */
@@ -432,7 +432,7 @@ Ext.dom.Element.addMembers({
     },
 
 <span id='Ext-dom-Element-method-setTop'>    /**
-</span>     * Sets the element's top position directly using CSS style (instead of {@link #setY}).
+</span>     * Sets the element&#39;s top position directly using CSS style (instead of {@link #setY}).
      * @param {String} top The top CSS property value.
      * @return {Ext.dom.Element} this
      */
@@ -441,7 +441,7 @@ Ext.dom.Element.addMembers({
     },
 
 <span id='Ext-dom-Element-method-setRight'>    /**
-</span>     * Sets the element's CSS right style.
+</span>     * Sets the element&#39;s CSS right style.
      * @param {String} right The right CSS property value.
      * @return {Ext.dom.Element} this
      */
@@ -450,7 +450,7 @@ Ext.dom.Element.addMembers({
     },
 
 <span id='Ext-dom-Element-method-setBottom'>    /**
-</span>     * Sets the element's CSS bottom style.
+</span>     * Sets the element&#39;s CSS bottom style.
      * @param {String} bottom The bottom CSS property value.
      * @return {Ext.dom.Element} this
      */
@@ -459,7 +459,7 @@ Ext.dom.Element.addMembers({
     },
 
 <span id='Ext-dom-Element-method-setLeft'>    /**
-</span>     * Sets the element's left position directly using CSS style (instead of {@link #setX}).
+</span>     * Sets the element&#39;s left position directly using CSS style (instead of {@link #setX}).
      * @param {String} left The left CSS property value.
      * @return {Ext.dom.Element} this
      */
@@ -472,13 +472,13 @@ Ext.dom.Element.addMembers({
 
         if (margin || margin === 0) {
             margin = this.self.unitizeBox((margin === true) ? 5 : margin);
-            domStyle.setProperty('margin', margin, 'important');
+            domStyle.setProperty(&#39;margin&#39;, margin, &#39;important&#39;);
         }
         else {
-            domStyle.removeProperty('margin-top');
-            domStyle.removeProperty('margin-right');
-            domStyle.removeProperty('margin-bottom');
-            domStyle.removeProperty('margin-left');
+            domStyle.removeProperty(&#39;margin-top&#39;);
+            domStyle.removeProperty(&#39;margin-right&#39;);
+            domStyle.removeProperty(&#39;margin-bottom&#39;);
+            domStyle.removeProperty(&#39;margin-left&#39;);
         }
     },
 
@@ -487,13 +487,13 @@ Ext.dom.Element.addMembers({
 
         if (padding || padding === 0) {
             padding = this.self.unitizeBox((padding === true) ? 5 : padding);
-            domStyle.setProperty('padding', padding, 'important');
+            domStyle.setProperty(&#39;padding&#39;, padding, &#39;important&#39;);
         }
         else {
-            domStyle.removeProperty('padding-top');
-            domStyle.removeProperty('padding-right');
-            domStyle.removeProperty('padding-bottom');
-            domStyle.removeProperty('padding-left');
+            domStyle.removeProperty(&#39;padding-top&#39;);
+            domStyle.removeProperty(&#39;padding-right&#39;);
+            domStyle.removeProperty(&#39;padding-bottom&#39;);
+            domStyle.removeProperty(&#39;padding-left&#39;);
         }
     },
 
@@ -502,13 +502,13 @@ Ext.dom.Element.addMembers({
 
         if (border || border === 0) {
             border = this.self.unitizeBox((border === true) ? 1 : border);
-            domStyle.setProperty('border-width', border, 'important');
+            domStyle.setProperty(&#39;border-width&#39;, border, &#39;important&#39;);
         }
         else {
-            domStyle.removeProperty('border-top-width');
-            domStyle.removeProperty('border-right-width');
-            domStyle.removeProperty('border-bottom-width');
-            domStyle.removeProperty('border-left-width');
+            domStyle.removeProperty(&#39;border-top-width&#39;);
+            domStyle.removeProperty(&#39;border-right-width&#39;);
+            domStyle.removeProperty(&#39;border-bottom-width&#39;);
+            domStyle.removeProperty(&#39;border-left-width&#39;);
         }
     },
 
@@ -520,11 +520,11 @@ Ext.dom.Element.addMembers({
             return this;
         }
 
-        if (typeof value == 'number') {
-            value = value + 'px';
+        if (typeof value == &#39;number&#39;) {
+            value = value + &#39;px&#39;;
         }
 
-        domStyle.setProperty(name, value, 'important');
+        domStyle.setProperty(name, value, &#39;important&#39;);
         return this;
     },
 
@@ -536,22 +536,22 @@ Ext.dom.Element.addMembers({
      */
     setVisible: function(visible) {
         var mode = this.getVisibilityMode(),
-            method = visible ? 'removeCls' : 'addCls';
+            method = visible ? &#39;removeCls&#39; : &#39;addCls&#39;;
 
         switch (mode) {
             case this.VISIBILITY:
-                this.removeCls(['x-hidden-display', 'x-hidden-offsets']);
-                this[method]('x-hidden-visibility');
+                this.removeCls([&#39;x-hidden-display&#39;, &#39;x-hidden-offsets&#39;]);
+                this[method](&#39;x-hidden-visibility&#39;);
                 break;
 
             case this.DISPLAY:
-                this.removeCls(['x-hidden-visibility', 'x-hidden-offsets']);
-                this[method]('x-hidden-display');
+                this.removeCls([&#39;x-hidden-visibility&#39;, &#39;x-hidden-offsets&#39;]);
+                this[method](&#39;x-hidden-display&#39;);
                 break;
 
             case this.OFFSETS:
-                this.removeCls(['x-hidden-visibility', 'x-hidden-display']);
-                this[method]('x-hidden-offsets');
+                this.removeCls([&#39;x-hidden-visibility&#39;, &#39;x-hidden-display&#39;]);
+                this[method](&#39;x-hidden-offsets&#39;);
                 break;
         }
 
@@ -560,10 +560,10 @@ Ext.dom.Element.addMembers({
 
     getVisibilityMode: function() {
         var dom = this.dom,
-            mode = Ext.dom.Element.data(dom, 'visibilityMode');
+            mode = Ext.dom.Element.data(dom, &#39;visibilityMode&#39;);
 
         if (mode === undefined) {
-            Ext.dom.Element.data(dom, 'visibilityMode', mode = this.DISPLAY);
+            Ext.dom.Element.data(dom, &#39;visibilityMode&#39;, mode = this.DISPLAY);
         }
 
         return mode;
@@ -573,7 +573,7 @@ Ext.dom.Element.addMembers({
 </span>     * Use this to change the visibility mode between {@link #VISIBILITY}, {@link #DISPLAY} or {@link #OFFSETS}.
      */
     setVisibilityMode: function(mode) {
-        this.self.data(this.dom, 'visibilityMode', mode);
+        this.self.data(this.dom, &#39;visibilityMode&#39;, mode);
 
         return this;
     },
@@ -585,7 +585,7 @@ Ext.dom.Element.addMembers({
     show: function() {
         var dom = this.dom;
         if (dom) {
-            dom.style.removeProperty('display');
+            dom.style.removeProperty(&#39;display&#39;);
         }
     },
 
@@ -594,22 +594,22 @@ Ext.dom.Element.addMembers({
      * Uses display mode to determine whether to use &quot;display&quot; or &quot;visibility&quot;. See {@link #setVisible}.
      */
     hide: function() {
-        this.dom.style.setProperty('display', 'none', 'important');
+        this.dom.style.setProperty(&#39;display&#39;, &#39;none&#39;, &#39;important&#39;);
     },
 
     setVisibility: function(isVisible) {
         var domStyle = this.dom.style;
 
         if (isVisible) {
-            domStyle.removeProperty('visibility');
+            domStyle.removeProperty(&#39;visibility&#39;);
         }
         else {
-            domStyle.setProperty('visibility', 'hidden', 'important');
+            domStyle.setProperty(&#39;visibility&#39;, &#39;hidden&#39;, &#39;important&#39;);
         }
     },
 
 <span id='Ext-dom-Element-property-styleHooks'>    /**
-</span>     * This shared object is keyed by style name (e.g., 'margin-left' or 'marginLeft'). The
+</span>     * This shared object is keyed by style name (e.g., &#39;margin-left&#39; or &#39;marginLeft&#39;). The
      * values are objects with the following properties:
      *
      *  * `name` (String) : The actual name to be presented to the DOM. This is typically the value
@@ -680,15 +680,15 @@ Ext.dom.Element.addMembers({
             return hook.get(dom, me);
         }
 
-        cs = window.getComputedStyle(dom, '');
+        cs = window.getComputedStyle(dom, &#39;&#39;);
 
         // why the dom.style lookup? It is not true that &quot;style == computedStyle&quot; as
         // well as the fact that 0/false are valid answers...
         result = (cs &amp;&amp; cs[hook.name]); // || dom.style[hook.name];
 
         // WebKit returns rgb values for transparent, how does this work n IE9+
-        //        if (!supportsTransparentColor &amp;&amp; result == 'rgba(0, 0, 0, 0)') {
-        //            result = 'transparent';
+        //        if (!supportsTransparentColor &amp;&amp; result == &#39;rgba(0, 0, 0, 0)&#39;) {
+        //            result = &#39;transparent&#39;;
         //        }
 
         return result;
@@ -708,14 +708,14 @@ Ext.dom.Element.addMembers({
             valueFrom = Ext.valueFrom,
             name, hook;
 
-        // we don't promote the 2-arg form to object-form to avoid the overhead...
-        if (typeof prop == 'string') {
+        // we don&#39;t promote the 2-arg form to object-form to avoid the overhead...
+        if (typeof prop == &#39;string&#39;) {
             hook = hooks[prop];
 
             if (!hook) {
                 hooks[prop] = hook = { name: Ext.dom.Element.normalize(prop) };
             }
-            value = valueFrom(value, '');
+            value = valueFrom(value, &#39;&#39;);
 
             if (hook.set) {
                 hook.set(dom, value, me);
@@ -732,7 +732,7 @@ Ext.dom.Element.addMembers({
                         hooks[name] = hook = { name: Ext.dom.Element.normalize(name) };
                     }
 
-                    value = valueFrom(prop[name], '');
+                    value = valueFrom(prop[name], &#39;&#39;);
 
                     if (hook.set) {
                         hook.set(dom, value, me);
@@ -750,7 +750,7 @@ Ext.dom.Element.addMembers({
 <span id='Ext-dom-Element-method-getHeight'>    /**
 </span>     * Returns the offset height of the element.
      * @param {Boolean} [contentHeight] `true` to get the height minus borders and padding.
-     * @return {Number} The element's height.
+     * @return {Number} The element&#39;s height.
      */
     getHeight: function(contentHeight) {
         var dom = this.dom,
@@ -761,7 +761,7 @@ Ext.dom.Element.addMembers({
 <span id='Ext-dom-Element-method-getWidth'>    /**
 </span>     * Returns the offset width of the element.
      * @param {Boolean} [contentWidth] `true` to get the width minus borders and padding.
-     * @return {Number} The element's width.
+     * @return {Number} The element&#39;s width.
      */
     getWidth: function(contentWidth) {
         var dom = this.dom,
@@ -772,7 +772,7 @@ Ext.dom.Element.addMembers({
 <span id='Ext-dom-Element-method-getBorderWidth'>    /**
 </span>     * Gets the width of the border(s) for the specified side(s)
      * @param {String} side Can be t, l, r, b or any combination of those to add multiple values. For example,
-     * passing `'lr'` would get the border **l**eft width + the border **r**ight width.
+     * passing `&#39;lr&#39;` would get the border **l**eft width + the border **r**ight width.
      * @return {Number} The width of the sides passed added together
      */
     getBorderWidth: function(side) {
@@ -782,7 +782,7 @@ Ext.dom.Element.addMembers({
 <span id='Ext-dom-Element-method-getPadding'>    /**
 </span>     * Gets the width of the padding(s) for the specified side(s).
      * @param {String} side Can be t, l, r, b or any combination of those to add multiple values. For example,
-     * passing `'lr'` would get the padding **l**eft + the padding **r**ight.
+     * passing `&#39;lr&#39;` would get the padding **l**eft + the padding **r**ight.
      * @return {Number} The padding of the sides passed added together.
      */
     getPadding: function(side) {
@@ -800,17 +800,17 @@ Ext.dom.Element.addMembers({
             var dom = this.dom,
                 styleType, i, len;
 
-            if (typeof styles == 'function') {
+            if (typeof styles == &#39;function&#39;) {
                 styles = styles.call();
             }
             styleType = typeof styles;
-            if (styleType == 'string') {
+            if (styleType == &#39;string&#39;) {
                 styles = Ext.util.Format.trim(styles).split(this.styleSplitRe);
                 for (i = 0, len = styles.length; i &lt; len;) {
                     dom.style[Ext.dom.Element.normalize(styles[i++])] = styles[i++];
                 }
             }
-            else if (styleType == 'object') {
+            else if (styleType == &#39;object&#39;) {
                 this.setStyle(styles);
             }
         }
@@ -820,7 +820,7 @@ Ext.dom.Element.addMembers({
 <span id='Ext-dom-Element-method-getSize'>    /**
 </span>     * Returns the size of the element.
      * @param {Boolean} [contentSize] `true` to get the width/size minus borders and padding.
-     * @return {Object} An object containing the element's size:
+     * @return {Object} An object containing the element&#39;s size:
      * @return {Number} return.width
      * @return {Number} return.height
      */
@@ -838,9 +838,9 @@ Ext.dom.Element.addMembers({
      */
     repaint: function() {
         var dom = this.dom;
-        this.addCls(Ext.baseCSSPrefix + 'repaint');
+        this.addCls(Ext.baseCSSPrefix + &#39;repaint&#39;);
         setTimeout(function() {
-            Ext.fly(dom).removeCls(Ext.baseCSSPrefix + 'repaint');
+            Ext.fly(dom).removeCls(Ext.baseCSSPrefix + &#39;repaint&#39;);
         }, 1);
         return this;
     },
@@ -848,7 +848,7 @@ Ext.dom.Element.addMembers({
 <span id='Ext-dom-Element-method-getMargin'>    /**
 </span>     * Returns an object with properties top, left, right and bottom representing the margins of this element unless sides is passed,
      * then it returns the calculated width of the sides (see {@link #getPadding}).
-     * @param {String} [sides] Any combination of 'l', 'r', 't', 'b' to get the sum of those sides.
+     * @param {String} [sides] Any combination of &#39;l&#39;, &#39;r&#39;, &#39;t&#39;, &#39;b&#39; to get the sum of those sides.
      * @return {Object/Number}
      */
     getMargin: function(side) {
@@ -868,10 +868,10 @@ Ext.dom.Element.addMembers({
     },
 
     translate: function() {
-        var transformStyleName = 'webkitTransform' in document.createElement('div').style ? 'webkitTransform' : 'transform';
+        var transformStyleName = &#39;webkitTransform&#39; in document.createElement(&#39;div&#39;).style ? &#39;webkitTransform&#39; : &#39;transform&#39;;
 
         return function(x, y, z) {
-            this.dom.style[transformStyleName] = 'translate3d(' + (x || 0) + 'px, ' + (y || 0) + 'px, ' + (z || 0) + 'px)';
+            this.dom.style[transformStyleName] = &#39;translate3d(&#39; + (x || 0) + &#39;px, &#39; + (y || 0) + &#39;px, &#39; + (z || 0) + &#39;px)&#39;;
         }
     }()
 });
@@ -923,7 +923,7 @@ Ext.dom.Element.addMembers({
 
 <span id='Ext-dom-Element-method-isTransparent'>    /**
 </span>     * Returns `true` if the value of the given property is visually transparent. This
-     * may be due to a 'transparent' style value or an rgba value with 0 in the alpha
+     * may be due to a &#39;transparent&#39; style value or an rgba value with 0 in the alpha
      * component.
      * @deprecated 2.0.0
      * @param {String} prop The style property whose value is to be tested.
@@ -957,7 +957,7 @@ Ext.dom.Element.addMembers({
         for (var i = 0, len = cn.length; i &lt; len; i++) {
             v = cn[i];
             if (v &amp;&amp; v.nodeType == 1) {
-                Ext.fly(v, '_internal').removeCls(className);
+                Ext.fly(v, &#39;_internal&#39;).removeCls(className);
             }
         }
         return this.addCls(className);

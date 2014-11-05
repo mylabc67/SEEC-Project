@@ -29,17 +29,17 @@
  * Getting the device information:
  *
  *     Ext.application({
- *         name: 'Sencha',
+ *         name: &#39;Sencha&#39;,
  *
  *         // Remember that the Ext.device.Device class *must* be required
- *         requires: ['Ext.device.Device'],
+ *         requires: [&#39;Ext.device.Device&#39;],
  *
  *         launch: function() {
  *             alert([
- *                 'Device name: ' + Ext.device.Device.name,
- *                 'Device platform: ' + Ext.device.Device.platform,
- *                 'Device UUID: ' + Ext.device.Device.uuid
- *             ].join('\n'));
+ *                 &#39;Device name: &#39; + Ext.device.Device.name,
+ *                 &#39;Device platform: &#39; + Ext.device.Device.platform,
+ *                 &#39;Device UUID: &#39; + Ext.device.Device.uuid
+ *             ].join(&#39;\n&#39;));
  *         }
  *     });
  *
@@ -48,20 +48,20 @@
  * Using custom scheme URL to application your application from other applications:
  *
  *     Ext.application({
- *         name: 'Sencha',
- *         requires: ['Ext.device.Device'],
+ *         name: &#39;Sencha&#39;,
+ *         requires: [&#39;Ext.device.Device&#39;],
  *         launch: function() {
  *             if (Ext.device.Device.scheme) {
  *                 // the application was opened via another application. Do something:
- *                 alert('Applicaton pened via another application: ' + Ext.device.Device.scheme.url);
+ *                 alert(&#39;Applicaton pened via another application: &#39; + Ext.device.Device.scheme.url);
  *             }
  *
  *             // Listen for future changes
- *             Ext.device.Device.on('schemeupdate', function(device, scheme) {
+ *             Ext.device.Device.on(&#39;schemeupdate&#39;, function(device, scheme) {
  *                 // the application was launched, closed, and then launched another from another application
- *                 // this means onReady wont be called again ('cause the application is already running in the 
+ *                 // this means onReady wont be called again (&#39;cause the application is already running in the 
  *                 // background) - but this event will be fired
- *                 alert('Applicated reopened via another application: ' + scheme.url);
+ *                 alert(&#39;Applicated reopened via another application: &#39; + scheme.url);
  *             }, this);
  *         }
  *     });
@@ -87,27 +87,27 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.Device', {
+Ext.define(&#39;Ext.device.Device&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.Communicator',
-        'Ext.device.device.Cordova',
-        'Ext.device.device.Sencha',
-        'Ext.device.device.Simulator'
+        &#39;Ext.device.Communicator&#39;,
+        &#39;Ext.device.device.Cordova&#39;,
+        &#39;Ext.device.device.Sencha&#39;,
+        &#39;Ext.device.device.Simulator&#39;
     ],
 
 <span id='Ext-device-Device-method-constructor'>    constructor: function() {
 </span>        var browserEnv = Ext.browser.is;
         if (browserEnv.WebView) {
             if (browserEnv.Cordova) {
-                return Ext.create('Ext.device.device.Cordova');
+                return Ext.create(&#39;Ext.device.device.Cordova&#39;);
             } else if (browserEnv.Sencha) {
-                return Ext.create('Ext.device.device.Sencha');
+                return Ext.create(&#39;Ext.device.device.Sencha&#39;);
             }
         }
 
-        return Ext.create('Ext.device.device.Simulator');
+        return Ext.create(&#39;Ext.device.device.Simulator&#39;);
     }
 });
 </pre>

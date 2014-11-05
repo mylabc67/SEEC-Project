@@ -23,7 +23,7 @@
  * {@link Ext.Component#getId id} (see {@link #get}, or the convenience method {@link Ext#getCmp Ext.getCmp}).
  *
  * This object also provides a registry of available Component _classes_
- * indexed by a mnemonic code known as the Component's `xtype`.
+ * indexed by a mnemonic code known as the Component&#39;s `xtype`.
  * The `xtype` provides a way to avoid instantiating child Components
  * when creating a full, nested config object for a complete Ext page.
  *
@@ -33,8 +33,8 @@
  *
  * For a list of all available `xtype`, see {@link Ext.Component}.
  */
-Ext.define('Ext.ComponentManager', {
-    alternateClassName: 'Ext.ComponentMgr',
+Ext.define(&#39;Ext.ComponentManager&#39;, {
+    alternateClassName: &#39;Ext.ComponentMgr&#39;,
     singleton: true,
 
 <span id='Ext-ComponentManager-method-constructor'>    constructor: function() {
@@ -69,7 +69,7 @@ Ext.define('Ext.ComponentManager', {
 
         // &lt;debug&gt;
         if (this.map[id]) {
-            Ext.Logger.warn('Registering a component with a id (`' + id + '`) which has already been used. Please ensure the existing component has been destroyed (`Ext.Component#destroy()`.');
+            Ext.Logger.warn(&#39;Registering a component with a id (`&#39; + id + &#39;`) which has already been used. Please ensure the existing component has been destroyed (`Ext.Component#destroy()`.&#39;);
         }
         // &lt;/debug&gt;
 
@@ -105,7 +105,7 @@ Ext.define('Ext.ComponentManager', {
 
 <span id='Ext-ComponentManager-method-create'>    /**
 </span>     * Creates a new Component from the specified config object using the
-     * config object's `xtype` to determine the class to instantiate.
+     * config object&#39;s `xtype` to determine the class to instantiate.
      * @param {Object} component A configuration object for the Component you wish to create.
      * @param {Function} [defaultType] The constructor to provide the default Component type if
      * the config object does not contain a `xtype`. (Optional if the config contains an `xtype`).
@@ -116,12 +116,12 @@ Ext.define('Ext.ComponentManager', {
             return component;
         }
         else if (Ext.isString(component)) {
-            return Ext.createByAlias('widget.' + component);
+            return Ext.createByAlias(&#39;widget.&#39; + component);
         }
         else {
             var type = component.xtype || defaultType;
 
-            return Ext.createByAlias('widget.' + type, component);
+            return Ext.createByAlias(&#39;widget.&#39; + type, component);
         }
     },
 

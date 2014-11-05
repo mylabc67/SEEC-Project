@@ -19,12 +19,12 @@
 </span> * @private
  *
  * The abstract class. Sub-classes are expected, at the very least, to implement translation logics inside
- * the 'translate' method
+ * the &#39;translate&#39; method
  */
-Ext.define('Ext.util.translatable.Abstract', {
-    extend: 'Ext.Evented',
+Ext.define(&#39;Ext.util.translatable.Abstract&#39;, {
+    extend: &#39;Ext.Evented&#39;,
 
-    requires: ['Ext.fx.easing.Linear'],
+    requires: [&#39;Ext.fx.easing.Linear&#39;],
 
     config: {
 <span id='Ext-util-translatable-Abstract-cfg-useWrapper'>        useWrapper: null,
@@ -77,7 +77,7 @@ Ext.define('Ext.util.translatable.Abstract', {
     },
 
 <span id='Ext-util-translatable-Abstract-method-factoryEasing'>    factoryEasing: function(easing) {
-</span>        return Ext.factory(easing, Ext.fx.easing.Linear, null, 'easing');
+</span>        return Ext.factory(easing, Ext.fx.easing.Linear, null, &#39;easing&#39;);
     },
 
 <span id='Ext-util-translatable-Abstract-method-applyEasing'>    applyEasing: function(easing) {
@@ -109,11 +109,11 @@ Ext.define('Ext.util.translatable.Abstract', {
             this.stopAnimation();
         }
 
-        if (!isNaN(x) &amp;&amp; typeof x == 'number') {
+        if (!isNaN(x) &amp;&amp; typeof x == &#39;number&#39;) {
             this.x = x;
         }
 
-        if (!isNaN(y) &amp;&amp; typeof y == 'number') {
+        if (!isNaN(y) &amp;&amp; typeof y == &#39;number&#39;) {
             this.y = y;
         }
         this.doTranslate(x, y);
@@ -122,7 +122,7 @@ Ext.define('Ext.util.translatable.Abstract', {
 <span id='Ext-util-translatable-Abstract-method-translateAxis'>    translateAxis: function(axis, value, animation) {
 </span>        var x, y;
 
-        if (axis == 'x') {
+        if (axis == &#39;x&#39;) {
             x = value;
         }
         else {
@@ -142,7 +142,7 @@ Ext.define('Ext.util.translatable.Abstract', {
 
         Ext.AnimationQueue.start(this.doAnimationFrame, this);
 
-        this.fireEvent('animationstart', this, this.x, this.y);
+        this.fireEvent(&#39;animationstart&#39;, this, this.x, this.y);
         return this;
     },
 
@@ -157,8 +157,8 @@ Ext.define('Ext.util.translatable.Abstract', {
 
         var now = Ext.Date.now(),
             easing = animation.easing,
-            easingX = (typeof x == 'number') ? (animation.easingX || easing || this.getEasingX() || true) : null,
-            easingY = (typeof y == 'number') ? (animation.easingY || easing || this.getEasingY() || true) : null;
+            easingX = (typeof x == &#39;number&#39;) ? (animation.easingX || easing || this.getEasingX() || true) : null,
+            easingY = (typeof y == &#39;number&#39;) ? (animation.easingY || easing || this.getEasingY() || true) : null;
 
         if (easingX) {
             easingX = this.factoryEasing(easingX);
@@ -166,7 +166,7 @@ Ext.define('Ext.util.translatable.Abstract', {
             easingX.setStartValue(this.x);
             easingX.setEndValue(x);
 
-            if ('duration' in animation) {
+            if (&#39;duration&#39; in animation) {
                 easingX.setDuration(animation.duration);
             }
         }
@@ -177,7 +177,7 @@ Ext.define('Ext.util.translatable.Abstract', {
             easingY.setStartValue(this.y);
             easingY.setEndValue(y);
 
-            if ('duration' in animation) {
+            if (&#39;duration&#39; in animation) {
                 easingY.setDuration(animation.duration);
             }
         }
@@ -208,7 +208,7 @@ Ext.define('Ext.util.translatable.Abstract', {
 
             if (easingX.isEnded) {
                 me.activeEasingX = null;
-                me.fireEvent('axisanimationend', me, 'x', x);
+                me.fireEvent(&#39;axisanimationend&#39;, me, &#39;x&#39;, x);
             }
         }
         else {
@@ -220,7 +220,7 @@ Ext.define('Ext.util.translatable.Abstract', {
 
             if (easingY.isEnded) {
                 me.activeEasingY = null;
-                me.fireEvent('axisanimationend', me, 'y', y);
+                me.fireEvent(&#39;axisanimationend&#39;, me, &#39;y&#39;, y);
             }
         }
         else {
@@ -234,7 +234,7 @@ Ext.define('Ext.util.translatable.Abstract', {
             me.lastY = y;
         }
 
-        me.fireEvent('animationframe', me, x, y);
+        me.fireEvent(&#39;animationframe&#39;, me, x, y);
     },
 
 <span id='Ext-util-translatable-Abstract-method-stopAnimation'>    stopAnimation: function() {
@@ -248,7 +248,7 @@ Ext.define('Ext.util.translatable.Abstract', {
         this.isAnimating = false;
 
         Ext.AnimationQueue.stop(this.doAnimationFrame, this);
-        this.fireEvent('animationend', this, this.x, this.y);
+        this.fireEvent(&#39;animationend&#39;, this, this.x, this.y);
     },
 
 <span id='Ext-util-translatable-Abstract-method-refresh'>    refresh: function() {

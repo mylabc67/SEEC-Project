@@ -25,30 +25,30 @@
  * ## Example
  *
  *     @example miniphone preview
- *     var form = Ext.create('Ext.form.Panel', {
+ *     var form = Ext.create(&#39;Ext.form.Panel&#39;, {
  *         fullscreen: true,
  *         items: [
  *             {
- *                 xtype: 'checkboxfield',
- *                 name : 'tomato',
- *                 label: 'Tomato',
- *                 value: 'tomato',
+ *                 xtype: &#39;checkboxfield&#39;,
+ *                 name : &#39;tomato&#39;,
+ *                 label: &#39;Tomato&#39;,
+ *                 value: &#39;tomato&#39;,
  *                 checked: true
  *             },
  *             {
- *                 xtype: 'checkboxfield',
- *                 name : 'salami',
- *                 label: 'Salami'
+ *                 xtype: &#39;checkboxfield&#39;,
+ *                 name : &#39;salami&#39;,
+ *                 label: &#39;Salami&#39;
  *             },
  *             {
- *                 xtype: 'toolbar',
- *                 docked: 'bottom',
+ *                 xtype: &#39;toolbar&#39;,
+ *                 docked: &#39;bottom&#39;,
  *                 items: [
- *                     { xtype: 'spacer' },
+ *                     { xtype: &#39;spacer&#39; },
  *                     {
- *                         text: 'getValues',
+ *                         text: &#39;getValues&#39;,
  *                         handler: function() {
- *                             var form = Ext.ComponentQuery.query('formpanel')[0],
+ *                             var form = Ext.ComponentQuery.query(&#39;formpanel&#39;)[0],
  *                                 values = form.getValues();
  *
  *                             Ext.Msg.alert(null,
@@ -57,7 +57,7 @@
  *                             );
  *                         }
  *                     },
- *                     { xtype: 'spacer' }
+ *                     { xtype: &#39;spacer&#39; }
  *                 ]
  *             }
  *         ]
@@ -66,19 +66,19 @@
  *
  * The form above contains two check boxes - one for Tomato, one for Salami. We configured the Tomato checkbox to be
  * checked immediately on load, and the Salami checkbox to be unchecked. We also specified an optional text
- * {@link #value} that will be sent when we submit the form. We can get this value using the Form's
+ * {@link #value} that will be sent when we submit the form. We can get this value using the Form&#39;s
  * {@link Ext.form.Panel#getValues getValues} function, or have it sent as part of the data that is sent when the
  * form is submitted:
  *
- *     form.getValues(); //contains a key called 'tomato' if the Tomato field is still checked
- *     form.submit(); //will send 'tomato' in the form submission data
+ *     form.getValues(); //contains a key called &#39;tomato&#39; if the Tomato field is still checked
+ *     form.submit(); //will send &#39;tomato&#39; in the form submission data
  *
  */
-Ext.define('Ext.field.Checkbox', {
-    extend: 'Ext.field.Field',
-    alternateClassName: 'Ext.form.Checkbox',
+Ext.define(&#39;Ext.field.Checkbox&#39;, {
+    extend: &#39;Ext.field.Field&#39;,
+    alternateClassName: &#39;Ext.form.Checkbox&#39;,
 
-    xtype: 'checkboxfield',
+    xtype: &#39;checkboxfield&#39;,
 <span id='Ext-field-Checkbox-property-qsaLeftRe'>    qsaLeftRe: /[\[]/g,
 </span><span id='Ext-field-Checkbox-property-qsaRightRe'>    qsaRightRe: /[\]]/g,
 </span>
@@ -111,13 +111,13 @@ Ext.define('Ext.field.Checkbox', {
 </span>         * @cfg
          * @inheritdoc
          */
-        ui: 'checkbox',
+        ui: &#39;checkbox&#39;,
 
 <span id='Ext-field-Checkbox-cfg-value'>        /**
 </span>         * @cfg {String} value The string value to submit if the item is in a checked state.
          * @accessor
          */
-        value: '',
+        value: &#39;&#39;,
 
 <span id='Ext-field-Checkbox-cfg-checked'>        /**
 </span>         * @cfg {Boolean} checked `true` if the checkbox should render initially checked.
@@ -136,10 +136,10 @@ Ext.define('Ext.field.Checkbox', {
          * @inheritdoc
          */
         component: {
-            xtype: 'input',
-            type: 'checkbox',
+            xtype: &#39;input&#39;,
+            type: &#39;checkbox&#39;,
             useMask: true,
-            cls: Ext.baseCSSPrefix + 'input-checkbox'
+            cls: Ext.baseCSSPrefix + &#39;input-checkbox&#39;
         }
 
 <span id='Ext-field-Checkbox-cfg-labelMaskTap'>        /**
@@ -149,8 +149,8 @@ Ext.define('Ext.field.Checkbox', {
     },
 
 <span id='Ext-field-Checkbox-property-platformConfig'>    platformConfig: [{
-</span>        theme: ['Windows', 'Blackberry', 'Tizen'],
-        labelAlign: 'left'
+</span>        theme: [&#39;Windows&#39;, &#39;Blackberry&#39;, &#39;Tizen&#39;],
+        labelAlign: &#39;left&#39;
     }],
 
 <span id='Ext-field-Checkbox-method-initialize'>    // @private
@@ -162,15 +162,15 @@ Ext.define('Ext.field.Checkbox', {
 
         component.on({
             scope: me,
-            order: 'before',
-            masktap: 'onMaskTap'
+            order: &#39;before&#39;,
+            masktap: &#39;onMaskTap&#39;
         });
 
         component.doMaskTap = Ext.emptyFn;
 
         me.label.on({
             scope: me,
-            tap: 'onMaskTap'
+            tap: &#39;onMaskTap&#39;
         });
     },
 
@@ -180,11 +180,11 @@ Ext.define('Ext.field.Checkbox', {
             initialConfig = me.getInitialConfig();
 
         // you can have a value or checked config, but checked get priority
-        if (initialConfig.hasOwnProperty('value')) {
+        if (initialConfig.hasOwnProperty(&#39;value&#39;)) {
             me.originalState = initialConfig.value;
         }
 
-        if (initialConfig.hasOwnProperty('checked')) {
+        if (initialConfig.hasOwnProperty(&#39;checked&#39;)) {
             me.originalState = initialConfig.checked;
         }
 
@@ -269,12 +269,12 @@ Ext.define('Ext.field.Checkbox', {
         // only fire the event when the value changes
         if (oldChecked != newChecked) {
             if (newChecked) {
-                me.fireEvent('check', me, e);
+                me.fireEvent(&#39;check&#39;, me, e);
             } else {
-                me.fireEvent('uncheck', me, e);
+                me.fireEvent(&#39;uncheck&#39;, me, e);
             }
 
-            me.fireEvent('change', me, newChecked, oldChecked);
+            me.fireEvent(&#39;change&#39;, me, newChecked, oldChecked);
         }
     },
 
@@ -316,31 +316,31 @@ Ext.define('Ext.field.Checkbox', {
 
 <span id='Ext-field-Checkbox-method-getSameGroupFields'>    getSameGroupFields: function() {
 </span>        var me = this,
-            component = me.up('formpanel') || me.up('fieldset'),
+            component = me.up(&#39;formpanel&#39;) || me.up(&#39;fieldset&#39;),
             name = me.getName(),
             replaceLeft = me.qsaLeftRe,
             replaceRight = me.qsaRightRe,
             //handle baseCls with multiple class values
-            baseCls = me.getBaseCls().split(' ').join('.'),
+            baseCls = me.getBaseCls().split(&#39; &#39;).join(&#39;.&#39;),
             components = [],
             elements, element, i, ln;
 
         if (!component) {
             // &lt;debug&gt;
-            Ext.Logger.warn('Ext.field.Radio components must always be descendants of an Ext.form.Panel or Ext.form.FieldSet.');
+            Ext.Logger.warn(&#39;Ext.field.Radio components must always be descendants of an Ext.form.Panel or Ext.form.FieldSet.&#39;);
             // &lt;/debug&gt;
             component = Ext.Viewport;
         }
 
-        // This is to handle ComponentQuery's lack of handling [name=foo[bar]] properly
-        name = name.replace(replaceLeft, '\\[');
-        name = name.replace(replaceRight, '\\]');
+        // This is to handle ComponentQuery&#39;s lack of handling [name=foo[bar]] properly
+        name = name.replace(replaceLeft, &#39;\\[&#39;);
+        name = name.replace(replaceRight, &#39;\\]&#39;);
 
-        elements = Ext.query('[name=' + name + ']', component.element.dom);
+        elements = Ext.query(&#39;[name=&#39; + name + &#39;]&#39;, component.element.dom);
         ln = elements.length;
         for (i = 0; i &lt; ln; i++) {
             element = elements[i];
-            element = Ext.fly(element).up('.' + baseCls);
+            element = Ext.fly(element).up(&#39;.&#39; + baseCls);
             if (element &amp;&amp; element.id) {
                 components.push(Ext.getCmp(element.id));
             }

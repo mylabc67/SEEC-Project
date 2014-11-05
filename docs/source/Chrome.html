@@ -18,8 +18,8 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-filesystem-Chrome'>/**
 </span> * @private
  */
-Ext.define('Ext.device.filesystem.Chrome', {
-    extend: 'Ext.device.filesystem.HTML5',
+Ext.define(&#39;Ext.device.filesystem.Chrome&#39;, {
+    extend: &#39;Ext.device.filesystem.HTML5&#39;,
 <span id='Ext-device-filesystem-Chrome-method-requestFileSystem'>    /**
 </span>     * Requests access to the Local File System
      *
@@ -60,7 +60,7 @@ Ext.define('Ext.device.filesystem.Chrome', {
         config = Ext.device.filesystem.Abstract.prototype.requestFileSystem(config);
 
         var successCallback = function(fs) {
-            var fileSystem = Ext.create('Ext.device.filesystem.FileSystem', fs);
+            var fileSystem = Ext.create(&#39;Ext.device.filesystem.FileSystem&#39;, fs);
             config.success.call(config.scope || me, fileSystem);
         };
 

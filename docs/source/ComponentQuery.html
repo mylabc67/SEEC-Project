@@ -23,7 +23,7 @@
  * Provides searching of Components within {@link Ext.ComponentManager} (globally) or a specific
  * {@link Ext.Container} on the document with a similar syntax to a CSS selector.
  *
- * Components can be retrieved by using their {@link Ext.Component xtype} with an optional '.' prefix
+ * Components can be retrieved by using their {@link Ext.Component xtype} with an optional &#39;.&#39; prefix
  *
  * - `component` or `.component`
  * - `gridpanel` or `.gridpanel`
@@ -55,7 +55,7 @@
  *         return result;
  *     };
  *
- *     var invalidFields = myFormPanel.query('field:invalid');
+ *     var invalidFields = myFormPanel.query(&#39;field:invalid&#39;);
  *     if (invalidFields.length) {
  *         invalidFields[0].getEl().scrollIntoView(myFormPanel.body);
  *         for (var i = 0, l = invalidFields.length; i &lt; l; i++) {
@@ -71,24 +71,24 @@
  * Here are some example queries.
  *
  *     // retrieve all Ext.Panels in the document by xtype
- *     var panelsArray = Ext.ComponentQuery.query('panel');
+ *     var panelsArray = Ext.ComponentQuery.query(&#39;panel&#39;);
  *
  *     // retrieve all Ext.Panels within the container with an id myCt
- *     var panelsWithinmyCt = Ext.ComponentQuery.query('#myCt panel');
+ *     var panelsWithinmyCt = Ext.ComponentQuery.query(&#39;#myCt panel&#39;);
  *
  *     // retrieve all direct children which are Ext.Panels within myCt
- *     var directChildPanel = Ext.ComponentQuery.query('#myCt &gt; panel');
+ *     var directChildPanel = Ext.ComponentQuery.query(&#39;#myCt &gt; panel&#39;);
  *
  *     // retrieve all grids and trees
- *     var gridsAndTrees = Ext.ComponentQuery.query('gridpanel, treepanel');
+ *     var gridsAndTrees = Ext.ComponentQuery.query(&#39;gridpanel, treepanel&#39;);
  *
  * For easy access to queries based from a particular Container see the {@link Ext.Container#query},
  * {@link Ext.Container#down} and {@link Ext.Container#child} methods. Also see
  * {@link Ext.Component#up}.
  */
-Ext.define('Ext.ComponentQuery', {
+Ext.define(&#39;Ext.ComponentQuery&#39;, {
     singleton: true,
-    uses: ['Ext.ComponentManager']
+    uses: [&#39;Ext.ComponentManager&#39;]
 }, function() {
 
     var cq = this,
@@ -96,23 +96,23 @@ Ext.define('Ext.ComponentQuery', {
         // A function source code pattern with a placeholder which accepts an expression which yields a truth value when applied
         // as a member on each item in the passed array.
         filterFnPattern = [
-            'var r = [],',
-                'i = 0,',
-                'it = items,',
-                'l = it.length,',
-                'c;',
-            'for (; i &lt; l; i++) {',
-                'c = it[i];',
-                'if (c.{0}) {',
-                   'r.push(c);',
-                '}',
-            '}',
-            'return r;'
-        ].join(''),
+            &#39;var r = [],&#39;,
+                &#39;i = 0,&#39;,
+                &#39;it = items,&#39;,
+                &#39;l = it.length,&#39;,
+                &#39;c;&#39;,
+            &#39;for (; i &lt; l; i++) {&#39;,
+                &#39;c = it[i];&#39;,
+                &#39;if (c.{0}) {&#39;,
+                   &#39;r.push(c);&#39;,
+                &#39;}&#39;,
+            &#39;}&#39;,
+            &#39;return r;&#39;
+        ].join(&#39;&#39;),
 
         filterItems = function(items, operation) {
             // Argument list for the operation is [ itemsArray, operationArg1, operationArg2...]
-            // The operation's method loops over each item in the candidate array and
+            // The operation&#39;s method loops over each item in the candidate array and
             // returns an array of items which match its criteria
             return operation.method.apply(this, [ items ].concat(operation.args));
         },
@@ -122,7 +122,7 @@ Ext.define('Ext.ComponentQuery', {
                 i = 0,
                 length = items.length,
                 candidate,
-                deep = mode !== '&gt;';
+                deep = mode !== &#39;&gt;&#39;;
 
             for (; i &lt; length; i++) {
                 candidate = items[i];
@@ -149,7 +149,7 @@ Ext.define('Ext.ComponentQuery', {
 
         // Filters the passed candidate array and returns only items which match the passed xtype
         filterByXType = function(items, xtype, shallow) {
-            if (xtype === '*') {
+            if (xtype === &#39;*&#39;) {
                 return items.slice();
             }
             else {
@@ -243,7 +243,7 @@ Ext.define('Ext.ComponentQuery', {
             method: filterByXType
         },{
             // checks for [attribute=value]
-            re: /^(?:[\[](?:@)?([\w\-]+)\s?(?:(=|.=)\s?['&quot;]?(.*?)[&quot;']?)?[\]])/,
+            re: /^(?:[\[](?:@)?([\w\-]+)\s?(?:(=|.=)\s?[&#39;&quot;]?(.*?)[&quot;&#39;]?)?[\]])/,
             method: filterByAttribute
         }, {
             // checks for #cmpItemId
@@ -269,9 +269,9 @@ Ext.define('Ext.ComponentQuery', {
 </span>         * @private
          * Executes this Query upon the selected root.
          * The root provides the initial source of candidate Component matches which are progressively
-         * filtered by iterating through this Query's operations cache.
+         * filtered by iterating through this Query&#39;s operations cache.
          * If no root is provided, all registered Components are searched via the ComponentManager.
-         * root may be a Container who's descendant Components are filtered
+         * root may be a Container who&#39;s descendant Components are filtered
          * root may be a Component with an implementation of getRefItems which provides some nested Components such as the
          * docked items within a Panel.
          * root may be an array of candidate Components to filter using this Query.
@@ -303,7 +303,7 @@ Ext.define('Ext.ComponentQuery', {
                 // items by getting children from each one of our current
                 // working items. The type of mode determines the type of
                 // children we get. (e.g. &gt; only gets direct children)
-                if (operation.mode === '^') {
+                if (operation.mode === &#39;^&#39;) {
                     workingItems = getAncestors(workingItems || [root]);
                 }
                 else if (operation.mode) {
@@ -387,7 +387,7 @@ Ext.define('Ext.ComponentQuery', {
          * @member Ext.ComponentQuery
          */
         query: function(selector, root) {
-            var selectors = selector.split(','),
+            var selectors = selector.split(&#39;,&#39;),
                 length = selectors.length,
                 i = 0,
                 results = [],
@@ -462,7 +462,7 @@ Ext.define('Ext.ComponentQuery', {
                     matchedChar = tokenMatch[1];
 
                     // If the token is prefixed with a # we push a filterById operation to our stack
-                    if (matchedChar === '#') {
+                    if (matchedChar === &#39;#&#39;) {
                         operations.push({
                             method: filterById,
                             args: [Ext.String.trim(tokenMatch[2])]
@@ -470,7 +470,7 @@ Ext.define('Ext.ComponentQuery', {
                     }
                     // If the token is prefixed with a . we push a filterByClassName operation to our stack
                     // FIXME: Not enabled yet. just needs \. adding to the tokenRe prefix
-                    else if (matchedChar === '.') {
+                    else if (matchedChar === &#39;.&#39;) {
                         operations.push({
                             method: filterByClassName,
                             args: [Ext.String.trim(tokenMatch[2])]
@@ -486,7 +486,7 @@ Ext.define('Ext.ComponentQuery', {
                     }
 
                     // Now we slice of the part we just converted into an operation
-                    selector = selector.replace(tokenMatch[0], '');
+                    selector = selector.replace(tokenMatch[0], &#39;&#39;);
                 }
 
                 // If the next part of the query is not a space or &gt; or ^, it means we
@@ -507,19 +507,19 @@ Ext.define('Ext.ComponentQuery', {
                             operations.push({
                                 method: Ext.isString(matcher.method)
                                     // Turn a string method into a function by formatting the string with our selector matche expression
-                                    // A new method is created for different match expressions, eg {id=='textfield-1024'}
+                                    // A new method is created for different match expressions, eg {id==&#39;textfield-1024&#39;}
                                     // Every expression may be different in different selectors.
-                                    ? Ext.functionFactory('items', Ext.String.format.apply(Ext.String, [method].concat(selectorMatch.slice(1))))
+                                    ? Ext.functionFactory(&#39;items&#39;, Ext.String.format.apply(Ext.String, [method].concat(selectorMatch.slice(1))))
                                     : matcher.method,
                                 args: selectorMatch.slice(1)
                             });
-                            selector = selector.replace(selectorMatch[0], '');
+                            selector = selector.replace(selectorMatch[0], &#39;&#39;);
                             break; // Break on match
                         }
                         //&lt;debug&gt;
-                        // Exhausted all matches: It's an error
+                        // Exhausted all matches: It&#39;s an error
                         if (i === (length - 1)) {
-                            Ext.Error.raise('Invalid ComponentQuery selector: &quot;' + arguments[0] + '&quot;');
+                            Ext.Error.raise(&#39;Invalid ComponentQuery selector: &quot;&#39; + arguments[0] + &#39;&quot;&#39;);
                         }
                         //&lt;/debug&gt;
                     }
@@ -533,7 +533,7 @@ Ext.define('Ext.ComponentQuery', {
                     operations.push({
                         mode: modeMatch[2]||modeMatch[1]
                     });
-                    selector = selector.replace(modeMatch[0], '');
+                    selector = selector.replace(modeMatch[0], &#39;&#39;);
                 }
             }
 

@@ -18,8 +18,8 @@
   <pre class="prettyprint lang-js"><span id='Ext-event-publisher-Publisher'>/**
 </span> * @private
  */
-Ext.define('Ext.event.publisher.Publisher', {
-<span id='Ext-event-publisher-Publisher-property-targetType'>    targetType: '',
+Ext.define(&#39;Ext.event.publisher.Publisher&#39;, {
+<span id='Ext-event-publisher-Publisher-property-targetType'>    targetType: &#39;&#39;,
 </span>
 <span id='Ext-event-publisher-Publisher-property-idSelectorRegex'>    idSelectorRegex: /^#([\w\-]+)$/i,
 </span>
@@ -44,7 +44,7 @@ Ext.define('Ext.event.publisher.Publisher', {
 <span id='Ext-event-publisher-Publisher-method-handles'>    handles: function(eventName) {
 </span>        var map = this.handledEventsMap;
 
-        return !!map[eventName] || !!map['*'] || eventName === '*';
+        return !!map[eventName] || !!map[&#39;*&#39;] || eventName === &#39;*&#39;;
     },
 
 <span id='Ext-event-publisher-Publisher-method-getHandledEvents'>    getHandledEvents: function() {

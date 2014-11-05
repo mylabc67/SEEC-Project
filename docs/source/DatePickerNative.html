@@ -15,10 +15,10 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js">Ext.define('Ext.field.DatePickerNative', {
-    extend: 'Ext.field.DatePicker',
-    alternateClassName: 'Ext.form.DatePickerNative',
-    xtype: 'datepickernativefield',
+  <pre class="prettyprint lang-js">Ext.define(&#39;Ext.field.DatePickerNative&#39;, {
+    extend: &#39;Ext.field.DatePicker&#39;,
+    alternateClassName: &#39;Ext.form.DatePickerNative&#39;,
+    xtype: &#39;datepickernativefield&#39;,
 
     initialize: function() {
 
@@ -45,7 +45,7 @@
 
         try {
 
-            var dateTimePickerFunc = me.getName() == 'date' ? navigator.plugins.dateTimePicker.selectDate :
+            var dateTimePickerFunc = me.getName() == &#39;date&#39; ? navigator.plugins.dateTimePicker.selectDate :
                 navigator.plugins.dateTimePicker.selectTime;
 
             dateTimePickerFunc(success, fail, { value: me.getValue()});

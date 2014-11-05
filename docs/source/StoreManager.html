@@ -21,35 +21,35 @@
  *
  * Contains a collection of all stores that are created that have an identifier. An identifier can be assigned by
  * setting the {@link Ext.data.Store#storeId storeId} property. When a store is in the StoreManager, it can be
- * referred to via it's identifier:
+ * referred to via it&#39;s identifier:
  *
- *     Ext.create('Ext.data.Store', {
- *         model: 'SomeModel',
- *         storeId: 'myStore'
+ *     Ext.create(&#39;Ext.data.Store&#39;, {
+ *         model: &#39;SomeModel&#39;,
+ *         storeId: &#39;myStore&#39;
  *     });
  *
- *     var store = Ext.data.StoreManager.lookup('myStore');
+ *     var store = Ext.data.StoreManager.lookup(&#39;myStore&#39;);
  *
  * Also note that the {@link #lookup} method is aliased to {@link Ext#getStore} for convenience.
  *
- * If a store is registered with the StoreManager, you can also refer to the store by it's identifier when registering
+ * If a store is registered with the StoreManager, you can also refer to the store by it&#39;s identifier when registering
  * it with any Component that consumes data from a store:
  *
- *     Ext.create('Ext.data.Store', {
- *         model: 'SomeModel',
- *         storeId: 'myStore'
+ *     Ext.create(&#39;Ext.data.Store&#39;, {
+ *         model: &#39;SomeModel&#39;,
+ *         storeId: &#39;myStore&#39;
  *     });
  *
- *     Ext.create('Ext.view.View', {
- *         store: 'myStore'
+ *     Ext.create(&#39;Ext.view.View&#39;, {
+ *         store: &#39;myStore&#39;
  *         // other configuration here
  *     });
  */
-Ext.define('Ext.data.StoreManager', {
-    extend: 'Ext.util.Collection',
-    alternateClassName: ['Ext.StoreMgr', 'Ext.data.StoreMgr', 'Ext.StoreManager'],
+Ext.define(&#39;Ext.data.StoreManager&#39;, {
+    extend: &#39;Ext.util.Collection&#39;,
+    alternateClassName: [&#39;Ext.StoreMgr&#39;, &#39;Ext.data.StoreMgr&#39;, &#39;Ext.StoreManager&#39;],
     singleton: true,
-    uses: ['Ext.data.ArrayStore', 'Ext.data.Store'],
+    uses: [&#39;Ext.data.ArrayStore&#39;, &#39;Ext.data.Store&#39;],
 
 <span id='Ext-data-StoreManager-method-register'>    /**
 </span>     * Registers one or more Stores with the StoreManager. You do not normally need to register stores manually. Any
@@ -80,7 +80,7 @@ Ext.define('Ext.data.StoreManager', {
     lookup : function(store) {
         // handle the case when we are given an array or an array of arrays.
         if (Ext.isArray(store)) {
-            var fields = ['field1'],
+            var fields = [&#39;field1&#39;],
                 expand = !Ext.isArray(store[0]),
                 data = store,
                 i,
@@ -93,10 +93,10 @@ Ext.define('Ext.data.StoreManager', {
                 }
             } else {
                 for(i = 2, len = store[0].length; i &lt;= len; ++i){
-                    fields.push('field' + i);
+                    fields.push(&#39;field&#39; + i);
                 }
             }
-            return Ext.create('Ext.data.ArrayStore', {
+            return Ext.create(&#39;Ext.data.ArrayStore&#39;, {
                 data  : data,
                 fields: fields,
                 // See https://sencha.jira.com/browse/TOUCH-1541
@@ -114,7 +114,7 @@ Ext.define('Ext.data.StoreManager', {
             if (store instanceof Ext.data.Store) {
                 return store;
             } else {
-                return Ext.factory(store, Ext.data.Store, null, 'store');
+                return Ext.factory(store, Ext.data.Store, null, &#39;store&#39;);
             }
         }
     },
@@ -128,13 +128,13 @@ Ext.define('Ext.data.StoreManager', {
 </span>     * Creates a new store for the given id and config, then registers it with the {@link Ext.data.StoreManager Store Manager}.
      * Sample usage:
      *
-     *     Ext.regStore('AllUsers', {
-     *         model: 'User'
+     *     Ext.regStore(&#39;AllUsers&#39;, {
+     *         model: &#39;User&#39;
      *     });
      *
      *     // the store can now easily be used throughout the application
      *     new Ext.List({
-     *         store: 'AllUsers'
+     *         store: &#39;AllUsers&#39;
      *         // ...
      *     });
      *
@@ -159,7 +159,7 @@ Ext.define('Ext.data.StoreManager', {
         if (config instanceof Ext.data.Store) {
             store = config;
         } else {
-            store = Ext.create('Ext.data.Store', config);
+            store = Ext.create(&#39;Ext.data.Store&#39;, config);
         }
 
         return Ext.data.StoreManager.register(store);

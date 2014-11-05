@@ -22,23 +22,23 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.Capture', {
+Ext.define(&#39;Ext.device.Capture&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.Communicator',
-        'Ext.device.capture.Cordova',
-        'Ext.device.capture.Simulator'
+        &#39;Ext.device.Communicator&#39;,
+        &#39;Ext.device.capture.Cordova&#39;,
+        &#39;Ext.device.capture.Simulator&#39;
     ],
 
 <span id='Ext-device-Capture-method-constructor'>    constructor: function() {
 </span>        var browserEnv = Ext.browser.is;
 
         if (browserEnv.WebView &amp;&amp; browserEnv.Cordova) {
-            return Ext.create('Ext.device.capture.Cordova');
+            return Ext.create(&#39;Ext.device.capture.Cordova&#39;);
         }
 
-        return Ext.create('Ext.device.capture.Simulator');
+        return Ext.create(&#39;Ext.device.capture.Simulator&#39;);
     }
 });
 </pre>

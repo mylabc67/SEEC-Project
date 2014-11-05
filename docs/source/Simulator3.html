@@ -18,13 +18,13 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-camera-Simulator'>/**
 </span> * @private
  */
-Ext.define('Ext.device.camera.Simulator', {
-    extend: 'Ext.device.camera.Abstract',
+Ext.define(&#39;Ext.device.camera.Simulator&#39;, {
+    extend: &#39;Ext.device.camera.Abstract&#39;,
 
     config: {
 <span id='Ext-device-camera-Simulator-cfg-samples'>        samples: [
 </span>            {
-                success: 'http://www.sencha.com/img/sencha-large.png'
+                success: &#39;http://www.sencha.com/img/sencha-large.png&#39;
             }
         ]
     },
@@ -46,7 +46,7 @@ Ext.define('Ext.device.camera.Simulator', {
             success = options.success,
             failure = options.failure;
 
-        if ('success' in sample) {
+        if (&#39;success&#39; in sample) {
             if (success) {
                 success.call(scope, sample.success);
             }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='global-property-'>/**
+</span> * Created by Yilei Mou on 11/1/14.
+ */
+<span id='SEEC-controller-MainController'>/**
+</span> * Controls the login screen and dashboard.
+ * Once password is confirmed, bring the user to dash board. More global functionality could be added in this controller.
+ */
+Ext.define(&#39;SEEC.controller.MainController&#39;, {
+    extend: &#39;Ext.app.Controller&#39;,
+
+    config: {
+<span id='SEEC-controller-MainController-cfg-refs'>        refs: {
+</span>            passWordPad: &#39;password&#39;,
+            dashboard: &#39;dashboard&#39;,
+            main: &#39;main&#39;
+        },
+
+<span id='SEEC-controller-MainController-cfg-control'>        control: {
+</span>            password: {
+                switchToDashboard: &#39;switchToDashboard&#39;
+            }
+        }
+    },
+
+<span id='SEEC-controller-MainController-method-switchToDashboard'>    /**
+</span>     *
+     */
+    switchToDashboard: function () {
+        var me = this;
+        me.getMain().setActiveItem(1);
+    }
+
+});</pre>
+</body>
+</html>

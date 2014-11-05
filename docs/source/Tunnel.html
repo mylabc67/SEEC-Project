@@ -15,22 +15,22 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js">Ext.define('Ext.device.Tunnel', {
+  <pre class="prettyprint lang-js">Ext.define(&#39;Ext.device.Tunnel&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.tunnel.Simulator',
-        'Ext.device.tunnel.Sencha'
+        &#39;Ext.device.tunnel.Simulator&#39;,
+        &#39;Ext.device.tunnel.Sencha&#39;
     ],
 
     constructor: function() {
         var browserEnv = Ext.browser.is;
 
         if (browserEnv.Sencha) {
-            return Ext.create('Ext.device.tunnel.Sencha');
+            return Ext.create(&#39;Ext.device.tunnel.Sencha&#39;);
         }
 
-        return Ext.create('Ext.device.tunnel.Simulator');
+        return Ext.create(&#39;Ext.device.tunnel.Simulator&#39;);
     }
 });
 </pre>

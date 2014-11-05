@@ -22,46 +22,46 @@
  * ## Example usage:
  *
  *     @example
- *     var segmentedButton = Ext.create('Ext.SegmentedButton', {
+ *     var segmentedButton = Ext.create(&#39;Ext.SegmentedButton&#39;, {
  *         allowMultiple: true,
  *         items: [
  *             {
- *                 text: 'Option 1'
+ *                 text: &#39;Option 1&#39;
  *             },
  *             {
- *                 text: 'Option 2',
+ *                 text: &#39;Option 2&#39;,
  *                 pressed: true
  *             },
  *             {
- *                 text: 'Option 3'
+ *                 text: &#39;Option 3&#39;
  *             }
  *         ],
  *         listeners: {
  *             toggle: function(container, button, pressed){
- *                 alert(&quot;User toggled the '&quot; + button.getText() + &quot;' button: &quot; + (pressed ? 'on' : 'off'));
+ *                 alert(&quot;User toggled the &#39;&quot; + button.getText() + &quot;&#39; button: &quot; + (pressed ? &#39;on&#39; : &#39;off&#39;));
  *             }
  *         }
  *     });
- *     Ext.Viewport.add({ xtype: 'container', padding: 10, items: [segmentedButton] });
+ *     Ext.Viewport.add({ xtype: &#39;container&#39;, padding: 10, items: [segmentedButton] });
  */
-Ext.define('Ext.SegmentedButton', {
-    extend: 'Ext.Container',
-    xtype : 'segmentedbutton',
-    requires: ['Ext.Button'],
+Ext.define(&#39;Ext.SegmentedButton&#39;, {
+    extend: &#39;Ext.Container&#39;,
+    xtype : &#39;segmentedbutton&#39;,
+    requires: [&#39;Ext.Button&#39;],
 
     config: {
 <span id='Ext-SegmentedButton-cfg-baseCls'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'segmentedbutton',
+        baseCls: Ext.baseCSSPrefix + &#39;segmentedbutton&#39;,
 
 <span id='Ext-SegmentedButton-cfg-pressedCls'>        /**
 </span>         * @cfg {String} pressedCls
          * CSS class when a button is in pressed state.
          * @accessor
          */
-        pressedCls: Ext.baseCSSPrefix + 'button-pressed',
+        pressedCls: Ext.baseCSSPrefix + &#39;button-pressed&#39;,
 
 <span id='Ext-SegmentedButton-cfg-allowMultiple'>        /**
 </span>         * @cfg {Boolean} allowMultiple
@@ -98,20 +98,20 @@ Ext.define('Ext.SegmentedButton', {
          * @inheritdoc
          */
         layout: {
-            type : 'hbox',
-            align: 'stretch'
+            type : &#39;hbox&#39;,
+            align: &#39;stretch&#39;
         },
 
 <span id='Ext-SegmentedButton-cfg-defaultType'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        defaultType: 'button'
+        defaultType: &#39;button&#39;
     },
 
 <span id='Ext-SegmentedButton-event-toggle'>    /**
 </span>     * @event toggle
-     * Fires when any child button's pressed state has changed.
+     * Fires when any child button&#39;s pressed state has changed.
      * @param {Ext.SegmentedButton} this
      * @param {Ext.Button} button The toggled button.
      * @param {Boolean} isPressed Boolean to indicate if the button was pressed or not.
@@ -123,21 +123,21 @@ Ext.define('Ext.SegmentedButton', {
         me.callParent();
 
         me.on({
-            delegate: '&gt; button',
+            delegate: &#39;&gt; button&#39;,
             scope   : me,
-            tap: 'onButtonRelease'
+            tap: &#39;onButtonRelease&#39;
         });
 
         me.onAfter({
-            delegate: '&gt; button',
+            delegate: &#39;&gt; button&#39;,
             scope   : me,
-            hide: 'onButtonHiddenChange',
-            show: 'onButtonHiddenChange'
+            hide: &#39;onButtonHiddenChange&#39;,
+            show: &#39;onButtonHiddenChange&#39;
         });
     },
 
 <span id='Ext-SegmentedButton-method-updateAllowMultiple'>    updateAllowMultiple: function(allowMultiple) {
-</span>        if (!this.initialized &amp;&amp; !this.getInitialConfig().hasOwnProperty('allowDepress') &amp;&amp; allowMultiple) {
+</span>        if (!this.initialized &amp;&amp; !this.getInitialConfig().hasOwnProperty(&#39;allowDepress&#39;) &amp;&amp; allowMultiple) {
             this.setAllowDepress(true);
         }
     },
@@ -158,7 +158,7 @@ Ext.define('Ext.SegmentedButton', {
 
         for (i = 0; i &lt; ln; i++) {
             item = items.items[i];
-            if (item.getInitialConfig('pressed')) {
+            if (item.getInitialConfig(&#39;pressed&#39;)) {
                 pressedButtons.push(items.items[i]);
             }
         }
@@ -170,7 +170,7 @@ Ext.define('Ext.SegmentedButton', {
 
 <span id='Ext-SegmentedButton-method-onButtonRelease'>    /**
 </span>     * Button sets a timeout of 10ms to remove the {@link #pressedCls} on the release event.
-     * We don't want this to happen, so lets return `false` and cancel the event.
+     * We don&#39;t want this to happen, so lets return `false` and cancel the event.
      * @private
      */
     onButtonRelease: function(button) {
@@ -220,8 +220,8 @@ Ext.define('Ext.SegmentedButton', {
 </span>    updateFirstAndLastCls: function(items) {
         var ln = items.length,
             basePrefix = Ext.baseCSSPrefix,
-            firstCls = basePrefix + 'first',
-            lastCls = basePrefix + 'last',
+            firstCls = basePrefix + &#39;first&#39;,
+            lastCls = basePrefix + &#39;last&#39;,
             item, i;
 
         //remove all existing classes
@@ -324,7 +324,7 @@ Ext.define('Ext.SegmentedButton', {
             Ext.defer(function() {
                 for (i = 0; i &lt; ln; i++) {
                     e = events[i];
-                    me.fireEvent('toggle', me, e.item, e.toggle);
+                    me.fireEvent(&#39;toggle&#39;, me, e.item, e.toggle);
                 }
             }, 50);
         }
@@ -366,14 +366,14 @@ Ext.define('Ext.SegmentedButton', {
      * @method setPressed
      * @deprecated 2.0.0 Please use {@link #setPressedButtons} instead
      */
-    Ext.deprecateClassMethod(me, 'setPressed', 'setPressedButtons');
+    Ext.deprecateClassMethod(me, &#39;setPressed&#39;, &#39;setPressedButtons&#39;);
 
 <span id='Ext-SegmentedButton-method-getPressed'>    /**
 </span>     * Gets the currently pressed button(s).
      * @method getPressed
      * @deprecated 2.0.0 Please use {@link #getPressedButtons} instead
      */
-    Ext.deprecateClassMethod(me, 'getPressed', 'getPressedButtons');
+    Ext.deprecateClassMethod(me, &#39;getPressed&#39;, &#39;getPressedButtons&#39;);
 
     //&lt;/deprecated&gt;
 });

@@ -1,4 +1,4 @@
-//Created by Shiyang Fei on 10/30/2014
+//Created by Yilei Mou on 10/30/2014
 Ext.define('SEEC.util.Utils', {
     singleton: true,
 

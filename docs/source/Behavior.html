@@ -18,11 +18,11 @@
   <pre class="prettyprint lang-js"><span id='Ext-behavior-Behavior'>/**
 </span> * @private
  */
-Ext.define('Ext.behavior.Behavior', {
+Ext.define(&#39;Ext.behavior.Behavior&#39;, {
 <span id='Ext-behavior-Behavior-method-constructor'>    constructor: function(component) {
 </span>        this.component = component;
 
-        component.on('destroy', 'onComponentDestroy', this);
+        component.on(&#39;destroy&#39;, &#39;onComponentDestroy&#39;, this);
     },
 
 <span id='Ext-behavior-Behavior-method-onComponentDestroy'>    onComponentDestroy: Ext.emptyFn

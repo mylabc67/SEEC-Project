@@ -15,14 +15,14 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js">Ext.define('Ext.ux.parse.Model', {
-    extend: 'Ext.data.Model',
+  <pre class="prettyprint lang-js">Ext.define(&#39;Ext.ux.parse.Model&#39;, {
+    extend: &#39;Ext.data.Model&#39;,
     requires: [
-        'Ext.ux.parse.Helper',
-        'Ext.ux.parse.Proxy',
-        'Ext.Promise',
-        'Ext.ux.parse.association.Pointer',
-        'Ext.ux.parse.association.Relation'
+        &#39;Ext.ux.parse.Helper&#39;,
+        &#39;Ext.ux.parse.Proxy&#39;,
+        &#39;Ext.Promise&#39;,
+        &#39;Ext.ux.parse.association.Pointer&#39;,
+        &#39;Ext.ux.parse.association.Relation&#39;
     ],
 
     config: {
@@ -164,7 +164,7 @@
             });
         } else {
             // &lt;debug&gt;
-            Ext.Logger.warn('You cannot load Parse models without a Parse ID');
+            Ext.Logger.warn(&#39;You cannot load Parse models without a Parse ID&#39;);
             // &lt;/debug&gt;
         }
     },
@@ -209,14 +209,14 @@
             field, key, i, ln, currentValue, convert;
 
         /*
-         * If we're passed an object, iterate over that object. NOTE: we pull out fields with a convert function and
+         * If we&#39;re passed an object, iterate over that object. NOTE: we pull out fields with a convert function and
          * set those last so that all other possible data is set before the convert function is called
          */
         if (arguments.length == 1) {
             for (key in fieldName) {
                 if (fieldName.hasOwnProperty(key)) {
-                    //here we check for the custom convert function. Note that if a field doesn't have a convert function,
-                    //we default it to its type's convert function, so we have to check that here. This feels rather dirty.
+                    //here we check for the custom convert function. Note that if a field doesn&#39;t have a convert function,
+                    //we default it to its type&#39;s convert function, so we have to check that here. This feels rather dirty.
                     field = fieldMap[key];
                     if (field &amp;&amp; field.hasCustomConvert()) {
                         modifiedFieldNames.push(key);

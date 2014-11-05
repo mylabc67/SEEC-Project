@@ -37,22 +37,22 @@
  * the url: item for the location of an audio file--note that the audio starts on page load:
  *
  *     @example preview
- *     Ext.create('Ext.Container', {
+ *     Ext.create(&#39;Ext.Container&#39;, {
  *         fullscreen: true,
  *         layout: {
- *             type : 'vbox',
- *             pack : 'center',
- *             align: 'stretch'
+ *             type : &#39;vbox&#39;,
+ *             pack : &#39;center&#39;,
+ *             align: &#39;stretch&#39;
  *         },
  *         items: [
  *             {
- *                 xtype : 'toolbar',
- *                 docked: 'top',
- *                 title : 'Ext.Audio'
+ *                 xtype : &#39;toolbar&#39;,
+ *                 docked: &#39;top&#39;,
+ *                 title : &#39;Ext.Audio&#39;
  *             },
  *             {
- *                 xtype: 'audio',
- *                 url  : 'touch-build/examples/audio/crash.mp3'
+ *                 xtype: &#39;audio&#39;,
+ *                 url  : &#39;touch-build/examples/audio/crash.mp3&#39;
  *             }
  *         ]
  *     });
@@ -61,59 +61,59 @@
  * and then control the audio by using the {@link #method-play}, {@link #method-pause}, and {@link #toggle} methods:
  *
  *     @example preview
- *     Ext.create('Ext.Container', {
+ *     Ext.create(&#39;Ext.Container&#39;, {
  *         fullscreen: true,
  *         layout: {
- *             type: 'vbox',
- *             pack: 'center'
+ *             type: &#39;vbox&#39;,
+ *             pack: &#39;center&#39;
  *         },
  *         items: [
  *             {
- *                 xtype : 'toolbar',
- *                 docked: 'top',
- *                 title : 'Ext.Audio'
+ *                 xtype : &#39;toolbar&#39;,
+ *                 docked: &#39;top&#39;,
+ *                 title : &#39;Ext.Audio&#39;
  *             },
  *             {
- *                 xtype: 'toolbar',
- *                 docked: 'bottom',
+ *                 xtype: &#39;toolbar&#39;,
+ *                 docked: &#39;bottom&#39;,
  *                 defaults: {
- *                     xtype: 'button',
+ *                     xtype: &#39;button&#39;,
  *                     handler: function() {
  *                         var container = this.getParent().getParent(),
  *                             // use ComponentQuery to get the audio component (using its xtype)
- *                             audio = container.down('audio');
+ *                             audio = container.down(&#39;audio&#39;);
  *
  *                         audio.toggle();
- *                         this.setText(audio.isPlaying() ? 'Pause' : 'Play');
+ *                         this.setText(audio.isPlaying() ? &#39;Pause&#39; : &#39;Play&#39;);
  *                     }
  *                 },
  *                 items: [
- *                     { text: 'Play', flex: 1 }
+ *                     { text: &#39;Play&#39;, flex: 1 }
  *                 ]
  *             },
  *             {
- *                 html: 'Hidden audio!',
+ *                 html: &#39;Hidden audio!&#39;,
  *                 styleHtmlContent: true
  *             },
  *             {
- *                 xtype : 'audio',
+ *                 xtype : &#39;audio&#39;,
  *                 hidden: true,
- *                 url   : 'touch-build/examples/audio/crash.mp3'
+ *                 url   : &#39;touch-build/examples/audio/crash.mp3&#39;
  *             }
  *         ]
  *     });
  * @aside example audio
  */
-Ext.define('Ext.Audio', {
-    extend: 'Ext.Media',
-    xtype : 'audio',
+Ext.define(&#39;Ext.Audio&#39;, {
+    extend: &#39;Ext.Media&#39;,
+    xtype : &#39;audio&#39;,
 
     config: {
 <span id='Ext-Audio-cfg-cls'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        cls: Ext.baseCSSPrefix + 'audio'
+        cls: Ext.baseCSSPrefix + &#39;audio&#39;
 
 <span id='Ext-Audio-cfg-url'>        /**
 </span>         * @cfg {String} url
@@ -151,10 +151,10 @@ Ext.define('Ext.Audio', {
     },
 
 <span id='Ext-Audio-property-template'>    template: [{
-</span>        reference: 'media',
-        preload: 'auto',
-        tag: 'audio',
-        cls: Ext.baseCSSPrefix + 'component'
+</span>        reference: &#39;media&#39;,
+        preload: &#39;auto&#39;,
+        tag: &#39;audio&#39;,
+        cls: Ext.baseCSSPrefix + &#39;component&#39;
     }]
 });
 </pre>

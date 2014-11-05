@@ -22,18 +22,18 @@
  * created inside a form like this:
  *
  *     @example
- *     Ext.create('Ext.form.Panel', {
+ *     Ext.create(&#39;Ext.form.Panel&#39;, {
  *         fullscreen: true,
  *         items: [
  *             {
- *                 xtype: 'fieldset',
- *                 title: 'My Uploader',
+ *                 xtype: &#39;fieldset&#39;,
+ *                 title: &#39;My Uploader&#39;,
  *                 items: [
  *                     {
- *                         xtype: 'filefield',
+ *                         xtype: &#39;filefield&#39;,
  *                         label: &quot;MyPhoto:&quot;,
- *                         name: 'photo',
- *                         accept: 'image'
+ *                         name: &#39;photo&#39;,
+ *                         accept: &#39;image&#39;
  *                     }
  *                 ]
  *             }
@@ -41,9 +41,9 @@
  *     });
  */
 
-Ext.define('Ext.field.File', {
-    extend: 'Ext.field.Field',
-    xtype : 'filefield',
+Ext.define(&#39;Ext.field.File&#39;, {
+    extend: &#39;Ext.field.Field&#39;,
+    xtype : &#39;filefield&#39;,
     requires: [&quot;Ext.field.FileInput&quot;],
 
 <span id='Ext-field-File-event-change'>    /**
@@ -56,7 +56,7 @@ Ext.define('Ext.field.File', {
 
     config : {
 <span id='Ext-field-File-cfg-component'>        component: {
-</span>            xtype : 'fileinput',
+</span>            xtype : &#39;fileinput&#39;,
             fastFocus: false
         }
     },
@@ -99,12 +99,12 @@ Ext.define('Ext.field.File', {
 
         me.getComponent().on({
             scope: this,
-            change      : 'onChange'
+            change      : &#39;onChange&#39;
         });
     },
 
 <span id='Ext-field-File-method-onChange'>    onChange: function(me, value, startValue) {
-</span>        me.fireEvent('change', this, value, startValue);
+</span>        me.fireEvent(&#39;change&#39;, this, value, startValue);
     }
 });
 </pre>

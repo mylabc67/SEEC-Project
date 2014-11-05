@@ -20,29 +20,29 @@
  * panel just contains the set of fields you want to display, ordered inside the items configuration like this:
  *
  *     @example
- *     var form = Ext.create('Ext.form.Panel', {
+ *     var form = Ext.create(&#39;Ext.form.Panel&#39;, {
  *         fullscreen: true,
  *         items: [
  *             {
- *                 xtype: 'textfield',
- *                 name: 'name',
- *                 label: 'Name'
+ *                 xtype: &#39;textfield&#39;,
+ *                 name: &#39;name&#39;,
+ *                 label: &#39;Name&#39;
  *             },
  *             {
- *                 xtype: 'emailfield',
- *                 name: 'email',
- *                 label: 'Email'
+ *                 xtype: &#39;emailfield&#39;,
+ *                 name: &#39;email&#39;,
+ *                 label: &#39;Email&#39;
  *             },
  *             {
- *                 xtype: 'passwordfield',
- *                 name: 'password',
- *                 label: 'Password'
+ *                 xtype: &#39;passwordfield&#39;,
+ *                 name: &#39;password&#39;,
+ *                 label: &#39;Password&#39;
  *             }
  *         ]
  *     });
  *
  * Here we just created a simple form panel which could be used as a registration form to sign up to your service. We
- * added a plain {@link Ext.field.Text text field} for the user's Name, an {@link Ext.field.Email email field} and
+ * added a plain {@link Ext.field.Text text field} for the user&#39;s Name, an {@link Ext.field.Email email field} and
  * finally a {@link Ext.field.Password password field}. In each case we provided a {@link Ext.field.Field#name name}
  * config on the field so that we can identify it later on when we load and save data on the form.
  *
@@ -52,25 +52,25 @@
  * {@link #setValues}:
  *
  *     form.setValues({
- *         name: 'Ed',
- *         email: 'ed@sencha.com',
- *         password: 'secret'
+ *         name: &#39;Ed&#39;,
+ *         email: &#39;ed@sencha.com&#39;,
+ *         password: &#39;secret&#39;
  *     });
  *
- * It's also easy to load {@link Ext.data.Model Model} instances into a form - let's say we have a User model and want
+ * It&#39;s also easy to load {@link Ext.data.Model Model} instances into a form - let&#39;s say we have a User model and want
  * to load a particular instance into our form:
  *
- *     Ext.define('MyApp.model.User', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;MyApp.model.User&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
- *             fields: ['name', 'email', 'password']
+ *             fields: [&#39;name&#39;, &#39;email&#39;, &#39;password&#39;]
  *         }
  *     });
  *
- *     var ed = Ext.create('MyApp.model.User', {
- *         name: 'Ed',
- *         email: 'ed@sencha.com',
- *         password: 'secret'
+ *     var ed = Ext.create(&#39;MyApp.model.User&#39;, {
+ *         name: &#39;Ed&#39;,
+ *         email: &#39;ed@sencha.com&#39;,
+ *         password: &#39;secret&#39;
  *     });
  *
  *     form.setRecord(ed);
@@ -83,18 +83,18 @@
  *
  *     //values now looks like this:
  *     {
- *         name: 'Ed',
- *         email: 'ed@sencha.com',
- *         password: 'secret'
+ *         name: &#39;Ed&#39;,
+ *         email: &#39;ed@sencha.com&#39;,
+ *         password: &#39;secret&#39;
  *     }
  *
- * It's also possible to listen to the change events on individual fields to get more timely notification of changes
+ * It&#39;s also possible to listen to the change events on individual fields to get more timely notification of changes
  * that the user is making. Here we expand on the example above with the User model, updating the model as soon as
  * any of the fields are changed:
  *
- *     var form = Ext.create('Ext.form.Panel', {
+ *     var form = Ext.create(&#39;Ext.form.Panel&#39;, {
  *         listeners: {
- *             '&gt; field': {
+ *             &#39;&gt; field&#39;: {
  *                 change: function(field, newValue, oldValue) {
  *                     ed.set(field.getName(), newValue);
  *                 }
@@ -102,19 +102,19 @@
  *         },
  *         items: [
  *             {
- *                 xtype: 'textfield',
- *                 name: 'name',
- *                 label: 'Name'
+ *                 xtype: &#39;textfield&#39;,
+ *                 name: &#39;name&#39;,
+ *                 label: &#39;Name&#39;
  *             },
  *             {
- *                 xtype: 'emailfield',
- *                 name: 'email',
- *                 label: 'Email'
+ *                 xtype: &#39;emailfield&#39;,
+ *                 name: &#39;email&#39;,
+ *                 label: &#39;Email&#39;
  *             },
  *             {
- *                 xtype: 'passwordfield',
- *                 name: 'password',
- *                 label: 'Password'
+ *                 xtype: &#39;passwordfield&#39;,
+ *                 name: &#39;password&#39;,
+ *                 label: &#39;Password&#39;
  *             }
  *         ]
  *     });
@@ -123,20 +123,20 @@
  * container. In this case, we attached a listener to the {@link Ext.field.Text#change change} event of each form
  * field that is a direct child of the form panel. Our listener gets the name of the field that fired the change event,
  * and updates our {@link Ext.data.Model Model} instance with the new value. For example, changing the email field
- * in the form will update the Model's email field.
+ * in the form will update the Model&#39;s email field.
  *
  * ##Submitting forms
  *
  * There are a few ways to submit form data. In our example above we have a Model instance that we have updated, giving
- * us the option to use the Model's {@link Ext.data.Model#save save} method to persist the changes back to our server,
+ * us the option to use the Model&#39;s {@link Ext.data.Model#save save} method to persist the changes back to our server,
  * without using a traditional form submission. Alternatively, we can send a normal browser form submit using the
  * {@link #method} method:
  *
  *     form.submit({
- *         url: 'url/to/submit/to',
- *         method: 'POST',
+ *         url: &#39;url/to/submit/to&#39;,
+ *         method: &#39;POST&#39;,
  *         success: function() {
- *             alert('form submitted successfully!');
+ *             alert(&#39;form submitted successfully!&#39;);
  *         }
  *     });
  *
@@ -150,11 +150,11 @@
  * @aside example forms
  * @aside example forms-toolbars
  */
-Ext.define('Ext.form.Panel', {
-    alternateClassName: 'Ext.form.FormPanel',
-    extend  : 'Ext.Panel',
-    xtype   : 'formpanel',
-    requires: ['Ext.XTemplate', 'Ext.field.Checkbox', 'Ext.Ajax'],
+Ext.define(&#39;Ext.form.Panel&#39;, {
+    alternateClassName: &#39;Ext.form.FormPanel&#39;,
+    extend  : &#39;Ext.Panel&#39;,
+    xtype   : &#39;formpanel&#39;,
+    requires: [&#39;Ext.XTemplate&#39;, &#39;Ext.field.Checkbox&#39;, &#39;Ext.Ajax&#39;],
 
 <span id='Ext-form-Panel-event-submit'>    /**
 </span>     * @event submit
@@ -192,7 +192,7 @@ Ext.define('Ext.form.Panel', {
 </span>         * @cfg {String} baseCls
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'form',
+        baseCls: Ext.baseCSSPrefix + &#39;form&#39;,
 
 <span id='Ext-form-Panel-cfg-standardSubmit'>        /**
 </span>         * @cfg {Boolean} standardSubmit
@@ -240,7 +240,7 @@ Ext.define('Ext.form.Panel', {
 </span>         * @cfg {String} method
          * The method which this form will be submitted. `post` or `get`.
          */
-        method: 'post',
+        method: &#39;post&#39;,
 
 <span id='Ext-form-Panel-cfg-scrollable'>        /**
 </span>         * @cfg {Object} scrollable
@@ -250,16 +250,16 @@ Ext.define('Ext.form.Panel', {
          * scrolled and that scrolling cannot be enabled for this object.
          *
          * Example:
-         *      title: 'Sliders',
-         *      xtype: 'formpanel',
-         *      iconCls: Ext.filterPlatform('blackberry') ? 'list' : null,
+         *      title: &#39;Sliders&#39;,
+         *      xtype: &#39;formpanel&#39;,
+         *      iconCls: Ext.filterPlatform(&#39;blackberry&#39;) ? &#39;list&#39; : null,
          *      scrollable: true,
          *      items: [ ...
          * @inheritdoc
          */
         scrollable: {
             translatable: {
-                translationMethod: 'scrollposition'
+                translationMethod: &#39;scrollposition&#39;
             }
         },
 
@@ -282,8 +282,8 @@ Ext.define('Ext.form.Panel', {
          *     }
          *
          *     api: {
-         *         load: 'App.ss.MyProfile.load',
-         *         submit: 'App.ss.MyProfile.submit'
+         *         load: &#39;App.ss.MyProfile.load&#39;,
+         *         submit: &#39;App.ss.MyProfile.submit&#39;
          *     }
          *
          * Load actions can use {@link #paramOrder} or {@link #paramsAsHash} to customize how the load method
@@ -303,10 +303,10 @@ Ext.define('Ext.form.Panel', {
          * delimited by either whitespace, comma, or pipe. For example,
          * any of the following would be acceptable:
          *
-         *     paramOrder: ['param1','param2','param3']
-         *     paramOrder: 'param1 param2 param3'
-         *     paramOrder: 'param1,param2,param3'
-         *     paramOrder: 'param1|param2|param'
+         *     paramOrder: [&#39;param1&#39;,&#39;param2&#39;,&#39;param3&#39;]
+         *     paramOrder: &#39;param1 param2 param3&#39;
+         *     paramOrder: &#39;param1,param2,param3&#39;
+         *     paramOrder: &#39;param1|param2|param&#39;
          */
         paramOrder: null,
 
@@ -326,7 +326,7 @@ Ext.define('Ext.form.Panel', {
 
 <span id='Ext-form-Panel-cfg-multipartDetection'>        /**
 </span>         * @cfg {Boolean} multipartDetection
-         * If this is enabled the form will automatically detect the need to use 'multipart/form-data' during submission.
+         * If this is enabled the form will automatically detect the need to use &#39;multipart/form-data&#39; during submission.
          */
         multipartDetection: true,
 
@@ -346,9 +346,9 @@ Ext.define('Ext.form.Panel', {
         config.tag = &quot;form&quot;;
         // Added a submit input for standard form submission. This cannot have &quot;display: none;&quot; or it will not work
         config.children.push({
-            tag: 'input',
-            type: 'submit',
-            style: 'visibility: hidden; width: 0; height: 0; position: absolute; right: 0; bottom: 0;'
+            tag: &#39;input&#39;,
+            type: &#39;submit&#39;,
+            style: &#39;visibility: hidden; width: 0; height: 0; position: absolute; right: 0; bottom: 0;&#39;
         });
 
         return config;
@@ -360,7 +360,7 @@ Ext.define('Ext.form.Panel', {
         me.callParent();
 
         me.element.on({
-            submit: 'onSubmit',
+            submit: &#39;onSubmit&#39;,
             scope : me
         });
     },
@@ -420,12 +420,12 @@ Ext.define('Ext.form.Panel', {
 <span id='Ext-form-Panel-method-updateSubmitOnAction'>    updateSubmitOnAction: function(newSubmitOnAction) {
 </span>        if (newSubmitOnAction) {
             this.on({
-                action: 'onFieldAction',
+                action: &#39;onFieldAction&#39;,
                 scope: this
             });
         } else {
             this.un({
-                action: 'onFieldAction',
+                action: &#39;onFieldAction&#39;,
                 scope: this
             });
         }
@@ -453,8 +453,8 @@ Ext.define('Ext.form.Panel', {
      *  2. Submit example:
      *
      *     myForm.submit({
-     *       url: 'PostMyData/To',
-     *       method: 'Post',
+     *       url: &#39;PostMyData/To&#39;,
+     *       method: &#39;Post&#39;,
      *       success: function() { Ext.Msg.alert(&quot;success&quot;); },
      *       failure: function() { Ext.Msg.alert(&quot;error&quot;); }
      *     });
@@ -467,10 +467,10 @@ Ext.define('Ext.form.Panel', {
      * The following are the configurations when submitting via Ajax only:
      *
      * @param {String} options.url
-     * The url for the action (defaults to the form's {@link #url}).
+     * The url for the action (defaults to the form&#39;s {@link #url}).
      *
      * @param {String} options.method
-     * The form method to use (defaults to the form's {@link #method}, or POST if not defined).
+     * The form method to use (defaults to the form&#39;s {@link #method}, or POST if not defined).
      *
      * @param {Object} options.headers
      * Request headers to set for the action.
@@ -548,7 +548,7 @@ Ext.define('Ext.form.Panel', {
             url : me.getUrl() || form.action,
             submit: false,
             form: form,
-            method : me.getMethod() || form.method || 'post',
+            method : me.getMethod() || form.method || &#39;post&#39;,
             autoAbort : false,
             params : null,
             waitMsg : null,
@@ -557,7 +557,7 @@ Ext.define('Ext.form.Panel', {
             failure : null
         }, options || {});
 
-        return me.fireAction('beforesubmit', [me, formValues, options, e], 'doBeforeSubmit');
+        return me.fireAction(&#39;beforesubmit&#39;, [me, formValues, options, e], &#39;doBeforeSubmit&#39;);
     },
 
 <span id='Ext-form-Panel-method-createSubmissionForm'>    createSubmissionForm: function(form, values) {
@@ -627,7 +627,7 @@ Ext.define('Ext.form.Panel', {
 
             // Spinner fields must have their components enabled *before* submitting or else the value
             // will not be posted.
-            var fields = this.query('spinnerfield'),
+            var fields = this.query(&#39;spinnerfield&#39;),
                 ln = fields.length,
                 i, field;
 
@@ -650,21 +650,21 @@ Ext.define('Ext.form.Panel', {
                         options.failure.call(scope, me, response, responseText);
                     }
 
-                    me.fireEvent('exception', me, response);
+                    me.fireEvent(&#39;exception&#39;, me, response);
                 },
                 successFn = function(response, responseText) {
                     if (Ext.isFunction(options.success)) {
                         options.success.call(options.scope || me, me, response, responseText);
                     }
 
-                    me.fireEvent('submit', me, response);
+                    me.fireEvent(&#39;submit&#39;, me, response);
                 },
                 submit;
 
             if (options.waitMsg) {
-                if (typeof waitMsg === 'string') {
+                if (typeof waitMsg === &#39;string&#39;) {
                     waitMsg = {
-                        xtype   : 'loadmask',
+                        xtype   : &#39;loadmask&#39;,
                         message : waitMsg
                     };
                 }
@@ -675,7 +675,7 @@ Ext.define('Ext.form.Panel', {
             if (api) {
                 submit = api.submit;
 
-                if (typeof submit === 'string') {
+                if (typeof submit === &#39;string&#39;) {
                     submit = Ext.direct.Manager.parseMethod(submit);
 
                     if (submit) {
@@ -714,7 +714,7 @@ Ext.define('Ext.form.Panel', {
                 request.params = Ext.merge(me.getBaseParams() || {}, options.params);
                 request.header = Ext.apply(
                     {
-                        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+                        &#39;Content-Type&#39; : &#39;application/x-www-form-urlencoded; charset=UTF-8&#39;
                     },
                     options.headers || {}
                 );
@@ -810,10 +810,10 @@ Ext.define('Ext.form.Panel', {
      * The following are the configurations when loading via Ajax only:
      *
      * @param {String} options.url
-     * The url for the action (defaults to the form's {@link #url}).
+     * The url for the action (defaults to the form&#39;s {@link #url}).
      *
      * @param {String} options.method
-     * The form method to use (defaults to the form's {@link #method}, or GET if not defined).
+     * The form method to use (defaults to the form&#39;s {@link #method}, or GET if not defined).
      *
      * @param {Object} options.headers
      * Request headers to set for the action.
@@ -884,21 +884,21 @@ Ext.define('Ext.form.Panel', {
                     options.success.call(options.scope || me, me, response, data);
                 }
 
-                me.fireEvent('load', me, response);
+                me.fireEvent(&#39;load&#39;, me, response);
             },
             failureFn = function(response, data) {
                 if (Ext.isFunction(options.failure)) {
                     options.failure.call(scope, me, response, data);
                 }
 
-                me.fireEvent('exception', me, response);
+                me.fireEvent(&#39;exception&#39;, me, response);
             },
             load, method, args;
 
         if (options.waitMsg) {
-            if (typeof waitMsg === 'string') {
+            if (typeof waitMsg === &#39;string&#39;) {
                 waitMsg = {
-                    xtype   : 'loadmask',
+                    xtype   : &#39;loadmask&#39;,
                     message : waitMsg
                 };
             }
@@ -909,7 +909,7 @@ Ext.define('Ext.form.Panel', {
         if (api) {
             load = api.load;
 
-            if (typeof load === 'string') {
+            if (typeof load === &#39;string&#39;) {
                 load = Ext.direct.Manager.parseMethod(load);
 
                 if (load) {
@@ -937,11 +937,11 @@ Ext.define('Ext.form.Panel', {
             return Ext.Ajax.request({
                 url: url,
                 timeout: (options.timeout || this.getTimeout()) * 1000,
-                method: options.method || 'GET',
+                method: options.method || &#39;GET&#39;,
                 autoAbort: options.autoAbort,
                 headers: Ext.apply(
                     {
-                        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+                        &#39;Content-Type&#39; : &#39;application/x-www-form-urlencoded; charset=UTF-8&#39;
                     },
                     options.headers || {}
                 ),
@@ -981,20 +981,20 @@ Ext.define('Ext.form.Panel', {
 </span>     * Sets the values of form fields in bulk. Example usage:
      *
      *     myForm.setValues({
-     *         name: 'Ed',
+     *         name: &#39;Ed&#39;,
      *         crazy: true,
-     *         username: 'edspencer'
+     *         username: &#39;edspencer&#39;
      *     });
      *
      * If there groups of checkbox fields with the same name, pass their values in an array. For example:
      *
      *     myForm.setValues({
-     *         name: 'Jacky',
+     *         name: &#39;Jacky&#39;,
      *         crazy: false,
      *         hobbies: [
-     *             'reading',
-     *             'cooking',
-     *             'gaming'
+     *             &#39;reading&#39;,
+     *             &#39;cooking&#39;,
+     *             &#39;gaming&#39;
      *         ]
      *     });
      *
@@ -1061,20 +1061,20 @@ Ext.define('Ext.form.Panel', {
     },
 
 <span id='Ext-form-Panel-method-getValues'>    /**
-</span>     * Returns an object containing the value of each field in the form, keyed to the field's name.
+</span>     * Returns an object containing the value of each field in the form, keyed to the field&#39;s name.
      * For groups of checkbox fields with the same name, it will be arrays of values. For example:
      *
      *     {
      *         name: &quot;Jacky Nguyen&quot;, // From a TextField
      *         favorites: [
-     *             'pizza',
-     *             'noodle',
-     *             'cake'
+     *             &#39;pizza&#39;,
+     *             &#39;noodle&#39;,
+     *             &#39;cake&#39;
      *         ]
      *     }
      *
      * @param {Boolean} [enabled] `true` to return only enabled fields.
-     * @param {Boolean} [all] `true` to return all fields even if they don't have a
+     * @param {Boolean} [all] `true` to return all fields even if they don&#39;t have a
      * {@link Ext.field.Field#name name} configured.
      * @return {Object} Object mapping field name to its value.
      */
@@ -1087,7 +1087,7 @@ Ext.define('Ext.form.Panel', {
         // Function which you give a field and a name, and it will add it into the values
         // object accordingly
         addValue = function(field, name) {
-            if (!all &amp;&amp; (!name || name === 'null') || field.isFile) {
+            if (!all &amp;&amp; (!name || name === &#39;null&#39;) || field.isFile) {
                 return;
             }
 
@@ -1109,7 +1109,7 @@ Ext.define('Ext.form.Panel', {
                     // Check if the value already exists
                     bucket = values[name];
                     if (!Ext.isEmpty(bucket)) {
-                        // if it does and it isn't an array, we need to make it into an array
+                        // if it does and it isn&#39;t an array, we need to make it into an array
                         // so we can push more
                         if (!isArray(bucket)) {
                             bucket = values[name] = [bucket];
@@ -1120,7 +1120,7 @@ Ext.define('Ext.form.Panel', {
                             // Concat it into the other values
                             bucket = values[name] = bucket.concat(value);
                         } else {
-                            // If it isn't an array, just pushed more values
+                            // If it isn&#39;t an array, just pushed more values
                             bucket.push(value);
                         }
                     } else {
@@ -1207,7 +1207,7 @@ Ext.define('Ext.form.Panel', {
             if (item.isField) {
                 itemName = item.getName();
 
-                if ((byName &amp;&amp; itemName == byName) || typeof byName == 'undefined') {
+                if ((byName &amp;&amp; itemName == byName) || typeof byName == &#39;undefined&#39;) {
                     if (fields.hasOwnProperty(itemName)) {
                         if (!Ext.isArray(fields[itemName])) {
                             fields[itemName] = [fields[itemName]];
@@ -1262,8 +1262,8 @@ Ext.define('Ext.form.Panel', {
      * the following options:
      *
      *     {
-     *         message : 'Please Wait',
-     *         cls : 'form-mask'
+     *         message : &#39;Please Wait&#39;,
+     *         cls : &#39;form-mask&#39;
      *     }
      *
      * @param {Object} target
@@ -1272,14 +1272,14 @@ Ext.define('Ext.form.Panel', {
      */
     showMask: function(cfg, target) {
         //&lt;debug&gt;
-        Ext.Logger.warn('showMask is now deprecated. Please use Ext.form.Panel#setMasked instead');
+        Ext.Logger.warn(&#39;showMask is now deprecated. Please use Ext.form.Panel#setMasked instead&#39;);
         //&lt;/debug&gt;
 
         cfg = Ext.isObject(cfg) ? cfg.message : cfg;
 
         if (cfg) {
             this.setMasked({
-                xtype: 'loadmask',
+                xtype: &#39;loadmask&#39;,
                 message: cfg
             });
         } else {
@@ -1399,13 +1399,13 @@ Ext.define('Ext.form.Panel', {
          * @inheritdoc Ext.form.Panel#setRecord
          * @deprecated 2.0.0 Please use #setRecord instead.
          */
-        loadRecord: 'setRecord',
+        loadRecord: &#39;setRecord&#39;,
 <span id='Ext-form-Panel-method-loadModel'>        /**
 </span>         * @method
          * @inheritdoc Ext.form.Panel#setRecord
          * @deprecated 2.0.0 Please use #setRecord instead.
          */
-        loadModel: 'setRecord'
+        loadModel: &#39;setRecord&#39;
     });
 
     this.override({
@@ -1423,7 +1423,7 @@ Ext.define('Ext.form.Panel', {
 </span>             * @cfg {Ext.dom.Element} waitMsgTarget The target of any mask shown on this form.
              * @removed 2.0.0 There is no need to set a mask target anymore. Please see the {@link #masked} configuration instead.
              */
-            if (config &amp;&amp; config.hasOwnProperty('waitMsgTarget')) {
+            if (config &amp;&amp; config.hasOwnProperty(&#39;waitMsgTarget&#39;)) {
                 delete config.waitMsgTarget;
             }
 

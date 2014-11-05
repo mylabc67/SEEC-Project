@@ -23,10 +23,10 @@
  * A Carousel shows only one of its pages at a time but allows you to swipe through with your finger.
  *
  * Carousels can be oriented either horizontally or vertically and are easy to configure - they just work like any other
- * Container. Here's how to set up a simple horizontal Carousel:
+ * Container. Here&#39;s how to set up a simple horizontal Carousel:
  *
  *     @example
- *     Ext.create('Ext.Carousel', {
+ *     Ext.create(&#39;Ext.Carousel&#39;, {
  *         fullscreen: true,
  *
  *         defaults: {
@@ -35,15 +35,15 @@
  *
  *         items: [
  *             {
- *                 html : 'Item 1',
- *                 style: 'background-color: #5E99CC'
+ *                 html : &#39;Item 1&#39;,
+ *                 style: &#39;background-color: #5E99CC&#39;
  *             },
  *             {
- *                 html : 'Item 2',
- *                 style: 'background-color: #759E60'
+ *                 html : &#39;Item 2&#39;,
+ *                 style: &#39;background-color: #759E60&#39;
  *             },
  *             {
- *                 html : 'Item 3'
+ *                 html : &#39;Item 3&#39;
  *             }
  *         ]
  *     });
@@ -51,9 +51,9 @@
  * We can also make Carousels orient themselves vertically:
  *
  *     @example preview
- *     Ext.create('Ext.Carousel', {
+ *     Ext.create(&#39;Ext.Carousel&#39;, {
  *         fullscreen: true,
- *         direction: 'vertical',
+ *         direction: &#39;vertical&#39;,
  *
  *         defaults: {
  *             styleHtmlContent: true
@@ -61,12 +61,12 @@
  *
  *         items: [
  *             {
- *                 html : 'Item 1',
- *                 style: 'background-color: #759E60'
+ *                 html : &#39;Item 1&#39;,
+ *                 style: &#39;background-color: #759E60&#39;
  *             },
  *             {
- *                 html : 'Item 2',
- *                 style: 'background-color: #5E99CC'
+ *                 html : &#39;Item 2&#39;,
+ *                 style: &#39;background-color: #5E99CC&#39;
  *             }
  *         ]
  *     });
@@ -88,18 +88,18 @@
  * @aside guide carousel
  * @aside example carousel
  */
-Ext.define('Ext.carousel.Carousel', {
-    extend: 'Ext.Container',
+Ext.define(&#39;Ext.carousel.Carousel&#39;, {
+    extend: &#39;Ext.Container&#39;,
 
-    alternateClassName: 'Ext.Carousel',
+    alternateClassName: &#39;Ext.Carousel&#39;,
 
-    xtype: 'carousel',
+    xtype: &#39;carousel&#39;,
 
     requires: [
-        'Ext.fx.easing.EaseOut',
-        'Ext.carousel.Item',
-        'Ext.carousel.Indicator',
-        'Ext.util.TranslatableGroup'
+        &#39;Ext.fx.easing.EaseOut&#39;,
+        &#39;Ext.carousel.Item&#39;,
+        &#39;Ext.carousel.Indicator&#39;,
+        &#39;Ext.util.TranslatableGroup&#39;
     ],
 
     config: {
@@ -114,21 +114,21 @@ Ext.define('Ext.carousel.Carousel', {
 </span>         * @cfg
          * @inheritdoc
          */
-        baseCls: 'x-carousel',
+        baseCls: &#39;x-carousel&#39;,
 
 <span id='Ext-carousel-Carousel-cfg-direction'>        /**
 </span>         * @cfg {String} direction
-         * The direction of the Carousel, either 'horizontal' or 'vertical'.
+         * The direction of the Carousel, either &#39;horizontal&#39; or &#39;vertical&#39;.
          * @accessor
          */
-        direction: 'horizontal',
+        direction: &#39;horizontal&#39;,
 
 <span id='Ext-carousel-Carousel-cfg-directionLock'>        directionLock: false,
 </span>
 <span id='Ext-carousel-Carousel-cfg-animation'>        animation: {
 </span>            duration: 250,
             easing: {
-                type: 'ease-out'
+                type: &#39;ease-out&#39;
             }
         },
 
@@ -147,10 +147,10 @@ Ext.define('Ext.carousel.Carousel', {
 
 <span id='Ext-carousel-Carousel-cfg-ui'>        /**
 </span>         * @cfg {String} ui
-         * Style options for Carousel. Default is 'dark'. 'light' is also available.
+         * Style options for Carousel. Default is &#39;dark&#39;. &#39;light&#39; is also available.
          * @accessor
          */
-        ui: 'dark',
+        ui: &#39;dark&#39;,
 
 <span id='Ext-carousel-Carousel-cfg-itemConfig'>        itemConfig: {},
 </span>
@@ -177,13 +177,13 @@ Ext.define('Ext.carousel.Carousel', {
 </span>
 <span id='Ext-carousel-Carousel-method-beforeInitialize'>    beforeInitialize: function() {
 </span>        this.element.on({
-            dragstart: 'onDragStart',
-            drag: 'onDrag',
-            dragend: 'onDragEnd',
+            dragstart: &#39;onDragStart&#39;,
+            drag: &#39;onDrag&#39;,
+            dragend: &#39;onDragEnd&#39;,
             scope: this
         });
 
-        this.element.on('resize', 'onSizeChange', this);
+        this.element.on(&#39;resize&#39;, &#39;onSizeChange&#39;, this);
 
         this.carouselItems = [];
 
@@ -204,7 +204,7 @@ Ext.define('Ext.carousel.Carousel', {
             itemConfig = this.getItemConfig(),
             itemLength = this.getItemLength(),
             direction = this.getDirection(),
-            setterName = direction === 'horizontal' ? 'setWidth' : 'setHeight',
+            setterName = direction === &#39;horizontal&#39; ? &#39;setWidth&#39; : &#39;setHeight&#39;,
             i, item;
 
         for (i = ln; i &lt; total; i++) {
@@ -218,7 +218,7 @@ Ext.define('Ext.carousel.Carousel', {
             innerElement.append(item.renderElement);
 
             if (isRendered &amp;&amp; item.setRendered(true)) {
-                item.fireEvent('renderedchange', this, item, true);
+                item.fireEvent(&#39;renderedchange&#39;, this, item, true);
             }
         }
 
@@ -350,7 +350,7 @@ Ext.define('Ext.carousel.Carousel', {
         if (!translatable) {
             this.translatable = translatable = new Ext.util.TranslatableGroup;
             translatable.setItems(this.orderedCarouselItems);
-            translatable.on('animationend', 'onAnimationEnd', this);
+            translatable.on(&#39;animationend&#39;, &#39;onAnimationEnd&#39;, this);
         }
 
         return translatable;
@@ -365,8 +365,8 @@ Ext.define('Ext.carousel.Carousel', {
         this.isDragging = true;
 
         if (directionLock) {
-            if ((direction === 'horizontal' &amp;&amp; absDeltaX &gt; absDeltaY)
-                || (direction === 'vertical' &amp;&amp; absDeltaY &gt; absDeltaX)) {
+            if ((direction === &#39;horizontal&#39; &amp;&amp; absDeltaX &gt; absDeltaY)
+                || (direction === &#39;vertical&#39; &amp;&amp; absDeltaY &gt; absDeltaX)) {
                 e.stopPropagation();
             }
             else {
@@ -388,7 +388,7 @@ Ext.define('Ext.carousel.Carousel', {
 
         var startOffset = this.dragStartOffset,
             direction = this.getDirection(),
-            delta = direction === 'horizontal' ? e.deltaX : e.deltaY,
+            delta = direction === &#39;horizontal&#39; ? e.deltaX : e.deltaY,
             lastOffset = this.offset,
             flickStartTime = this.flickStartTime,
             dragDirection = this.dragDirection,
@@ -482,7 +482,7 @@ Ext.define('Ext.carousel.Carousel', {
 <span id='Ext-carousel-Carousel-method-updateDirection'>    updateDirection: function(direction) {
 </span>        var indicator = this.getIndicator();
 
-        this.currentAxis = (direction === 'horizontal') ? 'x' : 'y';
+        this.currentAxis = (direction === &#39;horizontal&#39;) ? &#39;x&#39; : &#39;y&#39;;
 
         if (indicator) {
             indicator.setDirection(direction);
@@ -559,7 +559,7 @@ Ext.define('Ext.carousel.Carousel', {
             },
             itemOffset, containerSize;
 
-        if (this.getDirection() === 'horizontal') {
+        if (this.getDirection() === &#39;horizontal&#39;) {
             containerSize = element.getWidth();
         }
         else {
@@ -805,8 +805,8 @@ Ext.define('Ext.carousel.Carousel', {
 
             indicator.setUi(this.getUi());
             indicator.on({
-                next: 'next',
-                previous: 'previous',
+                next: &#39;next&#39;,
+                previous: &#39;previous&#39;,
                 scope: this
             });
         }
@@ -827,9 +827,9 @@ Ext.define('Ext.carousel.Carousel', {
     //&lt;deprecated product=touch since=2.0&gt;
     this.override({
         constructor: function(config) {
-            if (config &amp;&amp; 'activeIndex' in config) {
+            if (config &amp;&amp; &#39;activeIndex&#39; in config) {
                 //&lt;debug warn&gt;
-                Ext.Logger.deprecate(&quot;'activeIndex' config is deprecated, please use 'activeItem' config instead }&quot;);
+                Ext.Logger.deprecate(&quot;&#39;activeIndex&#39; config is deprecated, please use &#39;activeItem&#39; config instead }&quot;);
                 //&lt;/debug&gt;
 
                 config.activeItem = config.activeIndex;
@@ -841,27 +841,27 @@ Ext.define('Ext.carousel.Carousel', {
 
     Ext.deprecateClassMethod(this, {
 <span id='Ext-carousel-Carousel-method-isVertical'>        /**
-</span>         * Returns `true` when {@link #direction} is 'vertical'.
+</span>         * Returns `true` when {@link #direction} is &#39;vertical&#39;.
          * @return {Boolean}
-         * @deprecated 2.0.0 Use `getDirection() === 'vertical'` instead.
+         * @deprecated 2.0.0 Use `getDirection() === &#39;vertical&#39;` instead.
          */
         isVertical: function getDirection() {
-            return this.getDirection() === 'vertical';
+            return this.getDirection() === &#39;vertical&#39;;
         },
 <span id='Ext-carousel-Carousel-method-isHorizontal'>        /**
-</span>         * Returns `true` when {@link #direction} is 'horizontal'.
+</span>         * Returns `true` when {@link #direction} is &#39;horizontal&#39;.
          * @return {Boolean}
-         * @deprecated 2.0.0 Use `getDirection() === 'horizontal'` instead.
+         * @deprecated 2.0.0 Use `getDirection() === &#39;horizontal&#39;` instead.
          */
         isHorizontal: function getDirection() {
-            return this.getDirection() === 'horizontal';
+            return this.getDirection() === &#39;horizontal&#39;;
         },
 <span id='Ext-carousel-Carousel-method-prev'>        /**
 </span>         * @method
          * @inheritdoc Ext.carousel.Carousel#previous
          * @deprecated 2.0.0 Use {@link Ext.carousel.Carousel#previous} instead.
          */
-        prev: 'previous'
+        prev: &#39;previous&#39;
     });
     //&lt;/deprecated&gt;
 });

@@ -18,12 +18,12 @@
   <pre class="prettyprint lang-js"><span id='Ext-behavior-Translatable'>/**
 </span> * @private
  */
-Ext.define('Ext.behavior.Translatable', {
+Ext.define(&#39;Ext.behavior.Translatable&#39;, {
 
-    extend: 'Ext.behavior.Behavior',
+    extend: &#39;Ext.behavior.Behavior&#39;,
 
     requires: [
-        'Ext.util.Translatable'
+        &#39;Ext.util.Translatable&#39;
     ],
 
 <span id='Ext-behavior-Translatable-method-setConfig'>    setConfig: function(config) {
@@ -34,7 +34,7 @@ Ext.define('Ext.behavior.Translatable', {
             if (!translatable) {
                 this.translatable = translatable = new Ext.util.Translatable(config);
                 translatable.setElement(component.renderElement);
-                translatable.on('destroy', 'onTranslatableDestroy', this);
+                translatable.on(&#39;destroy&#39;, &#39;onTranslatableDestroy&#39;, this);
             }
             else if (Ext.isObject(config)) {
                 translatable.setConfig(config);

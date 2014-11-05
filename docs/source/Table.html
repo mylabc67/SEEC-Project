@@ -15,26 +15,26 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js">Ext.define('Ext.table.Table', {
-    extend: 'Ext.Container',
+  <pre class="prettyprint lang-js">Ext.define(&#39;Ext.table.Table&#39;, {
+    extend: &#39;Ext.Container&#39;,
 
-    requires: ['Ext.table.Row'],
+    requires: [&#39;Ext.table.Row&#39;],
 
-    xtype: 'table',
+    xtype: &#39;table&#39;,
 
     config: {
-        baseCls: 'x-table',
-        defaultType: 'tablerow'
+        baseCls: &#39;x-table&#39;,
+        defaultType: &#39;tablerow&#39;
     },
 
     cachedConfig: {
         fixedLayout: false
     },
 
-    fixedLayoutCls: 'x-table-fixed',
+    fixedLayoutCls: &#39;x-table-fixed&#39;,
 
     updateFixedLayout: function(fixedLayout) {
-        this.innerElement[fixedLayout ? 'addCls' : 'removeCls'](this.fixedLayoutCls);
+        this.innerElement[fixedLayout ? &#39;addCls&#39; : &#39;removeCls&#39;](this.fixedLayoutCls);
     }
 });
 </pre>

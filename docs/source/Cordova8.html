@@ -18,28 +18,28 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-device-Cordova'>/**
 </span> * @private
  */
-Ext.define('Ext.device.device.Cordova', {
-    alternateClassName: 'Ext.device.device.PhoneGap',
+Ext.define(&#39;Ext.device.device.Cordova&#39;, {
+    alternateClassName: &#39;Ext.device.device.PhoneGap&#39;,
 
-    extend: 'Ext.device.device.Abstract',
+    extend: &#39;Ext.device.device.Abstract&#39;,
 
 <span id='Ext-device-device-Cordova-property-availableListeners'>    availableListeners: [
-</span>        'pause',
-        'resume',
-        'backbutton',
-        'batterycritical',
-        'batterylow',
-        'batterystatus',
-        'menubutton',
-        'searchbutton',
-        'startcallbutton',
-        'endcallbutton',
-        'volumeupbutton',
-        'volumedownbutton'
+</span>        &#39;pause&#39;,
+        &#39;resume&#39;,
+        &#39;backbutton&#39;,
+        &#39;batterycritical&#39;,
+        &#39;batterylow&#39;,
+        &#39;batterystatus&#39;,
+        &#39;menubutton&#39;,
+        &#39;searchbutton&#39;,
+        &#39;startcallbutton&#39;,
+        &#39;endcallbutton&#39;,
+        &#39;volumeupbutton&#39;,
+        &#39;volumedownbutton&#39;
     ],
 
 <span id='Ext-device-device-Cordova-method-constructor'>    constructor: function() {
-</span>        // We can't get the device details until the device is ready, so lets wait.
+</span>        // We can&#39;t get the device details until the device is ready, so lets wait.
         if (Ext.isReady) {
             this.onReady();
         } else {
@@ -51,21 +51,21 @@ Ext.define('Ext.device.device.Cordova', {
 </span>     * @property {String} cordova
      * Returns the version of Cordova running on the device.
      *
-     *     alert('Device cordova: ' + Ext.device.Device.cordova);
+     *     alert(&#39;Device cordova: &#39; + Ext.device.Device.cordova);
      */
 
 <span id='Ext-device-device-Cordova-property-version'>    /**
 </span>     * @property {String} version
      * Returns the operating system version.
      *
-     *     alert('Device Version: ' + Ext.device.Device.version);
+     *     alert(&#39;Device Version: &#39; + Ext.device.Device.version);
      */
 
 <span id='Ext-device-device-Cordova-property-model'>    /**
 </span>     * @property {String} model
-     * Returns the device's model name.
+     * Returns the device&#39;s model name.
      *
-     *     alert('Device Model: ' + Ext.device.Device.model);
+     *     alert(&#39;Device Model: &#39; + Ext.device.Device.model);
      */
     
 <span id='Ext-device-device-Cordova-event-pause'>    /**

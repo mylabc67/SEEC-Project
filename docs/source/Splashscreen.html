@@ -28,23 +28,23 @@
  *
  * @aside guide native_apis
  */
-Ext.define('Ext.device.Splashscreen', {
+Ext.define(&#39;Ext.device.Splashscreen&#39;, {
     singleton: true,
 
     requires: [
-        'Ext.device.splashscreen.Cordova',
-        'Ext.device.splashscreen.Simulator'
+        &#39;Ext.device.splashscreen.Cordova&#39;,
+        &#39;Ext.device.splashscreen.Simulator&#39;
     ],
 
 <span id='Ext-device-Splashscreen-method-constructor'>    constructor: function() {
 </span>        var browserEnv = Ext.browser.is;
         if (browserEnv.WebView) {
             if (browserEnv.Cordova) {
-                return Ext.create('Ext.device.splashscreen.Cordova');
+                return Ext.create(&#39;Ext.device.splashscreen.Cordova&#39;);
             }
         }
 
-        return Ext.create('Ext.device.splashscreen.Simulator');
+        return Ext.create(&#39;Ext.device.splashscreen.Simulator&#39;);
     }
 });
 </pre>

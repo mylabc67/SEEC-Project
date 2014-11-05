@@ -23,15 +23,15 @@
  * object and modifying that request based on the Operations.
  *
  * For example a Ext.data.writer.Json would format the Operations and their {@link Ext.data.Model}
- * instances based on the config options passed to the JsonWriter's constructor.
+ * instances based on the config options passed to the JsonWriter&#39;s constructor.
  *
  * Writers are not needed for any kind of local storage - whether via a
  * {@link Ext.data.proxy.WebStorage Web Storage proxy} (see {@link Ext.data.proxy.LocalStorage localStorage})
  * or just in memory via a {@link Ext.data.proxy.Memory MemoryProxy}.
  */
-Ext.define('Ext.data.writer.Writer', {
-    alias: 'writer.base',
-    alternateClassName: ['Ext.data.DataWriter', 'Ext.data.Writer'],
+Ext.define(&#39;Ext.data.writer.Writer&#39;, {
+    alias: &#39;writer.base&#39;,
+    alternateClassName: [&#39;Ext.data.DataWriter&#39;, &#39;Ext.data.Writer&#39;],
 
     config: {
 <span id='Ext-data-writer-Writer-cfg-writeAllFields'>        /**
@@ -45,35 +45,35 @@ Ext.define('Ext.data.writer.Writer', {
 </span>         * @cfg {String} nameProperty This property is used to read the key for each value that will be sent to the server.
          * For example:
          *
-         *     Ext.define('Person', {
-         *         extend: 'Ext.data.Model',
+         *     Ext.define(&#39;Person&#39;, {
+         *         extend: &#39;Ext.data.Model&#39;,
          *         fields: [{
-         *             name: 'first',
-         *             mapping: 'firstName'
+         *             name: &#39;first&#39;,
+         *             mapping: &#39;firstName&#39;
          *         }, {
-         *             name: 'last',
-         *             mapping: 'lastName'
+         *             name: &#39;last&#39;,
+         *             mapping: &#39;lastName&#39;
          *         }, {
-         *             name: 'age'
+         *             name: &#39;age&#39;
          *         }]
          *     });
          *
          *     new Ext.data.writer.Writer({
          *         writeAllFields: true,
-         *         nameProperty: 'mapping'
+         *         nameProperty: &#39;mapping&#39;
          *     });
          *
          * The following data will be sent to the server:
          *
          *     {
-         *         firstName: 'first name value',
-         *         lastName: 'last name value',
+         *         firstName: &#39;first name value&#39;,
+         *         lastName: &#39;last name value&#39;,
          *         age: 1
          *     }
          *
          * If the value is not present, the field name will always be used.
          */
-        nameProperty: 'name'
+        nameProperty: &#39;name&#39;
     },
 
 <span id='Ext-data-writer-Writer-method-constructor'>    /**
@@ -85,7 +85,7 @@ Ext.define('Ext.data.writer.Writer', {
     },
 
 <span id='Ext-data-writer-Writer-method-write'>    /**
-</span>     * Prepares a Proxy's Ext.data.Request object.
+</span>     * Prepares a Proxy&#39;s Ext.data.Request object.
      * @param {Ext.data.Request} request The request object.
      * @return {Ext.data.Request} The modified request object.
      */
@@ -107,11 +107,11 @@ Ext.define('Ext.data.writer.Writer', {
             return null;
         }
 
-        var dateFormat = field.getDateFormat() || 'timestamp';
+        var dateFormat = field.getDateFormat() || &#39;timestamp&#39;;
         switch (dateFormat) {
-            case 'timestamp':
+            case &#39;timestamp&#39;:
                 return date.getTime()/1000;
-            case 'time':
+            case &#39;time&#39;:
                 return date.getTime();
             default:
                 return Ext.Date.format(date, dateFormat);
@@ -138,7 +138,7 @@ Ext.define('Ext.data.writer.Writer', {
                 if (field.getPersist()) {
                     name = field.config[nameProperty] || field.getName();
                     value = record.get(field.getName());
-                    if (field.getType().type == 'date') {
+                    if (field.getType().type == &#39;date&#39;) {
                         value = this.writeDate(field, value);
                     }
                     data[name] = value;
@@ -153,7 +153,7 @@ Ext.define('Ext.data.writer.Writer', {
                     if (field.getPersist()) {
                         name = field.config[nameProperty] || field.getName();
                         value = changes[key];
-                        if (field.getType().type == 'date') {
+                        if (field.getType().type == &#39;date&#39;) {
                             value = this.writeDate(field, value);
                         }
                         data[name] = value;
@@ -182,8 +182,8 @@ Ext.define('Ext.data.writer.Writer', {
                 config[key] = data[key];
                 delete data[key];
                 // &lt;debug warn&gt;
-                Ext.Logger.deprecate(key + ' is deprecated as a property directly on the Writer prototype. ' +
-                    'Please put it inside the config object.');
+                Ext.Logger.deprecate(key + &#39; is deprecated as a property directly on the Writer prototype. &#39; +
+                    &#39;Please put it inside the config object.&#39;);
                 // &lt;/debug&gt;
             }
         }

@@ -19,35 +19,35 @@
 </span> * @author Ed Spencer
  * @aside guide models
  *
- * Associations enable you to express relationships between different {@link Ext.data.Model Models}. Let's say we're
- * writing an ecommerce system where Users can make Orders - there's a relationship between these Models that we can
+ * Associations enable you to express relationships between different {@link Ext.data.Model Models}. Let&#39;s say we&#39;re
+ * writing an ecommerce system where Users can make Orders - there&#39;s a relationship between these Models that we can
  * express like this:
  *
- *     Ext.define('MyApp.model.User', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;MyApp.model.User&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *
  *         config: {
- *             fields: ['id', 'name', 'email'],
+ *             fields: [&#39;id&#39;, &#39;name&#39;, &#39;email&#39;],
  *             hasMany: {
- *                 model: 'MyApp.model.Order',
- *                 name: 'orders'
+ *                 model: &#39;MyApp.model.Order&#39;,
+ *                 name: &#39;orders&#39;
  *             }
  *         }
  *     });
  *
- *     Ext.define('MyApp.model.Order', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;MyApp.model.Order&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *
  *         config: {
- *             fields: ['id', 'user_id', 'status', 'price'],
- *             belongsTo: 'MyApp.model.User'
+ *             fields: [&#39;id&#39;, &#39;user_id&#39;, &#39;status&#39;, &#39;price&#39;],
+ *             belongsTo: &#39;MyApp.model.User&#39;
  *         }
  *     });
  *
- * We've set up two models - User and Order - and told them about each other. You can set up as many associations on
+ * We&#39;ve set up two models - User and Order - and told them about each other. You can set up as many associations on
  * each Model as you need using the two default types - {@link Ext.data.association.HasMany hasMany} and
- * {@link Ext.data.association.BelongsTo belongsTo}. There's much more detail on the usage of each of those inside their
- * documentation pages. If you're not familiar with Models already, {@link Ext.data.Model there is plenty on those too}.
+ * {@link Ext.data.association.BelongsTo belongsTo}. There&#39;s much more detail on the usage of each of those inside their
+ * documentation pages. If you&#39;re not familiar with Models already, {@link Ext.data.Model there is plenty on those too}.
  *
  * ## Further Reading
  *
@@ -91,31 +91,31 @@
  *     }
  *
  *     // Client code
- *     Ext.define('MyApp.model.Group', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;MyApp.model.Group&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
- *             fields: ['id', 'parent_id', 'name'],
+ *             fields: [&#39;id&#39;, &#39;parent_id&#39;, &#39;name&#39;],
  *             proxy: {
- *                 type: 'ajax',
- *                 url: 'data.json',
+ *                 type: &#39;ajax&#39;,
+ *                 url: &#39;data.json&#39;,
  *                 reader: {
- *                     type: 'json',
- *                     root: 'groups'
+ *                     type: &#39;json&#39;,
+ *                     root: &#39;groups&#39;
  *                 }
  *             },
  *             associations: [{
- *                 type: 'hasMany',
- *                 model: 'MyApp.model.Group',
- *                 primaryKey: 'id',
- *                 foreignKey: 'parent_id',
+ *                 type: &#39;hasMany&#39;,
+ *                 model: &#39;MyApp.model.Group&#39;,
+ *                 primaryKey: &#39;id&#39;,
+ *                 foreignKey: &#39;parent_id&#39;,
  *                 autoLoad: true,
- *                 associationKey: 'nested.child_groups' // read child data from nested.child_groups
+ *                 associationKey: &#39;nested.child_groups&#39; // read child data from nested.child_groups
  *             }, {
- *                 type: 'belongsTo',
- *                 model: 'MyApp.model.Group',
- *                 primaryKey: 'id',
- *                 foreignKey: 'parent_id',
- *                 associationKey: 'parent_group' // read parent data from parent_group
+ *                 type: &#39;belongsTo&#39;,
+ *                 model: &#39;MyApp.model.Group&#39;,
+ *                 primaryKey: &#39;id&#39;,
+ *                 foreignKey: &#39;parent_id&#39;,
+ *                 associationKey: &#39;parent_group&#39; // read parent data from parent_group
  *             }]
  *         }
  *     });
@@ -124,20 +124,20 @@
  *     Ext.onReady(function(){
  *         MyApp.model.Group.load(10, {
  *             success: function(group){
- *                 console.log(group.getGroup().get('name'));
+ *                 console.log(group.getGroup().get(&#39;name&#39;));
  *
  *                 group.groups().each(function(rec){
- *                     console.log(rec.get('name'));
+ *                     console.log(rec.get(&#39;name&#39;));
  *                 });
  *             }
  *         });
  *
  *     });
  */
-Ext.define('Ext.data.association.Association', {
-    alternateClassName: 'Ext.data.Association',
+Ext.define(&#39;Ext.data.association.Association&#39;, {
+    alternateClassName: &#39;Ext.data.Association&#39;,
 
-    requires: ['Ext.data.ModelManager'],
+    requires: [&#39;Ext.data.ModelManager&#39;],
 
     config: {
 <span id='Ext-data-association-Association-cfg-ownerModel'>        /**
@@ -170,7 +170,7 @@ Ext.define('Ext.data.association.Association', {
 
 <span id='Ext-data-association-Association-cfg-associationKey'>        /**
 </span>         * @cfg {String} associationKey The name of the property in the data to read the association from.
-         * Defaults to the {@link #associatedName} plus '_id'.
+         * Defaults to the {@link #associatedName} plus &#39;_id&#39;.
          */
         associationKey: undefined,
 
@@ -178,7 +178,7 @@ Ext.define('Ext.data.association.Association', {
 </span>         * @cfg {String} primaryKey The name of the primary key on the associated model.
          * In general this will be the {@link Ext.data.Model#idProperty} of the Model.
          */
-        primaryKey: 'id',
+        primaryKey: &#39;id&#39;,
 
 <span id='Ext-data-association-Association-cfg-reader'>        /**
 </span>         * @cfg {Ext.data.reader.Reader} reader A special reader to read associated data.
@@ -190,8 +190,8 @@ Ext.define('Ext.data.association.Association', {
          * Use `hasMany` to create a HasMany association.
          *
          *     associations: [{
-         *         type: 'hasMany',
-         *         model: 'User'
+         *         type: &#39;hasMany&#39;,
+         *         model: &#39;User&#39;
          *     }]
          */
         type: null,
@@ -208,7 +208,7 @@ Ext.define('Ext.data.association.Association', {
                     };
                 }
                 association.type = association.type.toLowerCase();
-                return Ext.factory(association, Ext.data.association.Association, null, 'association');
+                return Ext.factory(association, Ext.data.association.Association, null, &#39;association&#39;);
             }
 
             return association;
@@ -233,7 +233,7 @@ Ext.define('Ext.data.association.Association', {
 <span id='Ext-data-association-Association-method-applyOwnerModel'>    applyOwnerModel: function(ownerName) {
 </span>        var ownerModel = Ext.data.ModelManager.getModel(ownerName);
         if (ownerModel === undefined) {
-            Ext.Logger.error('The configured ownerModel was not valid (you tried ' + ownerName + ')');
+            Ext.Logger.error(&#39;The configured ownerModel was not valid (you tried &#39; + ownerName + &#39;)&#39;);
         }
         return ownerModel;
     },
@@ -242,7 +242,7 @@ Ext.define('Ext.data.association.Association', {
 </span>        if (!ownerName) {
             ownerName = this.getOwnerModel().modelName;
         }
-        ownerName = ownerName.slice(ownerName.lastIndexOf('.')+1);
+        ownerName = ownerName.slice(ownerName.lastIndexOf(&#39;.&#39;)+1);
         return ownerName;
     },
 
@@ -255,7 +255,7 @@ Ext.define('Ext.data.association.Association', {
 <span id='Ext-data-association-Association-method-applyAssociatedModel'>    applyAssociatedModel: function(associatedName) {
 </span>        var associatedModel = Ext.data.ModelManager.types[associatedName];
         if (associatedModel === undefined) {
-            Ext.Logger.error('The configured associatedModel was not valid (you tried ' + associatedName + ')');
+            Ext.Logger.error(&#39;The configured associatedModel was not valid (you tried &#39; + associatedName + &#39;)&#39;);
         }
         return associatedModel;
     },
@@ -264,7 +264,7 @@ Ext.define('Ext.data.association.Association', {
 </span>        if (!associatedName) {
             associatedName = this.getAssociatedModel().modelName;
         }
-        associatedName = associatedName.slice(associatedName.lastIndexOf('.')+1);
+        associatedName = associatedName.slice(associatedName.lastIndexOf(&#39;.&#39;)+1);
         return associatedName;
     },
 
@@ -284,12 +284,12 @@ Ext.define('Ext.data.association.Association', {
 
             if (!reader.isReader) {
                 Ext.applyIf(reader, {
-                    type: 'json'
+                    type: &#39;json&#39;
                 });
             }
         }
 
-        return Ext.factory(reader, Ext.data.Reader, this.getReader(), 'reader');
+        return Ext.factory(reader, Ext.data.Reader, this.getReader(), &#39;reader&#39;);
     },
 
 <span id='Ext-data-association-Association-method-updateReader'>    updateReader: function(reader) {
@@ -310,8 +310,8 @@ Ext.define('Ext.data.association.Association', {
                 config[key] = data[key];
                 delete data[key];
                 // &lt;debug warn&gt;
-                Ext.Logger.deprecate(key + ' is deprecated as a property directly on the Association prototype. ' +
-                    'Please put it inside the config object.');
+                Ext.Logger.deprecate(key + &#39; is deprecated as a property directly on the Association prototype. &#39; +
+                    &#39;Please put it inside the config object.&#39;);
                 // &lt;/debug&gt;
             }
         }

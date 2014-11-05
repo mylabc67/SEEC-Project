@@ -18,12 +18,12 @@
   <pre class="prettyprint lang-js"><span id='Ext-behavior-Draggable'>/**
 </span> * @private
  */
-Ext.define('Ext.behavior.Draggable', {
+Ext.define(&#39;Ext.behavior.Draggable&#39;, {
 
-    extend: 'Ext.behavior.Behavior',
+    extend: &#39;Ext.behavior.Behavior&#39;,
 
     requires: [
-        'Ext.util.Draggable'
+        &#39;Ext.util.Draggable&#39;
     ],
 
 <span id='Ext-behavior-Draggable-method-setConfig'>    setConfig: function(config) {
@@ -36,7 +36,7 @@ Ext.define('Ext.behavior.Draggable', {
                 this.draggable = draggable = new Ext.util.Draggable(config);
                 draggable.setTranslatable(component.getTranslatable());
                 draggable.setElement(component.renderElement);
-                draggable.on('destroy', 'onDraggableDestroy', this);
+                draggable.on(&#39;destroy&#39;, &#39;onDraggableDestroy&#39;, this);
 
                 component.on(this.listeners);
             }

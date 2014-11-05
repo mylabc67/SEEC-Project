@@ -24,14 +24,14 @@
  * ## Examples
  *
  *     @example miniphone preview
- *     var datePicker = Ext.create('Ext.picker.Date');
+ *     var datePicker = Ext.create(&#39;Ext.picker.Date&#39;);
  *     Ext.Viewport.add(datePicker);
  *     datePicker.show();
  *
  * You may want to adjust the {@link #yearFrom} and {@link #yearTo} properties:
  *
  *     @example miniphone preview
- *     var datePicker = Ext.create('Ext.picker.Date', {
+ *     var datePicker = Ext.create(&#39;Ext.picker.Date&#39;, {
  *         yearFrom: 2000,
  *         yearTo  : 2015
  *     });
@@ -41,7 +41,7 @@
  * You can set the value of the {@link Ext.picker.Date} to the current date using `new Date()`:
  *
  *     @example miniphone preview
- *     var datePicker = Ext.create('Ext.picker.Date', {
+ *     var datePicker = Ext.create(&#39;Ext.picker.Date&#39;, {
  *         value: new Date()
  *     });
  *     Ext.Viewport.add(datePicker);
@@ -50,17 +50,17 @@
  * And you can hide the titles from each of the slots by using the {@link #useTitles} configuration:
  *
  *     @example miniphone preview
- *     var datePicker = Ext.create('Ext.picker.Date', {
+ *     var datePicker = Ext.create(&#39;Ext.picker.Date&#39;, {
  *         useTitles: false
  *     });
  *     Ext.Viewport.add(datePicker);
  *     datePicker.show();
  */
-Ext.define('Ext.picker.Date', {
-    extend: 'Ext.picker.Picker',
-    xtype: 'datepicker',
-    alternateClassName: 'Ext.DatePicker',
-    requires: ['Ext.DateExtras', 'Ext.util.InputBlocker'],
+Ext.define(&#39;Ext.picker.Date&#39;, {
+    extend: &#39;Ext.picker.Picker&#39;,
+    xtype: &#39;datepicker&#39;,
+    alternateClassName: &#39;Ext.DatePicker&#39;,
+    requires: [&#39;Ext.DateExtras&#39;, &#39;Ext.util.InputBlocker&#39;],
 
 <span id='Ext-picker-Date-event-change'>    /**
 </span>     * @event change
@@ -91,33 +91,33 @@ Ext.define('Ext.picker.Date', {
          * The label to show for the month column.
          * @accessor
          */
-        monthText: 'Month',
+        monthText: &#39;Month&#39;,
 
 <span id='Ext-picker-Date-cfg-dayText'>        /**
 </span>         * @cfg {String} dayText
          * The label to show for the day column.
          * @accessor
          */
-        dayText: 'Day',
+        dayText: &#39;Day&#39;,
 
 <span id='Ext-picker-Date-cfg-yearText'>        /**
 </span>         * @cfg {String} yearText
          * The label to show for the year column.
          * @accessor
          */
-        yearText: 'Year',
+        yearText: &#39;Year&#39;,
 
 <span id='Ext-picker-Date-cfg-slotOrder'>        /**
 </span>         * @cfg {Array} slotOrder
          * An array of strings that specifies the order of the slots.
          * @accessor
          */
-        slotOrder: ['month', 'day', 'year'],
+        slotOrder: [&#39;month&#39;, &#39;day&#39;, &#39;year&#39;],
 
 <span id='Ext-picker-Date-cfg-value'>        /**
 </span>         * @cfg {Object/Date} value
-         * Default value for the field and the internal {@link Ext.picker.Date} component. Accepts an object of 'year',
-         * 'month' and 'day' values, all of which should be numbers, or a {@link Date}.
+         * Default value for the field and the internal {@link Ext.picker.Date} component. Accepts an object of &#39;year&#39;,
+         * &#39;month&#39; and &#39;day&#39; values, all of which should be numbers, or a {@link Date}.
          *
          * Examples:
          *
@@ -145,11 +145,11 @@ Ext.define('Ext.picker.Date', {
     },
 
 <span id='Ext-picker-Date-property-platformConfig'>    platformConfig: [{
-</span>        theme: ['Windows'],
+</span>        theme: [&#39;Windows&#39;],
         doneButton: {
-            iconCls: 'check2',
-            ui: 'round',
-            text: ''
+            iconCls: &#39;check2&#39;,
+            ui: &#39;round&#39;,
+            text: &#39;&#39;
         }
     }],
 
@@ -158,7 +158,7 @@ Ext.define('Ext.picker.Date', {
 
         this.on({
             scope: this,
-            delegate: '&gt; slot',
+            delegate: &#39;&gt; slot&#39;,
             slotpick: this.onSlotPick
         });
 
@@ -358,26 +358,26 @@ Ext.define('Ext.picker.Date', {
      */
     createSlot: function(name, days, months, years) {
         switch (name) {
-            case 'year':
+            case &#39;year&#39;:
                 return {
-                    name: 'year',
-                    align: 'center',
+                    name: &#39;year&#39;,
+                    align: &#39;center&#39;,
                     data: years,
                     title: this.getYearText(),
                     flex: 3
                 };
-            case 'month':
+            case &#39;month&#39;:
                 return {
                     name: name,
-                    align: 'right',
+                    align: &#39;right&#39;,
                     data: months,
                     title: this.getMonthText(),
                     flex: 4
                 };
-            case 'day':
+            case &#39;day&#39;:
                 return {
-                    name: 'day',
-                    align: 'center',
+                    name: &#39;day&#39;,
+                    align: &#39;center&#39;,
                     data: days,
                     title: this.getDayText(),
                     flex: 2
@@ -408,7 +408,7 @@ Ext.define('Ext.picker.Date', {
             });
         }
 
-        // We don't need to update the slot days unless it has changed
+        // We don&#39;t need to update the slot days unless it has changed
         if (slot.getStore().getCount() == days.length) {
             return;
         }
@@ -477,7 +477,7 @@ Ext.define('Ext.picker.Date', {
         }
 
         if (testValue != oldValue) {
-            this.fireEvent('change', this, newValue);
+            this.fireEvent(&#39;change&#39;, this, newValue);
         }
 
         this.hide();

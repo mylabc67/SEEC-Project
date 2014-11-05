@@ -16,37 +16,37 @@
 </head>
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js"><span id='Ext-Toast'>/**
-</span> * A 'Toast' is a simple modal message that is displayed on the screen and then automatically closed by a timeout or by a user tapping
+</span> * A &#39;Toast&#39; is a simple modal message that is displayed on the screen and then automatically closed by a timeout or by a user tapping
  * outside of the toast itself. Think about it like a text only alert box that will self destruct. **A Toast should not be instantiated manually**
- * but creating by calling 'Ext.toast(message, timeout)'. This will create one reusable toast container and content will be swapped out as
+ * but creating by calling &#39;Ext.toast(message, timeout)&#39;. This will create one reusable toast container and content will be swapped out as
  * toast messages are queued or displayed.
  *
  *  # Simple Toast
  *
  *      @example miniphone
- *      Ext.toast('Hello Sencha!'); // Toast will close in 1000 milliseconds (default)
+ *      Ext.toast(&#39;Hello Sencha!&#39;); // Toast will close in 1000 milliseconds (default)
  *
  *  # Toast with Timeout
  *
  *      @example miniphone
- *      Ext.toast('Hello Sencha!', 5000); // Toast will close in 5000 milliseconds
+ *      Ext.toast(&#39;Hello Sencha!&#39;, 5000); // Toast will close in 5000 milliseconds
  *
  *  # Toast with config
  *
  *      @example miniphone
- *      Ext.toast({message: 'Hello Sencha!', timeout: 2000}); // Toast will close in 2000 milliseconds
+ *      Ext.toast({message: &#39;Hello Sencha!&#39;, timeout: 2000}); // Toast will close in 2000 milliseconds
  *
  * # Multiple Toasts queued
  *
  *      @example miniphone
- *      Ext.toast('Hello Sencha!');
- *      Ext.toast('Hello Sencha Again!');
- *      Ext.toast('Hello Sencha One More Time!');
+ *      Ext.toast(&#39;Hello Sencha!&#39;);
+ *      Ext.toast(&#39;Hello Sencha Again!&#39;);
+ *      Ext.toast(&#39;Hello Sencha One More Time!&#39;);
  */
-Ext.define('Ext.Toast', {
-    extend: 'Ext.Sheet',
+Ext.define(&#39;Ext.Toast&#39;, {
+    extend: &#39;Ext.Sheet&#39;,
     requires: [
-        'Ext.util.InputBlocker'
+        &#39;Ext.util.InputBlocker&#39;
     ],
 
     config: {
@@ -54,22 +54,22 @@ Ext.define('Ext.Toast', {
 </span>         * @cfg
          * @inheritdoc
          */
-        ui: 'dark',
+        ui: &#39;dark&#39;,
 
 <span id='Ext-Toast-cfg-baseCls'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'toast',
+        baseCls: Ext.baseCSSPrefix + &#39;toast&#39;,
 
 <span id='Ext-Toast-cfg-showAnimation'>        /**
 </span>         * @cfg
          * @inheritdoc
          */
         showAnimation: {
-            type: 'popIn',
+            type: &#39;popIn&#39;,
             duration: 250,
-            easing: 'ease-out'
+            easing: &#39;ease-out&#39;
         },
 
 <span id='Ext-Toast-cfg-hideAnimation'>        /**
@@ -77,9 +77,9 @@ Ext.define('Ext.Toast', {
          * @inheritdoc
          */
         hideAnimation: {
-            type: 'popOut',
+            type: &#39;popOut&#39;,
             duration: 250,
-            easing: 'ease-out'
+            easing: &#39;ease-out&#39;
         },
 
 <span id='Ext-Toast-cfg-zIndex'>        /**
@@ -122,8 +122,8 @@ Ext.define('Ext.Toast', {
          * @inheritdoc
          */
         layout: {
-            type: 'vbox',
-            pack: 'center'
+            type: &#39;vbox&#39;,
+            pack: &#39;center&#39;
         }
     },
 
@@ -133,7 +133,7 @@ Ext.define('Ext.Toast', {
     applyMessage: function(config) {
         config = {
             html: config,
-            cls: this.getBaseCls() + '-text'
+            cls: this.getBaseCls() + &#39;-text&#39;
         };
 
         return Ext.factory(config, Ext.Component, this._message);
@@ -249,7 +249,7 @@ Ext.define('Ext.Toast', {
 
     function getInstance() {
         if (!Ext.Toast._instance) {
-            Ext.Toast._instance = Ext.create('Ext.Toast');
+            Ext.Toast._instance = Ext.create(&#39;Ext.Toast&#39;);
             Ext.Toast._instance.next = next;
         }
         return Ext.Toast._instance;

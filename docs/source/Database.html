@@ -18,7 +18,7 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-storage-HTML5-Database'>/**
 </span> * @private
  */
-Ext.define('Ext.device.storage.HTML5.Database', {
+Ext.define(&#39;Ext.device.storage.HTML5.Database&#39;, {
     requires: [&quot;Ext.device.storage.HTML5.SQLStatement&quot;],
 <span id='Ext-device-storage-HTML5-Database-property-db'>    db: null,
 </span>
@@ -31,7 +31,7 @@ Ext.define('Ext.device.storage.HTML5.Database', {
             return this.db.version;
         }
         // &lt;debug&gt;
-        Ext.Logger.warn('Database has not been opened before calling function #getVersion');
+        Ext.Logger.warn(&#39;Database has not been opened before calling function #getVersion&#39;);
         // &lt;/debug&gt;
 
         return null;
@@ -45,7 +45,7 @@ Ext.define('Ext.device.storage.HTML5.Database', {
     transaction: function(sql, success, failure) {
         if (!this.db) {
             // &lt;debug&gt;
-            Ext.Logger.warn('Database has not been opened before calling function #transaction');
+            Ext.Logger.warn(&#39;Database has not been opened before calling function #transaction&#39;);
             // &lt;/debug&gt;
             return;
         }

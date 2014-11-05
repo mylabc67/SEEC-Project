@@ -19,22 +19,22 @@
 </span> * @private
  * Windows Phone version of Viewport.
  */
-Ext.define('Ext.viewport.WindowsPhone', {
+Ext.define(&#39;Ext.viewport.WindowsPhone&#39;, {
     requires: [],
 
-    alternateClassName: 'Ext.viewport.WP',
+    alternateClassName: &#39;Ext.viewport.WP&#39;,
 
-    extend: 'Ext.viewport.Default',
+    extend: &#39;Ext.viewport.Default&#39;,
 
     // so one pixel line is displayed on the right side of the screen. Setting width more than 100% fix the issue
 //    config: {
-//        width: '100.2%',
-//        height: '100.2%'
+//        width: &#39;100.2%&#39;,
+//        height: &#39;100.2%&#39;
 //    },
 
     config: {
 <span id='Ext-viewport-WindowsPhone-cfg-translatable'>        translatable: {
-</span>            translationMethod: 'csstransform'
+</span>            translationMethod: &#39;csstransform&#39;
         }
     },
 
@@ -42,14 +42,14 @@ Ext.define('Ext.viewport.WindowsPhone', {
 </span>        // There is -ms-user-select CSS property for IE10, but it seems it works only in desktop browser. So we need to prevent selection event.
         var preventSelection = function(e) {
             var srcElement = e.srcElement.nodeName.toUpperCase(),
-                selectableElements = ['INPUT', 'TEXTAREA'];
+                selectableElements = [&#39;INPUT&#39;, &#39;TEXTAREA&#39;];
 
             if (selectableElements.indexOf(srcElement) == -1) {
                 return false;
             }
         };
 
-        document.body.addEventListener('onselectstart', preventSelection);
+        document.body.addEventListener(&#39;onselectstart&#39;, preventSelection);
 
         this.callParent(arguments);
     },

@@ -48,29 +48,29 @@
  *         sortType: function(v) {
  *             return v.Latitude;  // When sorting, order by latitude
  *         },
- *         type: 'VELatLong'
+ *         type: &#39;VELatLong&#39;
  *     };
  *
  * Then, when declaring a Model, use:
  *
  *     var types = Ext.data.Types; // allow shorthand type access
- *     Ext.define('Unit', {
- *         extend: 'Ext.data.Model',
+ *     Ext.define(&#39;Unit&#39;, {
+ *         extend: &#39;Ext.data.Model&#39;,
  *         config: {
  *             fields: [
- *                 { name: 'unitName', mapping: 'UnitName' },
- *                 { name: 'curSpeed', mapping: 'CurSpeed', type: types.INT },
- *                 { name: 'latitude', mapping: 'lat', type: types.FLOAT },
- *                 { name: 'position', type: types.VELATLONG }
+ *                 { name: &#39;unitName&#39;, mapping: &#39;UnitName&#39; },
+ *                 { name: &#39;curSpeed&#39;, mapping: &#39;CurSpeed&#39;, type: types.INT },
+ *                 { name: &#39;latitude&#39;, mapping: &#39;lat&#39;, type: types.FLOAT },
+ *                 { name: &#39;position&#39;, type: types.VELATLONG }
  *             ]
  *         }
  *     });
  *
  * @singleton
  */
-Ext.define('Ext.data.Types', {
+Ext.define(&#39;Ext.data.Types&#39;, {
     singleton: true,
-    requires: ['Ext.data.SortTypes'],
+    requires: [&#39;Ext.data.SortTypes&#39;],
 
 <span id='Ext-data-Types-property-stripRe'>    /**
 </span>     * @property {RegExp} stripRe
@@ -96,7 +96,7 @@ Ext.define('Ext.data.Types', {
                 return value;
             },
             sortType: sortTypes.none,
-            type: 'auto'
+            type: &#39;auto&#39;
         },
 
 <span id='Ext-data-Types-property-STRING'>        /**
@@ -105,13 +105,13 @@ Ext.define('Ext.data.Types', {
          */
         STRING: {
             convert: function(value) {
-                // 'this' is the actual field that calls this convert method
+                // &#39;this&#39; is the actual field that calls this convert method
                 return (value === undefined || value === null)
-                    ? (this.getAllowNull() ? null : '')
+                    ? (this.getAllowNull() ? null : &#39;&#39;)
                     : String(value);
             },
             sortType: sortTypes.asUCString,
-            type: 'string'
+            type: &#39;string&#39;
         },
 
 <span id='Ext-data-Types-property-INT'>        /**
@@ -123,15 +123,15 @@ Ext.define('Ext.data.Types', {
          */
         INT: {
             convert: function(value) {
-                return (value !== undefined &amp;&amp; value !== null &amp;&amp; value !== '')
-                    ? ((typeof value === 'number')
+                return (value !== undefined &amp;&amp; value !== null &amp;&amp; value !== &#39;&#39;)
+                    ? ((typeof value === &#39;number&#39;)
                         ? parseInt(value, 10)
-                        : parseInt(String(value).replace(Types.stripRe, ''), 10)
+                        : parseInt(String(value).replace(Types.stripRe, &#39;&#39;), 10)
                     )
                     : (this.getAllowNull() ? null : 0);
             },
             sortType: sortTypes.none,
-            type: 'int'
+            type: &#39;int&#39;
         },
 
 <span id='Ext-data-Types-property-FLOAT'>        /**
@@ -143,33 +143,33 @@ Ext.define('Ext.data.Types', {
          */
         FLOAT: {
             convert: function(value) {
-                return (value !== undefined &amp;&amp; value !== null &amp;&amp; value !== '')
-                    ? ((typeof value === 'number')
+                return (value !== undefined &amp;&amp; value !== null &amp;&amp; value !== &#39;&#39;)
+                    ? ((typeof value === &#39;number&#39;)
                         ? value
-                        : parseFloat(String(value).replace(Types.stripRe, ''), 10)
+                        : parseFloat(String(value).replace(Types.stripRe, &#39;&#39;), 10)
                     )
                     : (this.getAllowNull() ? null : 0);
             },
             sortType: sortTypes.none,
-            type: 'float'
+            type: &#39;float&#39;
         },
 
 <span id='Ext-data-Types-property-BOOL'>        /**
 </span>         * @property {Object} BOOL
          * This data type means that the raw data is converted into a Boolean before it is placed into
-         * a Record. The string &quot;true&quot;, &quot;1&quot; and the number 1 are converted to Boolean `true`. The String &quot;0&quot; will be converted to Boolean 'false'.
+         * a Record. The string &quot;true&quot;, &quot;1&quot; and the number 1 are converted to Boolean `true`. The String &quot;0&quot; will be converted to Boolean &#39;false&#39;.
          *
          * The synonym `BOOLEAN` is equivalent.
          */
         BOOL: {
             convert: function(value) {
-                if ((value === undefined || value === null || value === '') &amp;&amp; this.getAllowNull()) {
+                if ((value === undefined || value === null || value === &#39;&#39;) &amp;&amp; this.getAllowNull()) {
                     return null;
                 }
-                return value !== 'false' &amp;&amp; value !== '0' &amp;&amp; !!value;
+                return value !== &#39;false&#39; &amp;&amp; value !== &#39;0&#39; &amp;&amp; !!value;
             },
             sortType: sortTypes.none,
-            type: 'bool'
+            type: &#39;bool&#39;
         },
 
 <span id='Ext-data-Types-property-DATE'>        /**
@@ -190,10 +190,10 @@ Ext.define('Ext.data.Types', {
                     return value;
                 }
                 if (dateFormat) {
-                    if (dateFormat == 'timestamp') {
+                    if (dateFormat == &#39;timestamp&#39;) {
                         return new Date(value*1000);
                     }
-                    if (dateFormat == 'time') {
+                    if (dateFormat == &#39;time&#39;) {
                         return new Date(parseInt(value, 10));
                     }
                     return Ext.Date.parse(value, dateFormat);
@@ -207,7 +207,7 @@ Ext.define('Ext.data.Types', {
                         parsed = new Date(parsed[0], parsed[1]-1, parsed[2], parsed[3], parsed[4], parsed[5]);
                     }
                     if (isNaN(parsed)) {
-                        // Dates with the format &quot;2012-01-20&quot; fail, but &quot;2012/01/20&quot; work in some browsers. We'll try and
+                        // Dates with the format &quot;2012-01-20&quot; fail, but &quot;2012/01/20&quot; work in some browsers. We&#39;ll try and
                         // get around that.
                         parsed = new Date(Date.parse(value.replace(Types.dashesRe, &quot;/&quot;)));
                         //&lt;debug&gt;
@@ -221,7 +221,7 @@ Ext.define('Ext.data.Types', {
                 return isNaN(parsed) ? null : parsed;
             },
             sortType: sortTypes.asDate,
-            type: 'date'
+            type: &#39;date&#39;
         }
     });
 

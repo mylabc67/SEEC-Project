@@ -17,33 +17,33 @@
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js"><span id='Ext-tab-Bar'>/**
 </span> * Ext.tab.Bar is used internally by {@link Ext.tab.Panel} to create the bar of tabs that appears at the top of the tab
- * panel. It's unusual to use it directly, instead see the {@link Ext.tab.Panel tab panel docs} for usage instructions.
+ * panel. It&#39;s unusual to use it directly, instead see the {@link Ext.tab.Panel tab panel docs} for usage instructions.
  *
  * Used in the {@link Ext.tab.Panel} component to display {@link Ext.tab.Tab} components.
  *
  * @private
  */
-Ext.define('Ext.tab.Bar', {
-    extend: 'Ext.Toolbar',
-    alternateClassName: 'Ext.TabBar',
-    xtype : 'tabbar',
+Ext.define(&#39;Ext.tab.Bar&#39;, {
+    extend: &#39;Ext.Toolbar&#39;,
+    alternateClassName: &#39;Ext.TabBar&#39;,
+    xtype : &#39;tabbar&#39;,
 
-    requires: ['Ext.tab.Tab'],
+    requires: [&#39;Ext.tab.Tab&#39;],
 
     config: {
 <span id='Ext-tab-Bar-cfg-baseCls'>        /**
 </span>         * @cfg baseCls
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'tabbar',
+        baseCls: Ext.baseCSSPrefix + &#39;tabbar&#39;,
 
 <span id='Ext-tab-Bar-cfg-defaultType'>        // @private
-</span>        defaultType: 'tab',
+</span>        defaultType: &#39;tab&#39;,
 
 <span id='Ext-tab-Bar-cfg-layout'>        // @private
 </span>        layout: {
-            type: 'hbox',
-            align: 'middle'
+            type: &#39;hbox&#39;,
+            align: &#39;middle&#39;
         }
     },
 
@@ -67,7 +67,7 @@ Ext.define('Ext.tab.Bar', {
      */
 
     platformConfig: [{
-        theme: ['Blackberry', 'CupertinoClassic', 'MountainView'],
+        theme: [&#39;Blackberry&#39;, &#39;CupertinoClassic&#39;, &#39;MountainView&#39;],
         defaults: {
             flex: 1
         }
@@ -78,9 +78,9 @@ Ext.define('Ext.tab.Bar', {
         me.callParent();
 
         me.on({
-            tap: 'onTabTap',
+            tap: &#39;onTabTap&#39;,
 
-            delegate: '&gt; tab',
+            delegate: &#39;&gt; tab&#39;,
             scope   : me
         });
     },
@@ -103,7 +103,7 @@ Ext.define('Ext.tab.Bar', {
         if (!newTabInstance) {
             // &lt;debug warn&gt;
             if (oldActiveTab) {
-                Ext.Logger.warn('Trying to set a non-existent activeTab');
+                Ext.Logger.warn(&#39;Trying to set a non-existent activeTab&#39;);
             }
             // &lt;/debug&gt;
             return;
@@ -121,8 +121,8 @@ Ext.define('Ext.tab.Bar', {
             pack;
 
         if (!initialConfig.layout || !initialConfig.layout.pack) {
-            pack = (newDocked == 'bottom') ? 'center' : 'left';
-            //layout isn't guaranteed to be instantiated so must test
+            pack = (newDocked == &#39;bottom&#39;) ? &#39;center&#39; : &#39;left&#39;;
+            //layout isn&#39;t guaranteed to be instantiated so must test
             if (layout.isLayout) {
                 layout.setPack(pack);
             } else {
@@ -154,10 +154,10 @@ Ext.define('Ext.tab.Bar', {
      */
     parseActiveTab: function(tab) {
         //we need to call getItems to initialize the items, otherwise they will not exist yet.
-        if (typeof tab == 'number') {
+        if (typeof tab == &#39;number&#39;) {
 			return this.getItems().items[tab];
         }
-        else if (typeof tab == 'string') {
+        else if (typeof tab == &#39;string&#39;) {
             tab = Ext.getCmp(tab);
         }
         return tab;

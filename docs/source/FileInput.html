@@ -18,9 +18,9 @@
   <pre class="prettyprint lang-js"><span id='Ext-field-FileInput'>/**
 </span> * @private
  */
-Ext.define('Ext.field.FileInput', {
-    extend: 'Ext.field.Input',
-    xtype: 'fileinput',
+Ext.define(&#39;Ext.field.FileInput&#39;, {
+    extend: &#39;Ext.field.Input&#39;,
+    xtype: &#39;fileinput&#39;,
 
 <span id='Ext-field-FileInput-event-change'>    /**
 </span>     * @event change
@@ -56,7 +56,7 @@ Ext.define('Ext.field.FileInput', {
 
         me.input.on({
             scope: me,
-            change: 'onInputChange'
+            change: &#39;onInputChange&#39;
         });
     },
 
@@ -116,7 +116,7 @@ Ext.define('Ext.field.FileInput', {
      * @cfg startValue {String} Original Value
      */
     onChange: function(me, value, startValue) {
-        this.fireEvent('change', me, value, startValue);
+        this.fireEvent(&#39;change&#39;, me, value, startValue);
     },
 
 <span id='Ext-field-FileInput-cfg-value'>    /**
@@ -140,7 +140,7 @@ Ext.define('Ext.field.FileInput', {
      * @returns {boolean}
      */
     applyMultiple: function(value) {
-        this.updateFieldAttribute('multiple', value ? '' : null);
+        this.updateFieldAttribute(&#39;multiple&#39;, value ? &#39;&#39; : null);
         return value;
     },
 
@@ -167,14 +167,14 @@ Ext.define('Ext.field.FileInput', {
                 break;
         }
 
-        this.updateFieldAttribute('accept', value);
+        this.updateFieldAttribute(&#39;accept&#39;, value);
     },
 
 <span id='Ext-field-FileInput-method-applyCapture'>    /**
 </span>     * Updated the capture attribute with the {@ink capture} configuration
      */
     applyCapture: function(value) {
-        this.updateFieldAttribute('capture', value);
+        this.updateFieldAttribute(&#39;capture&#39;, value);
         return value;
     }
 });

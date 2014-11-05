@@ -18,8 +18,8 @@
   <pre class="prettyprint lang-js"><span id='Ext-device-orientation-Abstract'>/**
 </span> * @private
  */
-Ext.define('Ext.device.orientation.Abstract', {
-    mixins: ['Ext.mixin.Observable'],
+Ext.define(&#39;Ext.device.orientation.Abstract&#39;, {
+    mixins: [&#39;Ext.mixin.Observable&#39;],
 
 <span id='Ext-device-orientation-Abstract-event-orientationchange'>    /**
 </span>     * @event orientationchange
@@ -28,9 +28,9 @@ Ext.define('Ext.device.orientation.Abstract', {
      *     Ext.device.Orientation.on({
      *         scope: this,
      *         orientationchange: function(e) {
-     *             console.log('Alpha: ', e.alpha);
-     *             console.log('Beta: ', e.beta);
-     *             console.log('Gamma: ', e.gamma);
+     *             console.log(&#39;Alpha: &#39;, e.alpha);
+     *             console.log(&#39;Beta: &#39;, e.beta);
+     *             console.log(&#39;Gamma: &#39;, e.gamma);
      *         }
      *     });
      *
@@ -41,7 +41,7 @@ Ext.define('Ext.device.orientation.Abstract', {
      */
 
     onDeviceOrientation: function(e) {
-        this.doFireEvent('orientationchange', [e]);
+        this.doFireEvent(&#39;orientationchange&#39;, [e]);
     }
 });
 </pre>

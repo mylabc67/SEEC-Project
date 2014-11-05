@@ -23,7 +23,7 @@
 </span> * Base class for all mixins.
  * @private
  */
-Ext.define('Ext.mixin.Mixin', {
+Ext.define(&#39;Ext.mixin.Mixin&#39;, {
 <span id='Ext-mixin-Mixin-method-onClassExtended'>    onClassExtended: function(cls, data) {
 </span>        var mixinConfig = data.mixinConfig,
             parentClassMixinConfig,
@@ -42,7 +42,7 @@ Ext.define('Ext.mixin.Mixin', {
             afterHooks = mixinConfig.hooks || mixinConfig.afterHooks;
 
             if (beforeHooks || afterHooks) {
-                Ext.Function.interceptBefore(data, 'onClassMixedIn', function(targetClass) {
+                Ext.Function.interceptBefore(data, &#39;onClassMixedIn&#39;, function(targetClass) {
                     var mixin = this.prototype;
 
                     if (beforeHooks) {

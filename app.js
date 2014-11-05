@@ -13,7 +13,10 @@ Ext.Loader.setConfig({
     enabled: true,
     disableCaching: false
 });
-
+/**
+ * Interview project of SEEC
+ * Author: Yilei Mou
+ */
 Ext.application({
     name: 'SEEC',
 
@@ -21,9 +24,8 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-    views: [
-        'Main'
-    ],
+    views: ['Main'],
+    controllers: ['MainController'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
